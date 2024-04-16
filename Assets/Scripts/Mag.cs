@@ -6,18 +6,38 @@ public class Mag : MonoBehaviour
 {
    
     [SerializeField]
+    private GameObject ballLouncher;
+    private BallLauncher louncherScript;
+
+    [SerializeField]
+    private List<GameObject> slots = new List<GameObject>();
+
+    [SerializeField]
     private List<GameObject> ballPrefabs = new List<GameObject>();
 
     private List<GameObject> ballsInMag = new List<GameObject>();
 
+    [SerializeField]
+    private GameObject UI;
+    private UIScript uiScript;
+
     private int magSize = 3;
+
+    public bool cocked = false;
+
+    private float timePassed;
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < magSize; i++)
-        ballsInMag.Add(RandomBall());
+        uiScript = UI.GetComponent<UIScript>();
+        louncherScript = ballLouncher.GetComponent<BallLauncher>();
+        FillMag();
 
-        
+
+    }
+    private void Update()
+    {
+        timePassed += Time.deltaTime;
     }
 
     private GameObject RandomBall()
@@ -34,16 +54,22 @@ public class Mag : MonoBehaviour
 
     }
 
-    public GameObject NextBall()
+    private void FillMag()
     {
-        GameObject nextBall = ballsInMag[0];
-        ballsInMag.RemoveAt(0);
-
-        return nextBall;
+        for (int i = 0; i < magSize; i++)
+        {
+            
+            ballsInMag.Add(Instantiate(RandomBall(), slots[i].transform.position, slots[i].transform.rotation));
+        }
     }
 
-    public void AddBall(GameObject ball)
+    public Vector3 FirstSlotPosition()
     {
-        ballsInMag.Add(ball);
+        return slots[0].transform.position;
+    }
+
+    public void MoveNext()
+    {
+        ballsInMag[1].transform.position = slots[0].transform.position;
     }
 }

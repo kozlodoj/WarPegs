@@ -11,14 +11,13 @@ public class UnitSpawner : MonoBehaviour
 
     private void Start()
     {
-        uiScript = GameObject.Find("UI").GetComponent<UIScript>();
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
             Instantiate(unitPrefab);
-        uiScript.ResetBallTimer();
 
     }
 }

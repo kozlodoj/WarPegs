@@ -23,17 +23,14 @@ public class BallLauncher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!loaded)
-        {
-            loaded = true;
-            Instantiate(magScript.NextBall());
-        }
+        //if (!loaded)
+        //{
+        //    loaded = true;
+        //    Instantiate(magScript.NextBall());
+        //    StartCoroutine(LoadDelay());
+        //}
     }
 
-    public void LoadBall()
-    {
-        loaded = false;
-    }
-
+   
     
 }

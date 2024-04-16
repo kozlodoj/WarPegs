@@ -12,6 +12,7 @@ public class UIScript : MonoBehaviour
     private TextMeshProUGUI readyText;
     [SerializeField]
     private List<Image> ballSlots = new List<Image>();
+    private List<Sprite> ballSprites = new List<Sprite>();
 
     private bool ballReady = false;
     private float ballSpawnDelay = 5f;

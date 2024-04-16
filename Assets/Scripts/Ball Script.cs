@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ball : MonoBehaviour
+public class BallScript : MonoBehaviour
 {
     private float speed = 10f;
     private float bounceForce = 250f;
+
+    public float chargeTime = 2f;
+    public bool isCharged = false;
+
+    private float timePassed = 0f;
+    private bool charging = false;
 
     private Rigidbody2D ballRb;
 
@@ -14,29 +20,57 @@ public class Ball : MonoBehaviour
     private Vector2 startPosition;
 
     private bool lounchPos = true;
+    public bool inMag = true;
 
     [SerializeField]
     private GameObject mag;
 
     private Mag magScript;
 
+    private GameObject launcher;
+
+    [SerializeField]
+    private GameObject UI;
+    private BallUI ballUI;
+    
+
     // Start is called before the first frame update
     void Start()
     {
+        ballUI = UI.GetComponent<BallUI>();
+        mag = GameObject.Find("Mag");
+        launcher = GameObject.Find("Launcher");
         magScript = mag.GetComponent<Mag>();
         ballRb = gameObject.GetComponent<Rigidbody2D>();
         startPosition = (Vector2)transform.position;
+        ActivateCharging();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         Aim();
+
+        if (charging)
+        {
+            timePassed += Time.deltaTime;
+            ballUI.SetCharge(timePassed / chargeTime);
+            if (timePassed > chargeTime && transform.position == magScript.FirstSlotPosition() && !magScript.cocked)
+            {
+                UI.SetActive(false);
+                transform.position = launcher.transform.position;
+                inMag = false;
+                magScript.cocked = true;
+                magScript.MoveNext();
+            }
+        }
+
     }
 
     private void Aim()
     {
-        if (lounchPos)
+        if (lounchPos && !inMag)
         {
             target = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
             Vector2 difference = target - (Vector2)gameObject.transform.position;
@@ -53,6 +87,7 @@ public class Ball : MonoBehaviour
         lounchPos = false;
         ballRb.constraints = RigidbodyConstraints2D.None;
         ballRb.AddForce(direction * speed, ForceMode2D.Impulse);
+        magScript.cocked = false;
 
     }
 
@@ -76,7 +111,14 @@ public class Ball : MonoBehaviour
         lounchPos = true;
         ballRb.constraints = RigidbodyConstraints2D.FreezePosition;
         transform.position = startingPosition;
-        magScript.AddBall(gameObject);
         gameObject.SetActive(false);
+    }
+
+    public void ActivateCharging()
+    {
+        UI.SetActive(true);
+        ballUI.SetCharge(timePassed / chargeTime);
+        charging = true;
+
     }
 }
