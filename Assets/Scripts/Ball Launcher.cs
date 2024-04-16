@@ -12,7 +12,6 @@ public class BallLauncher : MonoBehaviour
     private UIScript uiScript;
     private Mag magScript;
 
-    private bool loaded = false;
     // Start is called before the first frame update
     void Start()
     {
