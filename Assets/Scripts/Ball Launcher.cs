@@ -4,70 +4,36 @@ using UnityEngine;
 
 public class BallLauncher : MonoBehaviour
 {
-    private float speed = 10f;
-    private float bounceForce = 250f;
+    [SerializeField]
+    private GameObject UI;
+    [SerializeField]
+    private GameObject mag;
 
-    private Rigidbody2D ballRb;
+    private UIScript uiScript;
+    private Mag magScript;
 
-    private Vector2 target;
-    private Vector2 bounceDirection;
-    private Vector2 startPosition;
-
-    private bool lounchPos = true;
-
+    private bool loaded = false;
     // Start is called before the first frame update
     void Start()
     {
-        ballRb = gameObject.GetComponent<Rigidbody2D>();
-        startPosition = (Vector2)transform.position;
+        uiScript = UI.GetComponent<UIScript>();
+        magScript = mag.GetComponent<Mag>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Aim();
-    }
-
-    private void Aim()
-    {
-        if (lounchPos)
+        if (!loaded)
         {
-            target = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-            Vector2 difference = target - (Vector2)gameObject.transform.position;
-            float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-            gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ + 90f);
-
-            if (Input.GetMouseButtonDown(0))
-                Shoot(difference.normalized);
+            loaded = true;
+            Instantiate(magScript.NextBall());
         }
     }
 
-    private void Shoot(Vector2 direction)
+    public void LoadBall()
     {
-        lounchPos = false;
-        ballRb.constraints = RigidbodyConstraints2D.None;
-        ballRb.AddForce(direction * speed, ForceMode2D.Impulse);
-
+        loaded = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        bounceDirection = new Vector2(transform.position.x - collision.transform.position.x, transform.position.y - collision.transform.position.y).normalized;
-        ballRb.AddForce(bounceDirection * bounceForce);
-        if (!collision.gameObject.CompareTag("Walls"))
-        collision.gameObject.SetActive(false);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Bottom"))
-            ResetBall();
-    }
-
-    private void ResetBall()
-    {
-        lounchPos = true;
-        ballRb.constraints = RigidbodyConstraints2D.FreezePosition;
-        transform.position = startPosition;
-    }
+    
 }
