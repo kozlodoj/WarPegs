@@ -32,8 +32,8 @@ public class BallScript : MonoBehaviour
     [SerializeField]
     private GameObject UI;
     private BallUI ballUI;
-    
 
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +43,7 @@ public class BallScript : MonoBehaviour
         lastSlot = GameObject.Find("Slot02").transform.position;
         magScript = mag.GetComponent<Mag>();
         ballRb = gameObject.GetComponent<Rigidbody2D>();
-       
+      
     }
 
     // Update is called once per frame
@@ -76,6 +76,7 @@ public class BallScript : MonoBehaviour
             Vector2 difference = target - (Vector2)gameObject.transform.position;
             float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ + 90f);
+            
 
             if (Input.GetMouseButtonDown(0))
                 Shoot(difference.normalized);

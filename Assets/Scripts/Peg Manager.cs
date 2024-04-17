@@ -14,7 +14,6 @@ public class PegManager : MonoBehaviour
             if (child.gameObject.tag == "Peg")
                 allPegs.Add(child.GetComponent<PegScript>());
         }
-        Debug.Log(allPegs.Count);
     }
 
     // Update is called once per frame
