@@ -72,4 +72,9 @@ public class Mag : MonoBehaviour
     {
         ballsInMag[1].transform.position = slots[0].transform.position;
     }
+
+    public void NewBall()
+    {
+        Instantiate(RandomBall(), slots[2].transform.position, slots[2].transform.rotation);
+    }
 }

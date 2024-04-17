@@ -13,6 +13,7 @@ TagManager:
   - Slot00
   - Slot01
   - Slot02
+  - Peg
   layers:
   - Default
   - TransparentFX

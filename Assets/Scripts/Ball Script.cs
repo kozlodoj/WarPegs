@@ -64,7 +64,9 @@ public class BallScript : MonoBehaviour
             }
         }
 
+
     }
+    
 
     private void Aim()
     {
@@ -94,7 +96,7 @@ public class BallScript : MonoBehaviour
         bounceDirection = new Vector2(transform.position.x - collision.transform.position.x, transform.position.y - collision.transform.position.y).normalized;
         ballRb.AddForce(bounceDirection * bounceForce);
         if (!collision.gameObject.CompareTag("Walls") && !collision.gameObject.CompareTag("Player"))
-            collision.gameObject.SetActive(false);
+            collision.gameObject.GetComponent<PegScript>().FadeOut();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -106,13 +108,14 @@ public class BallScript : MonoBehaviour
 
     private void ResetBall()
     {
-        isCharged = false;
-        charging = false;
-        timePassed = 0;
-        ballRb.constraints = RigidbodyConstraints2D.FreezeAll;
-        transform.position = lastSlot;
-        transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-
+        //isCharged = false;
+        //charging = false;
+        //timePassed = 0;
+        //ballRb.constraints = RigidbodyConstraints2D.FreezeAll;
+        //transform.position = lastSlot;
+        //transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        //magScript.NewBall();
+        Destroy(gameObject);
 
     }
 

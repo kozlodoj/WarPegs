@@ -8,17 +8,23 @@ public class SlotScript : MonoBehaviour
     private GameObject nextSlot;
     private SlotScript slotScript;
 
+    private Mag magScript;
+
     private GameObject theBall;
     private BallScript ballScript;
 
     [SerializeField]
     private bool isFirst;
+    [SerializeField]
+    private bool isLast;
     public bool isOcupied;
     public bool ballCharged;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        magScript = GameObject.Find("Mag").GetComponent<Mag>();
         slotScript = nextSlot.GetComponent<SlotScript>();
     }
 
@@ -56,6 +62,8 @@ public class SlotScript : MonoBehaviour
             else if (!isFirst)
                 theBall.transform.position = nextSlot.transform.position;
         }
+        if (isLast && !isOcupied)
+            magScript.NewBall();
 
     }
     private void ManageCharge()
