@@ -318,6 +318,10 @@ MonoBehaviour:
   mag: {fileID: 0}
   UI: {fileID: 7697769169030530796}
   controlsAsset: {fileID: -944628639613478452, guid: 68a7b9018dccb46b588914a68260a42c, type: 3}
+  trajectory: {fileID: 0}
+  dummy: {fileID: 2252193437602304218, guid: 103e465d23e454ecc90879c292d9b506, type: 3}
+  isDummy: 0
+  trajectoryPrefab: {fileID: 2461904043212881540, guid: 921d7ef21ad814bc6ac6597aceac9f3e, type: 3}
 --- !u!1 &7697769169030530796
 GameObject:
   m_ObjectHideFlags: 0

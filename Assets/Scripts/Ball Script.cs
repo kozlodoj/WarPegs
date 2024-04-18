@@ -40,7 +40,13 @@ public class BallScript : MonoBehaviour
     private InputAction aim;
     private InputAction touch;
     [SerializeField]
-
+    private GameObject trajectory;
+    private Trajectory trajScript;
+    [SerializeField]
+    private GameObject dummy;
+    [SerializeField]
+    private bool isDummy;
+    
 
     // Start is called before the first frame update
     void Awake()
@@ -58,6 +64,10 @@ public class BallScript : MonoBehaviour
 
         aim.performed += context => LookDirection(context);
         touch.canceled += context => Shoot();
+
+        trajectory = GameObject.Find("Trajectory");
+        trajScript = trajectory.GetComponent<Trajectory>();
+        
     }
 
     // Update is called once per frame
@@ -88,10 +98,11 @@ public class BallScript : MonoBehaviour
             float angleRadians = Mathf.Atan2(-context.ReadValue<Vector2>().y, context.ReadValue<Vector2>().x);
             float angleDegrees = -angleRadians * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angleDegrees - 90f, Vector3.forward);
+            Predict();
         }
     }
 
-    private void Shoot()
+    public void Shoot()
     {
         if (lounchPos)
         {
@@ -99,21 +110,34 @@ public class BallScript : MonoBehaviour
             ballRb.constraints = RigidbodyConstraints2D.None;
             ballRb.AddForce(transform.up * speed, ForceMode2D.Impulse);
             magScript.cocked = false;
+         
         }
 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            gameObject.GetComponent<Collider2D>().enabled = false;
+        }
         bounceDirection = new Vector2(transform.position.x - collision.transform.position.x, transform.position.y - collision.transform.position.y).normalized;
         ballRb.AddForce(bounceDirection * bounceForce);
-        if (!collision.gameObject.CompareTag("Walls") && !collision.gameObject.CompareTag("Player"))
+        if (!collision.gameObject.CompareTag("Walls") && !collision.gameObject.CompareTag("Player") && !isDummy)
             collision.gameObject.GetComponent<PegScript>().FadeOut();
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            gameObject.GetComponent<Collider2D>().enabled = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bottom"))
+        if (collision.gameObject.CompareTag("Bottom") && !isDummy)
             ResetBall();
 
     }
@@ -138,5 +162,10 @@ public class BallScript : MonoBehaviour
             lounchPos = true;
         else
             lounchPos = false;
+    }
+    private void Predict()
+    {
+        trajScript.predict(dummy, transform.position, transform.up * speed);
+
     }
 }
