@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BallScript : MonoBehaviour
 {
@@ -33,9 +34,16 @@ public class BallScript : MonoBehaviour
     private GameObject UI;
     private BallUI ballUI;
 
-  
+    [SerializeField]
+    private InputActionAsset controlsAsset;
+    private InputActionMap actionMap;
+    private InputAction aim;
+    private InputAction touch;
+    [SerializeField]
+
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         ballUI = UI.GetComponent<BallUI>();
         mag = GameObject.Find("Mag");
@@ -43,14 +51,20 @@ public class BallScript : MonoBehaviour
         lastSlot = GameObject.Find("Slot02").transform.position;
         magScript = mag.GetComponent<Mag>();
         ballRb = gameObject.GetComponent<Rigidbody2D>();
-      
+
+        actionMap = controlsAsset.FindActionMap("Player");
+        aim = actionMap.FindAction("Aim");
+        touch = actionMap.FindAction("Touch");
+
+        aim.performed += context => LookDirection(context);
+        touch.canceled += context => Shoot();
     }
 
     // Update is called once per frame
     void Update()
     {
         LounchPosition();
-        Aim();
+        
         if (charging)
         {
             timePassed += Time.deltaTime;
@@ -66,29 +80,26 @@ public class BallScript : MonoBehaviour
 
 
     }
-    
 
-    private void Aim()
+    private void LookDirection(InputAction.CallbackContext context)
     {
         if (lounchPos)
         {
-            target = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-            Vector2 difference = target - (Vector2)gameObject.transform.position;
-            float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-            gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ + 90f);
-            
-
-            if (Input.GetMouseButtonDown(0))
-                Shoot(difference.normalized);
+            float angleRadians = Mathf.Atan2(-context.ReadValue<Vector2>().y, context.ReadValue<Vector2>().x);
+            float angleDegrees = -angleRadians * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angleDegrees - 90f, Vector3.forward);
         }
     }
 
-    private void Shoot(Vector2 direction)
+    private void Shoot()
     {
-        lounchPos = false;
-        ballRb.constraints = RigidbodyConstraints2D.None;
-        ballRb.AddForce(direction * speed, ForceMode2D.Impulse);
-        magScript.cocked = false;
+        if (lounchPos)
+        {
+            lounchPos = false;
+            ballRb.constraints = RigidbodyConstraints2D.None;
+            ballRb.AddForce(transform.up * speed, ForceMode2D.Impulse);
+            magScript.cocked = false;
+        }
 
     }
 
@@ -109,13 +120,7 @@ public class BallScript : MonoBehaviour
 
     private void ResetBall()
     {
-        //isCharged = false;
-        //charging = false;
-        //timePassed = 0;
-        //ballRb.constraints = RigidbodyConstraints2D.FreezeAll;
-        //transform.position = lastSlot;
-        //transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-        //magScript.NewBall();
+        
         Destroy(gameObject);
 
     }

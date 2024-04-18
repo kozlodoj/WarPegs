@@ -3,58 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
+using UnityEditor;
 
 public class UIScript : MonoBehaviour
 {
     [SerializeField]
-    private Image ballReadyBar;
-    [SerializeField]
-    private TextMeshProUGUI readyText;
-    [SerializeField]
-    private List<Image> ballSlots = new List<Image>();
-    private List<Sprite> ballSprites = new List<Sprite>();
+    private GameObject joystick;
 
-    private bool ballReady = false;
-    private float ballSpawnDelay = 5f;
-    private float timeAfterLastBall = 0f;
+    [SerializeField]
+    private InputActionAsset controlsAsset;
+    private InputActionMap actionMap;
+    private InputAction touch;
+
+    private void Awake()
+    {
+
+        actionMap = controlsAsset.FindActionMap("Player");
+        touch = actionMap.FindAction("Touch");
+
+        actionMap.Enable();
+
+        touch.performed += context => ActivateJoystick(context);
+        //touch.canceled += context => DisactivateJoystick();
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        if (!ballReady)
+
+    }
+
+    private void ActivateJoystick (InputAction.CallbackContext context)
         {
-            ManageTime();
-            BarFill(timeAfterLastBall);
+        joystick.transform.position = context.ReadValue<Vector2>();
+       
         }
-    }
 
-    public void SetBallReadyTimerUI(float timeToNextBall)
+    private void DisactivateJoystick()
     {
-        ballSpawnDelay = timeToNextBall;
-    }
-    public void ResetBallTimer()
-    {
-        ballReady = false;
-        ActivateReadyText(ballReady);
-        timeAfterLastBall = 0f;
-    }
-
-    private void ManageTime()
-    {
-        timeAfterLastBall += Time.deltaTime;
-        if (timeAfterLastBall >= ballSpawnDelay)
-
-            ballReady = true;
-        ActivateReadyText(ballReady);
-
-    }
-    private void BarFill(float timeLeft)
-    {
-        ballReadyBar.fillAmount = timeLeft / ballSpawnDelay;
-    }
-    private void ActivateReadyText(bool activate)
-    {
-        readyText.gameObject.SetActive(activate);
+        joystick.gameObject.SetActive(false);
+        
     }
 
 

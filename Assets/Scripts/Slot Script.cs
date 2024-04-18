@@ -29,7 +29,7 @@ public class SlotScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         ManageBall();
         ManageCharge();
@@ -63,7 +63,10 @@ public class SlotScript : MonoBehaviour
                 theBall.transform.position = nextSlot.transform.position;
         }
         if (isLast && !isOcupied)
+        {
             magScript.NewBall();
+        }
+
 
     }
     private void ManageCharge()

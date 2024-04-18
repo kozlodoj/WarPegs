@@ -317,6 +317,7 @@ MonoBehaviour:
   inMag: 1
   mag: {fileID: 0}
   UI: {fileID: 7697769169030530796}
+  controlsAsset: {fileID: -944628639613478452, guid: 68a7b9018dccb46b588914a68260a42c, type: 3}
 --- !u!1 &7697769169030530796
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ public class Mag : MonoBehaviour
     {
         uiScript = UI.GetComponent<UIScript>();
         louncherScript = ballLouncher.GetComponent<BallLauncher>();
-        FillMag();
+        //FillMag();
 
 
     }
