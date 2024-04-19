@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7720566242444857240}
   - component: {fileID: 4076962746726825786}
   - component: {fileID: 3855057398028092415}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 6258305397004319557}
   - component: {fileID: 8168427934466902711}
   - component: {fileID: 449027327057117288}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: BarBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 4272443057796430714}
   - component: {fileID: 1596920327200284398}
   - component: {fileID: 5213688745932725712}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ball01
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -321,7 +321,6 @@ MonoBehaviour:
   trajectory: {fileID: 0}
   dummy: {fileID: 2252193437602304218, guid: 103e465d23e454ecc90879c292d9b506, type: 3}
   isDummy: 0
-  trajectoryPrefab: {fileID: 2461904043212881540, guid: 921d7ef21ad814bc6ac6597aceac9f3e, type: 3}
 --- !u!1 &7697769169030530796
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +334,7 @@ GameObject:
   - component: {fileID: 1428675534811971098}
   - component: {fileID: 4656367525652371157}
   - component: {fileID: 562895100794943244}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: BallUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}

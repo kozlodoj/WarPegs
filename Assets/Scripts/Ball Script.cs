@@ -46,9 +46,12 @@ public class BallScript : MonoBehaviour
     private GameObject dummy;
     [SerializeField]
     private bool isDummy;
+
+    private bool isTrajActive = false;
+    
     
 
-    // Start is called before the first frame update
+    
     void Awake()
     {
         ballUI = UI.GetComponent<BallUI>();
@@ -70,7 +73,7 @@ public class BallScript : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         LounchPosition();
@@ -98,6 +101,12 @@ public class BallScript : MonoBehaviour
             float angleRadians = Mathf.Atan2(-context.ReadValue<Vector2>().y, context.ReadValue<Vector2>().x);
             float angleDegrees = -angleRadians * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angleDegrees - 90f, Vector3.forward);
+            if (!isTrajActive)
+            {
+                isTrajActive = true;
+                EnableLine();
+                CopyObstacles();
+            }
             Predict();
         }
     }
@@ -110,6 +119,9 @@ public class BallScript : MonoBehaviour
             ballRb.constraints = RigidbodyConstraints2D.None;
             ballRb.AddForce(transform.up * speed, ForceMode2D.Impulse);
             magScript.cocked = false;
+            DisableLine();
+            KillObstacles();
+
          
         }
 
@@ -117,14 +129,14 @@ public class BallScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+
+        if (!collision.gameObject.CompareTag("Walls"))
         {
-            gameObject.GetComponent<Collider2D>().enabled = false;
+            //bounceDirection = new Vector2(transform.position.x - collision.transform.position.x, transform.position.y - collision.transform.position.y).normalized;
+            //ballRb.AddForce(bounceDirection * bounceForce);
+            if (!collision.gameObject.CompareTag("Walls") && !collision.gameObject.CompareTag("Player") && !isDummy)
+                collision.gameObject.GetComponent<PegScript>().FadeOut();
         }
-        bounceDirection = new Vector2(transform.position.x - collision.transform.position.x, transform.position.y - collision.transform.position.y).normalized;
-        ballRb.AddForce(bounceDirection * bounceForce);
-        if (!collision.gameObject.CompareTag("Walls") && !collision.gameObject.CompareTag("Player") && !isDummy)
-            collision.gameObject.GetComponent<PegScript>().FadeOut();
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -167,5 +179,22 @@ public class BallScript : MonoBehaviour
     {
         trajScript.predict(dummy, transform.position, transform.up * speed);
 
+    }
+
+    private void EnableLine()
+    {
+        trajScript.EnableRenderer();
+    }
+    private void DisableLine()
+    {
+        trajScript.DisableRenderer();
+    }
+    private void KillObstacles()
+    {
+        trajScript.killAllObstacles();
+    }
+    private void CopyObstacles()
+    { 
+        trajScript.copyAllObstacles();
     }
 }

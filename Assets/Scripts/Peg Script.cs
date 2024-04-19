@@ -11,6 +11,8 @@ public class PegScript : MonoBehaviour
     [SerializeField]
     private bool medicPeg;
 
+    public bool isClone = false;
+
     private PegManager pegManager;
 
     // Start is called before the first frame update
@@ -67,7 +69,7 @@ public class PegScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (medicPeg)
+        if (medicPeg && !isClone)
             pegManager.ReactivatePegs();
 
     }

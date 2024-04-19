@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Trajectory : MonoBehaviour
 {
     private GameObject obstacles;
+    private GameObject wall;
     public int maxIterations;
 
     Scene currentScene;
@@ -15,6 +16,7 @@ public class Trajectory : MonoBehaviour
     PhysicsScene2D predictionPhysicsScene;
 
     List<GameObject> dummyObstacles = new List<GameObject>();
+    List<GameObject> walls = new List<GameObject>();
 
     LineRenderer lineRenderer;
     GameObject dummy;
@@ -23,6 +25,7 @@ public class Trajectory : MonoBehaviour
     void Start()
     {
         obstacles = GameObject.Find("Pegs");
+        wall = GameObject.Find("Walls");
         Physics2D.simulationMode = SimulationMode2D.Script;
 
         currentScene = SceneManager.GetActiveScene();
@@ -33,8 +36,8 @@ public class Trajectory : MonoBehaviour
         predictionPhysicsScene = predictionScene.GetPhysicsScene2D();
 
         lineRenderer = GetComponent<LineRenderer>();
+        CopyWalls();
 
-        copyAllObstacles();
     }
 
     void FixedUpdate()
@@ -45,9 +48,9 @@ public class Trajectory : MonoBehaviour
         }
     }
 
-    public void copyAllObstacles()
+    private void CopyWalls()
     {
-        foreach (Transform t in obstacles.transform)
+        foreach (Transform t in wall.transform)
         {
             if (t.gameObject.GetComponent<Collider2D>() != null)
             {
@@ -60,12 +63,33 @@ public class Trajectory : MonoBehaviour
                     fakeR.enabled = false;
                 }
                 SceneManager.MoveGameObjectToScene(fakeT, predictionScene);
+                walls.Add(fakeT);
+            }
+        }
+    }
+    public void copyAllObstacles()
+    {
+        foreach (Transform t in obstacles.transform)
+        {
+            if (t.gameObject.GetComponent<Collider2D>() != null)
+            {
+                GameObject fakeT = Instantiate(t.gameObject);
+                fakeT.transform.position = t.position;
+                fakeT.transform.rotation = t.rotation;
+                Renderer fakeR = fakeT.GetComponent<Renderer>();
+                PegScript peg = fakeT.GetComponent<PegScript>();
+                peg.isClone = true;
+                if (fakeR)
+                {
+                    fakeR.enabled = false;
+                }
+                SceneManager.MoveGameObjectToScene(fakeT, predictionScene);
                 dummyObstacles.Add(fakeT);
             }
         }
     }
 
-    void killAllObstacles()
+    public void killAllObstacles()
     {
         foreach (var o in dummyObstacles)
         {
@@ -97,11 +121,18 @@ public class Trajectory : MonoBehaviour
             }
 
             Destroy(dummy);
+           
         }
     }
 
-    void OnDestroy()
+
+    public void EnableRenderer()
     {
-        killAllObstacles();
+        lineRenderer.enabled = true;
+    }
+
+    public void DisableRenderer()
+    {
+        lineRenderer.enabled = false;
     }
 }
