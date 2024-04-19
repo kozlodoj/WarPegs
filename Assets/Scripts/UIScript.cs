@@ -47,5 +47,11 @@ public class UIScript : MonoBehaviour
         
     }
 
+    public void BackToMenu()
+    {
+        GameManager.instance.LevelSelect(0);
+    }
+
+
 
 }

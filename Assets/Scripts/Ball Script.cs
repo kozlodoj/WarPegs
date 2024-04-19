@@ -8,7 +8,7 @@ public class BallScript : MonoBehaviour
     private float speed = 10f;
     private float bounceForce = 250f;
 
-    public float chargeTime = 2f;
+    private float chargeTime = 5f;
     public bool isCharged = false;
 
     private float timePassed = 0f;
@@ -54,6 +54,9 @@ public class BallScript : MonoBehaviour
     
     void Awake()
     {
+        speed = GameManager.instance.ballPower;
+        chargeTime = GameManager.instance.reloadRate;
+
         ballUI = UI.GetComponent<BallUI>();
         mag = GameObject.Find("Mag");
         launcher = GameObject.Find("Launcher");
@@ -70,7 +73,9 @@ public class BallScript : MonoBehaviour
 
         trajectory = GameObject.Find("Trajectory");
         trajScript = trajectory.GetComponent<Trajectory>();
-        
+
+   
+
     }
 
     
