@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+        ballPower = 4f;
+        reloadRate = 2f;
+
     }
 
     public void LevelSelect(int levelNum)
