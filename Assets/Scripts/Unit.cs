@@ -14,6 +14,9 @@ public class Unit : MonoBehaviour
 
     private TowManager towManager;
 
+    private float HP = 100f;
+    private float attack = 10f;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -32,5 +35,10 @@ public class Unit : MonoBehaviour
     {
         //if (collision.gameObject.CompareTag("Enemy base"))
         //    Destroy(gameObject);
+    }
+
+    public void DealDamage(float amount)
+    {
+
     }
 }
