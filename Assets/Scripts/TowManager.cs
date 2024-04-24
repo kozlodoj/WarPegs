@@ -13,25 +13,13 @@ public class TowManager : MonoBehaviour
     private Transform enemyBase;
     [SerializeField]
     private Transform playerBase;
-    [SerializeField]
-    private Transform enemy;
-    [SerializeField]
-    private Transform player;
+   
 
     // Start is called before the first frame update
     void Start()
     {
         UpdateEnemiesList(enemyBase);
         UpdateUnitList(playerBase);
-        UpdateEnemiesList(enemy);
-        UpdateUnitList(player);
-      
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void UpdateEnemiesList(Transform enemy)

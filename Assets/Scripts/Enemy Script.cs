@@ -8,11 +8,11 @@ public class EnemyScript : MonoBehaviour
     private NavMeshAgent agent;
     private TowManager towManager;
 
-    private float HP = 1000f;
+    private float HP = 100f;
     private float attack = 10f;
     private float currentHp;
 
-    private float attackCooldown = 0.5f;
+    private float attackCooldown = 1f;
     private bool canHit = true;
     private bool canMove = true;
 
@@ -47,7 +47,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Unit"))
         {
-            agent.isStopped = true;
+            
             collision.gameObject.GetComponent<Unit>().DealDamage(attack);
             canHit = false;
             StartCoroutine(HitWithCooldown(attackCooldown));
