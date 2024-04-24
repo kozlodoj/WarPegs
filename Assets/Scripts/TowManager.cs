@@ -17,10 +17,6 @@ public class TowManager : MonoBehaviour
     private Transform enemy;
     [SerializeField]
     private Transform player;
-    [SerializeField]
-    private Transform enemy2;
-    [SerializeField]
-    private Transform player2;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +25,7 @@ public class TowManager : MonoBehaviour
         UpdateUnitList(playerBase);
         UpdateEnemiesList(enemy);
         UpdateUnitList(player);
-        UpdateEnemiesList(enemy2);
-        UpdateUnitList(player2);
+      
     }
 
     // Update is called once per frame
@@ -56,13 +51,16 @@ public class TowManager : MonoBehaviour
         Vector3 currentPosition = position.position;
         foreach (Transform potentialTarget in enemies)
         {
-            Vector3 directionToTarget = potentialTarget.position - currentPosition;
-            float dSqrToTarget = directionToTarget.sqrMagnitude;
-            if (dSqrToTarget < closestDistanceSqr)
+            if (potentialTarget.gameObject.activeInHierarchy)
             {
-                closestDistanceSqr = dSqrToTarget;
-                bestTarget = potentialTarget;
-         
+                Vector3 directionToTarget = potentialTarget.position - currentPosition;
+                float dSqrToTarget = directionToTarget.sqrMagnitude;
+                if (dSqrToTarget < closestDistanceSqr)
+                {
+                    closestDistanceSqr = dSqrToTarget;
+                    bestTarget = potentialTarget;
+
+                }
             }
         }
 
@@ -77,13 +75,16 @@ public class TowManager : MonoBehaviour
         Vector3 currentPosition = position.position;
         foreach (Transform potentialTarget in units)
         {
-            Vector3 directionToTarget = potentialTarget.position - currentPosition;
-            float dSqrToTarget = directionToTarget.sqrMagnitude;
-            if (dSqrToTarget < closestDistanceSqr)
+            if (potentialTarget.gameObject.activeInHierarchy)
             {
-                closestDistanceSqr = dSqrToTarget;
-                bestTarget = potentialTarget;
+                Vector3 directionToTarget = potentialTarget.position - currentPosition;
+                float dSqrToTarget = directionToTarget.sqrMagnitude;
+                if (dSqrToTarget < closestDistanceSqr)
+                {
+                    closestDistanceSqr = dSqrToTarget;
+                    bestTarget = potentialTarget;
 
+                }
             }
         }
 

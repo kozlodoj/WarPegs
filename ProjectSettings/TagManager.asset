@@ -14,6 +14,9 @@ TagManager:
   - Slot01
   - Slot02
   - Peg
+  - Unit
+  - Enemy
+  - Player Base
   layers:
   - Default
   - TransparentFX
@@ -24,7 +27,7 @@ TagManager:
   - BG
   - Unit
   - Base
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -59,4 +62,7 @@ TagManager:
     locked: 0
   - name: Base
     uniqueID: 1433103945
+    locked: 0
+  - name: Enemy base
+    uniqueID: 1192224217
     locked: 0

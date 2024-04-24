@@ -16,6 +16,11 @@ public class Unit : MonoBehaviour
 
     private float HP = 100f;
     private float attack = 10f;
+    private float attackCooldown = 1f;
+    private float currentHp;
+    private bool canHit = true;
+
+    private UnitUI UI;
 
     private void Start()
     {
@@ -23,22 +28,78 @@ public class Unit : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
+        UI = transform.Find("Canvas").GetComponent<UnitUI>();
+        currentHp = HP;
+        UI.UpdateHP(HP, currentHp);
+
     }
 
     void Update()
     {
-        //transform.Translate(Vector2.right * Time.deltaTime * speed);
-        agent.SetDestination(towManager.ClosestEnemy(gameObject.transform));
+
+        Move();
+        ManageHP();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //if (collision.gameObject.CompareTag("Enemy base"))
-        //    Destroy(gameObject);
-    }
 
     public void DealDamage(float amount)
     {
+        currentHp -= amount;
+        UI.UpdateHP(HP, currentHp);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<EnemyScript>().DealDamage(attack);
+            canHit = false;
+            StartCoroutine(HitWithCooldown(attackCooldown));
+        }
+        else if (collision.gameObject.CompareTag("Enemy base"))
+        {
+
+            collision.gameObject.GetComponent<BaseScript>().DealDamage(attack);
+            canHit = false;
+            StartCoroutine(HitWithCooldown(attackCooldown));
+        }
 
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (canHit && collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<EnemyScript>().DealDamage(attack);
+            canHit = false;
+            StartCoroutine(HitWithCooldown(attackCooldown));
+        }
+        else if (canHit && collision.gameObject.CompareTag("Enemy base"))
+        {
+            collision.gameObject.GetComponent<BaseScript>().DealDamage(attack);
+            canHit = false;
+            StartCoroutine(HitWithCooldown(attackCooldown));
+        }
+    }
+
+    private IEnumerator HitWithCooldown(float cooldown)
+    {
+        yield return new WaitForSeconds(cooldown);
+        canHit = true;
+
+    }
+
+    private void ManageHP()
+    {
+        if (currentHp <= 0)
+            gameObject.SetActive(false);
+
+    }
+    private void Move()
+    {
+            agent.SetDestination(towManager.ClosestEnemy(gameObject.transform));
+
+    }
+  
+
+
 }
