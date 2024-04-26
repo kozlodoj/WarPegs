@@ -19,7 +19,10 @@ public class UnitSpawner : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-           towManager.UpdateUnitList(Instantiate(unitPrefab).transform);
-
+        {
+            GameObject newUnit = Instantiate(unitPrefab) as GameObject;
+            newUnit.GetComponent<Unit>().Buff(collision.gameObject.GetComponent<BallScript>().GetBuff());
+            towManager.UpdateUnitList(newUnit.transform);
+        }
     }
 }

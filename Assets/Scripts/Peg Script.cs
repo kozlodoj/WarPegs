@@ -13,11 +13,16 @@ public class PegScript : MonoBehaviour
 
     public bool isClone = false;
 
+    public float buffPoints = 10f;
+
     private PegManager pegManager;
+    private PegUI pegUI;
 
     // Start is called before the first frame update
     void Start()
     {
+        pegUI = gameObject.transform.Find("Canvas").GetComponent<PegUI>();
+        
         rend = GetComponent<SpriteRenderer>();
         c = rend.material.color;
         c.a = 1f;
@@ -28,6 +33,7 @@ public class PegScript : MonoBehaviour
     public void FadeOut()
     {
         StartCoroutine(FaderOut());
+        pegUI.BuffText(buffPoints);
         gameObject.GetComponent<Collider2D>().enabled = false;
     }
 
@@ -44,6 +50,7 @@ public class PegScript : MonoBehaviour
 
     IEnumerator FaderOut()
     {
+
         for (float f = 1f; f >= 0; f -= fadeRate)
         {
             Color c = rend.material.color;
@@ -51,6 +58,7 @@ public class PegScript : MonoBehaviour
             rend.material.color = c;
             yield return new WaitForSeconds(fadeRate / 2);
         }
+        pegUI.ResetScale();
         gameObject.SetActive(false);
     }
 

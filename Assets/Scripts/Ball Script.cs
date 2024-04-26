@@ -47,9 +47,12 @@ public class BallScript : MonoBehaviour
     [SerializeField]
     private bool isDummy;
 
+    private PegScript peg;
+
     private bool isTrajActive = false;
-    
-    
+
+    private float buffRate = 1f;
+    private float buffPoints = 0;
 
     
     void Awake()
@@ -89,7 +92,7 @@ public class BallScript : MonoBehaviour
             ballUI.SetCharge(timePassed / chargeTime);
             if (timePassed > chargeTime)
             {
-                UI.SetActive(false);
+                
                 isCharged = true;
                 charging = false;
                 
@@ -137,10 +140,15 @@ public class BallScript : MonoBehaviour
 
         if (!collision.gameObject.CompareTag("Walls"))
         {
-            //bounceDirection = new Vector2(transform.position.x - collision.transform.position.x, transform.position.y - collision.transform.position.y).normalized;
-            //ballRb.AddForce(bounceDirection * bounceForce);
             if (!collision.gameObject.CompareTag("Walls") && !collision.gameObject.CompareTag("Player") && !isDummy)
-                collision.gameObject.GetComponent<PegScript>().FadeOut();
+            {
+                peg = collision.gameObject.GetComponent<PegScript>();
+                buffPoints += peg.buffPoints;
+
+                ballUI.SetBuffText(buffPoints);
+                peg.FadeOut();
+            }
+
         }
     }
 
@@ -176,7 +184,10 @@ public class BallScript : MonoBehaviour
     private void LounchPosition()
     {
         if (gameObject.transform.position == launcher.transform.position)
+        {
             lounchPos = true;
+            ballUI.DisactivateChargebar();
+        }
         else
             lounchPos = false;
     }
@@ -185,7 +196,6 @@ public class BallScript : MonoBehaviour
         trajScript.predict(dummy, transform.position, transform.up * speed);
 
     }
-
     private void EnableLine()
     {
         trajScript.EnableRenderer();
@@ -201,5 +211,9 @@ public class BallScript : MonoBehaviour
     private void CopyObstacles()
     { 
         trajScript.copyAllObstacles();
+    }
+    public float GetBuff()
+    {
+        return buffRate += buffPoints / 100f;
     }
 }

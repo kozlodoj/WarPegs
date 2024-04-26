@@ -22,7 +22,7 @@ public class Unit : MonoBehaviour
 
     private UnitUI UI;
 
-    private void Start()
+    private void OnEnable()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -97,6 +97,14 @@ public class Unit : MonoBehaviour
     private void Move()
     {
             agent.SetDestination(towManager.ClosestEnemy(gameObject.transform));
+
+    }
+
+    public void Buff(float amount)
+    {
+        HP *= amount;
+        agent.speed *= amount;
+        attack *= amount;
 
     }
   
