@@ -55,7 +55,7 @@ public class BallScript : MonoBehaviour
     private float buffPoints = 0;
 
     
-    void Awake()
+    void OnEnable()
     {
         speed = GameManager.instance.ballPower;
         chargeTime = GameManager.instance.reloadRate;
