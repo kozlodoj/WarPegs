@@ -16,6 +16,8 @@ public class UIScript : MonoBehaviour
     private InputActionMap actionMap;
     private InputAction touch;
 
+    private GameObject ball;
+
     private void OnEnable()
     {
         actionMap.Enable();
@@ -30,11 +32,9 @@ public class UIScript : MonoBehaviour
 
         actionMap = controlsAsset.FindActionMap("Player");
         touch = actionMap.FindAction("Touch");
+        touch.performed += context => ActivateJoystick(context);
 
         
-
-        touch.performed += context => ActivateJoystick(context);
-        //touch.canceled += context => DisactivateJoystick();
     }
 
 
@@ -50,15 +50,17 @@ public class UIScript : MonoBehaviour
        
         }
 
-    private void DisactivateJoystick()
-    {
-        joystick.gameObject.SetActive(false);
-        
-    }
+
 
     public void BackToMenu()
     {
         GameManager.instance.LevelSelect(0);
+    }
+
+    public void SetBall(GameObject theBall)
+    {
+        ball = theBall;
+        Debug.Log(ball);
     }
 
 

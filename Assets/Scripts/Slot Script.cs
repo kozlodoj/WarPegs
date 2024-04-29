@@ -17,8 +17,11 @@ public class SlotScript : MonoBehaviour
     private bool isFirst;
     [SerializeField]
     private bool isLast;
+    [SerializeField]
+    private bool isLouncher;
     public bool isOcupied;
     public bool ballCharged;
+    private BallLauncher louncher;
 
 
     // Start is called before the first frame update
@@ -26,6 +29,8 @@ public class SlotScript : MonoBehaviour
     {
         magScript = GameObject.Find("Mag").GetComponent<Mag>();
         slotScript = nextSlot.GetComponent<SlotScript>();
+        if (isLouncher)
+            louncher = GetComponent<BallLauncher>();
     }
 
     // Update is called once per frame
@@ -37,9 +42,17 @@ public class SlotScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isOcupied = true;
-        theBall = collision.gameObject;
-        ballScript = theBall.GetComponent<BallScript>();
+        if (!isOcupied)
+        {
+            isOcupied = true;
+            theBall = collision.gameObject;
+            ballScript = theBall.GetComponent<BallScript>();
+            if (isLouncher)
+            {
+                louncher.SetBall(theBall);
+            }
+
+        }
        
     }
     private void OnTriggerExit2D(Collider2D collision)
