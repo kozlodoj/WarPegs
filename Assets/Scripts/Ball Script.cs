@@ -71,7 +71,7 @@ public class BallScript : MonoBehaviour
         touch = actionMap.FindAction("Touch");
 
         aim.performed += context => LookDirection(context);
-        touch.canceled += context => Shoot();
+        aim.canceled += context => Shoot();
 
         trajectory = GameObject.Find("Trajectory");
         trajScript = trajectory.GetComponent<Trajectory>();
