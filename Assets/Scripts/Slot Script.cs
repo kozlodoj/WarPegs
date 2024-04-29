@@ -11,7 +11,7 @@ public class SlotScript : MonoBehaviour
     private Mag magScript;
 
     private GameObject theBall;
-    private BallScript ballScript;
+    private Ball ballScript;
 
     [SerializeField]
     private bool isFirst;
@@ -37,17 +37,25 @@ public class SlotScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isOcupied = true;
-        theBall = collision.gameObject;
-        ballScript = theBall.GetComponent<BallScript>();
+        if (!isOcupied)
+        {
+            theBall = collision.gameObject;
+            ballScript = theBall.GetComponent<Ball>();
+            if (!ballScript.isShot)
+                isOcupied = true;
+        }
+        
        
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isOcupied = false;
-        ballCharged = false;
-        theBall = null;
-        ballScript = null;
+        if (collision.gameObject == theBall)
+        {
+            isOcupied = false;
+            ballCharged = false;
+            theBall = null;
+            ballScript = null;
+        }
         
     }
 

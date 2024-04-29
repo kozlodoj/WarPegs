@@ -98,7 +98,7 @@ public class Trajectory : MonoBehaviour
         dummyObstacles.Clear();
     }
 
-    public void predict(GameObject subject, Vector2 currentPosition, Vector2 force)
+    public void predict(GameObject subject, Vector2 currentPosition, Vector2 force, Quaternion rotation)
     {
         if (currentPhysicsScene.IsValid() && predictionPhysicsScene.IsValid())
         {
@@ -109,13 +109,16 @@ public class Trajectory : MonoBehaviour
             }
 
             dummy.transform.position = currentPosition;
-            dummy.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+            dummy.transform.rotation = rotation;
+            
+            dummy.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.left, ForceMode2D.Impulse);
             lineRenderer.positionCount = 0;
             lineRenderer.positionCount = maxIterations;
             
 
             for (int i = 0; i < maxIterations; i++)
             {
+                Debug.Log(dummy.transform.position + " " + dummy.transform.rotation);
                 predictionPhysicsScene.Simulate(Time.fixedDeltaTime);
                 lineRenderer.SetPosition(i, dummy.transform.position);
             }

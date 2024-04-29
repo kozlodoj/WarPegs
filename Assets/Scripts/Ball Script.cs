@@ -194,7 +194,7 @@ public class BallScript : MonoBehaviour
     }
     private void Predict()
     {
-        trajScript.predict(dummy, transform.position, transform.up * speed);
+        //trajScript.predict(dummy, transform.position, transform.up * speed);
 
     }
     private void EnableLine()
