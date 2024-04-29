@@ -6,10 +6,6 @@ public class Mag : MonoBehaviour
 {
    
     [SerializeField]
-    private GameObject ballLouncher;
-    private BallLauncher louncherScript;
-
-    [SerializeField]
     private List<GameObject> slots = new List<GameObject>();
 
     [SerializeField]
@@ -17,22 +13,14 @@ public class Mag : MonoBehaviour
 
     private List<GameObject> ballsInMag = new List<GameObject>();
 
-    [SerializeField]
-    private GameObject UI;
-    private UIScript uiScript;
-
     private int magSize = 3;
 
     public bool cocked = false;
 
     private float timePassed;
-    // Start is called before the first frame update
+    
     void Start()
     {
-        uiScript = UI.GetComponent<UIScript>();
-        louncherScript = ballLouncher.GetComponent<BallLauncher>();
-        //FillMag();
-
 
     }
     private void Update()
@@ -57,8 +45,7 @@ public class Mag : MonoBehaviour
     private void FillMag()
     {
         for (int i = 0; i < magSize; i++)
-        {
-            
+        {   
             ballsInMag.Add(Instantiate(RandomBall(), slots[i].transform.position, slots[i].transform.rotation));
         }
     }
