@@ -57,9 +57,8 @@ public class BallScript : MonoBehaviour
     
     void OnEnable()
     {
-        speed = GameManager.instance.ballPower;
-        chargeTime = GameManager.instance.reloadRate;
 
+        UpdateStats();
         ballUI = UI.GetComponent<BallUI>();
         mag = GameObject.Find("Mag");
         launcher = GameObject.Find("Launcher");
@@ -106,6 +105,7 @@ public class BallScript : MonoBehaviour
     {
         if (lounchPos)
         {
+            UpdateStats();
             float angleRadians = Mathf.Atan2(-context.ReadValue<Vector2>().y, context.ReadValue<Vector2>().x);
             float angleDegrees = -angleRadians * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angleDegrees - 90f, Vector3.forward);
@@ -169,13 +169,14 @@ public class BallScript : MonoBehaviour
 
     private void ResetBall()
     {
-        
+
         Destroy(gameObject);
 
     }
 
     public void ActivateCharging()
     {
+        UpdateStats();
         UI.SetActive(true);
         ballUI.SetCharge(timePassed / chargeTime);
         charging = true;
@@ -215,5 +216,10 @@ public class BallScript : MonoBehaviour
     public float GetBuff()
     {
         return buffRate += buffPoints / 100f;
+    }
+    public void UpdateStats()
+    {
+        speed = GameManager.instance.ballPower;
+        chargeTime = GameManager.instance.reloadRate;
     }
 }

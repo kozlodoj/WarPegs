@@ -16,13 +16,22 @@ public class UIScript : MonoBehaviour
     private InputActionMap actionMap;
     private InputAction touch;
 
+    private void OnEnable()
+    {
+        actionMap.Enable();
+    }
+
+    private void OnDisable()
+    {
+        actionMap.Disable();
+    }
     private void Awake()
     {
 
         actionMap = controlsAsset.FindActionMap("Player");
         touch = actionMap.FindAction("Touch");
 
-        actionMap.Enable();
+        
 
         touch.performed += context => ActivateJoystick(context);
         //touch.canceled += context => DisactivateJoystick();
