@@ -7,8 +7,11 @@ public class EnemyScript : MonoBehaviour
 {
     private NavMeshAgent agent;
     private TowManager towManager;
-
+    [SerializeField]
+    private float speed = 0.5f;
+    [SerializeField]
     private float HP = 100f;
+    [SerializeField]
     private float attack = 10f;
     private float currentHp;
 
@@ -24,6 +27,7 @@ public class EnemyScript : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        agent.speed = speed;
         towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
         UI = transform.Find("Canvas").GetComponent<UnitUI>();
         currentHp = HP;
@@ -98,5 +102,6 @@ public class EnemyScript : MonoBehaviour
     private void Move()
     {
         agent.SetDestination(towManager.ClosestUnit(gameObject.transform));
+        
     }
 }

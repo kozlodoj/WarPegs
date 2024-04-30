@@ -20,6 +20,7 @@ public class Trajectory : MonoBehaviour
 
     LineRenderer lineRenderer;
     GameObject dummy;
+    Rigidbody2D dummyRb;
 
     // Start is called before the first frame update
     void Start()
@@ -105,20 +106,23 @@ public class Trajectory : MonoBehaviour
             if (dummy == null)
             {
                 dummy = Instantiate(subject);
+                dummyRb = dummy.GetComponent<Rigidbody2D>();
+                dummyRb.constraints = RigidbodyConstraints2D.None;
                 SceneManager.MoveGameObjectToScene(dummy, predictionScene);
             }
 
             dummy.transform.position = currentPosition;
             dummy.transform.rotation = rotation;
+
             
-            dummy.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.left, ForceMode2D.Impulse);
+            dummyRb.AddRelativeForce(force, ForceMode2D.Impulse);
             lineRenderer.positionCount = 0;
             lineRenderer.positionCount = maxIterations;
             
 
             for (int i = 0; i < maxIterations; i++)
             {
-                Debug.Log(dummy.transform.position + " " + dummy.transform.rotation);
+                
                 predictionPhysicsScene.Simulate(Time.fixedDeltaTime);
                 lineRenderer.SetPosition(i, dummy.transform.position);
             }

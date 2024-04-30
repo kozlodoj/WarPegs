@@ -25,11 +25,16 @@ public class TowManager : MonoBehaviour
     public void UpdateEnemiesList(Transform enemy)
     {
         enemies.Add(enemy);
+        
     }
 
     public void UpdateUnitList(Transform unit)
     {
         units.Add(unit);
+        foreach (Transform u in units)
+        {
+            Debug.Log(u);
+        }
     }
 
     public Vector3 ClosestEnemy(Transform position)
@@ -52,6 +57,7 @@ public class TowManager : MonoBehaviour
             }
         }
 
+  
         return bestTarget.position;
 
     }
@@ -75,7 +81,7 @@ public class TowManager : MonoBehaviour
                 }
             }
         }
-
+        
         return bestTarget.position;
 
     }

@@ -16,6 +16,9 @@ public class UIScript : MonoBehaviour
     private InputActionMap actionMap;
     private InputAction touch;
 
+    [SerializeField]
+    private GameObject gameOver;
+
     private void OnEnable()
     {
         actionMap.Enable();
@@ -24,6 +27,8 @@ public class UIScript : MonoBehaviour
     private void OnDisable()
     {
         actionMap.Disable();
+        Destroy(gameObject);
+        
     }
     private void Awake()
     {
@@ -31,18 +36,13 @@ public class UIScript : MonoBehaviour
         actionMap = controlsAsset.FindActionMap("Player");
         touch = actionMap.FindAction("Touch");
 
-        
-
         touch.performed += context => ActivateJoystick(context);
-        //touch.canceled += context => DisactivateJoystick();
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
+        
+        //DontDestroyOnLoad(gameObject);
 
     }
+
+
 
     private void ActivateJoystick (InputAction.CallbackContext context)
         {
@@ -50,15 +50,15 @@ public class UIScript : MonoBehaviour
        
         }
 
-    private void DisactivateJoystick()
-    {
-        joystick.gameObject.SetActive(false);
-        
-    }
 
     public void BackToMenu()
     {
         GameManager.instance.LevelSelect(0);
+    }
+
+    public void ActivateGameOverUI()
+    {
+        gameOver.SetActive(true);
     }
 
 

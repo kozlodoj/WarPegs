@@ -33,7 +33,10 @@ public class BaseScript : MonoBehaviour
     private void ManageHP()
     {
         if (currentHp <= 0)
+        {
             gameObject.SetActive(false);
+            GameManager.instance.GameOver();
+        }
 
     }
 }

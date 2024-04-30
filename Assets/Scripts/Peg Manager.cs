@@ -5,20 +5,14 @@ using UnityEngine;
 public class PegManager : MonoBehaviour
 {
     private List<PegScript> allPegs = new List<PegScript>();
+    private int medicPegs;
 
     // Start is called before the first frame update
     void Start()
     {
-        foreach (Transform child in gameObject.transform)
-        {
-            if (child.gameObject.tag == "Peg")
-                allPegs.Add(child.GetComponent<PegScript>());
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        medicPegs = (int)GameManager.instance.respawn;
+        GetAllPegs();
+        SetMedics();
         
     }
 
@@ -26,5 +20,25 @@ public class PegManager : MonoBehaviour
     {
         foreach (PegScript peg in allPegs)
             peg.FadeIn();
+    }
+    private void GetAllPegs()
+    {
+        foreach (Transform child in gameObject.transform)
+        {
+            if (child.gameObject.tag == "Peg")
+                allPegs.Add(child.GetComponent<PegScript>());
+        }
+    }
+    private void SetMedics()
+    {
+        for (int i = 0; i < medicPegs; i++)
+        {
+            allPegs[RandomNum()].GetComponent<PegScript>().SetMedic();
+        }
+    }
+
+    private int RandomNum()
+    {
+        return Random.Range(0, allPegs.Count);
     }
 }

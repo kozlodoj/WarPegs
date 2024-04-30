@@ -29,6 +29,7 @@ public class BallLauncher : MonoBehaviour
     void Start()
     {
         ActivateControls();
+        SetSpeed();
         trajScript = trajectory.GetComponent<Trajectory>();
     }
 
@@ -53,22 +54,20 @@ public class BallLauncher : MonoBehaviour
                 trajScript.EnableRenderer();
                 trajScript.copyAllObstacles();
             }
-            trajScript.predict(dummy, transform.position, transform.up * speed, theRotation);
+            
+            trajScript.predict(dummy, theBall.transform.position, theBall.transform.up * speed, theRotation);
         }
         
     }
     public void Shoot()
     {
        
-            
             ballRb.constraints = RigidbodyConstraints2D.None;
             ballRb.AddRelativeForce(transform.up * speed, ForceMode2D.Impulse);
-            //DisableLine();
-            //KillObstacles();
-
-
-        
-
+            isTrajActive = false;
+            trajScript.DisableRenderer();
+            trajScript.killAllObstacles();
+            CleanLouncher();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -96,6 +95,18 @@ public class BallLauncher : MonoBehaviour
         aim = actionMap.FindAction("Aim");
         aim.performed += context => LookDirection(context);
         aim.canceled += context => Shoot();
+    }
+    private void CleanLouncher()
+    {
+        theBall = null;
+        ballScript = null;
+        ballRb = null;
+        isOcupied = false;
+    }
+
+    private void SetSpeed()
+    {
+        speed = GameManager.instance.ballPower;
     }
 
 }

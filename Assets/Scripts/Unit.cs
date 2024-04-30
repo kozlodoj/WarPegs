@@ -14,7 +14,9 @@ public class Unit : MonoBehaviour
 
     private TowManager towManager;
 
+    [SerializeField]
     private float HP = 100f;
+    [SerializeField]
     private float attack = 10f;
     private float attackCooldown = 1f;
     private float currentHp;
@@ -27,6 +29,7 @@ public class Unit : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        agent.speed = speed;
         towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
         UI = transform.Find("Canvas").GetComponent<UnitUI>();
         currentHp = HP;
@@ -97,6 +100,7 @@ public class Unit : MonoBehaviour
     private void Move()
     {
             agent.SetDestination(towManager.ClosestEnemy(gameObject.transform));
+        
 
     }
 
@@ -105,6 +109,7 @@ public class Unit : MonoBehaviour
         HP *= amount;
         agent.speed *= amount;
         attack *= amount;
+        UI.BufText(amount);
 
     }
   

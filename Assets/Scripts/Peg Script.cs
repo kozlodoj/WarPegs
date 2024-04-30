@@ -13,7 +13,7 @@ public class PegScript : MonoBehaviour
 
     public bool isClone = false;
 
-    public float buffPoints = 10f;
+    public float buffPoints;
 
     private PegManager pegManager;
     private PegUI pegUI;
@@ -28,6 +28,8 @@ public class PegScript : MonoBehaviour
         c.a = 1f;
 
         pegManager = GameObject.Find("Pegs").GetComponent<PegManager>();
+
+        buffPoints = GameManager.instance.buff;
     }
 
     public void FadeOut()
@@ -79,6 +81,14 @@ public class PegScript : MonoBehaviour
     {
         if (medicPeg && !isClone)
             pegManager.ReactivatePegs();
+
+    }
+
+    public void SetMedic()
+    {
+        medicPeg = true;
+        gameObject.GetComponent<SpriteRenderer>().material.color = Color.green;
+        
 
     }
 

@@ -21,7 +21,7 @@ public class UnitSpawner : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GameObject newUnit = Instantiate(unitPrefab) as GameObject;
-            newUnit.GetComponent<Unit>().Buff(collision.gameObject.GetComponent<BallScript>().GetBuff());
+            newUnit.GetComponent<Unit>().Buff(collision.gameObject.GetComponent<Ball>().GetBuff());
             towManager.UpdateUnitList(newUnit.transform);
         }
     }

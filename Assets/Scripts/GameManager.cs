@@ -7,8 +7,16 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
-    public float ballPower { private set; get; }
-    public float reloadRate { private set; get; }
+    public float ballPower = 5;
+    public float reloadRate = 5;
+    public float buff = 2;
+    public float respawn = 2;
+    public float intialStat = 100f;
+
+    public bool randomSpawn = false;
+
+    private ButtonsScript buttons;
+
 
     void Awake()
     {
@@ -20,25 +28,30 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        ballPower = 4f;
-        reloadRate = 2f;
+   
 
     }
 
     public void LevelSelect(int levelNum)
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(levelNum);
+
     }
 
-    public void SetBallPower(string power)
+    public void BackToMenu()
     {
-        ballPower = float.Parse(power);
-    
+        SceneManager.LoadScene(0);
     }
 
-    public void SetReloadRate(string rate)
+    public void RandomSpawn(bool isTrue)
     {
-        reloadRate = float.Parse(rate);
+        randomSpawn = isTrue;
     }
- 
+
+    public void GameOver()
+    {
+        Time.timeScale = 0;
+        GameObject.Find("UI").GetComponent<UIScript>().ActivateGameOverUI();
+    }
 }
