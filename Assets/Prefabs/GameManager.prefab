@@ -44,3 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3175012782f44d2085fbfe6cfba57ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballPower: 5
+  reloadRate: 5
+  buff: 2
+  respawn: 2
+  intialStat: 100
+  randomSpawn: 0
+  reactivatePegsOnSpawn: 0

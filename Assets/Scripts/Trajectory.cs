@@ -8,6 +8,7 @@ public class Trajectory : MonoBehaviour
     private GameObject obstacles;
     private GameObject wall;
     public int maxIterations;
+    public int maxBounces;
 
     Scene currentScene;
     Scene predictionScene;
@@ -21,6 +22,9 @@ public class Trajectory : MonoBehaviour
     LineRenderer lineRenderer;
     GameObject dummy;
     Rigidbody2D dummyRb;
+    Dummy dummyCollider;
+
+    private GameObject ghost;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +41,7 @@ public class Trajectory : MonoBehaviour
         predictionPhysicsScene = predictionScene.GetPhysicsScene2D();
 
         lineRenderer = GetComponent<LineRenderer>();
+        ghost = transform.Find("Ghost").gameObject;
         CopyWalls();
 
     }
@@ -108,6 +113,7 @@ public class Trajectory : MonoBehaviour
                 dummy = Instantiate(subject);
                 dummyRb = dummy.GetComponent<Rigidbody2D>();
                 dummyRb.constraints = RigidbodyConstraints2D.None;
+                dummyCollider = dummy.GetComponent<Dummy>();
                 SceneManager.MoveGameObjectToScene(dummy, predictionScene);
             }
 
@@ -125,8 +131,18 @@ public class Trajectory : MonoBehaviour
                 
                 predictionPhysicsScene.Simulate(Time.fixedDeltaTime);
                 lineRenderer.SetPosition(i, dummy.transform.position);
-            }
+                if (dummyCollider.contacts >= maxBounces)
+                {
+                    lineRenderer.positionCount = i;
+                    ghost.SetActive(true);
+                    ghost.transform.position = lineRenderer.GetPosition(i-1);
+                    
+                    i = maxIterations;
 
+                }
+
+            }
+            
             Destroy(dummy);
            
         }
@@ -141,5 +157,6 @@ public class Trajectory : MonoBehaviour
     public void DisableRenderer()
     {
         lineRenderer.enabled = false;
+        ghost.SetActive(false);
     }
 }

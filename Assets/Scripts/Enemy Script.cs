@@ -8,6 +8,9 @@ public class EnemyScript : MonoBehaviour
     private NavMeshAgent agent;
     private TowManager towManager;
     [SerializeField]
+    private bool isRanged;
+    private GameObject target;
+    [SerializeField]
     private float speed = 0.5f;
     [SerializeField]
     private float HP = 100f;
@@ -24,20 +27,14 @@ public class EnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
-        agent.speed = speed;
-        towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
-        UI = transform.Find("Canvas").GetComponent<UnitUI>();
-        currentHp = HP;
-        UI.UpdateHP(HP, currentHp);
+        StartRoutine();
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
+        RangedAttack();
         ManageHP();
     }
 
@@ -101,7 +98,52 @@ public class EnemyScript : MonoBehaviour
     }
     private void Move()
     {
-        agent.SetDestination(towManager.ClosestUnit(gameObject.transform));
+        target = towManager.ClosestUnit(gameObject.transform);
+        agent.SetDestination(target.transform.position);
         
+    }
+
+    private void StartRoutine()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        agent.speed = speed;
+        towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
+        UI = transform.Find("Canvas").GetComponent<UnitUI>();
+        currentHp = HP;
+        UI.UpdateHP(HP, currentHp);
+    }
+
+    private void RangedAttack()
+    {
+        if (isRanged && CanShoot(target.transform.position))
+        {
+            if (canHit && target.CompareTag("Unit"))
+            {
+                target.GetComponent<Unit>().DealDamage(attack);
+                canHit = false;
+                StartCoroutine(HitWithCooldown(attackCooldown));
+            }
+            else if (canHit && target.CompareTag("Player Base"))
+            {
+                target.GetComponent<BaseScript>().DealDamage(attack);
+                canHit = false;
+                StartCoroutine(HitWithCooldown(attackCooldown));
+            }
+
+        }
+    }
+
+    private bool CanShoot(Vector3 position)
+    {
+
+        Vector2 currentPosition = transform.position;
+        Vector2 directionToTarget = (Vector2)position - currentPosition;
+        float distance = directionToTarget.magnitude;
+        if (distance <= agent.stoppingDistance)
+            return true;
+        else
+            return false;
     }
 }

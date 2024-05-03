@@ -75,7 +75,7 @@ public class Mag : MonoBehaviour
 
     public void NewBall()
     {
-       GameObject newBall = Instantiate(RandomBall(), slots[2].transform.position, slots[2].transform.rotation) as GameObject;
-        Debug.Log(newBall.GetComponent<Ball>().chargeTime);
+       Instantiate(RandomBall(), slots[2].transform.position, slots[2].transform.rotation);
+        
     }
 }

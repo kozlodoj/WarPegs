@@ -6,10 +6,12 @@ using UnityEngine.AI;
 public class Unit : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 0.5f;
+    private bool isRanged;
 
     [SerializeField]
-    private Transform target;
+    private float speed = 0.5f;
+
+    private GameObject target;
     private NavMeshAgent agent;
 
     private TowManager towManager;
@@ -26,14 +28,7 @@ public class Unit : MonoBehaviour
 
     private void OnEnable()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
-        agent.speed = speed;
-        towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
-        UI = transform.Find("Canvas").GetComponent<UnitUI>();
-        currentHp = HP;
-        UI.UpdateHP(HP, currentHp);
+        StartRoutine();
 
     }
 
@@ -41,6 +36,7 @@ public class Unit : MonoBehaviour
     {
 
         Move();
+        RangedAttack();
         ManageHP();
     }
 
@@ -52,35 +48,41 @@ public class Unit : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (!isRanged)
         {
-            collision.gameObject.GetComponent<EnemyScript>().DealDamage(attack);
-            canHit = false;
-            StartCoroutine(HitWithCooldown(attackCooldown));
-        }
-        else if (collision.gameObject.CompareTag("Enemy base"))
-        {
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                collision.gameObject.GetComponent<EnemyScript>().DealDamage(attack);
+                canHit = false;
+                StartCoroutine(HitWithCooldown(attackCooldown));
+            }
+            else if (collision.gameObject.CompareTag("Enemy base"))
+            {
 
-            collision.gameObject.GetComponent<BaseScript>().DealDamage(attack);
-            canHit = false;
-            StartCoroutine(HitWithCooldown(attackCooldown));
+                collision.gameObject.GetComponent<BaseScript>().DealDamage(attack);
+                canHit = false;
+                StartCoroutine(HitWithCooldown(attackCooldown));
+            }
         }
 
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (canHit && collision.gameObject.CompareTag("Enemy"))
+        if (!isRanged)
         {
-            collision.gameObject.GetComponent<EnemyScript>().DealDamage(attack);
-            canHit = false;
-            StartCoroutine(HitWithCooldown(attackCooldown));
-        }
-        else if (canHit && collision.gameObject.CompareTag("Enemy base"))
-        {
-            collision.gameObject.GetComponent<BaseScript>().DealDamage(attack);
-            canHit = false;
-            StartCoroutine(HitWithCooldown(attackCooldown));
+            if (canHit && collision.gameObject.CompareTag("Enemy"))
+            {
+                collision.gameObject.GetComponent<EnemyScript>().DealDamage(attack);
+                canHit = false;
+                StartCoroutine(HitWithCooldown(attackCooldown));
+            }
+            else if (canHit && collision.gameObject.CompareTag("Enemy base"))
+            {
+                collision.gameObject.GetComponent<BaseScript>().DealDamage(attack);
+                canHit = false;
+                StartCoroutine(HitWithCooldown(attackCooldown));
+            }
         }
     }
 
@@ -99,20 +101,62 @@ public class Unit : MonoBehaviour
     }
     private void Move()
     {
-            agent.SetDestination(towManager.ClosestEnemy(gameObject.transform));
-        
-
+            target = towManager.ClosestEnemy(gameObject.transform);
+            agent.SetDestination(target.transform.position);
     }
 
     public void Buff(float amount)
     {
         HP *= amount;
+        currentHp = HP;
         agent.speed *= amount;
         attack *= amount;
         UI.BufText(amount);
 
     }
-  
 
+    private void StartRoutine()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        agent.speed = speed;
+        towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
+        UI = transform.Find("Canvas").GetComponent<UnitUI>();
+        currentHp = HP;
+        UI.UpdateHP(HP, currentHp);
+    }
+
+    private void RangedAttack()
+    {
+        if (isRanged && CanShoot(target.transform.position))
+        {
+            if (canHit && target.CompareTag("Enemy"))
+            {
+                target.GetComponent<EnemyScript>().DealDamage(attack);
+                canHit = false;
+                StartCoroutine(HitWithCooldown(attackCooldown));
+            }
+            else if (canHit && target.CompareTag("Enemy base"))
+            {
+                target.GetComponent<BaseScript>().DealDamage(attack);
+                canHit = false;
+                StartCoroutine(HitWithCooldown(attackCooldown));
+            }
+
+        }
+    }
+
+    private bool CanShoot(Vector3 position)
+    {
+        
+        Vector2 currentPosition = transform.position;
+        Vector2 directionToTarget = (Vector2)position - currentPosition;
+        float distance = directionToTarget.magnitude;
+        if (distance <= agent.stoppingDistance)
+            return true;
+        else
+            return false;
+    }
 
 }

@@ -504,9 +504,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b54a407d1b3842999ec30e3a83939c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRanged: 1
   speed: 0.3
-  target: {fileID: 0}
-  HP: 50
+  HP: 10
   attack: 20
 --- !u!61 &7682108536013082628
 BoxCollider2D:
@@ -594,7 +594,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1

@@ -11,9 +11,16 @@ public class UnitSpawner : MonoBehaviour
 
     private UIScript uiScript;
 
+    private bool reactivateOnSpawn;
+
+    private PegManager pegs;
+
     private void Start()
     {
         towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
+        reactivateOnSpawn = GameManager.instance.reactivatePegsOnSpawn;
+        pegs = GameObject.Find("Peggle").transform.Find("Pegs").gameObject.GetComponent<PegManager>();
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,7 +29,9 @@ public class UnitSpawner : MonoBehaviour
         {
             GameObject newUnit = Instantiate(unitPrefab) as GameObject;
             newUnit.GetComponent<Unit>().Buff(collision.gameObject.GetComponent<Ball>().GetBuff());
-            towManager.UpdateUnitList(newUnit.transform);
+            towManager.UpdateUnitList(newUnit);
+            if (reactivateOnSpawn)
+                pegs.ReactivatePegs();
         }
     }
 }

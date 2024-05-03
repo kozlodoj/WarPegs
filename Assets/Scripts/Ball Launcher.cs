@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class BallLauncher : MonoBehaviour
 {
-    private float speed = 10f;
+    private float maxSpeed = 10f;
+    private float speed;
     private GameObject theBall;
     private Ball ballScript;
 
@@ -48,6 +49,7 @@ public class BallLauncher : MonoBehaviour
             float angleDegrees = -angleRadians * Mathf.Rad2Deg;
             Quaternion theRotation = Quaternion.AngleAxis(angleDegrees - 90f, Vector3.forward);
             theBall.transform.rotation = theRotation;
+            speed = maxSpeed * context.ReadValue<Vector2>().magnitude;
             if (!isTrajActive)
             {
                 isTrajActive = true;
@@ -106,7 +108,7 @@ public class BallLauncher : MonoBehaviour
 
     private void SetSpeed()
     {
-        speed = GameManager.instance.ballPower;
+        maxSpeed = GameManager.instance.ballPower;
     }
 
 }

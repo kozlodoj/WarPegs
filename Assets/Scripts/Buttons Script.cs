@@ -12,6 +12,7 @@ public class ButtonsScript : MonoBehaviour
     public float respawn = 5;
     public float initialStat = 100;
     public bool isRandom;
+    public bool isReactivateActive;
 
     [SerializeField]
     private TextMeshProUGUI powerText;
@@ -25,6 +26,8 @@ public class ButtonsScript : MonoBehaviour
     private TextMeshProUGUI initialStatText;
     [SerializeField]
     private Toggle randomToggle;
+    [SerializeField]
+    private Toggle reactivateToggle;
 
     private void Start()
     {
@@ -108,6 +111,7 @@ public class ButtonsScript : MonoBehaviour
         respawn = GameManager.instance.respawn;
         initialStat = GameManager.instance.intialStat;
         isRandom = GameManager.instance.randomSpawn;
+        isReactivateActive = GameManager.instance.reactivatePegsOnSpawn;
 
         powerText.SetText(power.ToString());
         reloadText.SetText(reload.ToString());
@@ -115,6 +119,16 @@ public class ButtonsScript : MonoBehaviour
         respawnText.SetText(respawn.ToString());
         initialStatText.SetText(initialStat.ToString());
         randomToggle.isOn = isRandom;
+        reactivateToggle.isOn = isReactivateActive;
     }
 
+    public void RandomSpawn(bool isTrue)
+    {
+        GameManager.instance.randomSpawn = isTrue;
+    }
+
+    public void ReactivatePegs(bool isTrue)
+    {
+        GameManager.instance.reactivatePegsOnSpawn = isTrue;
+    }
 }

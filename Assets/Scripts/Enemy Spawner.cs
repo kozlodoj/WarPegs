@@ -44,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SpawnNextEnemy(float timeDelay)
     {
         yield return new WaitForSeconds(timeDelay);
-       towManager.UpdateEnemiesList(Instantiate(enemies[RandomEnemy()],gameObject.transform).transform);
+       towManager.UpdateEnemiesList(Instantiate(enemies[RandomEnemy()],gameObject.transform));
         StartCoroutine(SpawnNextEnemy(RandomTime()));
     }
 
@@ -76,17 +76,17 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SpawnFirst(float timeDelay)
     {
         yield return new WaitForSeconds(timeDelay);
-        towManager.UpdateEnemiesList(Instantiate(enemies[0], gameObject.transform).transform);
+        towManager.UpdateEnemiesList(Instantiate(enemies[0], gameObject.transform));
     }
     private IEnumerator SpawnSecond(float timeDelay)
     {
         yield return new WaitForSeconds(timeDelay);
-        towManager.UpdateEnemiesList(Instantiate(enemies[1], gameObject.transform).transform);
+        towManager.UpdateEnemiesList(Instantiate(enemies[1], gameObject.transform));
     }
     private IEnumerator Spawnthird(float timeDelay)
     {
         yield return new WaitForSeconds(timeDelay);
-        towManager.UpdateEnemiesList(Instantiate(enemies[2], gameObject.transform).transform);
+        towManager.UpdateEnemiesList(Instantiate(enemies[2], gameObject.transform));
     }
     private IEnumerator restartSpawn(float timeDelay)
     {

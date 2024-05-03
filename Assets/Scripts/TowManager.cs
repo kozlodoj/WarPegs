@@ -5,14 +5,14 @@ using UnityEngine;
 public class TowManager : MonoBehaviour
 {
     
-    private List<Transform> enemies = new List<Transform>();
+    private List<GameObject> enemies = new List<GameObject>();
     
-    private List<Transform> units = new List<Transform>();
+    private List<GameObject> units = new List<GameObject>();
 
     [SerializeField]
-    private Transform enemyBase;
+    private GameObject enemyBase;
     [SerializeField]
-    private Transform playerBase;
+    private GameObject playerBase;
    
 
     // Start is called before the first frame update
@@ -22,31 +22,28 @@ public class TowManager : MonoBehaviour
         UpdateUnitList(playerBase);
     }
 
-    public void UpdateEnemiesList(Transform enemy)
+    public void UpdateEnemiesList(GameObject enemy)
     {
         enemies.Add(enemy);
         
     }
 
-    public void UpdateUnitList(Transform unit)
+    public void UpdateUnitList(GameObject unit)
     {
         units.Add(unit);
-        foreach (Transform u in units)
-        {
-            Debug.Log(u);
-        }
+       
     }
 
-    public Vector3 ClosestEnemy(Transform position)
+    public GameObject ClosestEnemy(Transform position)
     {
-        Transform bestTarget = null;
+        GameObject bestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = position.position;
-        foreach (Transform potentialTarget in enemies)
+        foreach (GameObject potentialTarget in enemies)
         {
             if (potentialTarget.gameObject.activeInHierarchy)
             {
-                Vector3 directionToTarget = potentialTarget.position - currentPosition;
+                Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
                 float dSqrToTarget = directionToTarget.sqrMagnitude;
                 if (dSqrToTarget < closestDistanceSqr)
                 {
@@ -58,20 +55,20 @@ public class TowManager : MonoBehaviour
         }
 
   
-        return bestTarget.position;
+        return bestTarget;
 
     }
 
-    public Vector3 ClosestUnit(Transform position)
+    public GameObject ClosestUnit(Transform position)
     {
-        Transform bestTarget = null;
+        GameObject bestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = position.position;
-        foreach (Transform potentialTarget in units)
+        foreach (GameObject potentialTarget in units)
         {
             if (potentialTarget.gameObject.activeInHierarchy)
             {
-                Vector3 directionToTarget = potentialTarget.position - currentPosition;
+                Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
                 float dSqrToTarget = directionToTarget.sqrMagnitude;
                 if (dSqrToTarget < closestDistanceSqr)
                 {
@@ -82,7 +79,7 @@ public class TowManager : MonoBehaviour
             }
         }
         
-        return bestTarget.position;
+        return bestTarget;
 
     }
 }

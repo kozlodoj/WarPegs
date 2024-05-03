@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     public float respawn = 2;
     public float intialStat = 100f;
 
-    public bool randomSpawn = false;
+    public bool randomSpawn;
+    public bool reactivatePegsOnSpawn;
 
     private ButtonsScript buttons;
 
@@ -42,11 +43,6 @@ public class GameManager : MonoBehaviour
     public void BackToMenu()
     {
         SceneManager.LoadScene(0);
-    }
-
-    public void RandomSpawn(bool isTrue)
-    {
-        randomSpawn = isTrue;
     }
 
     public void GameOver()
