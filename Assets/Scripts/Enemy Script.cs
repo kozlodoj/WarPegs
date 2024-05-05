@@ -18,9 +18,9 @@ public class EnemyScript : MonoBehaviour
     private float attack = 10f;
     private float currentHp;
 
-    private float attackCooldown = 1f;
+    private float attackCooldown = 1.5f;
     private bool canHit = true;
-    private bool canMove = true;
+    
 
     private UnitUI UI;
 

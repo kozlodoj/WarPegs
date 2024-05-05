@@ -34,10 +34,10 @@ public class BallLauncher : MonoBehaviour
         trajScript = trajectory.GetComponent<Trajectory>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-     
+        aim.performed -= LookDirection;
+        aim.canceled -= Shoot;
     }
 
     private void LookDirection(InputAction.CallbackContext context)
@@ -61,7 +61,7 @@ public class BallLauncher : MonoBehaviour
         }
         
     }
-    public void Shoot()
+    public void Shoot(InputAction.CallbackContext context)
     {
        
             ballRb.constraints = RigidbodyConstraints2D.None;
@@ -95,8 +95,8 @@ public class BallLauncher : MonoBehaviour
     {
         actionMap = controlsAsset.FindActionMap("Player");
         aim = actionMap.FindAction("Aim");
-        aim.performed += context => LookDirection(context);
-        aim.canceled += context => Shoot();
+        aim.performed += LookDirection;
+        aim.canceled += Shoot;
     }
     private void CleanLouncher()
     {

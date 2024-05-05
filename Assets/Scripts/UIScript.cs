@@ -27,6 +27,7 @@ public class UIScript : MonoBehaviour
     private void OnDisable()
     {
         actionMap.Disable();
+        touch.performed -= ActivateJoystick;
         Destroy(gameObject);
         
     }
@@ -36,7 +37,7 @@ public class UIScript : MonoBehaviour
         actionMap = controlsAsset.FindActionMap("Player");
         touch = actionMap.FindAction("Touch");
 
-        touch.performed += context => ActivateJoystick(context);
+        touch.performed += ActivateJoystick;
         
         //DontDestroyOnLoad(gameObject);
 

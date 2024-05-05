@@ -20,7 +20,7 @@ public class Unit : MonoBehaviour
     private float HP = 100f;
     [SerializeField]
     private float attack = 10f;
-    private float attackCooldown = 1f;
+    private float attackCooldown = 1.5f;
     private float currentHp;
     private bool canHit = true;
 

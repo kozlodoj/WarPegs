@@ -300,9 +300,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ff888cce66543adb13a6941d0f8313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRanged: 0
   speed: 0.5
-  HP: 30
-  attack: 10
+  HP: 66
+  attack: 20
 --- !u!61 &6798319531999433122
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -505,9 +505,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRanged: 0
-  speed: 0.15
-  HP: 150
-  attack: 30
+  speed: 0.5
+  HP: 180
+  attack: 40
 --- !u!61 &7682108536013082628
 BoxCollider2D:
   m_ObjectHideFlags: 0

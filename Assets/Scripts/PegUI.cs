@@ -8,7 +8,7 @@ public class PegUI : MonoBehaviour
     private TextMeshProUGUI buffText;
 
     private bool scale = false;
-    private float scaleTime = 1f;
+    
 
     // Start is called before the first frame update
     void Start()

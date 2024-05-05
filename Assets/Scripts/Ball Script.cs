@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class BallScript : MonoBehaviour
 {
     private float speed = 10f;
-    private float bounceForce = 250f;
+    
 
     private float chargeTime = 5f;
     public bool isCharged = false;
