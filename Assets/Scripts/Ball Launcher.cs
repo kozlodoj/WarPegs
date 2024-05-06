@@ -63,13 +63,16 @@ public class BallLauncher : MonoBehaviour
     }
     public void Shoot(InputAction.CallbackContext context)
     {
-       
+
+        if (isOcupied)
+        {
             ballRb.constraints = RigidbodyConstraints2D.None;
             ballRb.AddRelativeForce(transform.up * speed, ForceMode2D.Impulse);
             isTrajActive = false;
             trajScript.DisableRenderer();
             trajScript.killAllObstacles();
             CleanLouncher();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

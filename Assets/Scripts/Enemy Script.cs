@@ -17,6 +17,9 @@ public class EnemyScript : MonoBehaviour
     [SerializeField]
     private float attack = 10f;
     private float currentHp;
+    [SerializeField]
+    private int goldDrop;
+
 
     private float attackCooldown = 1.5f;
     private bool canHit = true;
@@ -93,7 +96,10 @@ public class EnemyScript : MonoBehaviour
     private void ManageHP()
     {
         if (currentHp <= 0)
+        {
+            GameManager.instance.AddGold(goldDrop);
             gameObject.SetActive(false);
+        }
 
     }
     private void Move()

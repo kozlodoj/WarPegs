@@ -6,10 +6,10 @@ public class UnitSpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject unitPrefab;
+    [SerializeField]
+    private int unitNum;
 
     private TowManager towManager;
-
-    private UIScript uiScript;
 
     private bool reactivateOnSpawn;
 
@@ -17,6 +17,17 @@ public class UnitSpawner : MonoBehaviour
 
     private void Start()
     {
+        if (GameManager.instance.storyMode)
+        {
+            if (unitNum == 2 && !GameManager.instance.isUnitTwoActive)
+            {
+                gameObject.SetActive(false);
+            }
+            if (unitNum == 3 && !GameManager.instance.isUnitThreeActive)
+            {
+                gameObject.SetActive(false);
+            }
+        }
         towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
         reactivateOnSpawn = GameManager.instance.reactivatePegsOnSpawn;
         pegs = GameObject.Find("Peggle").transform.Find("Pegs").gameObject.GetComponent<PegManager>();

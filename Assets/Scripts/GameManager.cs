@@ -12,12 +12,23 @@ public class GameManager : MonoBehaviour
     public float buff = 2;
     public float respawn = 2;
     public float intialStat = 100f;
+    public int baseHP;
+
+    public int gold;
 
     public bool randomSpawn;
     public bool reactivatePegsOnSpawn;
 
-    private ButtonsScript buttons;
+    public bool isUnitTwoActive = false;
+    public bool isUnitThreeActive = false;
 
+    public int unitTwoCost = 1000;
+    public int unitThreeCost = 5000;
+
+    public int reloadCost;
+    public int hPCost;
+
+    public bool storyMode;
 
     void Awake()
     {
@@ -29,13 +40,15 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-   
-
     }
 
     public void LevelSelect(int levelNum)
     {
         Time.timeScale = 1;
+        if (levelNum >= 5)
+            storyMode = true;
+        else
+            storyMode = false;
         SceneManager.LoadScene(levelNum);
 
     }
@@ -50,4 +63,40 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         GameObject.Find("UI").GetComponent<UIScript>().ActivateGameOverUI();
     }
+    public void AddGold(int amount)
+    {
+        gold += amount;
+        if (SceneManager.GetActiveScene().name == "Story Menu")
+        {
+            GameObject.Find("UI").GetComponent<StoryUI>().SetGoldText(gold);
+        }
+        else
+        GameObject.Find("UI").GetComponent<UIScript>().SetGold(gold);
+    }
+    public void BuyUnit(int num)
+    {
+        if (num == 2 && !isUnitTwoActive)
+        {
+            AddGold(-unitTwoCost);
+            isUnitTwoActive = true;
+        }
+        else if (num == 3 && !isUnitThreeActive)
+        {
+            AddGold(-unitThreeCost);
+            isUnitThreeActive = true;
+        }
+    }
+    public void BuyReloadTime()
+    {
+        reloadRate -= 0.25f;
+        AddGold(-reloadCost);
+        reloadCost = (int)(reloadCost * 1.1f);
+    }
+    public void BuyHP()
+    {
+        baseHP = (int)(baseHP * 1.2f);
+        AddGold(-hPCost);
+        hPCost = (int)(hPCost * 1.1f);
+    }
+   
 }

@@ -19,6 +19,9 @@ public class UIScript : MonoBehaviour
     [SerializeField]
     private GameObject gameOver;
 
+    [SerializeField]
+    private TextMeshProUGUI goldText;
+
     private void OnEnable()
     {
         actionMap.Enable();
@@ -38,8 +41,7 @@ public class UIScript : MonoBehaviour
         touch = actionMap.FindAction("Touch");
 
         touch.performed += ActivateJoystick;
-        
-        //DontDestroyOnLoad(gameObject);
+        SetGold(GameManager.instance.gold);
 
     }
 
@@ -54,12 +56,20 @@ public class UIScript : MonoBehaviour
 
     public void BackToMenu()
     {
+        if(GameManager.instance.storyMode)
+            GameManager.instance.LevelSelect(5);
+        else
         GameManager.instance.LevelSelect(0);
     }
 
     public void ActivateGameOverUI()
     {
         gameOver.SetActive(true);
+    }
+
+    public void SetGold(int amount)
+    {
+        goldText.SetText("Gold: " + amount);
     }
 
 
