@@ -12,14 +12,15 @@ public class NoBall : MonoBehaviour
     {
         sprite = gameObject.GetComponent<SpriteRenderer>();
         StartCoroutine(BlipOut());
+
     }
     private void OnEnable()
     {
-        StartCoroutine(BlipOut());
+        
     }
 
 
-    IEnumerator BlipOut()
+    public IEnumerator BlipOut()
     {
         for (float f = 1f; f >= 0; f -= fadeRate)
         {

@@ -142,6 +142,7 @@ public class BallLauncher : MonoBehaviour
         ballRb = null;
         isOcupied = false;
         noBall.SetActive(true);
+        StartCoroutine(noBall.GetComponent<NoBall>().BlipOut());
     }
 
     private void SetSpeed()
