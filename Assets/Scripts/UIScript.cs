@@ -10,6 +10,13 @@ public class UIScript : MonoBehaviour
 {
     [SerializeField]
     private GameObject joystick;
+    private Image joyImage;
+    [SerializeField]
+    private GameObject joyOutline;
+    private Image outlineImage;
+
+    private Color filledJoy;
+    private Color TransparentJoy;
 
     [SerializeField]
     private InputActionAsset controlsAsset;
@@ -30,7 +37,8 @@ public class UIScript : MonoBehaviour
     private void OnDisable()
     {
         actionMap.Disable();
-        touch.performed -= ActivateJoystick;
+        touch.started -= ActivateJoystick;
+        touch.canceled -= DeactivateJoystic;
         Destroy(gameObject);
         
     }
@@ -39,8 +47,13 @@ public class UIScript : MonoBehaviour
 
         actionMap = controlsAsset.FindActionMap("Player");
         touch = actionMap.FindAction("Touch");
+        joyImage = joystick.GetComponent<Image>();
+        outlineImage = joyOutline.GetComponent<Image>();
+        SetColors();
+        
 
-        touch.performed += ActivateJoystick;
+        touch.started += ActivateJoystick;
+        touch.canceled += DeactivateJoystic;
         SetGold(GameManager.instance.gold);
 
     }
@@ -50,8 +63,17 @@ public class UIScript : MonoBehaviour
     private void ActivateJoystick (InputAction.CallbackContext context)
         {
         joystick.transform.position = context.ReadValue<Vector2>();
-       
-        }
+        joyImage.color = filledJoy;
+        joyOutline.transform.position = context.ReadValue<Vector2>();
+        joyOutline.SetActive(true);
+
+    }
+    private void DeactivateJoystic(InputAction.CallbackContext context)
+    {
+        joystick.transform.position = context.ReadValue<Vector2>();
+        joyImage.color = TransparentJoy;
+        joyOutline.SetActive(false);
+    }
 
 
     public void BackToMenu()
@@ -72,6 +94,13 @@ public class UIScript : MonoBehaviour
         goldText.SetText("Gold: " + amount);
     }
 
+    private void SetColors()
+    {
+        filledJoy = joyImage.color;
+        TransparentJoy = filledJoy;
+        TransparentJoy.a = 0.05f;
+        filledJoy.a = 1f;
+    }
 
 
 }
