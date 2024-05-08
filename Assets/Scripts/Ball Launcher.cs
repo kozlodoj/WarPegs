@@ -37,8 +37,6 @@ public class BallLauncher : MonoBehaviour
         trajAnimation = trajectory.GetComponent<Animator>();
         trajLine = trajectory.GetComponent<LineRenderer>();
 
-        newColor = trajLine.colorGradient;
-
     }
 
     private void OnDisable()
