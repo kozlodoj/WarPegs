@@ -25,13 +25,20 @@ public class BallLauncher : MonoBehaviour
     private bool isTrajActive = false;
     [SerializeField]
     private GameObject dummy;
+    private Animator trajAnimation;
+    private LineRenderer trajLine;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         ActivateControls();
         SetSpeed();
         trajScript = trajectory.GetComponent<Trajectory>();
+        trajAnimation = trajectory.GetComponent<Animator>();
+        trajLine = trajectory.GetComponent<LineRenderer>();
+
+        newColor = trajLine.colorGradient;
+
     }
 
     private void OnDisable()
@@ -56,11 +63,30 @@ public class BallLauncher : MonoBehaviour
                 trajScript.EnableRenderer();
                 trajScript.copyAllObstacles();
             }
-            
+
+            trajLine.colorGradient = newGradient(context.ReadValue<Vector2>().magnitude);
+            trajLine.endWidth = 0.3f * context.ReadValue<Vector2>().magnitude;
             trajScript.predict(dummy, theBall.transform.position, theBall.transform.up * speed, theRotation);
+            trajAnimation.speed = speed / 2f;
+        
         }
         
     }
+
+    private Gradient newGradient(float speed)
+    {
+        float startAlpha = 1f;
+        float alpha = 1f;
+        Color startColor = new Color(1, 1 - speed, 1 - speed);
+        Color endColor = new Color(1, 1 - speed, 1 - speed);
+        Gradient newGradient = new Gradient();
+        newGradient.SetKeys(
+            new GradientColorKey[] { new GradientColorKey(startColor, 0.5f), new GradientColorKey(endColor, 0.0f) },
+            new GradientAlphaKey[] { new GradientAlphaKey(startAlpha, 0f), new GradientAlphaKey(alpha, 1f) }
+        );
+        return newGradient;
+    }
+
     public void Shoot(InputAction.CallbackContext context)
     {
 

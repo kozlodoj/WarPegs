@@ -87,6 +87,8 @@ public class UIScript : MonoBehaviour
     public void ActivateGameOverUI()
     {
         gameOver.SetActive(true);
+        joystick.SetActive(false);
+        actionMap.Disable();
     }
 
     public void SetGold(int amount)
