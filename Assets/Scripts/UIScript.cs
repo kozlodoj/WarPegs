@@ -62,10 +62,13 @@ public class UIScript : MonoBehaviour
 
     private void ActivateJoystick (InputAction.CallbackContext context)
         {
-        joystick.transform.position = context.ReadValue<Vector2>();
-        joyImage.color = filledJoy;
-        joyOutline.transform.position = context.ReadValue<Vector2>();
-        joyOutline.SetActive(true);
+        if (context.ReadValue<Vector2>().y <= 1200)
+        {
+            joystick.transform.position = context.ReadValue<Vector2>();
+            joyImage.color = filledJoy;
+            joyOutline.transform.position = context.ReadValue<Vector2>();
+            joyOutline.SetActive(true);
+        }
 
     }
     private void DeactivateJoystic(InputAction.CallbackContext context)

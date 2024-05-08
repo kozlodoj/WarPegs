@@ -28,6 +28,8 @@ public class BallLauncher : MonoBehaviour
     private Animator trajAnimation;
     private LineRenderer trajLine;
 
+    private GameObject noBall;
+
 
     void Start()
     {
@@ -36,6 +38,7 @@ public class BallLauncher : MonoBehaviour
         trajScript = trajectory.GetComponent<Trajectory>();
         trajAnimation = trajectory.GetComponent<Animator>();
         trajLine = trajectory.GetComponent<LineRenderer>();
+        noBall = transform.Find("noBall").gameObject;
 
     }
 
@@ -66,7 +69,7 @@ public class BallLauncher : MonoBehaviour
             trajLine.endWidth = 0.3f * context.ReadValue<Vector2>().magnitude;
             trajScript.predict(dummy, theBall.transform.position, theBall.transform.up * speed, theRotation);
             trajAnimation.speed = speed / 2f;
-        
+
         }
         
     }
@@ -90,6 +93,7 @@ public class BallLauncher : MonoBehaviour
 
         if (isOcupied)
         {
+            ballScript.Shoot();
             ballRb.constraints = RigidbodyConstraints2D.None;
             ballRb.AddRelativeForce(transform.up * speed, ForceMode2D.Impulse);
             isTrajActive = false;
@@ -107,15 +111,21 @@ public class BallLauncher : MonoBehaviour
             ballScript = theBall.GetComponent<Ball>();
             ballRb = theBall.GetComponent<Rigidbody2D>();
             if (!ballScript.isShot)
+            {
                 ballScript.LounchPos();
+                noBall.SetActive(false);
+            }
             isOcupied = true;
+            
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject == theBall)
+        {
             isOcupied = false;
+        }
     }
 
     private void ActivateControls()
@@ -131,6 +141,7 @@ public class BallLauncher : MonoBehaviour
         ballScript = null;
         ballRb = null;
         isOcupied = false;
+        noBall.SetActive(true);
     }
 
     private void SetSpeed()

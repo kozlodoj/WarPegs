@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 926727099188597945}
   - component: {fileID: 1117988699895612070}
   - component: {fileID: 8625892697679964519}
+  - component: {fileID: 1034938094196976846}
   m_Layer: 2
   m_Name: Trajectory
   m_TagString: Untagged
@@ -113,9 +114,9 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 0}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 1, b: 1, a: 0}
+      key1: {r: 1, g: 0.48235294, b: 0.49019608, a: 1}
+      key2: {r: 1, g: 0, b: 0, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -123,15 +124,15 @@ LineRenderer:
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
       ctime1: 65535
-      ctime2: 0
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 32575
-      atime1: 65535
-      atime2: 0
+      atime0: 0
+      atime1: 33153
+      atime2: 52043
       atime3: 0
       atime4: 0
       atime5: 0
@@ -152,6 +153,27 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 0
+--- !u!95 &1034938094196976846
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461904043212881540}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f2890a85426c64d5e8eac84a2f54977a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1617038970895295284
 PrefabInstance:
   m_ObjectHideFlags: 0
