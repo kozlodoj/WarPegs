@@ -18,8 +18,8 @@ public class BaseHPButton : MonoBehaviour
         
         costText = transform.Find("Cost Text").gameObject.GetComponent<TextMeshProUGUI>();
         rateText = transform.Find("HPText").gameObject.GetComponent<TextMeshProUGUI>();
-        rateText.SetText(GameManager.instance.reloadRate.ToString() + " HP");
-        costText.SetText(GameManager.instance.reloadCost.ToString());
+        rateText.SetText(GameManager.instance.baseHP.ToString() + " HP");
+        costText.SetText(GameManager.instance.hPCost.ToString());
         CheckActive();
     }
 

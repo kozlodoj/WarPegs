@@ -11,6 +11,10 @@ public class ButtonsScript : MonoBehaviour
     public float buff = 5;
     public float respawn = 5;
     public float initialStat = 100;
+    public float archerCost;
+    public float tankCost;
+    public float reloadCost;
+    public float hpCost;
     public bool isRandom;
     public bool isReactivateActive;
 
@@ -28,6 +32,14 @@ public class ButtonsScript : MonoBehaviour
     private Toggle randomToggle;
     [SerializeField]
     private Toggle reactivateToggle;
+    [SerializeField]
+    private TextMeshProUGUI archerCostText;
+    [SerializeField]
+    private TextMeshProUGUI tankCostText;
+    [SerializeField]
+    private TextMeshProUGUI reloadCostText;
+    [SerializeField]
+    private TextMeshProUGUI hpCostText;
 
     private void Start()
     {
@@ -87,6 +99,54 @@ public class ButtonsScript : MonoBehaviour
         respawnText.SetText(respawn.ToString());
         GameManager.instance.respawn = respawn;
     }
+    public void ArcherCostPlus()
+    {
+        archerCost += 50;
+        archerCostText.SetText(archerCost.ToString());
+        GameManager.instance.unitTwoCost = (int)archerCost;
+    }
+    public void ArcherCostMinus()
+    {
+        archerCost -= 50;
+        archerCostText.SetText(archerCost.ToString());
+        GameManager.instance.unitTwoCost = (int)archerCost;
+    }
+    public void TankCostPlus()
+    {
+        tankCost += 50;
+        tankCostText.SetText(tankCost.ToString());
+        GameManager.instance.unitThreeCost = (int)tankCost;
+    }
+    public void TankCostMinus()
+    {
+        tankCost -= 50;
+        tankCostText.SetText(tankCost.ToString());
+        GameManager.instance.unitThreeCost = (int)tankCost;
+    }
+    public void ReloadCostPlus()
+    {
+        reloadCost += 10;
+        reloadCostText.SetText(reloadCost.ToString());
+        GameManager.instance.reloadCost = (int)reloadCost;
+    }
+    public void ReloadCostMinus()
+    {
+        reloadCost -= 10;
+        reloadCostText.SetText(reloadCost.ToString());
+        GameManager.instance.reloadCost = (int)reloadCost;
+    }
+    public void HPcostPlus()
+    {
+        hpCost += 10;
+        hpCostText.SetText(hpCost.ToString());
+        GameManager.instance.hPCost = (int)hpCost;
+    }
+    public void HPcostMinus()
+    {
+        hpCost -= 10;
+        hpCostText.SetText(hpCost.ToString());
+        GameManager.instance.hPCost = (int)hpCost;
+    }
 
     public void InitialStatPlus()
     {
@@ -112,12 +172,20 @@ public class ButtonsScript : MonoBehaviour
         initialStat = GameManager.instance.intialStat;
         isRandom = GameManager.instance.randomSpawn;
         isReactivateActive = GameManager.instance.reactivatePegsOnSpawn;
+        archerCost = GameManager.instance.unitTwoCost;
+        tankCost = GameManager.instance.unitThreeCost;
+        reloadCost = GameManager.instance.reloadCost;
+        hpCost = GameManager.instance.hPCost;
 
         powerText.SetText(power.ToString());
         reloadText.SetText(reload.ToString());
         buffText.SetText(buff.ToString());
         respawnText.SetText(respawn.ToString());
         initialStatText.SetText(initialStat.ToString());
+        archerCostText.SetText(archerCost.ToString());
+        tankCostText.SetText(tankCost.ToString());
+        reloadCostText.SetText(reloadCost.ToString());
+        hpCostText.SetText(hpCost.ToString());
         randomToggle.isOn = isRandom;
         reactivateToggle.isOn = isReactivateActive;
     }

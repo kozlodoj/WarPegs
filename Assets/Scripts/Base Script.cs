@@ -18,6 +18,8 @@ public class BaseScript : MonoBehaviour
     void Start()
     {
         UI = transform.Find("Canvas").GetComponent<UnitUI>();
+        if (!isEnemy)
+            HP = GameManager.instance.baseHP;
         currentHp = HP;
         UI.UpdateHP(HP, currentHp);
     }
