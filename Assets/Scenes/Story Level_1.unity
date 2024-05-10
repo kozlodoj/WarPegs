@@ -4934,7 +4934,7 @@ GameObject:
   - component: {fileID: 413779416}
   - component: {fileID: 413779417}
   m_Layer: 0
-  m_Name: Square (2)
+  m_Name: Buttom wall 02
   m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6307,7 +6307,7 @@ GameObject:
   - component: {fileID: 512570260}
   - component: {fileID: 512570261}
   m_Layer: 0
-  m_Name: Square (3)
+  m_Name: Bottom wall 01
   m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8516,6 +8516,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 1000
+  isEnemy: 1
+  goldDrop: 1
 --- !u!4 &744169884 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 443383424763442397, guid: fa10b56250b30465fbf1b4266d71b3ba, type: 3}
@@ -10604,6 +10606,85 @@ MonoBehaviour:
   - {fileID: 6500178492605920635, guid: 851760e6f7a2245c584271713cc48887, type: 3}
   - {fileID: 6500178492605920635, guid: fb034d7d322184d9c8faebbb5f28605c, type: 3}
   - {fileID: 6500178492605920635, guid: 76319a0219e22451487ea3a9cddd74ae, type: 3}
+  spawnPattern:
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 1
+    spawnTime: 5
+    stopSection: 1
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 2
+    spawnTime: 5
+    stopSection: 1
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 1
+    spawnTime: 5
+    stopSection: 0
+  - unitNum: 1
+    spawnTime: 5
+    stopSection: 1
+  - unitNum: 2
+    spawnTime: 5
+    stopSection: 1
+  - unitNum: 2
+    spawnTime: 15
+    stopSection: 1
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 0
+    spawnTime: 15
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 15
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 15
+    stopSection: 1
+  - unitNum: 1
+    spawnTime: 5
+    stopSection: 0
+  - unitNum: 1
+    spawnTime: 5
+    stopSection: 1
+  - unitNum: 0
+    spawnTime: 5
+    stopSection: 0
+  - unitNum: 1
+    spawnTime: 5
+    stopSection: 1
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 1
 --- !u!1 &891758143
 GameObject:
   m_ObjectHideFlags: 0
@@ -11243,7 +11324,7 @@ Transform:
   m_GameObject: {fileID: 949089236}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.76, y: -4.94, z: 0}
+  m_LocalPosition: {x: 3.76, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12892,6 +12973,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1187563067}
+  - component: {fileID: 1187563068}
   m_Layer: 0
   m_Name: Unit Triggers
   m_TagString: Untagged
@@ -12917,6 +12999,23 @@ Transform:
   - {fileID: 949089237}
   m_Father: {fileID: 1856880855}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1187563068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187563066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c2a77741c9842d5b2a7393dc92aec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wall01: {fileID: 512570256}
+  wall02: {fileID: 413779412}
+  firstSpawner: {fileID: 1534751615}
+  secondSpawner: {fileID: 1680504574}
+  thirdSpawner: {fileID: 949089236}
 --- !u!1 &1240332761
 GameObject:
   m_ObjectHideFlags: 0
@@ -16858,7 +16957,7 @@ Transform:
   m_GameObject: {fileID: 1534751615}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.35, y: -4.94, z: 0}
+  m_LocalPosition: {x: -2.35, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18713,7 +18812,7 @@ Transform:
   m_GameObject: {fileID: 1680504574}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.62, y: -4.94, z: 0}
+  m_LocalPosition: {x: 1.62, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21153,6 +21252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 100
+  isEnemy: 0
+  goldDrop: 0
 --- !u!1 &1943181471
 GameObject:
   m_ObjectHideFlags: 0

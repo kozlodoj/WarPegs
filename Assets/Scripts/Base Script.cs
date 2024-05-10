@@ -7,6 +7,10 @@ public class BaseScript : MonoBehaviour
     [SerializeField]
     private float HP = 100f;
     private float currentHp;
+    [SerializeField]
+    private bool isEnemy;
+    [SerializeField]
+    private int goldDrop;
 
     private UnitUI UI;
 
@@ -26,6 +30,8 @@ public class BaseScript : MonoBehaviour
 
     public void DealDamage(float amount)
     {
+        if (isEnemy)
+            GameManager.instance.AddGold(goldDrop * (int)amount);
         currentHp -= amount;
         UI.UpdateHP(HP, currentHp);
     }

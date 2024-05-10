@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [System.Serializable]
+    public struct spawnUnit
+    {
+        public int unitNum;
+        public float spawnTime;
+        public bool stopSection;
+    }
     [SerializeField]
     private List<GameObject> enemies = new List<GameObject>();
+
+    [SerializeField]
+    private List<spawnUnit> spawnPattern = new List<spawnUnit>();
 
     private TowManager towManager;
 
@@ -22,14 +32,9 @@ public class EnemySpawner : MonoBehaviour
         if (randomSpawn)
             StartCoroutine(SpawnNextEnemy(RandomTime()));
         else
-            SpawnPattern01();
+            StartCoroutine(SpawnPattern());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private float RandomTime()
     {
@@ -92,5 +97,30 @@ public class EnemySpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(timeDelay);
         SpawnPattern01();
-    }    
+    }
+
+    private IEnumerator SpawnPattern()
+    {
+        yield return new WaitForSeconds(spawnPattern[0].spawnTime);
+        for (int i = 0; i < spawnPattern.Count; i++)
+        {
+            if (i == 0)
+            {
+                towManager.UpdateEnemiesList(Instantiate(enemies[spawnPattern[i].unitNum], gameObject.transform));
+                if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
+                    yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
+            }
+
+            else if (i != 0)
+            {
+                towManager.UpdateEnemiesList(Instantiate(enemies[spawnPattern[i].unitNum], gameObject.transform));
+                if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
+                    yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
+
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
+        StartCoroutine(SpawnPattern());
+    }
+
 }
