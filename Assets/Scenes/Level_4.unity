@@ -11773,6 +11773,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 100
+  isEnemy: 0
+  goldDrop: 0
 --- !u!1 &741125159
 GameObject:
   m_ObjectHideFlags: 0
@@ -14891,6 +14893,85 @@ MonoBehaviour:
   - {fileID: 6500178492605920635, guid: 851760e6f7a2245c584271713cc48887, type: 3}
   - {fileID: 6500178492605920635, guid: fb034d7d322184d9c8faebbb5f28605c, type: 3}
   - {fileID: 6500178492605920635, guid: 76319a0219e22451487ea3a9cddd74ae, type: 3}
+  spawnPattern:
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 0
+    spawnTime: 5
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 5
+    stopSection: 1
+  - unitNum: 1
+    spawnTime: 5
+    stopSection: 1
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 1
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 2
+    spawnTime: 5
+    stopSection: 1
+  - unitNum: 0
+    spawnTime: 7
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 7
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 7
+    stopSection: 1
+  - unitNum: 1
+    spawnTime: 5
+    stopSection: 0
+  - unitNum: 1
+    spawnTime: 5
+    stopSection: 1
+  - unitNum: 2
+    spawnTime: 5
+    stopSection: 0
+  - unitNum: 2
+    spawnTime: 5
+    stopSection: 1
+  - unitNum: 0
+    spawnTime: 5
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 5
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 5
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 5
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 5
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 5
+    stopSection: 1
+  - unitNum: 1
+    spawnTime: 5
+    stopSection: 0
+  - unitNum: 1
+    spawnTime: 5
+    stopSection: 1
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 1
 --- !u!1 &891758143
 GameObject:
   m_ObjectHideFlags: 0
@@ -29633,6 +29714,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 100
+  isEnemy: 0
+  goldDrop: 0
 --- !u!1 &1943181471
 GameObject:
   m_ObjectHideFlags: 0
