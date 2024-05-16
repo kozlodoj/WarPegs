@@ -104,8 +104,11 @@ public class EnemyScript : MonoBehaviour
     }
     private void Move()
     {
-        target = towManager.ClosestUnit(gameObject.transform);
-        agent.SetDestination(target.transform.position);
+        if (!GameManager.instance.gameOver)
+        {
+            target = towManager.ClosestUnit(gameObject.transform);
+            agent.SetDestination(target.transform.position);
+        }
         
     }
 
@@ -123,7 +126,7 @@ public class EnemyScript : MonoBehaviour
 
     private void RangedAttack()
     {
-        if (isRanged && CanShoot(target.transform.position))
+        if (isRanged && CanShoot(target.transform.position) && !GameManager.instance.gameOver)
         {
             if (canHit && target.CompareTag("Unit"))
             {

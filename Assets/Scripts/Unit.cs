@@ -101,8 +101,11 @@ public class Unit : MonoBehaviour
     }
     private void Move()
     {
+        if (!GameManager.instance.gameOver)
+        {
             target = towManager.ClosestEnemy(gameObject.transform);
             agent.SetDestination(target.transform.position);
+        }
     }
 
     public void Buff(float amount)
@@ -129,7 +132,7 @@ public class Unit : MonoBehaviour
 
     private void RangedAttack()
     {
-        if (isRanged && CanShoot(target.transform.position))
+        if (isRanged && CanShoot(target.transform.position) && !GameManager.instance.gameOver)
         {
             if (canHit && target.CompareTag("Enemy"))
             {

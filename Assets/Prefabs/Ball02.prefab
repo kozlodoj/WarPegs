@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 8145358027864589838}
+  chargeTime: 5
   isCharged: 0
   isShot: 0
 --- !u!1 &6829223082546649225

@@ -17,6 +17,8 @@ public class PegScript : MonoBehaviour
 
     private PegManager pegManager;
     private PegUI pegUI;
+    [SerializeField]
+    private Sprite medicSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -87,7 +89,7 @@ public class PegScript : MonoBehaviour
     public void SetMedic()
     {
         medicPeg = true;
-        gameObject.GetComponent<SpriteRenderer>().material.color = Color.green;
+        gameObject.GetComponent<SpriteRenderer>().sprite = medicSprite;
         
 
     }

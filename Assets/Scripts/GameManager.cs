@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public bool isUnitTwoActive = false;
     public bool isUnitThreeActive = false;
 
+    public bool gameOver = false;
+
     public int unitTwoCost = 1000;
     public int unitThreeCost = 5000;
 
@@ -50,16 +52,19 @@ public class GameManager : MonoBehaviour
         else
             storyMode = false;
         SceneManager.LoadScene(levelNum);
+        gameOver = false;
 
     }
 
     public void BackToMenu()
     {
         SceneManager.LoadScene(0);
+        gameOver = false;
     }
 
     public void GameOver()
     {
+        gameOver = true;
         Time.timeScale = 0;
         GameObject.Find("UI").GetComponent<UIScript>().ActivateGameOverUI();
     }
