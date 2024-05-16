@@ -3748,11 +3748,11 @@ MonoBehaviour:
   - {fileID: 6500178492605920635, guid: fb034d7d322184d9c8faebbb5f28605c, type: 3}
   - {fileID: 6500178492605920635, guid: 76319a0219e22451487ea3a9cddd74ae, type: 3}
   spawnPattern:
-  - unitNum: 0
+  - unitNum: 2
     spawnTime: 10
     stopSection: 1
   - unitNum: 0
-    spawnTime: 5
+    spawnTime: 20
     stopSection: 0
   - unitNum: 0
     spawnTime: 5

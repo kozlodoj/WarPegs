@@ -23,7 +23,10 @@ public class EnemyScript : MonoBehaviour
 
     private float attackCooldown = 1.5f;
     private bool canHit = true;
-    
+
+    [SerializeField]
+    private Animator weaponAnimator;
+
 
     private UnitUI UI;
 
@@ -49,36 +52,36 @@ public class EnemyScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Unit"))
+        if (collision.gameObject.CompareTag("Unit") && weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
             
-            collision.gameObject.GetComponent<Unit>().DealDamage(attack);
-            canHit = false;
-            StartCoroutine(HitWithCooldown(attackCooldown));
+            //collision.gameObject.GetComponent<Unit>().DealDamage(attack);
+            //canHit = false;
+            StartCoroutine(HitWithCooldown(attackCooldown, collision.gameObject.GetComponent<Unit>(), null));
         }
-        else if (collision.gameObject.CompareTag("Player Base"))
+        else if (collision.gameObject.CompareTag("Player Base") && weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
            
             collision.gameObject.GetComponent<BaseScript>().DealDamage(attack);
             canHit = false;
-            StartCoroutine(HitWithCooldown(attackCooldown));
+            StartCoroutine(HitWithCooldown(attackCooldown, null, collision.gameObject.GetComponent<BaseScript>()));
         }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (canHit && collision.gameObject.CompareTag("Unit"))
+        if (canHit && collision.gameObject.CompareTag("Unit") && weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
 
-            collision.gameObject.GetComponent<Unit>().DealDamage(attack);
-            canHit = false;
-            StartCoroutine(HitWithCooldown(attackCooldown));
+            //collision.gameObject.GetComponent<Unit>().DealDamage(attack);
+            //canHit = false;
+            StartCoroutine(HitWithCooldown(attackCooldown, collision.gameObject.GetComponent<Unit>(), null));
         }
-        else if (canHit && collision.gameObject.CompareTag("Player Base"))
+        else if (canHit && collision.gameObject.CompareTag("Player Base") && weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
-            collision.gameObject.GetComponent<BaseScript>().DealDamage(attack);
-            canHit = false;
-            StartCoroutine(HitWithCooldown(attackCooldown));
+            //collision.gameObject.GetComponent<BaseScript>().DealDamage(attack);
+            //canHit = false;
+            StartCoroutine(HitWithCooldown(attackCooldown, null, collision.gameObject.GetComponent<BaseScript>()));
         }
     }
 
@@ -87,10 +90,28 @@ public class EnemyScript : MonoBehaviour
         agent.isStopped = false;
     }
 
-    private IEnumerator HitWithCooldown(float cooldown)
+    private IEnumerator HitWithCooldown(float cooldown, Unit unitS, BaseScript baseS)
     {
-        yield return new WaitForSeconds(cooldown);
-        canHit = true;
+        if (unitS != null)
+        {
+            weaponAnimator.SetFloat("speed", 1 / attackCooldown);
+            weaponAnimator.SetBool("isHitting", true);
+            canHit = false;
+            yield return new WaitForSeconds(cooldown);
+            unitS.DealDamage(attack);
+            weaponAnimator.SetBool("isHitting", false);
+            canHit = true;
+        }
+        else if (baseS != null)
+        {
+            weaponAnimator.SetFloat("speed", 1 / attackCooldown);
+            weaponAnimator.SetBool("isHitting", true);
+            canHit = false;
+            yield return new WaitForSeconds(cooldown);
+            weaponAnimator.SetBool("isHitting", false);
+            baseS.DealDamage(attack);
+            canHit = true;
+        }
 
     }
     private void ManageHP()
@@ -130,15 +151,15 @@ public class EnemyScript : MonoBehaviour
         {
             if (canHit && target.CompareTag("Unit"))
             {
-                target.GetComponent<Unit>().DealDamage(attack);
-                canHit = false;
-                StartCoroutine(HitWithCooldown(attackCooldown));
+                //target.GetComponent<Unit>().DealDamage(attack);
+                //canHit = false;
+                StartCoroutine(HitWithCooldown(attackCooldown, target.gameObject.GetComponent<Unit>(), null));
             }
             else if (canHit && target.CompareTag("Player Base"))
             {
-                target.GetComponent<BaseScript>().DealDamage(attack);
-                canHit = false;
-                StartCoroutine(HitWithCooldown(attackCooldown));
+                //target.GetComponent<BaseScript>().DealDamage(attack);
+                //canHit = false;
+                StartCoroutine(HitWithCooldown(attackCooldown, null, target.gameObject.GetComponent<BaseScript>()));
             }
 
         }

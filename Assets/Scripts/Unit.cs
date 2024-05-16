@@ -53,7 +53,7 @@ public class Unit : MonoBehaviour
     {
         if (!isRanged)
         {
-            if (collision.gameObject.CompareTag("Enemy"))
+            if (collision.gameObject.CompareTag("Enemy") && weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 //collision.gameObject.GetComponent<EnemyScript>().DealDamage(attack);
                 //weaponAnimator.SetBool("isHitting", true);
@@ -76,7 +76,7 @@ public class Unit : MonoBehaviour
     {
         if (!isRanged)
         {
-            if (canHit && collision.gameObject.CompareTag("Enemy"))
+            if (canHit && collision.gameObject.CompareTag("Enemy") && weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 //collision.gameObject.GetComponent<EnemyScript>().DealDamage(attack);
                 //weaponAnimator.SetBool("isHitting", true);
@@ -101,8 +101,8 @@ public class Unit : MonoBehaviour
             weaponAnimator.SetBool("isHitting", true);
             canHit = false;
             yield return new WaitForSeconds(cooldown);
-            weaponAnimator.SetBool("isHitting", false);
             enemyS.DealDamage(attack);
+            weaponAnimator.SetBool("isHitting", false);
             canHit = true;
         }
         else if (baseS != null)
