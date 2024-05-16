@@ -26,6 +26,9 @@ public class Unit : MonoBehaviour
 
     private UnitUI UI;
 
+    [SerializeField]
+    private Animator weaponAnimator;
+
     private void OnEnable()
     {
         StartRoutine();
@@ -52,16 +55,18 @@ public class Unit : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
-                collision.gameObject.GetComponent<EnemyScript>().DealDamage(attack);
-                canHit = false;
-                StartCoroutine(HitWithCooldown(attackCooldown));
+                //collision.gameObject.GetComponent<EnemyScript>().DealDamage(attack);
+                //weaponAnimator.SetBool("isHitting", true);
+                //canHit = false;
+                StartCoroutine(HitWithCooldown(attackCooldown, collision.gameObject.GetComponent<EnemyScript>(), null));
             }
             else if (collision.gameObject.CompareTag("Enemy base"))
             {
 
-                collision.gameObject.GetComponent<BaseScript>().DealDamage(attack);
-                canHit = false;
-                StartCoroutine(HitWithCooldown(attackCooldown));
+                //collision.gameObject.GetComponent<BaseScript>().DealDamage(attack);
+                //weaponAnimator.SetBool("isHitting", true);
+                //canHit = false;
+                StartCoroutine(HitWithCooldown(attackCooldown, null, collision.gameObject.GetComponent<BaseScript>()));
             }
         }
 
@@ -73,23 +78,43 @@ public class Unit : MonoBehaviour
         {
             if (canHit && collision.gameObject.CompareTag("Enemy"))
             {
-                collision.gameObject.GetComponent<EnemyScript>().DealDamage(attack);
-                canHit = false;
-                StartCoroutine(HitWithCooldown(attackCooldown));
+                //collision.gameObject.GetComponent<EnemyScript>().DealDamage(attack);
+                //weaponAnimator.SetBool("isHitting", true);
+                //canHit = false;
+                StartCoroutine(HitWithCooldown(attackCooldown, collision.gameObject.GetComponent<EnemyScript>(), null));
             }
             else if (canHit && collision.gameObject.CompareTag("Enemy base"))
             {
-                collision.gameObject.GetComponent<BaseScript>().DealDamage(attack);
-                canHit = false;
-                StartCoroutine(HitWithCooldown(attackCooldown));
+                //collision.gameObject.GetComponent<BaseScript>().DealDamage(attack);
+                //weaponAnimator.SetBool("isHitting", true);
+                //canHit = false;
+                StartCoroutine(HitWithCooldown(attackCooldown, null, collision.gameObject.GetComponent<BaseScript>()));
             }
         }
     }
 
-    private IEnumerator HitWithCooldown(float cooldown)
+    private IEnumerator HitWithCooldown(float cooldown, EnemyScript enemyS, BaseScript baseS)
     {
-        yield return new WaitForSeconds(cooldown);
-        canHit = true;
+        if (enemyS != null)
+        {
+            weaponAnimator.SetFloat("speed", 1 / attackCooldown);
+            weaponAnimator.SetBool("isHitting", true);
+            canHit = false;
+            yield return new WaitForSeconds(cooldown);
+            weaponAnimator.SetBool("isHitting", false);
+            enemyS.DealDamage(attack);
+            canHit = true;
+        }
+        else if (baseS != null)
+        {
+            weaponAnimator.SetFloat("speed", 1 / attackCooldown);
+            weaponAnimator.SetBool("isHitting", true);
+            canHit = false;
+            yield return new WaitForSeconds(cooldown);
+            weaponAnimator.SetBool("isHitting", false);
+            baseS.DealDamage(attack);
+            canHit = true;
+        }
 
     }
 
@@ -136,15 +161,15 @@ public class Unit : MonoBehaviour
         {
             if (canHit && target.CompareTag("Enemy"))
             {
-                target.GetComponent<EnemyScript>().DealDamage(attack);
-                canHit = false;
-                StartCoroutine(HitWithCooldown(attackCooldown));
+                //target.GetComponent<EnemyScript>().DealDamage(attack);
+                //canHit = false;
+                StartCoroutine(HitWithCooldown(attackCooldown, target.gameObject.GetComponent<EnemyScript>(), null));
             }
             else if (canHit && target.CompareTag("Enemy base"))
             {
-                target.GetComponent<BaseScript>().DealDamage(attack);
-                canHit = false;
-                StartCoroutine(HitWithCooldown(attackCooldown));
+                //target.GetComponent<BaseScript>().DealDamage(attack);
+                //canHit = false;
+                StartCoroutine(HitWithCooldown(attackCooldown, null, target.gameObject.GetComponent<BaseScript>()));
             }
 
         }

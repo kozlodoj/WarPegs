@@ -60,6 +60,9 @@ TagManager:
   - name: Unit
     uniqueID: 1571261219
     locked: 0
+  - name: Weapon
+    uniqueID: 1735889725
+    locked: 0
   - name: Base
     uniqueID: 1433103945
     locked: 0

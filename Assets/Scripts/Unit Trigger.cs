@@ -42,7 +42,7 @@ public class UnitTrigger : MonoBehaviour
             wall02.SetActive(false);
             secondSpawner.SetActive(false);
             thirdSpawner.SetActive(false);
-            firstSpawner.transform.localPosition = new Vector2(0, -5);
+            firstSpawner.transform.localPosition = new Vector2(0, -4.4f);
             firstCollider.offset = new Vector2(0, 0);
             firstCollider.size = new Vector2(9, 1);
         }
@@ -60,8 +60,8 @@ public class UnitTrigger : MonoBehaviour
             secondSpawner.SetActive(true);
             thirdSpawner.SetActive(false);
             wall01.transform.localPosition = new Vector2(2, -4.5f);
-            firstSpawner.transform.localPosition = new Vector2(-1.5f, -5);
-            secondSpawner.transform.localPosition = new Vector2(3.6f, -5);
+            firstSpawner.transform.localPosition = new Vector2(-1.5f, -4.4f);
+            secondSpawner.transform.localPosition = new Vector2(3.6f, -4.4f);
             firstCollider.offset = new Vector2(0, 0);
             firstCollider.size = new Vector2(6, 1);
             secondCollider.offset = new Vector2(0, 0);
@@ -74,8 +74,8 @@ public class UnitTrigger : MonoBehaviour
             secondSpawner.SetActive(false);
             thirdSpawner.SetActive(true);
             wall01.transform.localPosition = new Vector2(2, -4.5f);
-            firstSpawner.transform.localPosition = new Vector2(-1.5f, -5);
-            thirdSpawner.transform.localPosition = new Vector2(3.6f, -5);
+            firstSpawner.transform.localPosition = new Vector2(-1.5f, -4.4f);
+            thirdSpawner.transform.localPosition = new Vector2(3.6f, -4.4f);
             firstCollider.offset = new Vector2(0, 0);
             firstCollider.size = new Vector2(6, 1);
             thirdCollider.offset = new Vector2(0, 0);
