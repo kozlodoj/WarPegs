@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 7840115019616670425}
   - component: {fileID: 6167966272006645461}
   - component: {fileID: 6798319531999433122}
+  - component: {fileID: 7513011087005331525}
   m_Layer: 9
   m_Name: Enemy01
   m_TagString: Enemy
@@ -306,7 +307,7 @@ MonoBehaviour:
   HP: 66
   attack: 20
   goldDrop: 10
-  weaponAnimator: {fileID: 1426024936585867691}
+  weaponAnimator: {fileID: 7513011087005331525}
 --- !u!61 &6798319531999433122
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -352,6 +353,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0635715, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &7513011087005331525
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500178492605920635}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b28ef82318911493db7c0af882efe9d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6849402528765698730
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +384,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6307400978683232043}
   - component: {fileID: 1646720010996374499}
-  - component: {fileID: 1426024936585867691}
   m_Layer: 0
   m_Name: enemy1_weapon
   m_TagString: Untagged
@@ -437,27 +458,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1426024936585867691
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6849402528765698730}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b28ef82318911493db7c0af882efe9d4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8920660980913631492
 GameObject:
   m_ObjectHideFlags: 0

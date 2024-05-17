@@ -23,9 +23,15 @@ public class EnemyScript : MonoBehaviour
 
     private float attackCooldown = 1.5f;
     private bool canHit = true;
+    private bool animationDone = false;
 
     [SerializeField]
     private Animator weaponAnimator;
+
+    [SerializeField]
+    private GameObject projectile;
+    [SerializeField]
+    private GameObject arrow;
 
 
     private UnitUI UI;
@@ -94,22 +100,26 @@ public class EnemyScript : MonoBehaviour
     {
         if (unitS != null)
         {
-            weaponAnimator.SetFloat("speed", 1 / attackCooldown);
+            weaponAnimator.SetFloat("speed", 1 / cooldown);
             weaponAnimator.SetBool("isHitting", true);
             canHit = false;
-            yield return new WaitForSeconds(cooldown);
+            animationDone = false;
+            while (!animationDone)
+                yield return null;
             unitS.DealDamage(attack);
-            weaponAnimator.SetBool("isHitting", false);
+            yield return new WaitForSeconds(cooldown);
             canHit = true;
         }
         else if (baseS != null)
         {
-            weaponAnimator.SetFloat("speed", 1 / attackCooldown);
+            weaponAnimator.SetFloat("speed", 1 / cooldown);
             weaponAnimator.SetBool("isHitting", true);
             canHit = false;
-            yield return new WaitForSeconds(cooldown);
-            weaponAnimator.SetBool("isHitting", false);
+            animationDone = false;
+            while (!animationDone)
+                yield return null;
             baseS.DealDamage(attack);
+            yield return new WaitForSeconds(cooldown);
             canHit = true;
         }
 
@@ -149,20 +159,22 @@ public class EnemyScript : MonoBehaviour
     {
         if (isRanged && CanShoot(target.transform.position) && !GameManager.instance.gameOver)
         {
-            if (canHit && target.CompareTag("Unit"))
+            if (canHit)
             {
-                //target.GetComponent<Unit>().DealDamage(attack);
-                //canHit = false;
-                StartCoroutine(HitWithCooldown(attackCooldown, target.gameObject.GetComponent<Unit>(), null));
-            }
-            else if (canHit && target.CompareTag("Player Base"))
-            {
-                //target.GetComponent<BaseScript>().DealDamage(attack);
-                //canHit = false;
-                StartCoroutine(HitWithCooldown(attackCooldown, null, target.gameObject.GetComponent<BaseScript>()));
+                weaponAnimator.SetBool("isHitting", true);
+                canHit = false;
+                StartCoroutine(RangedWithCooldown(attackCooldown));
             }
 
         }
+    }
+
+    private IEnumerator RangedWithCooldown(float cooldown)
+    {
+
+        yield return new WaitForSeconds(cooldown);
+        canHit = true;
+
     }
 
     private bool CanShoot(Vector3 position)
@@ -175,5 +187,25 @@ public class EnemyScript : MonoBehaviour
             return true;
         else
             return false;
+    }
+    public void StopAnimationMelee()
+    {
+        weaponAnimator.SetBool("isHitting", false);
+        animationDone = true;
+    }
+
+    public void StopAnimationRanged()
+    {
+        weaponAnimator.SetBool("isHitting", false);
+        arrow.SetActive(false);
+        GameObject newArrow = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
+        newArrow.GetComponent<Arrow>().SetTarget(target, attack);
+        StartCoroutine(ResetArrow());
+    }
+
+    private IEnumerator ResetArrow()
+    {
+        yield return new WaitForSeconds(1f);
+        arrow.SetActive(true);
     }
 }
