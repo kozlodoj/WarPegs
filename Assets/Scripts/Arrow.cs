@@ -50,7 +50,7 @@ public class Arrow : MonoBehaviour
                 theTarget.GetComponent<EnemyScript>().DealDamage(theDamage);
                 Destroy(gameObject);
             }
-            else if ((collision.gameObject == theTarget && collision.gameObject.CompareTag("Enemy base")))
+            else if (collision.gameObject == theTarget && collision.gameObject.CompareTag("Enemy base"))
             {
                 theTarget.GetComponent<BaseScript>().DealDamage(theDamage);
                 Destroy(gameObject);
@@ -58,12 +58,13 @@ public class Arrow : MonoBehaviour
         }
         else
         {
+           
             if (collision.gameObject == theTarget && collision.gameObject.CompareTag("Unit"))
             {
                 theTarget.GetComponent<Unit>().DealDamage(theDamage);
                 Destroy(gameObject);
             }
-            else if ((collision.gameObject == theTarget && collision.gameObject.CompareTag("Player base")))
+            else if (collision.gameObject == theTarget && collision.gameObject.CompareTag("Player Base"))
             {
                 theTarget.GetComponent<BaseScript>().DealDamage(theDamage);
                 Destroy(gameObject);

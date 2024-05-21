@@ -8,6 +8,8 @@ public class UnitSpawner : MonoBehaviour
     private GameObject unitPrefab;
     [SerializeField]
     private int unitNum;
+    [SerializeField]
+    private Transform spawnPoint;
 
     private TowManager towManager;
 
@@ -38,7 +40,7 @@ public class UnitSpawner : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameObject newUnit = Instantiate(unitPrefab) as GameObject;
+            GameObject newUnit = Instantiate(unitPrefab, spawnPoint) as GameObject;
             newUnit.GetComponent<Unit>().Buff(collision.gameObject.GetComponent<Ball>().GetBuff());
             towManager.UpdateUnitList(newUnit);
             if (reactivateOnSpawn)

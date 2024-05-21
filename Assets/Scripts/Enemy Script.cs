@@ -163,7 +163,7 @@ public class EnemyScript : MonoBehaviour
             {
                 weaponAnimator.SetBool("isHitting", true);
                 canHit = false;
-                StartCoroutine(RangedWithCooldown(attackCooldown));
+                
             }
 
         }
@@ -207,5 +207,6 @@ public class EnemyScript : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         arrow.SetActive(true);
+        StartCoroutine(RangedWithCooldown(attackCooldown));
     }
 }

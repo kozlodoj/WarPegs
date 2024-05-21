@@ -132,6 +132,7 @@ public class Unit : MonoBehaviour
             target = towManager.ClosestEnemy(gameObject.transform);
             agent.SetDestination(target.transform.position);
         }
+        
     }
 
     public void Buff(float amount)
@@ -158,13 +159,14 @@ public class Unit : MonoBehaviour
 
     private void RangedAttack()
     {
+        
         if (isRanged && CanShoot(target.transform.position) && !GameManager.instance.gameOver)
         {
+            
             if (canHit)
             {
                 weaponAnimator.SetBool("isHitting", true);
-                canHit = false;
-                StartCoroutine(RangedWithCooldown(attackCooldown));
+                
             }
 
         }
@@ -192,6 +194,7 @@ public class Unit : MonoBehaviour
     public void StopAnimationRanged()
     {
         weaponAnimator.SetBool("isHitting", false);
+        canHit = false;
         arrow.SetActive(false);
             GameObject newArrow = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
             newArrow.GetComponent<Arrow>().SetTarget(target, attack);
@@ -202,6 +205,7 @@ public class Unit : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         arrow.SetActive(true);
+        StartCoroutine(RangedWithCooldown(attackCooldown));
     }
 
     public void StopAnimationMelee()

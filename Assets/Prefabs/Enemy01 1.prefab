@@ -85,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5813882418238230050}
   - component: {fileID: 6112860080724997647}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: lineUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1859459921718815986}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 780084297902520709}
   - component: {fileID: 1196935329221886213}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: enemy_arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1542818929378389976}
   - component: {fileID: 3377043392257278437}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: lineUnder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +673,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5682057902703190527}
   - component: {fileID: 8618968372662854245}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: enemy_Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
