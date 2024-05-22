@@ -22,7 +22,7 @@ public class StoryUI : MonoBehaviour
 
     public void SetGoldText(int amount)
     {
-        goldText.SetText("Gold: " + amount);
+        goldText.SetText(amount.ToString());
     }
     public void Play()
     {

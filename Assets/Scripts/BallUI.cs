@@ -12,6 +12,8 @@ public class BallUI : MonoBehaviour
     private GameObject charger;
     [SerializeField]
     private TextMeshProUGUI buffText;
+    [SerializeField]
+    private TextMeshProUGUI buffTextOutline;
 
 
     private Transform ball;
@@ -30,7 +32,7 @@ public class BallUI : MonoBehaviour
 
     public void SetCharge(float amount)
     {
-        chargeBar.fillAmount = amount;
+        chargeBar.fillAmount = 1f - amount;
     }
     public void DisactivateChargebar()
     {
@@ -39,5 +41,6 @@ public class BallUI : MonoBehaviour
     public void SetBuffText(float amount)
     {
         buffText.SetText(amount.ToString());
+        buffTextOutline.SetText(amount.ToString());
     }
 }

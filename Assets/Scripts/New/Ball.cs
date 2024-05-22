@@ -89,6 +89,7 @@ public class Ball : MonoBehaviour
     public void LounchPos()
     {
         ballUI.DisactivateChargebar();
+        transform.localScale = new Vector3(0.22f, 0.22f, 1f);
     }
 
     public void SetStats()

@@ -96,7 +96,7 @@ public class UIScript : MonoBehaviour
 
     public void SetGold(int amount)
     {
-        goldText.SetText("Gold: " + amount);
+        goldText.SetText(amount.ToString());
     }
 
     private void SetColors()

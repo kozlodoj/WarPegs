@@ -8,8 +8,13 @@ public class ReloadButton : MonoBehaviour
 {
     private TextMeshProUGUI costText;
     private TextMeshProUGUI rateText;
+    private Image goldImage;
 
     private Color theColor;
+    private Color textColor;
+    private Color transperentTextColor;
+    private Color goldColor;
+    private Color trGoldColor;
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +23,17 @@ public class ReloadButton : MonoBehaviour
         
         costText = transform.Find("Cost Text").gameObject.GetComponent<TextMeshProUGUI>();
         rateText = transform.Find("ReloadRate Text").gameObject.GetComponent<TextMeshProUGUI>();
+        goldImage = costText.transform.Find("gold").gameObject.GetComponent<Image>();
         rateText.SetText(GameManager.instance.reloadRate.ToString() + " Sec");
         costText.SetText(GameManager.instance.reloadCost.ToString());
+
+        textColor = costText.GetComponent<TextMeshProUGUI>().color;
+        transperentTextColor = textColor;
+        transperentTextColor.a = 0.1f;
+
+        goldColor = goldImage.color;
+        trGoldColor = goldColor;
+        trGoldColor.a = 0.1f;
         CheckActive();
     }
 
@@ -45,12 +59,17 @@ public class ReloadButton : MonoBehaviour
         theColor.a = 1f;
         gameObject.GetComponent<Image>().color = theColor;
         gameObject.GetComponent<Button>().enabled = true;
+        costText.GetComponent<TextMeshProUGUI>().color = textColor;
+        goldImage.color = goldColor;
+
     }
     private void NotEnoughMoney()
     {
         theColor.a = 0.1f;
         gameObject.GetComponent<Button>().enabled = false;
         gameObject.GetComponent<Image>().color = theColor;
+        costText.GetComponent<TextMeshProUGUI>().color = transperentTextColor;
+        goldImage.color = trGoldColor;
     }
 
     private bool IsActive()
