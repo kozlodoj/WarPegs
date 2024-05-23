@@ -68,8 +68,8 @@ public class EnemyScript : MonoBehaviour
         else if (collision.gameObject.CompareTag("Player Base") && weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
            
-            collision.gameObject.GetComponent<BaseScript>().DealDamage(attack);
-            canHit = false;
+            //collision.gameObject.GetComponent<BaseScript>().DealDamage(attack);
+            //canHit = false;
             StartCoroutine(HitWithCooldown(attackCooldown, null, collision.gameObject.GetComponent<BaseScript>()));
         }
     }
