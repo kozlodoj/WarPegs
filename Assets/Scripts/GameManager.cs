@@ -32,8 +32,11 @@ public class GameManager : MonoBehaviour
 
     public bool storyMode;
 
+    public float cameraScale;
+
     void Awake()
     {
+
         if (instance == null)
             instance = this;
 
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+        CameraScale();
     }
 
     public void LevelSelect(int levelNum)
@@ -103,5 +107,13 @@ public class GameManager : MonoBehaviour
         AddGold(-hPCost);
         hPCost = (int)(hPCost * 1.1f);
     }
-   
+
+    private void CameraScale()
+    {
+        GameObject camera = GameObject.Find("Main Camera");
+        cameraScale = ((float)Screen.height / (float)Screen.width) * 5f;
+        camera.GetComponent<Camera>().orthographicSize = cameraScale;
+
+    }
+
 }
