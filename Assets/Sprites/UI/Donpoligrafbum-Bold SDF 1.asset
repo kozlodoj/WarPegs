@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Donpoligrafbum-Bold SDF
+  m_Name: Donpoligrafbum-Bold SDF 1
   m_EditorClassIdentifier: 
   hashCode: 1312563086
   material: {fileID: -1290789542571064754}
@@ -911,6 +911,10 @@ MonoBehaviour:
     m_GlyphIndex: 31
     m_Scale: 1
   - m_ElementType: 1
+    m_Unicode: 68
+    m_GlyphIndex: 33
+    m_Scale: 1
+  - m_ElementType: 1
     m_Unicode: 71
     m_GlyphIndex: 36
     m_Scale: 1
@@ -961,6 +965,10 @@ MonoBehaviour:
   - m_ElementType: 1
     m_Unicode: 97
     m_GlyphIndex: 30
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 98
+    m_GlyphIndex: 31
     m_Scale: 1
   - m_ElementType: 1
     m_Unicode: 99

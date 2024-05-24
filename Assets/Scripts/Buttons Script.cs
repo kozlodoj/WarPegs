@@ -15,6 +15,7 @@ public class ButtonsScript : MonoBehaviour
     public float tankCost;
     public float reloadCost;
     public float hpCost;
+    public float gold;
     public bool isRandom;
     public bool isReactivateActive;
 
@@ -40,6 +41,8 @@ public class ButtonsScript : MonoBehaviour
     private TextMeshProUGUI reloadCostText;
     [SerializeField]
     private TextMeshProUGUI hpCostText;
+    [SerializeField]
+    private TextMeshProUGUI goldText;
 
     private void Start()
     {
@@ -163,6 +166,21 @@ public class ButtonsScript : MonoBehaviour
 
     }
 
+    public void GoldMinus()
+    {
+        gold -= 100f;
+        goldText.SetText(gold.ToString());
+        GameManager.instance.gold = (int)gold;
+
+    }
+
+    public void GoldPlus()
+    {
+        gold += 100f;
+        goldText.SetText(gold.ToString());
+        GameManager.instance.gold = (int)gold;
+    }
+
     private void UpdateStats()
     {
         power = GameManager.instance.ballPower;
@@ -176,6 +194,7 @@ public class ButtonsScript : MonoBehaviour
         tankCost = GameManager.instance.unitThreeCost;
         reloadCost = GameManager.instance.reloadCost;
         hpCost = GameManager.instance.hPCost;
+        gold = GameManager.instance.gold;
 
         powerText.SetText(power.ToString());
         reloadText.SetText(reload.ToString());
@@ -186,6 +205,7 @@ public class ButtonsScript : MonoBehaviour
         tankCostText.SetText(tankCost.ToString());
         reloadCostText.SetText(reloadCost.ToString());
         hpCostText.SetText(hpCost.ToString());
+        goldText.SetText(gold.ToString());
         randomToggle.isOn = isRandom;
         reactivateToggle.isOn = isReactivateActive;
     }

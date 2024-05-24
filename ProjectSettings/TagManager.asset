@@ -17,6 +17,7 @@ TagManager:
   - Unit
   - Enemy
   - Player Base
+  - Peg Layout
   layers:
   - Default
   - TransparentFX

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public int baseHP;
 
     public int gold;
+    public int currentGold;
 
     public bool randomSpawn;
     public bool reactivatePegsOnSpawn;
@@ -50,8 +51,9 @@ public class GameManager : MonoBehaviour
 
     public void LevelSelect(int levelNum)
     {
+        currentGold = 0;
         Time.timeScale = 1;
-        if (levelNum >= 5)
+        if (levelNum > 5)
             storyMode = true;
         else
             storyMode = false;
@@ -62,7 +64,8 @@ public class GameManager : MonoBehaviour
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene(0);
+        currentGold = 0;
+        SceneManager.LoadScene(5);
         gameOver = false;
     }
 
@@ -75,6 +78,7 @@ public class GameManager : MonoBehaviour
     public void AddGold(int amount)
     {
         gold += amount;
+        currentGold += amount;
         if (SceneManager.GetActiveScene().name == "Story Menu")
         {
             GameObject.Find("UI").GetComponent<StoryUI>().SetGoldText(gold);

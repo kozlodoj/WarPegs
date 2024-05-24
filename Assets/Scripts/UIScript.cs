@@ -25,9 +25,11 @@ public class UIScript : MonoBehaviour
 
     [SerializeField]
     private GameObject gameOver;
+    private TextMeshProUGUI currentCoin;
 
     [SerializeField]
     private TextMeshProUGUI goldText;
+    
 
     private void OnEnable()
     {
@@ -49,11 +51,14 @@ public class UIScript : MonoBehaviour
         touch = actionMap.FindAction("Touch");
         joyImage = joystick.GetComponent<Image>();
         outlineImage = joyOutline.GetComponent<Image>();
+        if(GameManager.instance.storyMode)
+        currentCoin = gameOver.transform.Find("gold").gameObject.GetComponent<TextMeshProUGUI>();
         SetColors();
         
 
         touch.started += ActivateJoystick;
         touch.canceled += DeactivateJoystic;
+        if(GameManager.instance.storyMode)
         SetGold(GameManager.instance.gold);
 
     }
@@ -82,9 +87,9 @@ public class UIScript : MonoBehaviour
     public void BackToMenu()
     {
         if(GameManager.instance.storyMode)
-            GameManager.instance.LevelSelect(5);
+            GameManager.instance.LevelSelect(0);
         else
-        GameManager.instance.LevelSelect(0);
+        GameManager.instance.LevelSelect(5);
     }
 
     public void ActivateGameOverUI()
@@ -96,7 +101,11 @@ public class UIScript : MonoBehaviour
 
     public void SetGold(int amount)
     {
-        goldText.SetText(amount.ToString());
+        if (GameManager.instance.storyMode)
+        {
+            goldText.SetText(amount.ToString());
+            currentCoin.SetText(GameManager.instance.currentGold.ToString());
+        }
     }
 
     private void SetColors()

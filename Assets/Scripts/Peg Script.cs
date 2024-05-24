@@ -29,7 +29,7 @@ public class PegScript : MonoBehaviour
         c = rend.material.color;
         c.a = 1f;
 
-        pegManager = GameObject.Find("Pegs").GetComponent<PegManager>();
+        pegManager = GameObject.FindWithTag("Peg Layout").GetComponent<PegManager>();
 
         buffPoints = GameManager.instance.buff;
     }

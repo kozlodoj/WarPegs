@@ -138,6 +138,7 @@ public class EnemyScript : MonoBehaviour
         if (!GameManager.instance.gameOver)
         {
             target = towManager.ClosestUnit(gameObject.transform);
+            if (target != null)
             agent.SetDestination(target.transform.position);
         }
         
@@ -157,15 +158,18 @@ public class EnemyScript : MonoBehaviour
 
     private void RangedAttack()
     {
-        if (isRanged && CanShoot(target.transform.position) && !GameManager.instance.gameOver)
+        if (target != null)
         {
-            if (canHit)
+            if (isRanged && CanShoot(target.transform.position) && !GameManager.instance.gameOver)
             {
-                weaponAnimator.SetBool("isHitting", true);
-                canHit = false;
-                
-            }
+                if (canHit)
+                {
+                    weaponAnimator.SetBool("isHitting", true);
+                    canHit = false;
 
+                }
+
+            }
         }
     }
 
@@ -196,10 +200,14 @@ public class EnemyScript : MonoBehaviour
 
     public void StopAnimationRanged()
     {
+
         weaponAnimator.SetBool("isHitting", false);
         arrow.SetActive(false);
-        GameObject newArrow = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
-        newArrow.GetComponent<Arrow>().SetTarget(target, attack);
+        if (CanShoot(target.transform.position))
+        {
+            GameObject newArrow = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
+            newArrow.GetComponent<Arrow>().SetTarget(target, attack);
+        }
         StartCoroutine(ResetArrow());
     }
 

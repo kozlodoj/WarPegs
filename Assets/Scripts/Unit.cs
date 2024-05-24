@@ -130,7 +130,8 @@ public class Unit : MonoBehaviour
         if (!GameManager.instance.gameOver)
         {
             target = towManager.ClosestEnemy(gameObject.transform);
-            agent.SetDestination(target.transform.position);
+            if (target != null)
+                agent.SetDestination(target.transform.position);
         }
         
     }
@@ -159,16 +160,18 @@ public class Unit : MonoBehaviour
 
     private void RangedAttack()
     {
-        
-        if (isRanged && CanShoot(target.transform.position) && !GameManager.instance.gameOver)
+        if (target != null)
         {
-            
-            if (canHit)
+            if (isRanged && CanShoot(target.transform.position) && !GameManager.instance.gameOver)
             {
-                weaponAnimator.SetBool("isHitting", true);
-                
-            }
 
+                if (canHit)
+                {
+                    weaponAnimator.SetBool("isHitting", true);
+
+                }
+
+            }
         }
     }
 

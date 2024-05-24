@@ -32,7 +32,7 @@ public class UnitSpawner : MonoBehaviour
         }
         towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
         reactivateOnSpawn = GameManager.instance.reactivatePegsOnSpawn;
-        pegs = GameObject.Find("Peggle").transform.Find("Pegs").gameObject.GetComponent<PegManager>();
+        pegs = GameObject.FindWithTag("Peg Layout").gameObject.GetComponent<PegManager>();
         
     }
 

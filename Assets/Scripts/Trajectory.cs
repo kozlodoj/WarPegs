@@ -29,7 +29,7 @@ public class Trajectory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        obstacles = GameObject.Find("Pegs");
+        obstacles = GameObject.FindWithTag("Peg Layout");
         wall = GameObject.Find("Walls");
         Physics2D.simulationMode = SimulationMode2D.Script;
 

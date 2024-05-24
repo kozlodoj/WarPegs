@@ -49,5 +49,16 @@ MonoBehaviour:
   buff: 2
   respawn: 2
   intialStat: 100
+  baseHP: 10
+  gold: 0
   randomSpawn: 0
   reactivatePegsOnSpawn: 0
+  isUnitTwoActive: 0
+  isUnitThreeActive: 0
+  gameOver: 0
+  unitTwoCost: 1000
+  unitThreeCost: 5000
+  reloadCost: 50
+  hPCost: 50
+  storyMode: 0
+  cameraScale: 0
