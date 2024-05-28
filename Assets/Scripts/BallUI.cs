@@ -40,7 +40,10 @@ public class BallUI : MonoBehaviour
     }
     public void SetBuffText(float amount)
     {
-        buffText.SetText(amount.ToString());
-        buffTextOutline.SetText(amount.ToString());
+        if (amount != 0)
+        {
+            buffText.SetText(amount.ToString());
+            buffTextOutline.SetText(amount.ToString());
+        }
     }
 }

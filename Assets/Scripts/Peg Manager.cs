@@ -33,7 +33,13 @@ public class PegManager : MonoBehaviour
     {
         for (int i = 0; i < medicPegs; i++)
         {
-            allPegs[RandomNum()].GetComponent<PegScript>().SetMedic();
+            var peg = allPegs[RandomNum()];
+            if (!peg.borderPeg)
+            {
+                peg.SetMedic();
+            }
+            else
+                i--;
         }
     }
 

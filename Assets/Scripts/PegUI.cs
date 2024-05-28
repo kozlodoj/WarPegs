@@ -8,13 +8,14 @@ public class PegUI : MonoBehaviour
     private TextMeshProUGUI buffText;
 
     private bool scale = false;
-    
+    private Vector3 initialScale;
 
     // Start is called before the first frame update
     void Start()
     {
+
         buffText = gameObject.transform.Find("BuffText").GetComponent<TextMeshProUGUI>();
-       
+        initialScale = buffText.transform.localScale;
     }
 
     private void Update()
@@ -37,7 +38,7 @@ public class PegUI : MonoBehaviour
     {
         
             scale = false;
-            buffText.transform.localScale = new Vector3(1, 1, 1);
+            buffText.transform.localScale = initialScale;
             buffText.SetText(" ");
        
         

@@ -27,6 +27,7 @@ public class BallLauncher : MonoBehaviour
     private GameObject dummy;
     private Animator trajAnimation;
     private LineRenderer trajLine;
+    private Vector2 fireSpeed;
 
     private GameObject noBall;
 
@@ -58,6 +59,7 @@ public class BallLauncher : MonoBehaviour
             Quaternion theRotation = Quaternion.AngleAxis(angleDegrees - 90f, Vector3.forward);
             theBall.transform.rotation = theRotation;
             speed = maxSpeed * context.ReadValue<Vector2>().magnitude;
+            fireSpeed = theBall.transform.up * speed;
             if (!isTrajActive)
             {
                 isTrajActive = true;
@@ -67,7 +69,7 @@ public class BallLauncher : MonoBehaviour
 
             trajLine.colorGradient = newGradient(context.ReadValue<Vector2>().magnitude);
             trajLine.endWidth = 0.3f * context.ReadValue<Vector2>().magnitude;
-            trajScript.predict(dummy, theBall.transform.position, theBall.transform.up * speed, theRotation);
+            trajScript.predict(dummy, theBall.transform.position, fireSpeed, theRotation);
             trajAnimation.speed = speed / 2f;
 
         }

@@ -82,6 +82,7 @@ public class Trajectory : MonoBehaviour
                 GameObject fakeT = Instantiate(t.gameObject);
                 fakeT.transform.position = t.position;
                 fakeT.transform.rotation = t.rotation;
+                fakeT.transform.localScale /= 2f;
                 Renderer fakeR = fakeT.GetComponent<Renderer>();
                 PegScript peg = fakeT.GetComponent<PegScript>();
                 peg.isClone = true;
@@ -93,6 +94,7 @@ public class Trajectory : MonoBehaviour
                 dummyObstacles.Add(fakeT);
             }
         }
+
     }
 
     public void killAllObstacles()
@@ -124,6 +126,7 @@ public class Trajectory : MonoBehaviour
             dummyRb.AddRelativeForce(force, ForceMode2D.Impulse);
             lineRenderer.positionCount = 0;
             lineRenderer.positionCount = maxIterations;
+            //copyAllObstacles();
             
 
             for (int i = 0; i < maxIterations; i++)
@@ -135,7 +138,7 @@ public class Trajectory : MonoBehaviour
                 {
                     lineRenderer.positionCount = i;
                     ghost.SetActive(true);
-                    ghost.transform.position = lineRenderer.GetPosition(i-1);
+                    ghost.transform.position = lineRenderer.GetPosition(i - 2);
                     
                     i = maxIterations;
 
