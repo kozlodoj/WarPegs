@@ -27,6 +27,12 @@ public class PegScript : MonoBehaviour
     private SpriteRenderer additionalSpriteLeft;
     [SerializeField]
     private SpriteRenderer additionalSpriteRight;
+    [SerializeField]
+    private Sprite crackedSprite;
+    [SerializeField]
+    private Sprite fullSprite;
+    [SerializeField]
+    private bool dontRespawn;
 
     // Start is called before the first frame update
     void Start()
@@ -68,7 +74,7 @@ public class PegScript : MonoBehaviour
 
     public void FadeIn()
     {
-        if (!gameObject.activeSelf)
+        if (!gameObject.activeSelf && !dontRespawn)
         {
             gameObject.SetActive(true);
             boucesLeft = numberOfBounces;
@@ -79,13 +85,12 @@ public class PegScript : MonoBehaviour
 
     IEnumerator FaderOut()
     {
-
         for (float f = 1f; f >= 0; f -= fadeRate)
         {
             Color c = rend.material.color;
             c.a = f;
             rend.material.color = c;
-            if (borderPeg)
+            if (borderPeg && additionalSpriteLeft != null)
             {
                 additionalSpriteLeft.material.color = c;
                 additionalSpriteRight.material.color = c;
@@ -98,13 +103,15 @@ public class PegScript : MonoBehaviour
 
     IEnumerator FaderIn()
     {
-        
+        if (fullSprite != null)
+            gameObject.GetComponent<SpriteRenderer>().sprite = fullSprite;
+
         for (float f = 0.1f; f <= 1; f += fadeRate)
         {
             Color c = rend.material.color;
             c.a = f;
             rend.material.color = c;
-            if (borderPeg)
+            if (borderPeg && additionalSpriteLeft != null)
             {
                 additionalSpriteLeft.material.color = c;
                 additionalSpriteRight.material.color = c;
@@ -118,7 +125,9 @@ public class PegScript : MonoBehaviour
     {
         if (medicPeg && !isClone)
             pegManager.ReactivatePegs();
-        
+        if (borderPeg && crackedSprite != null)
+            gameObject.GetComponent<SpriteRenderer>().sprite = crackedSprite;
+
 
     }
 
