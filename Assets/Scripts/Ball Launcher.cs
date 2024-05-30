@@ -12,7 +12,7 @@ public class BallLauncher : MonoBehaviour
 
     private Rigidbody2D ballRb;
 
-    private bool isOcupied = false;
+    public bool isOcupied = false;
 
     [SerializeField]
     private InputActionAsset controlsAsset;

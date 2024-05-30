@@ -160,5 +160,16 @@ public class GameManager : MonoBehaviour
         camera.GetComponent<Camera>().orthographicSize = cameraScale;
 
     }
+    public void FreezeTow()
+    {
+        if (!freezeGame)
+            freezeGame = true;
+       
+    }
+    public void UnFreezeTow()
+    {
+        if (freezeGame)
+            freezeGame = false;
+    }
 
 }

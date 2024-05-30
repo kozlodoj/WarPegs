@@ -17,6 +17,8 @@ public class UnitSpawner : MonoBehaviour
 
     private PegManager pegs;
 
+    private Freeze freezeScript;
+
     private void Start()
     {
         if (GameManager.instance.storyMode)
@@ -33,6 +35,8 @@ public class UnitSpawner : MonoBehaviour
         towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
         reactivateOnSpawn = GameManager.instance.reactivatePegsOnSpawn;
         pegs = GameObject.FindWithTag("Peg Layout").gameObject.GetComponent<PegManager>();
+        if (GameManager.instance.isPerkOneActive)
+        freezeScript = GameObject.FindGameObjectWithTag("Freeze").GetComponent<Freeze>();
         
     }
 
@@ -46,7 +50,10 @@ public class UnitSpawner : MonoBehaviour
             if (reactivateOnSpawn)
                 pegs.ReactivatePegs();
             if (GameManager.instance.freezeGame)
-                GameManager.instance.freezeGame = false;
+            {
+                GameManager.instance.UnFreezeTow();
+                freezeScript.ResetFreeze();
+            }
         }
     }
 }

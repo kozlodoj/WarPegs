@@ -49,6 +49,7 @@ public class EnemyScript : MonoBehaviour
             Move();
             RangedAttack();
             ManageHP();
+        ManageFreezeStop();
        
     }
 
@@ -178,6 +179,14 @@ public class EnemyScript : MonoBehaviour
 
             }
         }
+    }
+
+    private void ManageFreezeStop()
+    {
+        if (GameManager.instance.freezeGame)
+            weaponAnimator.speed = 0;
+        else
+            weaponAnimator.speed = 1;
     }
 
     private IEnumerator RangedWithCooldown(float cooldown)

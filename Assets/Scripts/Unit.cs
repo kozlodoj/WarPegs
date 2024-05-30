@@ -48,6 +48,7 @@ public class Unit : MonoBehaviour
             Move();
             RangedAttack();
             ManageHP();
+        ManageFreezeStop();
         
     }
 
@@ -118,6 +119,14 @@ public class Unit : MonoBehaviour
             canHit = true;
         }
 
+    }
+
+    private void ManageFreezeStop()
+    {
+        if (GameManager.instance.freezeGame)
+            weaponAnimator.speed = 0;
+        else
+            weaponAnimator.speed = 1;
     }
 
     private void ManageHP()

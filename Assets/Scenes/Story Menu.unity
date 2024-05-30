@@ -697,7 +697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
       propertyPath: diamonds
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
       propertyPath: ballPower

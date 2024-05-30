@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 233343120}
   m_Layer: 5
   m_Name: FreezePerkButton
-  m_TagString: Untagged
+  m_TagString: Freeze
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -779,7 +779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09314a9c1153472baba965661d8bbbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadTime: 10
+  reloadTime: 30
 --- !u!114 &233343121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3321,6 +3321,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Launcher 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1355396499160820633, guid: c067c4613154d49b1ba31d99550b5413, type: 3}
+      propertyPath: m_TagString
+      value: Louncher
+      objectReference: {fileID: 0}
     - target: {fileID: 8101960441248614987, guid: c067c4613154d49b1ba31d99550b5413, type: 3}
       propertyPath: trajectory
       value: 
@@ -3426,11 +3430,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 856111364}
+  - {fileID: 233343119}
   - {fileID: 1419373711}
   - {fileID: 13789552}
   - {fileID: 574192923}
   - {fileID: 492277739}
-  - {fileID: 233343119}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

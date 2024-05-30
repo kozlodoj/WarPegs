@@ -18,6 +18,8 @@ TagManager:
   - Enemy
   - Player Base
   - Peg Layout
+  - Louncher
+  - Freeze
   layers:
   - Default
   - TransparentFX
