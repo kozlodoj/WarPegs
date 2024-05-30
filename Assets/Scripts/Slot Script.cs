@@ -19,6 +19,7 @@ public class SlotScript : MonoBehaviour
     private bool isLast;
     public bool isOcupied;
     public bool ballCharged;
+    private bool firstBall = true;
 
 
     // Start is called before the first frame update
@@ -82,8 +83,15 @@ public class SlotScript : MonoBehaviour
         if (ballScript != null)
         {
             ballCharged = ballScript.isCharged;
+            if (isFirst && firstBall)
+            {
+                ballScript.SetInitialCharge(GameManager.instance.initialBallCharge);
+                firstBall = false;
+            }
             if (isFirst)
+            {
                 ballScript.ActivateCharging();
+            }
             else if (slotScript.ballCharged)
                 ballScript.ActivateCharging();
         }

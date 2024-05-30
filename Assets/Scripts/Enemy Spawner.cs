@@ -101,11 +101,13 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnPattern()
     {
+       
         yield return new WaitForSeconds(spawnPattern[0].spawnTime);
         for (int i = 0; i < spawnPattern.Count; i++)
         {
             if (i == 0)
             {
+                yield return new WaitUntil(() => !GameManager.instance.freezeGame);
                 towManager.UpdateEnemiesList(Instantiate(enemies[spawnPattern[i].unitNum], gameObject.transform));
                 if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                     yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -113,6 +115,7 @@ public class EnemySpawner : MonoBehaviour
 
             else if (i != 0)
             {
+                yield return new WaitUntil(() => !GameManager.instance.freezeGame);
                 towManager.UpdateEnemiesList(Instantiate(enemies[spawnPattern[i].unitNum], gameObject.transform));
                 if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                     yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);

@@ -13,8 +13,10 @@ public class GameManager : MonoBehaviour
     public float respawn = 2;
     public float intialStat = 100f;
     public int baseHP;
+    public float initialBallCharge;
 
     public int gold;
+    public int diamonds;
     public int currentGold;
 
     public bool randomSpawn;
@@ -23,17 +25,27 @@ public class GameManager : MonoBehaviour
     public bool isUnitTwoActive = false;
     public bool isUnitThreeActive = false;
 
+    public bool isPerkOneActive = false;
+
     public bool gameOver = false;
 
     public int unitTwoCost = 1000;
     public int unitThreeCost = 5000;
 
+    public int perkOneCost = 300;
+
     public int reloadCost;
     public int hPCost;
+    public int buffCost;
 
     public bool storyMode;
 
     public float cameraScale;
+
+    public bool joyStickActive;
+
+    public bool freezeGame = false;
+
 
     void Awake()
     {
@@ -86,6 +98,18 @@ public class GameManager : MonoBehaviour
         else
         GameObject.Find("UI").GetComponent<UIScript>().SetGold(gold);
     }
+
+    public void AddDiamond(int amount)
+    {
+        diamonds += amount;
+       
+        if (SceneManager.GetActiveScene().name == "Story Menu")
+        {
+            GameObject.Find("UI").GetComponent<StoryUI>().SetDiamondText(diamonds);
+        }
+        else
+            GameObject.Find("UI").GetComponent<UIScript>().SetDiamonds(diamonds);
+    }
     public void BuyUnit(int num)
     {
         if (num == 2 && !isUnitTwoActive)
@@ -99,6 +123,16 @@ public class GameManager : MonoBehaviour
             isUnitThreeActive = true;
         }
     }
+    public void BuyPerk(int num)
+    {
+        if (num == 1 && !isPerkOneActive)
+        {
+            AddDiamond(-perkOneCost);
+            isPerkOneActive = true;
+        }
+       
+    }
+
     public void BuyReloadTime()
     {
         reloadRate -= 0.25f;
@@ -111,6 +145,13 @@ public class GameManager : MonoBehaviour
         AddGold(-hPCost);
         hPCost = (int)(hPCost * 1.1f);
     }
+    public void BuyBuff()
+    {
+        buff++;
+        AddGold(-buffCost);
+        buffCost = (int)(buffCost * 2f);
+    }
+
 
     private void CameraScale()
     {

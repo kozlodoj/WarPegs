@@ -45,9 +45,11 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        RangedAttack();
-        ManageHP();
+        
+            Move();
+            RangedAttack();
+            ManageHP();
+       
     }
 
     public void DealDamage(float amount)
@@ -135,11 +137,16 @@ public class EnemyScript : MonoBehaviour
     }
     private void Move()
     {
-        if (!GameManager.instance.gameOver)
+        if (!GameManager.instance.gameOver || !GameManager.instance.freezeGame)
         {
+            agent.isStopped = false;
             target = towManager.ClosestUnit(gameObject.transform);
             if (target != null)
             agent.SetDestination(target.transform.position);
+        }
+        if (GameManager.instance.freezeGame)
+        {
+            agent.isStopped = true;
         }
         
     }

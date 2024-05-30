@@ -67,7 +67,7 @@ public class Ball : MonoBehaviour
 
     private void Charge()
     {
-        if (charging)
+        if (charging && !GameManager.instance.freezeGame)
         {
             timePassed += Time.deltaTime;
             ballUI.SetCharge(timePassed / chargeTime);
@@ -101,5 +101,9 @@ public class Ball : MonoBehaviour
     public float GetBuff()
     {
         return buffRate += buffPoints / 100f;
+    }
+    public void SetInitialCharge(float amount)
+    {
+        timePassed = chargeTime * (amount / 100);
     }
 }

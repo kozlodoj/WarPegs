@@ -45,6 +45,8 @@ public class UnitSpawner : MonoBehaviour
             towManager.UpdateUnitList(newUnit);
             if (reactivateOnSpawn)
                 pegs.ReactivatePegs();
+            if (GameManager.instance.freezeGame)
+                GameManager.instance.freezeGame = false;
         }
     }
 }

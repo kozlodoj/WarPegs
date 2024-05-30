@@ -29,7 +29,9 @@ public class UIScript : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI goldText;
-    
+    [SerializeField]
+    private TextMeshProUGUI diamondText;
+
 
     private void OnEnable()
     {
@@ -60,6 +62,7 @@ public class UIScript : MonoBehaviour
         touch.canceled += DeactivateJoystic;
         if(GameManager.instance.storyMode)
         SetGold(GameManager.instance.gold);
+        SetDiamonds(GameManager.instance.diamonds);
 
     }
 
@@ -69,6 +72,7 @@ public class UIScript : MonoBehaviour
         {
         if (context.ReadValue<Vector2>().y <= 1200)
         {
+            GameManager.instance.joyStickActive = true;
             joystick.transform.position = context.ReadValue<Vector2>();
             joyImage.color = filledJoy;
             joyOutline.transform.position = context.ReadValue<Vector2>();
@@ -78,6 +82,7 @@ public class UIScript : MonoBehaviour
     }
     private void DeactivateJoystic(InputAction.CallbackContext context)
     {
+        GameManager.instance.joyStickActive = false;
         joystick.transform.position = context.ReadValue<Vector2>();
         joyImage.color = TransparentJoy;
         joyOutline.SetActive(false);
@@ -105,6 +110,14 @@ public class UIScript : MonoBehaviour
         {
             goldText.SetText(amount.ToString());
             currentCoin.SetText(GameManager.instance.currentGold.ToString());
+        }
+    }
+
+    public void SetDiamonds(int amount)
+    {
+        if (GameManager.instance.storyMode)
+        {
+            diamondText.SetText(amount.ToString());
         }
     }
 

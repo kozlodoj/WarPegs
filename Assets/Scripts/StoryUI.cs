@@ -7,22 +7,27 @@ public class StoryUI : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI goldText;
+    [SerializeField]
+    private TextMeshProUGUI diamondText;
+    private GameObject baseMenu;
+    private GameObject store;
 
     // Start is called before the first frame update
     void Start()
     {
+        baseMenu = GameObject.Find("Base Menu");
+        store = transform.Find("Store").gameObject;
         SetGoldText(GameManager.instance.gold);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SetDiamondText(GameManager.instance.diamonds);
     }
 
     public void SetGoldText(int amount)
     {
         goldText.SetText(amount.ToString());
+    }
+    public void SetDiamondText(int amount)
+    {
+        diamondText.SetText(amount.ToString());
     }
     public void Play()
     {
@@ -32,6 +37,16 @@ public class StoryUI : MonoBehaviour
     public void BackToMenu()
     {
         GameManager.instance.BackToMenu();
+    }
+    public void ActivateStore()
+    {
+        baseMenu.SetActive(false);
+        store.SetActive(true);
+    }
+    public void ActivateBaseMenu()
+    {
+        store.SetActive(false);
+        baseMenu.SetActive(true);
     }
 
 }

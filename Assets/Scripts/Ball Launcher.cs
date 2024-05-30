@@ -30,6 +30,7 @@ public class BallLauncher : MonoBehaviour
     private Vector2 fireSpeed;
 
     private GameObject noBall;
+    private GameObject ghostBall;
 
 
     void Start()
@@ -40,6 +41,7 @@ public class BallLauncher : MonoBehaviour
         trajAnimation = trajectory.GetComponent<Animator>();
         trajLine = trajectory.GetComponent<LineRenderer>();
         noBall = transform.Find("noBall").gameObject;
+        ghostBall = transform.Find("GhostBall").gameObject;
 
     }
 
@@ -67,11 +69,30 @@ public class BallLauncher : MonoBehaviour
                 trajScript.copyAllObstacles();
             }
 
-            trajLine.colorGradient = newGradient(context.ReadValue<Vector2>().magnitude);
+            trajLine.colorGradient = newGradientGreen(context.ReadValue<Vector2>().magnitude);
             trajLine.endWidth = 0.3f * context.ReadValue<Vector2>().magnitude;
             trajScript.predict(dummy, theBall.transform.position, fireSpeed, theRotation);
             trajAnimation.speed = speed / 2f;
 
+        }
+        else
+        {
+            float angleRadians = Mathf.Atan2(-context.ReadValue<Vector2>().y, context.ReadValue<Vector2>().x);
+            float angleDegrees = -angleRadians * Mathf.Rad2Deg;
+            Quaternion theRotation = Quaternion.AngleAxis(angleDegrees - 90f, Vector3.forward);
+            ghostBall.transform.rotation = theRotation;
+            speed = maxSpeed * context.ReadValue<Vector2>().magnitude;
+            fireSpeed = ghostBall.transform.up * speed;
+            if (!isTrajActive)
+            {
+                isTrajActive = true;
+                trajScript.EnableRenderer();
+                trajScript.copyAllObstacles();
+            }
+            trajLine.colorGradient = newGradient(context.ReadValue<Vector2>().magnitude);
+            trajLine.endWidth = 0.3f * context.ReadValue<Vector2>().magnitude;
+            trajScript.predict(dummy, ghostBall.transform.position, fireSpeed, theRotation);
+            trajAnimation.speed = speed / 2f;
         }
         
     }
@@ -89,11 +110,25 @@ public class BallLauncher : MonoBehaviour
         );
         return newGradient;
     }
+    private Gradient newGradientGreen(float speed)
+    {
+        float startAlpha = 1f;
+        float alpha = 1f;
+        Color startColor = new Color(1 - speed, 1, 1 - speed);
+        Color endColor = new Color(1 - speed, 1, 1 - speed);
+        Gradient newGradient = new Gradient();
+        newGradient.SetKeys(
+            new GradientColorKey[] { new GradientColorKey(startColor, 0.5f), new GradientColorKey(endColor, 0.0f) },
+            new GradientAlphaKey[] { new GradientAlphaKey(startAlpha, 0f), new GradientAlphaKey(alpha, 1f) }
+        );
+        return newGradient;
+    }
+
 
     public void Shoot(InputAction.CallbackContext context)
     {
-
-        if (isOcupied)
+        
+        if (isOcupied && !GameManager.instance.joyStickActive)
         {
             ballScript.Shoot();
             ballRb.constraints = RigidbodyConstraints2D.None;
@@ -102,6 +137,12 @@ public class BallLauncher : MonoBehaviour
             trajScript.DisableRenderer();
             trajScript.killAllObstacles();
             CleanLouncher();
+        }
+        else if (!GameManager.instance.joyStickActive)
+        {
+            isTrajActive = false;
+            trajScript.DisableRenderer();
+            trajScript.killAllObstacles();
         }
     }
 

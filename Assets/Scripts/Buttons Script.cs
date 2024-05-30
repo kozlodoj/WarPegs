@@ -16,6 +16,8 @@ public class ButtonsScript : MonoBehaviour
     public float reloadCost;
     public float hpCost;
     public float gold;
+    public float initialBallCharge;
+    public float buffCost;
     public bool isRandom;
     public bool isReactivateActive;
 
@@ -43,6 +45,10 @@ public class ButtonsScript : MonoBehaviour
     private TextMeshProUGUI hpCostText;
     [SerializeField]
     private TextMeshProUGUI goldText;
+    [SerializeField]
+    private TextMeshProUGUI firstBallChargeText;
+    [SerializeField]
+    private TextMeshProUGUI buffCostText;
 
     private void Start()
     {
@@ -181,6 +187,32 @@ public class ButtonsScript : MonoBehaviour
         GameManager.instance.gold = (int)gold;
     }
 
+    public void chargeMinus()
+    {
+        initialBallCharge -= 10;
+        firstBallChargeText.SetText(initialBallCharge.ToString() + "%");
+        GameManager.instance.initialBallCharge = initialBallCharge;
+    }
+    public void chargePlus()
+    {
+        initialBallCharge += 10;
+        firstBallChargeText.SetText(initialBallCharge.ToString() + "%");
+        GameManager.instance.initialBallCharge = initialBallCharge;
+    }
+
+    public void BuffCostMinus()
+    {
+        buffCost -= 50;
+        buffCostText.SetText(buffCost.ToString());
+        GameManager.instance.buffCost = (int)buffCost;
+    }
+    public void BuffCostPlus()
+    {
+        buffCost += 50;
+        buffCostText.SetText(buffCost.ToString());
+        GameManager.instance.buffCost = (int)buffCost;
+    }
+
     private void UpdateStats()
     {
         power = GameManager.instance.ballPower;
@@ -195,6 +227,8 @@ public class ButtonsScript : MonoBehaviour
         reloadCost = GameManager.instance.reloadCost;
         hpCost = GameManager.instance.hPCost;
         gold = GameManager.instance.gold;
+        initialBallCharge = GameManager.instance.initialBallCharge;
+        buffCost = GameManager.instance.buffCost;
 
         powerText.SetText(power.ToString());
         reloadText.SetText(reload.ToString());
@@ -206,6 +240,8 @@ public class ButtonsScript : MonoBehaviour
         reloadCostText.SetText(reloadCost.ToString());
         hpCostText.SetText(hpCost.ToString());
         goldText.SetText(gold.ToString());
+        firstBallChargeText.SetText(initialBallCharge.ToString() + "%");
+        buffCostText.SetText(buffCost.ToString());
         randomToggle.isOn = isRandom;
         reactivateToggle.isOn = isReactivateActive;
     }

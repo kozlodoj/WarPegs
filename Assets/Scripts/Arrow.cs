@@ -34,10 +34,12 @@ public class Arrow : MonoBehaviour
     }
     private void Move()
     {
-        
-        transform.position = Vector2.MoveTowards(transform.position, target.position, Time.deltaTime * 2f);
-        if (!target.gameObject.activeInHierarchy)
-            Destroy(gameObject);
+        if (!GameManager.instance.freezeGame)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target.position, Time.deltaTime * 2f);
+            if (!target.gameObject.activeInHierarchy)
+                Destroy(gameObject);
+        }
         
     }
    
