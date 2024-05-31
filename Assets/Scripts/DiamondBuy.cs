@@ -22,6 +22,9 @@ public class DiamondBuy : MonoBehaviour
 
     private bool isActive = false;
 
+    [SerializeField]
+    private GameObject infoText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,8 +71,8 @@ public class DiamondBuy : MonoBehaviour
     {
         if (perkNum == 1 && GameManager.instance.isPerkOneActive)
             SetActive();
-        //else if (unitNum == 3 && GameManager.instance.isUnitThreeActive)
-        //    SetActive();
+        if (perkNum == 2 && GameManager.instance.isPerkTwoActive)
+            SetActive();
         if (cost >= GameManager.instance.diamonds && !isActive)
         {
             priceText.GetComponent<TextMeshProUGUI>().color = transparentTextColor;
@@ -88,11 +91,20 @@ public class DiamondBuy : MonoBehaviour
             cost = GameManager.instance.perkOneCost;
             priceText.GetComponent<TextMeshProUGUI>().SetText(cost.ToString());
         }
-        //else if (unitNum == 3)
-        //{
-        //    cost = GameManager.instance.unitThreeCost;
-        //    priceText.GetComponent<TextMeshProUGUI>().SetText(cost.ToString());
-        //}
+        if (perkNum == 2)
+        {
+            cost = GameManager.instance.perkTwoCost;
+            priceText.GetComponent<TextMeshProUGUI>().SetText(cost.ToString());
+        }
+    }
+
+    public void InfoActivate()
+    {
+        infoText.SetActive(true);
+    }
+    public void InfoDeactivate()
+    {
+        infoText.SetActive(false);
     }
 
 }

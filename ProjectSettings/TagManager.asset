@@ -20,6 +20,7 @@ TagManager:
   - Peg Layout
   - Louncher
   - Freeze
+  - Fire
   layers:
   - Default
   - TransparentFX

@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Freeze : MonoBehaviour
+public class FirePerk : MonoBehaviour
 {
     public float reloadTime;
     private float timePassed;
     private bool charged;
-    private bool canCharge = true;
     private bool canFreeze;
     private Image fill;
     private BallLauncher louncher;
@@ -16,12 +15,11 @@ public class Freeze : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameManager.instance.storyMode && !GameManager.instance.isPerkOneActive)
+        if (GameManager.instance.storyMode && !GameManager.instance.isPerkTwoActive)
             gameObject.SetActive(false);
-        reloadTime = GameManager.instance.perkOneRecharge;
+        reloadTime = GameManager.instance.perkTwoRecharge;
         fill = transform.Find("Fill").gameObject.GetComponent<Image>();
         louncher = GameObject.FindGameObjectWithTag("Louncher").GetComponent<BallLauncher>();
-        
     }
 
     // Update is called once per frame
@@ -29,38 +27,36 @@ public class Freeze : MonoBehaviour
     {
         ManageFill();
     }
-
-    public void ActivateFreeze()
+    public void ActivateFire()
     {
         if (canFreeze)
         {
-            GameManager.instance.FreezeTow();
-            canCharge = false;
+            louncher.FirePerk();
+            ResetFreeze();
             canFreeze = false;
         }
     }
     public void ResetFreeze()
     {
-        if (charged && !canCharge)
+        if (charged)
         {
             charged = false;
-            canCharge = true;
+            timePassed = 0;
         }
     }
 
     private void ManageFill()
     {
-        if (!charged && canCharge)
+        if (!charged)
         {
             timePassed += Time.deltaTime;
 
-            if (timePassed <= reloadTime && canCharge)
+            if (timePassed <= reloadTime)
                 fill.fillAmount = 1 - (timePassed / reloadTime);
             else
             {
                 charged = true;
                 canFreeze = true;
-                timePassed = 0;
             }
         }
 
@@ -74,10 +70,6 @@ public class Freeze : MonoBehaviour
             fill.fillAmount = 1;
             canFreeze = false;
         }
-        if (!canCharge && !charged)
-        {
-            fill.fillAmount = 1;
-            
-        }
     }
+
 }

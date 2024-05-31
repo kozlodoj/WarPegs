@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8101960441248614987}
   m_Layer: 0
   m_Name: Launcher 1
-  m_TagString: Untagged
+  m_TagString: Louncher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bbef960edb034e27b71a77f15c8b308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOcupied: 0
   controlsAsset: {fileID: -944628639613478452, guid: 68a7b9018dccb46b588914a68260a42c, type: 3}
   trajectory: {fileID: 0}
   dummy: {fileID: 5396375235186090414, guid: 23d021389abc0473591c19380fbb264a, type: 3}

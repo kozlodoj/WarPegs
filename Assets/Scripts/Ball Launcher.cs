@@ -66,6 +66,7 @@ public class BallLauncher : MonoBehaviour
             {
                 isTrajActive = true;
                 trajScript.EnableRenderer();
+                if(!ballScript.onFire)
                 trajScript.copyAllObstacles();
             }
 
@@ -148,18 +149,23 @@ public class BallLauncher : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isOcupied)
+        if (!collision.CompareTag("Fire"))
         {
-            theBall = collision.gameObject;
-            ballScript = theBall.GetComponent<Ball>();
-            ballRb = theBall.GetComponent<Rigidbody2D>();
-            if (!ballScript.isShot)
+            if (!isOcupied)
             {
-                ballScript.LounchPos();
-                noBall.SetActive(false);
+                theBall = collision.gameObject;
+                ballScript = theBall.GetComponent<Ball>();
+                ballRb = theBall.GetComponent<Rigidbody2D>();
+                if (!ballScript.isShot)
+                {
+                    ballScript.LounchPos();
+                    noBall.SetActive(false);
+                    isOcupied = true;
+                }
+                if (ballScript.isShot)
+                    theBall = null;
+
             }
-            isOcupied = true;
-            
         }
     }
 
@@ -191,6 +197,11 @@ public class BallLauncher : MonoBehaviour
     private void SetSpeed()
     {
         maxSpeed = GameManager.instance.ballPower;
+    }
+    public void FirePerk()
+    {
+        if (isOcupied)
+            ballScript.FirePerk();
     }
 
 }

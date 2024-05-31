@@ -16,8 +16,11 @@ public class ButtonsScript : MonoBehaviour
     public float reloadCost;
     public float hpCost;
     public float gold;
+    public float diamonds;
     public float initialBallCharge;
     public float buffCost;
+    public float perkOneRecharge;
+    public float perkTwoRecharge;
     public bool isRandom;
     public bool isReactivateActive;
 
@@ -46,9 +49,15 @@ public class ButtonsScript : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI goldText;
     [SerializeField]
+    private TextMeshProUGUI diamondsText;
+    [SerializeField]
     private TextMeshProUGUI firstBallChargeText;
     [SerializeField]
     private TextMeshProUGUI buffCostText;
+    [SerializeField]
+    private TextMeshProUGUI perkOneRechargeText;
+    [SerializeField]
+    private TextMeshProUGUI perkTwoRechargeText;
 
     private void Start()
     {
@@ -213,6 +222,45 @@ public class ButtonsScript : MonoBehaviour
         GameManager.instance.buffCost = (int)buffCost;
     }
 
+    public void DiamondsMinus()
+    {
+        diamonds -= 50;
+        diamondsText.SetText(diamonds.ToString());
+        GameManager.instance.diamonds = (int)diamonds;
+    }
+
+    public void DiamondsPlus()
+    {
+        diamonds += 50;
+        diamondsText.SetText(diamonds.ToString());
+        GameManager.instance.diamonds = (int)diamonds;
+    }
+
+    public void perkOneRechargeMinus()
+    {
+        perkOneRecharge -= 5f;
+        perkOneRechargeText.SetText(perkOneRecharge.ToString());
+        GameManager.instance.perkOneRecharge = perkOneRecharge;
+    }
+    public void perkOneRechargePlus()
+    {
+        perkOneRecharge += 5f;
+        perkOneRechargeText.SetText(perkOneRecharge.ToString());
+        GameManager.instance.perkOneRecharge = perkOneRecharge;
+    }
+    public void perkTwoRechargeMinus()
+    {
+        perkTwoRecharge -= 5f;
+        perkTwoRechargeText.SetText(perkTwoRecharge.ToString());
+        GameManager.instance.perkTwoRecharge = perkTwoRecharge;
+    }
+    public void perkTwoRechargePlus()
+    {
+        perkTwoRecharge += 5f;
+        perkTwoRechargeText.SetText(perkTwoRecharge.ToString());
+        GameManager.instance.perkTwoRecharge = perkTwoRecharge;
+    }
+
     private void UpdateStats()
     {
         power = GameManager.instance.ballPower;
@@ -227,8 +275,11 @@ public class ButtonsScript : MonoBehaviour
         reloadCost = GameManager.instance.reloadCost;
         hpCost = GameManager.instance.hPCost;
         gold = GameManager.instance.gold;
+        diamonds = GameManager.instance.diamonds;
         initialBallCharge = GameManager.instance.initialBallCharge;
         buffCost = GameManager.instance.buffCost;
+        perkOneRecharge = GameManager.instance.perkOneRecharge;
+        perkTwoRecharge = GameManager.instance.perkTwoRecharge;
 
         powerText.SetText(power.ToString());
         reloadText.SetText(reload.ToString());
@@ -240,8 +291,11 @@ public class ButtonsScript : MonoBehaviour
         reloadCostText.SetText(reloadCost.ToString());
         hpCostText.SetText(hpCost.ToString());
         goldText.SetText(gold.ToString());
+        diamondsText.SetText(diamonds.ToString());
         firstBallChargeText.SetText(initialBallCharge.ToString() + "%");
         buffCostText.SetText(buffCost.ToString());
+        perkOneRechargeText.SetText(perkOneRecharge.ToString());
+        perkTwoRechargeText.SetText(perkTwoRecharge.ToString());
         randomToggle.isOn = isRandom;
         reactivateToggle.isOn = isReactivateActive;
     }

@@ -26,6 +26,10 @@ public class GameManager : MonoBehaviour
     public bool isUnitThreeActive = false;
 
     public bool isPerkOneActive = false;
+    public bool isPerkTwoActive = false;
+
+    public float perkOneRecharge;
+    public float perkTwoRecharge;
 
     public bool gameOver = false;
 
@@ -33,6 +37,7 @@ public class GameManager : MonoBehaviour
     public int unitThreeCost = 5000;
 
     public int perkOneCost = 300;
+    public int perkTwoCost = 500;
 
     public int reloadCost;
     public int hPCost;
@@ -130,7 +135,12 @@ public class GameManager : MonoBehaviour
             AddDiamond(-perkOneCost);
             isPerkOneActive = true;
         }
-       
+        if (num == 2 && !isPerkTwoActive)
+        {
+            AddDiamond(-perkTwoCost);
+            isPerkTwoActive = true;
+        }
+
     }
 
     public void BuyReloadTime()

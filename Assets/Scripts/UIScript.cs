@@ -60,9 +60,11 @@ public class UIScript : MonoBehaviour
 
         touch.started += ActivateJoystick;
         touch.canceled += DeactivateJoystic;
-        if(GameManager.instance.storyMode)
-        SetGold(GameManager.instance.gold);
-        SetDiamonds(GameManager.instance.diamonds);
+        if (GameManager.instance.storyMode)
+        {
+            SetGold(GameManager.instance.gold);
+            SetDiamonds(GameManager.instance.diamonds);
+        }
 
     }
 

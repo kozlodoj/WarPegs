@@ -19,11 +19,17 @@ public class Ball : MonoBehaviour
 
     private float buffRate = 1f;
     private float buffPoints = 0;
+    [SerializeField]
+    private Animator animator;
+    [SerializeField]
+    private Transform fireTransform;
+    public bool onFire;
 
     // Start is called before the first frame update
     void Start()
     {
         ballUI = UI.GetComponent<BallUI>();
+        animator.gameObject.GetComponent<Animator>();
         SetStats();
     }
 
@@ -31,6 +37,7 @@ public class Ball : MonoBehaviour
     void Update()
     {
         Charge();
+       
 
     }
 
@@ -53,8 +60,12 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bottom"))
             Destroy(gameObject);
-
-    }
+        if (collision.gameObject.CompareTag("Peg"))
+        {
+            peg = collision.gameObject.GetComponent<PegScript>();
+            buffPoints += peg.buffPoints;
+        }
+        }
 
     public void ActivateCharging()
     {
@@ -106,4 +117,10 @@ public class Ball : MonoBehaviour
     {
         timePassed = chargeTime * (amount / 100);
     }
+    public void FirePerk()
+    {
+        animator.SetBool("fire", true);
+        onFire = true;
+    }
+    
 }

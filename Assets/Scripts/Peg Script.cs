@@ -34,6 +34,8 @@ public class PegScript : MonoBehaviour
     [SerializeField]
     private bool dontRespawn;
 
+    private List<Collider2D> allColliders = new List<Collider2D>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,8 +48,10 @@ public class PegScript : MonoBehaviour
         pegManager = GameObject.FindWithTag("Peg Layout").GetComponent<PegManager>();
 
         buffPoints = GameManager.instance.buff;
+        
         if (borderPeg)
         {
+            gameObject.GetComponents<Collider2D>(allColliders);
             boucesLeft = numberOfBounces;
             currentBuff = buffPoints;
             buffPoints = 0;
@@ -65,7 +69,11 @@ public class PegScript : MonoBehaviour
             buffPoints = currentBuff;
         if (!borderPeg || boucesLeft <= 0)
         {
-
+            if (borderPeg)
+            {
+                foreach (Collider2D col in allColliders)
+                    col.enabled = false;
+            }
             StartCoroutine(FaderOut());
             pegUI.BuffText(buffPoints);
             gameObject.GetComponent<Collider2D>().enabled = false;
@@ -76,11 +84,28 @@ public class PegScript : MonoBehaviour
     {
         if (!gameObject.activeSelf && !dontRespawn)
         {
+            if (borderPeg)
+            {
+                foreach (Collider2D col in allColliders)
+                    col.enabled = true;
+            }
             gameObject.SetActive(true);
             boucesLeft = numberOfBounces;
             StartCoroutine(FaderIn());
             gameObject.GetComponent<Collider2D>().enabled = true;
         }
+    }
+    private void Burn()
+    {
+        if (borderPeg)
+        {
+            foreach (Collider2D col in allColliders)
+                col.enabled = false;
+        }
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        StartCoroutine(FaderOut());
+        pegUI.BuffText(buffPoints);
+        
     }
 
     IEnumerator FaderOut()
@@ -129,6 +154,11 @@ public class PegScript : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().sprite = crackedSprite;
 
 
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Fire"))
+            Burn();
     }
 
     public void SetMedic()

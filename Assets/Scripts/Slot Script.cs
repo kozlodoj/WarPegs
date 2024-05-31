@@ -38,12 +38,15 @@ public class SlotScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isOcupied)
+        if (!collision.CompareTag("Fire"))
         {
-            theBall = collision.gameObject;
-            ballScript = theBall.GetComponent<Ball>();
-            if (!ballScript.isShot)
-                isOcupied = true;
+            if (!isOcupied)
+            {
+                theBall = collision.gameObject;
+                ballScript = theBall.GetComponent<Ball>();
+                if (!ballScript.isShot)
+                    isOcupied = true;
+            }
         }
         
        
