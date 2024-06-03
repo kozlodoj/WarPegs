@@ -20,7 +20,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField]
     private int goldDrop;
 
-
+    [SerializeField]
     private float attackCooldown = 1.5f;
     private bool canHit = true;
     private bool animationDone = false;
