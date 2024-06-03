@@ -833,54 +833,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
-      propertyPath: gold
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
-      propertyPath: hPCost
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
-      propertyPath: buffCost
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
-      propertyPath: diamonds
-      value: 800
-      objectReference: {fileID: 0}
-    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
-      propertyPath: ballPower
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
-      propertyPath: reloadCost
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
-      propertyPath: reloadRate
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
-      propertyPath: currentGold
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
-      propertyPath: unitThreeCost
-      value: 3000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
-      propertyPath: perkOneRecharge
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
-      propertyPath: perkTwoRecharge
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
-      propertyPath: initialBallCharge
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 6401756500224349042, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
       propertyPath: m_Name
       value: GameManager

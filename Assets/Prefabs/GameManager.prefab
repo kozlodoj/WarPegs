@@ -44,21 +44,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3175012782f44d2085fbfe6cfba57ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballPower: 5
-  reloadRate: 5
+  ballPower: 7
+  reloadRate: 15
   buff: 2
   respawn: 2
   intialStat: 100
   baseHP: 10
+  initialBallCharge: 30
   gold: 0
+  diamonds: 800
+  currentGold: 0
   randomSpawn: 0
   reactivatePegsOnSpawn: 0
   isUnitTwoActive: 0
   isUnitThreeActive: 0
+  isPerkOneActive: 0
+  isPerkTwoActive: 0
+  perkOneRecharge: 60
+  perkTwoRecharge: 60
   gameOver: 0
   unitTwoCost: 1000
-  unitThreeCost: 5000
-  reloadCost: 50
-  hPCost: 50
+  unitThreeCost: 2000
+  perkOneCost: 300
+  perkTwoCost: 500
+  reloadCost: 20
+  hPCost: 20
+  buffCost: 100
   storyMode: 0
   cameraScale: 0
+  joyStickActive: 0
+  freezeGame: 0
