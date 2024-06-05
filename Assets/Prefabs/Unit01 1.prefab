@@ -836,10 +836,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRanged: 0
-  speed: 0.5
-  HP: 66
-  attack: 20
-  attackCooldown: 1.5
+  speed: 0.45
+  HP: 6
+  attack: 2
+  attackCooldown: 1.6
   weaponAnimator: {fileID: 1491935476519909929}
   projectile: {fileID: 0}
   arrow: {fileID: 0}

@@ -386,7 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   medicPeg: 0
   borderPeg: 1
-  numberOfBounces: 3
+  numberOfBounces: 5
   isClone: 0
   buffPoints: 0
   medicSprite: {fileID: 0}
@@ -394,7 +394,7 @@ MonoBehaviour:
   additionalSpriteRight: {fileID: 0}
   crackedSprite: {fileID: 21300000, guid: 6297963aa1bb7462b9dfd8a38b3ac526, type: 3}
   fullSprite: {fileID: 21300000, guid: 6ceca27afa80c4de8b6cfd2e2d2816c7, type: 3}
-  dontRespawn: 1
+  dontRespawn: 0
 --- !u!61 &1808065875929628481
 BoxCollider2D:
   m_ObjectHideFlags: 0

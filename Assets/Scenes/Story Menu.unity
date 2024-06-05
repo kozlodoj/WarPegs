@@ -833,6 +833,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
+      propertyPath: buff
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
+      propertyPath: baseHP
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
+      propertyPath: hPCost
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
+      propertyPath: buffCost
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
+      propertyPath: reloadCost
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
+      propertyPath: reloadRate
+      value: 16.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
+      propertyPath: unitTwoCost
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
+      propertyPath: unitThreeCost
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
+      propertyPath: initialBallCharge
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6401756500224349042, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
       propertyPath: m_Name
       value: GameManager

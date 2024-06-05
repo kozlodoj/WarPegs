@@ -666,10 +666,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRanged: 1
-  speed: 0.5
-  HP: 20
-  attack: 10
-  goldDrop: 20
+  speed: 0.45
+  HP: 2
+  attack: 2
+  goldDrop: 16
+  attackCooldown: 1.9
   weaponAnimator: {fileID: 2066797197067558250}
   projectile: {fileID: 5091592129154128396, guid: 179fe34bd57f04081bc77e3ad0050e4d, type: 3}
   arrow: {fileID: 5660513935930037807}

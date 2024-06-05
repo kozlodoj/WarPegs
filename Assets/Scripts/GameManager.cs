@@ -147,13 +147,13 @@ public class GameManager : MonoBehaviour
     {
         reloadRate -= 0.25f;
         AddGold(-reloadCost);
-        reloadCost = (int)(reloadCost * 1.1f);
+        reloadCost = (int)(reloadCost * 1.2f);
     }
     public void BuyHP()
     {
-        baseHP = (int)(baseHP * 1.2f);
+        baseHP = (int)(baseHP + 1);
         AddGold(-hPCost);
-        hPCost = (int)(hPCost * 1.1f);
+        hPCost = (int)(hPCost * 1.2f);
     }
     public void BuyBuff()
     {

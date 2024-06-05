@@ -388,10 +388,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRanged: 0
-  speed: 0.5
-  HP: 180
-  attack: 40
-  goldDrop: 50
+  speed: 0.45
+  HP: 30
+  attack: 4
+  goldDrop: 20
+  attackCooldown: 1.7
   weaponAnimator: {fileID: 682585711072513216}
   projectile: {fileID: 0}
   arrow: {fileID: 0}

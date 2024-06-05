@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a881267bcfbd54afba844e145cc19c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 1000
+  HP: 500
   isEnemy: 1
   goldDrop: 1
 --- !u!50 &6644860310910760578

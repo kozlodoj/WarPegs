@@ -2525,37 +2525,61 @@ MonoBehaviour:
   - {fileID: 6500178492605920635, guid: 76319a0219e22451487ea3a9cddd74ae, type: 3}
   spawnPattern:
   - unitNum: 0
-    spawnTime: 13
+    spawnTime: 2
     stopSection: 1
   - unitNum: 0
-    spawnTime: 15
-    stopSection: 0
-  - unitNum: 0
-    spawnTime: 15
+    spawnTime: 6
     stopSection: 1
   - unitNum: 0
-    spawnTime: 20
+    spawnTime: 10
     stopSection: 0
   - unitNum: 0
-    spawnTime: 20
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 1
+    spawnTime: 10
     stopSection: 0
   - unitNum: 1
-    spawnTime: 20
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 1
+    spawnTime: 5
+    stopSection: 0
+  - unitNum: 1
+    spawnTime: 5
     stopSection: 1
   - unitNum: 2
     spawnTime: 15
     stopSection: 0
-  - unitNum: 1
-    spawnTime: 15
-    stopSection: 1
   - unitNum: 2
-    spawnTime: 25
-    stopSection: 0
-  - unitNum: 1
-    spawnTime: 25
-    stopSection: 0
-  - unitNum: 1
-    spawnTime: 25
+    spawnTime: 15
     stopSection: 1
   - unitNum: 0
     spawnTime: 15
@@ -2566,26 +2590,44 @@ MonoBehaviour:
   - unitNum: 0
     spawnTime: 15
     stopSection: 0
-  - unitNum: 1
-    spawnTime: 15
-    stopSection: 1
   - unitNum: 0
     spawnTime: 15
     stopSection: 0
-  - unitNum: 1
+  - unitNum: 0
     spawnTime: 15
     stopSection: 0
-  - unitNum: 2
+  - unitNum: 0
+    spawnTime: 15
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 15
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 15
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 15
+    stopSection: 0
+  - unitNum: 0
     spawnTime: 15
     stopSection: 1
   - unitNum: 2
-    spawnTime: 25
+    spawnTime: 10
     stopSection: 0
   - unitNum: 2
-    spawnTime: 25
+    spawnTime: 10
     stopSection: 0
   - unitNum: 2
-    spawnTime: 25
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 2
+    spawnTime: 10
     stopSection: 1
 --- !u!1 &920011270
 GameObject:
