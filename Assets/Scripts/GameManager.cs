@@ -165,9 +165,19 @@ public class GameManager : MonoBehaviour
 
     private void CameraScale()
     {
-        GameObject camera = GameObject.Find("Main Camera");
-        cameraScale = ((float)Screen.height / (float)Screen.width) * 5f;
-        camera.GetComponent<Camera>().orthographicSize = cameraScale;
+        Debug.Log("height " + Screen.height + " Width " + Screen.width);
+        if ((float)Screen.height / (float)Screen.width >= 2f)
+        {
+            GameObject camera = GameObject.Find("Main Camera");
+            cameraScale = ((float)Screen.height / (float)Screen.width) * 5f;
+            camera.GetComponent<Camera>().orthographicSize = cameraScale;
+        }
+        else
+        {
+            GameObject camera = GameObject.Find("Main Camera");
+            cameraScale = 10;
+            camera.GetComponent<Camera>().orthographicSize = cameraScale;
+        }
 
     }
     public void FreezeTow()

@@ -24,7 +24,7 @@ public class ReloadButton : MonoBehaviour
         costText = transform.Find("Cost Text").gameObject.GetComponent<TextMeshProUGUI>();
         rateText = transform.Find("ReloadRate Text").gameObject.GetComponent<TextMeshProUGUI>();
         goldImage = costText.transform.Find("gold").gameObject.GetComponent<Image>();
-        rateText.SetText((1 / GameManager.instance.reloadRate).ToString("0.000") + " ball/sec");
+        rateText.SetText((1 / GameManager.instance.reloadRate).ToString("0.00") + " ball/sec");
         costText.SetText(GameManager.instance.reloadCost.ToString());
 
         textColor = costText.GetComponent<TextMeshProUGUI>().color;
