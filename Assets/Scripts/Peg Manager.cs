@@ -6,6 +6,8 @@ public class PegManager : MonoBehaviour
 {
     private List<PegScript> allPegs = new List<PegScript>();
     private int medicPegs;
+    [SerializeField]
+    private GameObject theMedic;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,15 @@ public class PegManager : MonoBehaviour
         foreach (PegScript peg in allPegs)
             peg.FadeIn();
     }
+    public IEnumerator ReactivateDome()
+    {
+        yield return new WaitForSeconds(2f);
+        foreach (PegScript peg in allPegs)
+            if (peg.isDome)
+            {
+                peg.FadeIn();
+            }
+    }
     private void GetAllPegs()
     {
         foreach (Transform child in gameObject.transform)
@@ -31,20 +42,28 @@ public class PegManager : MonoBehaviour
     }
     private void SetMedics()
     {
-        for (int i = 0; i < medicPegs; i++)
+        if (!GameManager.instance.tutorial)
         {
-            var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg)
+            for (int i = 0; i < medicPegs; i++)
             {
-                peg.SetMedic();
+                var peg = allPegs[RandomNum()];
+                if (!peg.borderPeg)
+                {
+                    peg.SetMedic();
+                }
+                else
+                    i--;
             }
-            else
-                i--;
         }
     }
 
     private int RandomNum()
     {
         return Random.Range(0, allPegs.Count);
+    }
+    public void ActivateMedic()
+    {
+        theMedic.GetComponent<PegScript>().SetMedic();
+        theMedic.SetActive(true);
     }
 }

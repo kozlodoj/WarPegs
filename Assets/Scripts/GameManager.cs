@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public float ballPower = 5;
     public float reloadRate = 5;
+    public float reloadPerSec = 0.06f;
     public float buff = 2;
     public float respawn = 2;
     public float intialStat = 100f;
@@ -51,6 +52,8 @@ public class GameManager : MonoBehaviour
 
     public bool freezeGame = false;
 
+    public bool tutorial = true;
+
 
     void Awake()
     {
@@ -64,10 +67,12 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         CameraScale();
+        SetReloadTime();
     }
 
     public void LevelSelect(int levelNum)
     {
+        SetReloadTime();
         currentGold = 0;
         Time.timeScale = 1;
         if (levelNum > 5)
@@ -89,8 +94,11 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOver = true;
+        tutorial = false;
         Time.timeScale = 0;
-        GameObject.Find("UI").GetComponent<UIScript>().ActivateGameOverUI();
+        UIScript UI = GameObject.Find("UI").GetComponent<UIScript>();
+        UI.ActivateGameOverUI();
+        UI.KillOutline();
     }
     public void AddGold(int amount)
     {
@@ -145,7 +153,8 @@ public class GameManager : MonoBehaviour
 
     public void BuyReloadTime()
     {
-        reloadRate -= 0.25f;
+        reloadPerSec += 0.005f;
+        reloadRate = 1 / reloadPerSec;
         AddGold(-reloadCost);
         reloadCost = (int)(reloadCost * 1.2f);
     }
@@ -165,7 +174,6 @@ public class GameManager : MonoBehaviour
 
     private void CameraScale()
     {
-        Debug.Log("height " + Screen.height + " Width " + Screen.width);
         if ((float)Screen.height / (float)Screen.width >= 2f)
         {
             GameObject camera = GameObject.Find("Main Camera");
@@ -191,5 +199,18 @@ public class GameManager : MonoBehaviour
         if (freezeGame)
             freezeGame = false;
     }
+    private void SetReloadTime()
+    {
+        reloadRate = 1 / reloadPerSec;
+    }
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+    }
+
 
 }

@@ -83,15 +83,15 @@ public class ButtonsScript : MonoBehaviour
     }
     public void ReloadMinus()
     {
-        reload -= 0.5f;
-        reloadText.SetText(reload.ToString());
-        GameManager.instance.reloadRate = reload;
+        reload -= 0.005f;
+        reloadText.SetText(reload.ToString("0.000"));
+        GameManager.instance.reloadPerSec = reload;
     }
     public void ReloadPlus()
     {
-        reload += 0.5f;
-        reloadText.SetText(reload.ToString());
-        GameManager.instance.reloadRate = reload;
+        reload += 0.005f;
+        reloadText.SetText(reload.ToString("0.000"));
+        GameManager.instance.reloadPerSec = reload;
     }
     public void BuffMinus()
     {
@@ -264,7 +264,7 @@ public class ButtonsScript : MonoBehaviour
     private void UpdateStats()
     {
         power = GameManager.instance.ballPower;
-        reload = GameManager.instance.reloadRate;
+        reload = GameManager.instance.reloadPerSec;
         buff = GameManager.instance.buff;
         respawn = GameManager.instance.respawn;
         initialStat = GameManager.instance.intialStat;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5339195694689678380}
   - component: {fileID: 4016674720952417473}
   - component: {fileID: 3399887677017138825}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: BuffText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 3207593160281036697}
   - component: {fileID: 3879099903683543017}
   - component: {fileID: 7978892774292738085}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1852524309
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &3207593160281036697
@@ -391,3 +391,6 @@ MonoBehaviour:
   medicSprite: {fileID: 21300000, guid: 6c41fc1f169614e69afc5f1e51f21657, type: 3}
   additionalSpriteLeft: {fileID: 0}
   additionalSpriteRight: {fileID: 0}
+  crackedSprite: {fileID: 0}
+  fullSprite: {fileID: 0}
+  dontRespawn: 0

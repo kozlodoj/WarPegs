@@ -24,6 +24,7 @@ public class Ball : MonoBehaviour
     [SerializeField]
     private Transform fireTransform;
     public bool onFire;
+    private Tutorial tut;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,10 @@ public class Ball : MonoBehaviour
         ballUI = UI.GetComponent<BallUI>();
         animator.gameObject.GetComponent<Animator>();
         SetStats();
+        if (GameManager.instance.tutorial)
+        {
+            tut = GameObject.Find("UI").transform.Find("Tutorial").GetComponent<Tutorial>();
+        }
     }
 
     // Update is called once per frame
@@ -46,12 +51,17 @@ public class Ball : MonoBehaviour
 
         if (!collision.gameObject.CompareTag("Walls"))
         {
+
             
                 peg = collision.gameObject.GetComponent<PegScript>();
                 buffPoints += peg.buffPoints;
 
                 ballUI.SetBuffText(buffPoints);
-                peg.FadeOut();
+            if (GameManager.instance.tutorial && tut.tutCounter == 2)
+            {
+                tut.BallHit(transform.position);
+            }
+            peg.FadeOut();
             
 
         }
@@ -105,8 +115,15 @@ public class Ball : MonoBehaviour
 
     public void SetStats()
     {
-        chargeTime = GameManager.instance.reloadRate;
-        buffRate = GameManager.instance.intialStat / 100f;
+        if (GameManager.instance.tutorial)
+        {
+            chargeTime = 7f;
+        }
+        else
+        {
+            chargeTime = GameManager.instance.reloadRate;
+            buffRate = GameManager.instance.intialStat / 100f;
+        }
 
     }
     public float GetBuff()

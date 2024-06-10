@@ -31,6 +31,9 @@ public class UIScript : MonoBehaviour
     private TextMeshProUGUI goldText;
     [SerializeField]
     private TextMeshProUGUI diamondText;
+    [SerializeField]
+    private GameObject tutorial;
+    private Tutorial tutScript;
 
 
     private void OnEnable()
@@ -64,6 +67,10 @@ public class UIScript : MonoBehaviour
         {
             SetGold(GameManager.instance.gold);
             SetDiamonds(GameManager.instance.diamonds);
+            if (GameManager.instance.tutorial)
+            {
+                StartCoroutine(StartTutorial());
+            }
         }
 
     }
@@ -72,13 +79,27 @@ public class UIScript : MonoBehaviour
 
     private void ActivateJoystick (InputAction.CallbackContext context)
         {
-        if (context.ReadValue<Vector2>().y <= 1200)
+        if (tutScript != null)
         {
-            GameManager.instance.joyStickActive = true;
-            joystick.transform.position = context.ReadValue<Vector2>();
-            joyImage.color = filledJoy;
-            joyOutline.transform.position = context.ReadValue<Vector2>();
-            joyOutline.SetActive(true);
+            if (context.ReadValue<Vector2>().y <= 1200 && tutScript.canUseJoy)
+            {
+                GameManager.instance.joyStickActive = true;
+                joystick.transform.position = context.ReadValue<Vector2>();
+                joyImage.color = filledJoy;
+                joyOutline.transform.position = context.ReadValue<Vector2>();
+                joyOutline.SetActive(true);
+            }
+        }
+        else
+        {
+            if (context.ReadValue<Vector2>().y <= 1200)
+            {
+                GameManager.instance.joyStickActive = true;
+                joystick.transform.position = context.ReadValue<Vector2>();
+                joyImage.color = filledJoy;
+                joyOutline.transform.position = context.ReadValue<Vector2>();
+                joyOutline.SetActive(true);
+            }
         }
 
     }
@@ -129,6 +150,17 @@ public class UIScript : MonoBehaviour
         TransparentJoy = filledJoy;
         TransparentJoy.a = 0.05f;
         filledJoy.a = 1f;
+    }
+
+    private IEnumerator StartTutorial()
+    {
+        yield return new WaitForSeconds(1f);
+        tutorial.SetActive(true);
+        tutScript = tutorial.GetComponent<Tutorial>();
+    }
+    public void KillOutline()
+    {
+        joyOutline.SetActive(false);
     }
 
 

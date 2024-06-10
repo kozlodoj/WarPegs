@@ -49,6 +49,8 @@ public class UnitSpawner : MonoBehaviour
             towManager.UpdateUnitList(newUnit);
             if (reactivateOnSpawn)
                 pegs.ReactivatePegs();
+            if (unitNum == 3)
+                StartCoroutine(pegs.ReactivateDome());
             if (GameManager.instance.freezeGame)
             {
                 GameManager.instance.UnFreezeTow();

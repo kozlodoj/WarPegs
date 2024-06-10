@@ -259,9 +259,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6830120627593246146}
   - component: {fileID: 103551615496768108}
-  - component: {fileID: 6697521718915785661}
   - component: {fileID: 5583562751599326804}
-  - component: {fileID: 1808065875929628481}
+  - component: {fileID: 4244294328596302707}
   m_Layer: 0
   m_Name: dome Right
   m_TagString: Peg
@@ -326,7 +325,7 @@ SpriteRenderer:
   m_SortingLayerID: 1571261219
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6ceca27afa80c4de8b6cfd2e2d2816c7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 126620b6ba69c40ea898eb7e25747997, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -337,8 +336,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &6697521718915785661
-CircleCollider2D:
+--- !u!114 &5583562751599326804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8093145751944336624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a4150fdfbd6f47c2b9b059fb2527c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  medicPeg: 0
+  borderPeg: 1
+  isDome: 1
+  numberOfBounces: 5
+  isClone: 0
+  buffPoints: 0
+  medicSprite: {fileID: 0}
+  additionalSpriteLeft: {fileID: 0}
+  additionalSpriteRight: {fileID: 0}
+  crackedSprite: {fileID: 21300000, guid: 5e6a9c42e2cc94f66b1a547cf939bbe1, type: 3}
+  fullSprite: {fileID: 21300000, guid: 126620b6ba69c40ea898eb7e25747997, type: 3}
+  dontRespawn: 0
+--- !u!60 &4244294328596302707
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -369,74 +392,27 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.35664865}
-  serializedVersion: 2
-  m_Radius: 1.2610373
---- !u!114 &5583562751599326804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8093145751944336624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a4150fdfbd6f47c2b9b059fb2527c69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  medicPeg: 0
-  borderPeg: 1
-  numberOfBounces: 5
-  isClone: 0
-  buffPoints: 0
-  medicSprite: {fileID: 0}
-  additionalSpriteLeft: {fileID: 0}
-  additionalSpriteRight: {fileID: 0}
-  crackedSprite: {fileID: 21300000, guid: 6297963aa1bb7462b9dfd8a38b3ac526, type: 3}
-  fullSprite: {fileID: 21300000, guid: 6ceca27afa80c4de8b6cfd2e2d2816c7, type: 3}
-  dontRespawn: 0
---- !u!61 &1808065875929628481
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8093145751944336624}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.8539684, y: 0.62005234}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.6666667, y: 3.6666667}
+    oldSize: {x: 3.6666667, y: 5.2533336}
     newSize: {x: 3.6666667, y: 3.6666667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.5070438, y: 2.005394}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.5966667, y: 0.99333334}
+      - {x: -1.6066667, y: 0.98}
+      - {x: -1.6066667, y: -2.6266668}
+      - {x: 1.6066667, y: -2.6266668}
+      - {x: 1.6066667, y: 2.56}
+      - {x: 1.5933334, y: 2.5733335}
+      - {x: 1.5666667, y: 2.5733335}
+    - - {x: -1.5566667, y: 0.9533334}
+      - {x: 1.5566667, y: 2.51}
+      - {x: 1.5566667, y: -2.6000001}
+      - {x: -1.5566667, y: -2.6000001}
+  m_UseDelaunayMesh: 0

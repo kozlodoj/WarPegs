@@ -33,7 +33,7 @@ TagManager:
   - Base
   - Enemy
   - Enemy Base
-  - 
+  - Peg UI
   - 
   - 
   - 
@@ -72,4 +72,7 @@ TagManager:
     locked: 0
   - name: Enemy base
     uniqueID: 1192224217
+    locked: 0
+  - name: Additional BG
+    uniqueID: 2442442987
     locked: 0

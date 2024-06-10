@@ -11,6 +11,7 @@ public class PegScript : MonoBehaviour
     [SerializeField]
     private bool medicPeg;
     public bool borderPeg;
+    public bool isDome;
     [SerializeField]
     private int numberOfBounces;
     private int boucesLeft;

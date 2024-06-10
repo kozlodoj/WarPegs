@@ -88,8 +88,16 @@ public class SlotScript : MonoBehaviour
             ballCharged = ballScript.isCharged;
             if (isFirst && firstBall)
             {
-                ballScript.SetInitialCharge(GameManager.instance.initialBallCharge);
-                firstBall = false;
+                if (GameManager.instance.tutorial)
+                {
+                    ballScript.SetInitialCharge(50f);
+                    firstBall = false;
+                }
+                else
+                {
+                    ballScript.SetInitialCharge(GameManager.instance.initialBallCharge);
+                    firstBall = false;
+                }
             }
             if (isFirst)
             {

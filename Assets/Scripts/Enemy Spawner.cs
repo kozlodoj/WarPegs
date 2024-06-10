@@ -29,10 +29,15 @@ public class EnemySpawner : MonoBehaviour
     {
         randomSpawn = GameManager.instance.randomSpawn;
         towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
-        if (randomSpawn)
-            StartCoroutine(SpawnNextEnemy(RandomTime()));
+        if (GameManager.instance.tutorial)
+            TutorialPattern();
         else
-            StartCoroutine(SpawnPattern());
+        {
+            if (randomSpawn)
+                StartCoroutine(SpawnNextEnemy(RandomTime()));
+            else
+                StartCoroutine(SpawnPattern());
+        }
     }
 
 
@@ -75,6 +80,19 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnSecond(91));
         StartCoroutine(SpawnSecond(93));
         StartCoroutine(restartSpawn(95));
+
+    }
+    private void TutorialPattern()
+    {
+        StartCoroutine(SpawnFirst(10));
+        StartCoroutine(SpawnFirst(15));
+        StartCoroutine(SpawnFirst(16));
+        StartCoroutine(SpawnFirst(21));
+        StartCoroutine(SpawnFirst(22));
+        StartCoroutine(SpawnSecond(28));
+        StartCoroutine(Spawnthird(38));
+        StartCoroutine(Spawnthird(39));
+
 
     }
 

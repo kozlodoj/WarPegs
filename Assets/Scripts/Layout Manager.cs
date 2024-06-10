@@ -10,6 +10,10 @@ public class LayoutManager : MonoBehaviour
     private List<GameObject> twoUnits = new List<GameObject>();
     [SerializeField]
     private List<GameObject> threeUnits = new List<GameObject>();
+    [SerializeField]
+    private GameObject tutorialLayout;
+    private PegManager tutPegs;
+    private GameObject tut;
     // Start is called before the first frame update
     void Awake()
     {
@@ -24,15 +28,28 @@ public class LayoutManager : MonoBehaviour
 
     private void RandomLayout()
     {
-        
-        if (!GameManager.instance.isUnitTwoActive && !GameManager.instance.isUnitThreeActive)
-            Instantiate(oneUnits[Random.Range(0, oneUnits.Count)], gameObject.transform);
-        if (GameManager.instance.isUnitTwoActive && !GameManager.instance.isUnitThreeActive)
-            Instantiate(twoUnits[Random.Range(0, twoUnits.Count)], gameObject.transform);
-        if (!GameManager.instance.isUnitTwoActive && GameManager.instance.isUnitThreeActive)
-            Instantiate(twoUnits[Random.Range(0, twoUnits.Count)], gameObject.transform);
-        if (GameManager.instance.isUnitTwoActive && GameManager.instance.isUnitThreeActive)
-            Instantiate(threeUnits[Random.Range(0, threeUnits.Count)], gameObject.transform);
+        if (GameManager.instance.tutorial)
+        {
+            tut = Instantiate(tutorialLayout, gameObject.transform) as GameObject;
+            tutPegs = tut.GetComponent<PegManager>();
+        }
+
+        else
+        {
+            if (!GameManager.instance.isUnitTwoActive && !GameManager.instance.isUnitThreeActive)
+                Instantiate(oneUnits[Random.Range(0, oneUnits.Count)], gameObject.transform);
+            if (GameManager.instance.isUnitTwoActive && !GameManager.instance.isUnitThreeActive)
+                Instantiate(twoUnits[Random.Range(0, twoUnits.Count)], gameObject.transform);
+            if (!GameManager.instance.isUnitTwoActive && GameManager.instance.isUnitThreeActive)
+                Instantiate(twoUnits[Random.Range(0, twoUnits.Count)], gameObject.transform);
+            if (GameManager.instance.isUnitTwoActive && GameManager.instance.isUnitThreeActive)
+                Instantiate(threeUnits[Random.Range(0, threeUnits.Count)], gameObject.transform);
+        }
+    }
+
+    public void UpdateLaout()
+    {
+        tutPegs.ActivateMedic();
     }
     
 }
