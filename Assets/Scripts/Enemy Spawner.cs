@@ -84,6 +84,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void TutorialPattern()
     {
+       
         StartCoroutine(SpawnFirst(10));
         StartCoroutine(SpawnFirst(15));
         StartCoroutine(SpawnFirst(16));

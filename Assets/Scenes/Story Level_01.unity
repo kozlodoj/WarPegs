@@ -4880,7 +4880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 6500178492605920635, guid: 851760e6f7a2245c584271713cc48887, type: 3}
+  - {fileID: 6500178492605920635, guid: d1724cb3d737543a0ad0a059725c2e20, type: 3}
   - {fileID: 6500178492605920635, guid: fb034d7d322184d9c8faebbb5f28605c, type: 3}
   - {fileID: 6500178492605920635, guid: 76319a0219e22451487ea3a9cddd74ae, type: 3}
   spawnPattern:
