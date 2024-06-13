@@ -135,10 +135,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   medicPeg: 0
   borderPeg: 1
+  isDome: 0
   numberOfBounces: 3
+  boucesLeft: 3
   isClone: 0
   buffPoints: 0
   medicSprite: {fileID: 0}
   additionalSpriteLeft: {fileID: 0}
   additionalSpriteRight: {fileID: 0}
   crackedSprite: {fileID: 21300000, guid: 989b32e00165f439ba5f9d84b9e19845, type: 3}
+  fullSprite: {fileID: 0}
+  dontRespawn: 0

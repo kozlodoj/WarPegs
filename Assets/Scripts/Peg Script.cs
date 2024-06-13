@@ -14,6 +14,7 @@ public class PegScript : MonoBehaviour
     public bool isDome;
     [SerializeField]
     private int numberOfBounces;
+    [SerializeField]
     private int boucesLeft;
     public bool isClone = false;
 

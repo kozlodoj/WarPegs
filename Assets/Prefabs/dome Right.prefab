@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 6830120627593246146}
   - component: {fileID: 103551615496768108}
   - component: {fileID: 5583562751599326804}
-  - component: {fileID: 4244294328596302707}
+  - component: {fileID: 7698668277367518518}
   m_Layer: 7
   m_Name: dome Right
   m_TagString: Peg
@@ -325,7 +325,7 @@ SpriteRenderer:
   m_SortingLayerID: 1571261219
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 126620b6ba69c40ea898eb7e25747997, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 124be050a95824bb2a543a62f0970d31, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -352,16 +352,17 @@ MonoBehaviour:
   borderPeg: 1
   isDome: 1
   numberOfBounces: 3
+  boucesLeft: 0
   isClone: 0
   buffPoints: 0
   medicSprite: {fileID: 0}
   additionalSpriteLeft: {fileID: 0}
   additionalSpriteRight: {fileID: 0}
-  crackedSprite: {fileID: 21300000, guid: 5e6a9c42e2cc94f66b1a547cf939bbe1, type: 3}
-  fullSprite: {fileID: 21300000, guid: 126620b6ba69c40ea898eb7e25747997, type: 3}
+  crackedSprite: {fileID: 21300000, guid: 989b32e00165f439ba5f9d84b9e19845, type: 3}
+  fullSprite: {fileID: 21300000, guid: 124be050a95824bb2a543a62f0970d31, type: 3}
   dontRespawn: 1
---- !u!60 &4244294328596302707
-PolygonCollider2D:
+--- !u!58 &7698668277367518518
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -369,7 +370,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 8093145751944336624}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 39d7b1e6baeeb46f48c53b5c491d1588, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -392,27 +393,6 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.6666667, y: 5.2533336}
-    newSize: {x: 3.6666667, y: 3.6666667}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -1.5966667, y: 0.99333334}
-      - {x: -1.6066667, y: 0.98}
-      - {x: -1.6066667, y: -2.6266668}
-      - {x: 1.6066667, y: -2.6266668}
-      - {x: 1.6066667, y: 2.56}
-      - {x: 1.5933334, y: 2.5733335}
-      - {x: 1.5666667, y: 2.5733335}
-    - - {x: -1.5566667, y: 0.9533334}
-      - {x: 1.5566667, y: 2.51}
-      - {x: 1.5566667, y: -2.6000001}
-      - {x: -1.5566667, y: -2.6000001}
-  m_UseDelaunayMesh: 0
+  m_Offset: {x: -0.012195021, y: 0.30323312}
+  serializedVersion: 2
+  m_Radius: 1.2976214
