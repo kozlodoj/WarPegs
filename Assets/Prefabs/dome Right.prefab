@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2068872707652901794}
   - component: {fileID: 7274062759101346662}
   - component: {fileID: 206701978137033320}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 2562290874019529434}
   - component: {fileID: 2949014488073571430}
   - component: {fileID: 4350756108365059813}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: BuffText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 103551615496768108}
   - component: {fileID: 5583562751599326804}
   - component: {fileID: 4244294328596302707}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: dome Right
   m_TagString: Peg
   m_Icon: {fileID: 0}
@@ -351,7 +351,7 @@ MonoBehaviour:
   medicPeg: 0
   borderPeg: 1
   isDome: 1
-  numberOfBounces: 5
+  numberOfBounces: 3
   isClone: 0
   buffPoints: 0
   medicSprite: {fileID: 0}
@@ -359,7 +359,7 @@ MonoBehaviour:
   additionalSpriteRight: {fileID: 0}
   crackedSprite: {fileID: 21300000, guid: 5e6a9c42e2cc94f66b1a547cf939bbe1, type: 3}
   fullSprite: {fileID: 21300000, guid: 126620b6ba69c40ea898eb7e25747997, type: 3}
-  dontRespawn: 0
+  dontRespawn: 1
 --- !u!60 &4244294328596302707
 PolygonCollider2D:
   m_ObjectHideFlags: 0

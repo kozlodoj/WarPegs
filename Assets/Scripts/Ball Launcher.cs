@@ -7,6 +7,8 @@ public class BallLauncher : MonoBehaviour
 {
     private float maxSpeed = 10f;
     private float speed;
+    private Quaternion theRotation;
+    private float theMagnitude;
     private GameObject theBall;
     private Ball ballScript;
 
@@ -58,9 +60,10 @@ public class BallLauncher : MonoBehaviour
         {
             float angleRadians = Mathf.Atan2(-context.ReadValue<Vector2>().y, context.ReadValue<Vector2>().x);
             float angleDegrees = -angleRadians * Mathf.Rad2Deg;
-            Quaternion theRotation = Quaternion.AngleAxis(angleDegrees - 90f, Vector3.forward);
+            theRotation = Quaternion.AngleAxis(angleDegrees - 90f, Vector3.forward);
             theBall.transform.rotation = theRotation;
-            speed = maxSpeed * context.ReadValue<Vector2>().magnitude;
+            theMagnitude = context.ReadValue<Vector2>().magnitude;
+            speed = maxSpeed * theMagnitude;
             fireSpeed = theBall.transform.up * speed;
             if (!isTrajActive)
             {
@@ -70,8 +73,8 @@ public class BallLauncher : MonoBehaviour
                 trajScript.copyAllObstacles();
             }
 
-            trajLine.colorGradient = newGradientGreen(context.ReadValue<Vector2>().magnitude);
-            trajLine.endWidth = 0.3f * context.ReadValue<Vector2>().magnitude;
+            trajLine.colorGradient = newGradientGreen(theMagnitude);
+            trajLine.endWidth = 0.3f * theMagnitude;
             trajScript.predict(dummy, theBall.transform.position, fireSpeed, theRotation);
             trajAnimation.speed = speed / 2f;
 
@@ -80,9 +83,10 @@ public class BallLauncher : MonoBehaviour
         {
             float angleRadians = Mathf.Atan2(-context.ReadValue<Vector2>().y, context.ReadValue<Vector2>().x);
             float angleDegrees = -angleRadians * Mathf.Rad2Deg;
-            Quaternion theRotation = Quaternion.AngleAxis(angleDegrees - 90f, Vector3.forward);
+            theRotation = Quaternion.AngleAxis(angleDegrees - 90f, Vector3.forward);
             ghostBall.transform.rotation = theRotation;
-            speed = maxSpeed * context.ReadValue<Vector2>().magnitude;
+            theMagnitude = context.ReadValue<Vector2>().magnitude;
+            speed = maxSpeed * theMagnitude;
             fireSpeed = ghostBall.transform.up * speed;
             if (!isTrajActive)
             {
@@ -90,8 +94,8 @@ public class BallLauncher : MonoBehaviour
                 trajScript.EnableRenderer();
                 trajScript.copyAllObstacles();
             }
-            trajLine.colorGradient = newGradient(context.ReadValue<Vector2>().magnitude);
-            trajLine.endWidth = 0.3f * context.ReadValue<Vector2>().magnitude;
+            trajLine.colorGradient = newGradient(theMagnitude);
+            trajLine.endWidth = 0.3f * theMagnitude;
             trajScript.predict(dummy, ghostBall.transform.position, fireSpeed, theRotation);
             trajAnimation.speed = speed / 2f;
         }
@@ -133,6 +137,7 @@ public class BallLauncher : MonoBehaviour
         {
             ballScript.Shoot();
             ballRb.constraints = RigidbodyConstraints2D.None;
+            theBall.transform.rotation = theRotation;
             ballRb.AddRelativeForce(transform.up * speed, ForceMode2D.Impulse);
             isTrajActive = false;
             trajScript.DisableRenderer();
@@ -159,6 +164,9 @@ public class BallLauncher : MonoBehaviour
                 if (!ballScript.isShot)
                 {
                     ballScript.LounchPos();
+                    theBall.transform.rotation = theRotation;
+                    if (isTrajActive)
+                        trajLine.colorGradient = newGradientGreen(theMagnitude);
                     noBall.SetActive(false);
                     isOcupied = true;
                 }

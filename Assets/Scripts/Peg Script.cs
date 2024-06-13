@@ -96,6 +96,13 @@ public class PegScript : MonoBehaviour
             gameObject.GetComponent<Collider2D>().enabled = true;
         }
     }
+    public void ReactivateDome()
+    {
+        gameObject.SetActive(true);
+        boucesLeft = numberOfBounces;
+        StartCoroutine(FaderIn());
+        gameObject.GetComponent<Collider2D>().enabled = true;
+    }
     private void Burn()
     {
         if (borderPeg)

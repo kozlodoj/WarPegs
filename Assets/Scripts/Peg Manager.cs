@@ -29,7 +29,7 @@ public class PegManager : MonoBehaviour
         foreach (PegScript peg in allPegs)
             if (peg.isDome)
             {
-                peg.FadeIn();
+                peg.ReactivateDome();
             }
     }
     private void GetAllPegs()

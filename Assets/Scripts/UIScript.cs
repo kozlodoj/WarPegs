@@ -124,6 +124,13 @@ public class UIScript : MonoBehaviour
     {
         gameOver.SetActive(true);
         joystick.SetActive(false);
+        if (GameManager.instance.currentGold == 0)
+        {
+            GameManager.instance.currentGold = 9;
+            GameManager.instance.gold = 9;
+            currentCoin.SetText(GameManager.instance.currentGold.ToString());
+        }
+
         actionMap.Disable();
     }
 
@@ -161,6 +168,12 @@ public class UIScript : MonoBehaviour
     public void KillOutline()
     {
         joyOutline.SetActive(false);
+    }
+
+    public void DoubleGold()
+    {
+        GameManager.instance.AddGold(GameManager.instance.currentGold);
+        BackToMenu();
     }
 
 
