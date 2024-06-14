@@ -126,8 +126,8 @@ public class UIScript : MonoBehaviour
         joystick.SetActive(false);
         if (GameManager.instance.currentGold == 0)
         {
-            GameManager.instance.currentGold = 9;
-            GameManager.instance.gold = 9;
+            GameManager.instance.currentGold += 9;
+            GameManager.instance.gold += 9;
             currentCoin.SetText(GameManager.instance.currentGold.ToString());
         }
 
