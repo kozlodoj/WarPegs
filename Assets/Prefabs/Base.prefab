@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 7702897815248365653}
   m_Layer: 8
   m_Name: Unit SpawnPoint
-  m_TagString: Untagged
+  m_TagString: Unit Spawn Point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

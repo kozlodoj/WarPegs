@@ -16,6 +16,9 @@ public class BaseHPButton : MonoBehaviour
     private Color goldColor;
     private Color trGoldColor;
 
+    private int currentEra = 0;
+    private int previousEra = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +44,11 @@ public class BaseHPButton : MonoBehaviour
     {
         if (!IsActive())
             NotEnoughMoney();
+        if (EraChanged())
+        {
+            rateText.SetText(GameManager.instance.baseHP.ToString() + " HP");
+            costText.SetText(GameManager.instance.hPCost.ToString());
+        }
     }
 
     public void BuyHP()
@@ -69,6 +77,8 @@ public class BaseHPButton : MonoBehaviour
         gameObject.GetComponent<Image>().color = theColor;
         costText.GetComponent<TextMeshProUGUI>().color = transperentTextColor;
         goldImage.color = trGoldColor;
+        costText.SetText(GameManager.instance.hPCost.ToString());
+        rateText.SetText(GameManager.instance.baseHP.ToString() + " HP");
     }
 
     private bool IsActive()
@@ -85,5 +95,16 @@ public class BaseHPButton : MonoBehaviour
             SetActive();
         else
             NotEnoughMoney();
+    }
+    private bool EraChanged()
+    {
+        currentEra = GameManager.instance.playerEra;
+        if (currentEra == previousEra)
+            return false;
+        else
+        {
+            previousEra = currentEra;
+            return true;
+        }
     }
 }

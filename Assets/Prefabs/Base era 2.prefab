@@ -232,7 +232,7 @@ Transform:
   m_GameObject: {fileID: 4446869208283151051}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.26, y: 5.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -287,9 +287,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.47162867, y: 1.2254229}
-      - {x: -1.5658402, y: -1.1821408}
-      - {x: -0.4282105, y: -0.37419027}
+    - - {x: -0.23434019, y: 0.9631567}
+      - {x: -0.21704435, y: -0.894897}
+      - {x: 0.58338666, y: -0.399168}
+      - {x: 0.5833864, y: 1.1244717}
   m_UseDelaunayMesh: 0
 --- !u!114 &4813842237535260796
 MonoBehaviour:
@@ -503,7 +504,7 @@ GameObject:
   - component: {fileID: 4881910434051320272}
   m_Layer: 8
   m_Name: Unit SpawnPoint
-  m_TagString: Untagged
+  m_TagString: Unit Spawn Point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

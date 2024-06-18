@@ -16,6 +16,9 @@ public class ReloadButton : MonoBehaviour
     private Color goldColor;
     private Color trGoldColor;
 
+    private int currentEra = 0;
+    private int previousEra = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +44,11 @@ public class ReloadButton : MonoBehaviour
     {
         if (!IsActive())
             NotEnoughMoney();
+        if (EraChanged())
+        {
+            rateText.SetText((1 / GameManager.instance.reloadRate).ToString("0.000") + " ball/sec");
+            costText.SetText(GameManager.instance.reloadCost.ToString());
+        }
     }
 
     public void BuyReload()
@@ -70,6 +78,8 @@ public class ReloadButton : MonoBehaviour
         gameObject.GetComponent<Image>().color = theColor;
         costText.GetComponent<TextMeshProUGUI>().color = transperentTextColor;
         goldImage.color = trGoldColor;
+        costText.SetText(GameManager.instance.reloadCost.ToString());
+        rateText.SetText((1 / GameManager.instance.reloadRate).ToString("0.000") + " ball/sec");
     }
 
     private bool IsActive()
@@ -86,5 +96,17 @@ public class ReloadButton : MonoBehaviour
             SetActive();
         else
             NotEnoughMoney();
+    }
+
+    private bool EraChanged()
+    {
+        currentEra = GameManager.instance.playerEra;
+        if (currentEra == previousEra)
+            return false;
+        else
+        {
+            previousEra = currentEra;
+            return true;
+        }
     }
 }

@@ -95,5 +95,10 @@ public class BuyScript : MonoBehaviour
             cost = GameManager.instance.unitThreeCost;
             priceText.GetComponent<TextMeshProUGUI>().SetText(cost.ToString());
         }
+        else if (unitNum == 4)
+        {
+            cost = GameManager.instance.evolveCost;
+            priceText.GetComponent<TextMeshProUGUI>().SetText(cost.ToString());
+        }
     }
 }

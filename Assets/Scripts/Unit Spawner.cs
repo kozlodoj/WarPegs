@@ -32,6 +32,7 @@ public class UnitSpawner : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+        spawnPoint = GameObject.FindWithTag("Unit Spawn Point").transform;
         towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
         reactivateOnSpawn = GameManager.instance.reactivatePegsOnSpawn;
         pegs = GameObject.FindWithTag("Peg Layout").gameObject.GetComponent<PegManager>();
@@ -47,6 +48,11 @@ public class UnitSpawner : MonoBehaviour
             GameObject newUnit = Instantiate(unitPrefab, spawnPoint) as GameObject;
             newUnit.GetComponent<Unit>().Buff(collision.gameObject.GetComponent<Ball>().GetBuff());
             towManager.UpdateUnitList(newUnit);
+            if (collision.gameObject.GetComponent<Ball>().GetBuff() >= 2f)
+            {
+                GameManager.instance.buffGathered = 1;
+                GameManager.instance.ManageDaily();
+            }
             if (reactivateOnSpawn)
                 pegs.ReactivatePegs();
             if (unitNum == 3)
@@ -55,6 +61,16 @@ public class UnitSpawner : MonoBehaviour
             {
                 GameManager.instance.UnFreezeTow();
                 freezeScript.ResetFreeze();
+            }
+            if (unitNum == 2)
+            {
+                GameManager.instance.unitTwoSpawned++;
+                GameManager.instance.ManageDaily();
+            }
+            else if (unitNum == 3)
+            {
+                GameManager.instance.unitThreeSpawned++;
+                GameManager.instance.ManageDaily();
             }
         }
     }

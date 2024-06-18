@@ -54,6 +54,20 @@ public class GameManager : MonoBehaviour
 
     public bool tutorial = true;
 
+    public int playerEra;
+    public int enemyEra;
+    public int evolveCost;
+
+    public int bounces;
+    public int ballsShot;
+    public int enemiesDefeated;
+    public int unitTwoSpawned;
+    public int unitThreeSpawned;
+    public int goldCollected;
+    public float buffGathered;
+
+    public int dailyNum = 1;
+
 
     void Awake()
     {
@@ -94,7 +108,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOver = true;
-        tutorial = false;
+        //tutorial = false;
         Time.timeScale = 0;
         UIScript UI = GameObject.Find("UI").GetComponent<UIScript>();
         UI.ActivateGameOverUI();
@@ -104,6 +118,9 @@ public class GameManager : MonoBehaviour
     {
         gold += amount;
         currentGold += amount;
+        if (SceneManager.GetActiveScene().name != "Story Menu" && !gameOver)
+            goldCollected += amount;
+        ManageDaily();
         if (SceneManager.GetActiveScene().name == "Story Menu")
         {
             GameObject.Find("UI").GetComponent<StoryUI>().SetGoldText(gold);
@@ -134,6 +151,13 @@ public class GameManager : MonoBehaviour
         {
             AddGold(-unitThreeCost);
             isUnitThreeActive = true;
+        }
+        else if (num == 4)
+        {
+            AddGold(-evolveCost);
+            playerEra++;
+            enemyEra = 0;
+            NextEra();
         }
     }
     public void BuyPerk(int num)
@@ -212,5 +236,111 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    private void NextEra()
+    {
+        GameObject.Find("UI").GetComponent<StoryUI>().NextEra();
+        isUnitTwoActive = false;
+        isUnitThreeActive = false;
 
+        unitThreeCost *= 3;
+        unitTwoCost *= 3;
+        evolveCost *= 3;
+
+        reloadPerSec = 0.06f;
+        SetReloadTime();
+        baseHP = 2;
+        reloadCost = 27;
+        hPCost = 90;
+        buffCost = 3000;
+        buff = 1;
+    }
+
+
+
+    public void ManageDaily()
+    {
+        if (SceneManager.GetActiveScene().name != "Story Menu")
+        {
+            if (dailyNum == 1)
+            {
+                GameObject.Find("UI").GetComponent<UIScript>().ManageDaily(false);
+                if (goldCollected >= 100)
+                {
+                    AddDiamond(40);
+                    GameObject.Find("UI").GetComponent<UIScript>().ManageDaily(true);
+                    ResetDailyProgress();
+                }
+            }
+            else if (dailyNum == 2)
+            {
+                GameObject.Find("UI").GetComponent<UIScript>().ManageDaily(false);
+                if (bounces >= 150)
+                {
+                    AddDiamond(50);
+                    GameObject.Find("UI").GetComponent<UIScript>().ManageDaily(true);
+                    ResetDailyProgress();
+                }
+            }
+             else if (dailyNum == 3)
+            {
+                GameObject.Find("UI").GetComponent<UIScript>().ManageDaily(false);
+                if (ballsShot >= 15)
+                {
+                    AddDiamond(40);
+                    GameObject.Find("UI").GetComponent<UIScript>().ManageDaily(true);
+                    ResetDailyProgress();
+                }
+            }
+            else if (dailyNum == 4)
+            {
+                GameObject.Find("UI").GetComponent<UIScript>().ManageDaily(false);
+                if (unitTwoSpawned >= 15)
+                {
+                    AddDiamond(50);
+                    GameObject.Find("UI").GetComponent<UIScript>().ManageDaily(true);
+                    ResetDailyProgress();
+                }
+            }
+            else if (dailyNum == 5)
+            {
+                GameObject.Find("UI").GetComponent<UIScript>().ManageDaily(false);
+                if (enemiesDefeated >= 20)
+                {
+                    AddDiamond(50);
+                    GameObject.Find("UI").GetComponent<UIScript>().ManageDaily(true);
+                    ResetDailyProgress();
+                }
+            }
+            else if (dailyNum == 6)
+            {
+                GameObject.Find("UI").GetComponent<UIScript>().ManageDaily(false);
+                if (unitThreeSpawned >= 7)
+                {
+                    AddDiamond(70);
+                    GameObject.Find("UI").GetComponent<UIScript>().ManageDaily(true);
+                    ResetDailyProgress();
+                }
+            }
+            else if (dailyNum == 7)
+            {
+                GameObject.Find("UI").GetComponent<UIScript>().ManageDaily(false);
+                if (buffGathered >= 1)
+                {
+                    AddDiamond(100);
+                    GameObject.Find("UI").GetComponent<UIScript>().ManageDaily(true);
+                    ResetDailyProgress();
+                }
+            }
+        }
+    }
+    public void ResetDailyProgress()
+    {
+        bounces = 0;
+        goldCollected = 0;
+        ballsShot = 0;
+        enemiesDefeated = 0;
+        unitTwoSpawned = 0;
+        unitThreeSpawned = 0;
+        buffGathered = 0;
+    }
 }

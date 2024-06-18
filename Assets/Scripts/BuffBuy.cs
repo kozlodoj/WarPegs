@@ -15,6 +15,9 @@ public class BuffBuy : MonoBehaviour
     private Color transperentTextColor;
     private Color goldColor;
     private Color trGoldColor;
+
+    private int currentEra = 0;
+    private int previousEra = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +43,11 @@ public class BuffBuy : MonoBehaviour
     {
         if (!IsActive())
             NotEnoughMoney();
+        if (EraChanged())
+        {
+            rateText.SetText(GameManager.instance.buff.ToString() + "%");
+            costText.SetText(GameManager.instance.buffCost.ToString());
+        }
     }
 
     public void BuyBuff()
@@ -68,6 +76,8 @@ public class BuffBuy : MonoBehaviour
         gameObject.GetComponent<Image>().color = theColor;
         costText.GetComponent<TextMeshProUGUI>().color = transperentTextColor;
         goldImage.color = trGoldColor;
+        costText.SetText(GameManager.instance.buffCost.ToString());
+        rateText.SetText(GameManager.instance.buff.ToString() + "%");
     }
 
     private bool IsActive()
@@ -84,5 +94,16 @@ public class BuffBuy : MonoBehaviour
             SetActive();
         else
             NotEnoughMoney();
+    }
+    private bool EraChanged()
+    {
+        currentEra = GameManager.instance.playerEra;
+        if (currentEra == previousEra)
+            return false;
+        else
+        {
+            previousEra = currentEra;
+            return true;
+        }
     }
 }

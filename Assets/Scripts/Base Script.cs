@@ -32,7 +32,7 @@ public class BaseScript : MonoBehaviour
 
     public void DealDamage(float amount)
     {
-        if (isEnemy)
+        if (isEnemy && !GameManager.instance.tutorial)
             GameManager.instance.AddGold(goldDrop * (int)amount);
         currentHp -= amount;
         UI.UpdateHP(HP, currentHp);
@@ -43,6 +43,9 @@ public class BaseScript : MonoBehaviour
         if (currentHp <= 0)
         {
             gameObject.SetActive(false);
+            if (GameManager.instance.enemyEra == 0 && isEnemy)
+            GameManager.instance.enemyEra++;
+
             GameManager.instance.GameOver();
         }
 

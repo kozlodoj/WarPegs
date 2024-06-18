@@ -8,20 +8,31 @@ public class UnitTrigger : MonoBehaviour
     private GameObject wall01;
     [SerializeField]
     private GameObject wall02;
-    [SerializeField]
     private GameObject firstSpawner;
     private BoxCollider2D firstCollider;
-    [SerializeField]
     private GameObject secondSpawner;
     private BoxCollider2D secondCollider;
-    [SerializeField]
     private GameObject thirdSpawner;
     private BoxCollider2D thirdCollider;
+
+    [SerializeField]
+    private GameObject era1FirstSpawner;
+    [SerializeField]
+    private GameObject era1SecondSpawner;
+    [SerializeField]
+    private GameObject era1ThirdSpawner;
+    [SerializeField]
+    private GameObject era2FirstSpawner;
+    [SerializeField]
+    private GameObject era2SecondSpawner;
+    [SerializeField]
+    private GameObject era2ThirdSpawner;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        ManageEra();
         firstCollider = firstSpawner.GetComponent<BoxCollider2D>();
         secondCollider = secondSpawner.GetComponent<BoxCollider2D>();
         thirdCollider = thirdSpawner.GetComponent<BoxCollider2D>();
@@ -29,11 +40,6 @@ public class UnitTrigger : MonoBehaviour
             ManageSpawners();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void ManageSpawners()
     {
         if (!GameManager.instance.isUnitTwoActive && !GameManager.instance.isUnitThreeActive)
@@ -82,5 +88,21 @@ public class UnitTrigger : MonoBehaviour
             thirdCollider.size = new Vector2(2.2f, 1);
         }
 
+    }
+
+    private void ManageEra()
+    {
+        if (GameManager.instance.playerEra == 0)
+        {
+            firstSpawner = Instantiate(era1FirstSpawner, gameObject.transform);
+            secondSpawner = Instantiate(era1SecondSpawner, gameObject.transform);
+            thirdSpawner = Instantiate(era1ThirdSpawner, gameObject.transform);
+        }
+        else if (GameManager.instance.playerEra == 1)
+        {
+            firstSpawner = Instantiate(era2FirstSpawner, gameObject.transform);
+            secondSpawner = Instantiate(era2SecondSpawner, gameObject.transform);
+            thirdSpawner = Instantiate(era2ThirdSpawner, gameObject.transform);
+        }
     }
 }

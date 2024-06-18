@@ -15,10 +15,12 @@ public class StoryUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         baseMenu = GameObject.Find("Base Menu");
         store = transform.Find("Store").gameObject;
         SetGoldText(GameManager.instance.gold);
         SetDiamondText(GameManager.instance.diamonds);
+        ManageEra();
     }
 
     public void SetGoldText(int amount)
@@ -47,6 +49,26 @@ public class StoryUI : MonoBehaviour
     {
         store.SetActive(false);
         baseMenu.SetActive(true);
+    }
+
+    public void NextEra()
+    {
+        baseMenu.transform.Find("Era 1").gameObject.SetActive(false);
+        baseMenu.transform.Find("Era 2").gameObject.SetActive(true);
+
+    }
+    private void ManageEra()
+    {
+        if (GameManager.instance.playerEra == 0)
+        {
+            baseMenu.transform.Find("Era 1").gameObject.SetActive(true);
+            baseMenu.transform.Find("Era 2").gameObject.SetActive(false);
+        }
+        else if (GameManager.instance.playerEra == 1)
+        {
+            baseMenu.transform.Find("Era 1").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 2").gameObject.SetActive(true);
+        }
     }
 
 }

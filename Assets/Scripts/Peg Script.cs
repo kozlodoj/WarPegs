@@ -161,6 +161,11 @@ public class PegScript : MonoBehaviour
             pegManager.ReactivatePegs();
         if (borderPeg && crackedSprite != null)
             gameObject.GetComponent<SpriteRenderer>().sprite = crackedSprite;
+        if (!isClone)
+        {
+            GameManager.instance.bounces++;
+            GameManager.instance.ManageDaily();
+        }
 
 
     }

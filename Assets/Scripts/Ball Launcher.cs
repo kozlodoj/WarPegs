@@ -143,6 +143,8 @@ public class BallLauncher : MonoBehaviour
             trajScript.DisableRenderer();
             trajScript.killAllObstacles();
             CleanLouncher();
+            GameManager.instance.ballsShot++;
+            GameManager.instance.ManageDaily();
         }
         else if (!GameManager.instance.joyStickActive)
         {

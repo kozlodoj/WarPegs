@@ -13,6 +13,8 @@ public class EnemySpawner : MonoBehaviour
     }
     [SerializeField]
     private List<GameObject> enemies = new List<GameObject>();
+    [SerializeField]
+    private List<GameObject> era2enemies = new List<GameObject>();
 
     [SerializeField]
     private List<spawnUnit> spawnPattern = new List<spawnUnit>();
@@ -53,9 +55,19 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnNextEnemy(float timeDelay)
     {
-        yield return new WaitForSeconds(timeDelay);
-       towManager.UpdateEnemiesList(Instantiate(enemies[RandomEnemy()],gameObject.transform));
-        StartCoroutine(SpawnNextEnemy(RandomTime()));
+        if (GameManager.instance.enemyEra == 0)
+        {
+            yield return new WaitForSeconds(timeDelay);
+            towManager.UpdateEnemiesList(Instantiate(enemies[RandomEnemy()], gameObject.transform));
+            StartCoroutine(SpawnNextEnemy(RandomTime()));
+        }
+        else if (GameManager.instance.enemyEra == 1)
+        {
+            yield return new WaitForSeconds(timeDelay);
+            towManager.UpdateEnemiesList(Instantiate(era2enemies[RandomEnemy()], gameObject.transform));
+            StartCoroutine(SpawnNextEnemy(RandomTime()));
+        }
+
     }
 
     private void SpawnPattern01()
@@ -99,18 +111,43 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnFirst(float timeDelay)
     {
-        yield return new WaitForSeconds(timeDelay);
-        towManager.UpdateEnemiesList(Instantiate(enemies[0], gameObject.transform));
+        if (GameManager.instance.enemyEra == 0)
+        {
+            yield return new WaitForSeconds(timeDelay);
+            towManager.UpdateEnemiesList(Instantiate(enemies[0], gameObject.transform));
+        }
+        else if (GameManager.instance.enemyEra == 1)
+        {
+            yield return new WaitForSeconds(timeDelay);
+            towManager.UpdateEnemiesList(Instantiate(era2enemies[0], gameObject.transform));
+        }
+
     }
     private IEnumerator SpawnSecond(float timeDelay)
     {
-        yield return new WaitForSeconds(timeDelay);
-        towManager.UpdateEnemiesList(Instantiate(enemies[1], gameObject.transform));
+        if (GameManager.instance.enemyEra == 0)
+        {
+            yield return new WaitForSeconds(timeDelay);
+            towManager.UpdateEnemiesList(Instantiate(enemies[1], gameObject.transform));
+        }
+        if (GameManager.instance.enemyEra == 1)
+        {
+            yield return new WaitForSeconds(timeDelay);
+            towManager.UpdateEnemiesList(Instantiate(era2enemies[1], gameObject.transform));
+        }
     }
     private IEnumerator Spawnthird(float timeDelay)
     {
-        yield return new WaitForSeconds(timeDelay);
-        towManager.UpdateEnemiesList(Instantiate(enemies[2], gameObject.transform));
+        if (GameManager.instance.enemyEra == 0)
+        {
+            yield return new WaitForSeconds(timeDelay);
+            towManager.UpdateEnemiesList(Instantiate(enemies[2], gameObject.transform));
+        }
+        if (GameManager.instance.enemyEra == 1)
+        {
+            yield return new WaitForSeconds(timeDelay);
+            towManager.UpdateEnemiesList(Instantiate(era2enemies[2], gameObject.transform));
+        }
     }
     private IEnumerator restartSpawn(float timeDelay)
     {
@@ -120,29 +157,54 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnPattern()
     {
-       
-        yield return new WaitForSeconds(spawnPattern[0].spawnTime);
-        for (int i = 0; i < spawnPattern.Count; i++)
+        if (GameManager.instance.enemyEra == 0)
         {
-            if (i == 0)
+            yield return new WaitForSeconds(spawnPattern[0].spawnTime);
+            for (int i = 0; i < spawnPattern.Count; i++)
             {
-                yield return new WaitUntil(() => !GameManager.instance.freezeGame);
-                towManager.UpdateEnemiesList(Instantiate(enemies[spawnPattern[i].unitNum], gameObject.transform));
-                if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
-                    yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
-            }
+                if (i == 0)
+                {
+                    yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                    towManager.UpdateEnemiesList(Instantiate(enemies[spawnPattern[i].unitNum], gameObject.transform));
+                    if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
+                        yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
+                }
 
-            else if (i != 0)
-            {
-                yield return new WaitUntil(() => !GameManager.instance.freezeGame);
-                towManager.UpdateEnemiesList(Instantiate(enemies[spawnPattern[i].unitNum], gameObject.transform));
-                if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
-                    yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
+                else if (i != 0)
+                {
+                    yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                    towManager.UpdateEnemiesList(Instantiate(enemies[spawnPattern[i].unitNum], gameObject.transform));
+                    if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
+                        yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
 
+                }
+                yield return new WaitForSeconds(0.5f);
             }
-            yield return new WaitForSeconds(0.5f);
         }
-        StartCoroutine(SpawnPattern());
+        else if (GameManager.instance.enemyEra == 1)
+        {
+            yield return new WaitForSeconds(spawnPattern[0].spawnTime);
+            for (int i = 0; i < spawnPattern.Count; i++)
+            {
+                if (i == 0)
+                {
+                    yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                    towManager.UpdateEnemiesList(Instantiate(era2enemies[spawnPattern[i].unitNum], gameObject.transform));
+                    if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
+                        yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
+                }
+
+                else if (i != 0)
+                {
+                    yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                    towManager.UpdateEnemiesList(Instantiate(era2enemies[spawnPattern[i].unitNum], gameObject.transform));
+                    if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
+                        yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
+
+                }
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
     }
 
 }

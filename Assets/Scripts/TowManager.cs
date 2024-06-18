@@ -13,11 +13,13 @@ public class TowManager : MonoBehaviour
     private GameObject enemyBase;
     [SerializeField]
     private GameObject playerBase;
-   
+
 
     // Start is called before the first frame update
     void Start()
     {
+        enemyBase = GameObject.FindWithTag("Enemy base");
+        playerBase = GameObject.FindWithTag("Player Base");
         UpdateEnemiesList(enemyBase);
         UpdateUnitList(playerBase);
     }

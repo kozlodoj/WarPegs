@@ -21,6 +21,7 @@ TagManager:
   - Louncher
   - Freeze
   - Fire
+  - Unit Spawn Point
   layers:
   - Default
   - TransparentFX
