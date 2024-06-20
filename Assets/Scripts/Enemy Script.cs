@@ -104,11 +104,21 @@ public class EnemyScript : MonoBehaviour
             {
                 player = collision.gameObject;
                 playerS = player.GetComponent<Unit>();
+                if (canMove && !onBase)
+                {
+                    canMove = false;
+                    agent.isStopped = true;
+                }
             }
             else if (collision.gameObject == towManager.ClosestUnit(gameObject.transform) && collision.gameObject.CompareTag("Player Base"))
             {
                 playerBase = collision.gameObject;
                 baseS = playerBase.GetComponent<BaseScript>();
+                if (canMove && !onBase)
+                {
+                    canMove = false;
+                    agent.isStopped = true;
+                }
             }
         }
     }

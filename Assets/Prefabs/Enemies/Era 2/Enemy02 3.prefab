@@ -391,7 +391,7 @@ MonoBehaviour:
   speed: 0.45
   HP: 105
   attack: 12
-  goldDrop: 20
+  goldDrop: 60
   attackCooldown: 1.7
   weaponAnimator: {fileID: 682585711072513216}
   projectile: {fileID: 0}

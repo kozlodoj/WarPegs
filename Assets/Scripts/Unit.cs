@@ -101,12 +101,22 @@ public class Unit : MonoBehaviour
             {
                 enemy = collision.gameObject;
                 enemyS = enemy.GetComponent<EnemyScript>();
+                if (canMove && !onBase)
+                {
+                    canMove = false;
+                    agent.isStopped = true;
+                }
             }
             
             else if (collision.gameObject == towManager.ClosestEnemy(gameObject.transform) && collision.gameObject.CompareTag("Enemy base"))
             {
                 enemyBase = collision.gameObject;
                 baseS = enemyBase.GetComponent<BaseScript>();
+                if (canMove && !onBase)
+                {
+                    canMove = false;
+                    agent.isStopped = true;
+                }
             }
         }
     }
