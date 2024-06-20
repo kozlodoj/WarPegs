@@ -25,8 +25,13 @@ public class Unit : MonoBehaviour
     private float currentHp;
     private bool canHit = true;
     private bool animationDone = false;
-
+    private bool canMove = true;
+    private bool onBase;
     private UnitUI UI;
+    private GameObject enemy;
+    private GameObject enemyBase;
+    private EnemyScript enemyS;
+    private BaseScript baseS;
 
     [SerializeField]
     private Animator weaponAnimator;
@@ -48,7 +53,7 @@ public class Unit : MonoBehaviour
             Move();
             RangedAttack();
             ManageHP();
-        ManageFreezeStop();
+            ManageFreezeStop();
         
     }
 
@@ -60,16 +65,29 @@ public class Unit : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!isRanged)
+        if (!isRanged && enemy == null && enemyBase == null)
         {
-            if (collision.gameObject.CompareTag("Enemy") && weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-            { 
-                StartCoroutine(HitWithCooldown(attackCooldown, collision.gameObject.GetComponent<EnemyScript>(), null));
-            }
-            else if (collision.gameObject.CompareTag("Enemy base"))
+            if (collision.gameObject == towManager.ClosestEnemy(gameObject.transform) && collision.gameObject.CompareTag("Enemy") && weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
-
-                StartCoroutine(HitWithCooldown(attackCooldown, null, collision.gameObject.GetComponent<BaseScript>()));
+                enemy = collision.gameObject;
+                enemyS = enemy.GetComponent<EnemyScript>();
+                if (canMove && !onBase)
+                {
+                    canMove = false;
+                    agent.isStopped = true;
+                }
+                StartCoroutine(HitWithCooldown());
+            }
+            else if (collision.gameObject == towManager.ClosestEnemy(gameObject.transform) && collision.gameObject.CompareTag("Enemy base") && weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                enemyBase = collision.gameObject;
+                baseS = enemyBase.GetComponent<BaseScript>();
+                if (canMove && !onBase)
+                {
+                    canMove = false;
+                    agent.isStopped = true;
+                }
+                StartCoroutine(HitWithCooldown());
             }
         }
 
@@ -77,46 +95,77 @@ public class Unit : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (!isRanged)
+        if (!isRanged && enemy == null && enemyBase == null)
         {
-            if (canHit && collision.gameObject.CompareTag("Enemy") && weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            if (collision.gameObject == towManager.ClosestEnemy(gameObject.transform) && collision.gameObject.CompareTag("Enemy"))
             {
-             
-                StartCoroutine(HitWithCooldown(attackCooldown, collision.gameObject.GetComponent<EnemyScript>(), null));
+                enemy = collision.gameObject;
+                enemyS = enemy.GetComponent<EnemyScript>();
             }
-            else if (canHit && collision.gameObject.CompareTag("Enemy base"))
+            
+            else if (collision.gameObject == towManager.ClosestEnemy(gameObject.transform) && collision.gameObject.CompareTag("Enemy base"))
             {
-              
-                StartCoroutine(HitWithCooldown(attackCooldown, null, collision.gameObject.GetComponent<BaseScript>()));
+                enemyBase = collision.gameObject;
+                baseS = enemyBase.GetComponent<BaseScript>();
             }
         }
     }
 
-    private IEnumerator HitWithCooldown(float cooldown, EnemyScript enemyS, BaseScript baseS)
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject == enemy)
+        {
+            enemy = null;
+            enemyS = null;
+            canMove = true;
+        }
+        else if (collision.gameObject == enemyBase)
+        {
+            enemyBase = null;
+            baseS = null;
+            canMove = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player Base"))
+            onBase = true;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        onBase = false;
+    }
+
+    private IEnumerator HitWithCooldown()
     {
         if (enemyS != null)
         {
-            weaponAnimator.SetFloat("speed", 1 / cooldown);
+            weaponAnimator.SetFloat("speed", 1 / attackCooldown);
             weaponAnimator.SetBool("isHitting", true);
             canHit = false;
             animationDone = false;
             while (!animationDone)
                 yield return null;
+            if(enemyS != null)
             enemyS.DealDamage(attack);
-            yield return new WaitForSeconds(cooldown);
+            yield return new WaitForSeconds(attackCooldown);
             canHit = true;
+            StartCoroutine(HitWithCooldown());
         }
         else if (baseS != null)
         {
-            weaponAnimator.SetFloat("speed", 1 / cooldown);
+            weaponAnimator.SetFloat("speed", 1 / attackCooldown);
             weaponAnimator.SetBool("isHitting", true);
             canHit = false;
             animationDone = false;
             while (!animationDone)
                 yield return null;
+            if(baseS != null)
             baseS.DealDamage(attack);
-            yield return new WaitForSeconds(cooldown);
+            yield return new WaitForSeconds(attackCooldown);
             canHit = true;
+            StartCoroutine(HitWithCooldown());
         }
 
     }
@@ -137,16 +186,19 @@ public class Unit : MonoBehaviour
     }
     private void Move()
     {
-        if (!GameManager.instance.gameOver || !GameManager.instance.freezeGame)
+        if (canMove)
         {
-            agent.isStopped = false;
-            target = towManager.ClosestEnemy(gameObject.transform);
-            if (target != null)
-                agent.SetDestination(target.transform.position);
-        }
-        if (GameManager.instance.freezeGame)
-        {
-            agent.isStopped = true;
+            if (!GameManager.instance.gameOver || !GameManager.instance.freezeGame)
+            {
+                agent.isStopped = false;
+                target = towManager.ClosestEnemy(gameObject.transform);
+                if (target != null)
+                    agent.SetDestination(target.transform.position);
+            }
+            if (GameManager.instance.freezeGame)
+            {
+                agent.isStopped = true;
+            }
         }
 
     }

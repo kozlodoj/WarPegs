@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 2407655119112668119}
   - component: {fileID: 4813842237535260796}
   - component: {fileID: 8153322250520763563}
+  - component: {fileID: 8086254513794697600}
   m_Layer: 8
   m_Name: Base era 2
   m_TagString: Player Base
@@ -334,6 +335,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!58 &8086254513794697600
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4446869208283151051}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.15906894, y: -0.58468544}
+  serializedVersion: 2
+  m_Radius: 0.72785556
 --- !u!1 &5739914862888468053
 GameObject:
   m_ObjectHideFlags: 0

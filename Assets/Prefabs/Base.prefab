@@ -441,6 +441,7 @@ GameObject:
   - component: {fileID: 5501114606614763187}
   - component: {fileID: 6052009484611878510}
   - component: {fileID: 4622375298827384481}
+  - component: {fileID: 1191259044071987630}
   m_Layer: 8
   m_Name: Base
   m_TagString: Player Base
@@ -557,6 +558,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!58 &1191259044071987630
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6865033561549177182}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.39183533, y: -0.33220804}
+  serializedVersion: 2
+  m_Radius: 0.9003533
 --- !u!1 &7272795403587536858
 GameObject:
   m_ObjectHideFlags: 0
