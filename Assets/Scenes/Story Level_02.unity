@@ -4868,111 +4868,130 @@ MonoBehaviour:
   - {fileID: 6500178492605920635, guid: 4e66e0c57850740109dd477168da5ae5, type: 3}
   - {fileID: 6500178492605920635, guid: c32b4b0f80cf94832be00a8d423cca88, type: 3}
   - {fileID: 6500178492605920635, guid: d1724cb3d737543a0ad0a059725c2e20, type: 3}
+  era2enemies: []
   spawnPattern:
   - unitNum: 0
-    spawnTime: 2
+    spawnTime: 4
     stopSection: 1
   - unitNum: 0
+    spawnTime: 11
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 11
+    stopSection: 1
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 0
+    spawnTime: 3
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 3
+    stopSection: 1
+  - unitNum: 1
+    spawnTime: 11
+    stopSection: 0
+  - unitNum: 1
+    spawnTime: 11
+    stopSection: 1
+  - unitNum: 0
+    spawnTime: 11
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 11
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 11
+    stopSection: 1
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 0
+    spawnTime: 9
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 9
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 9
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 9
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 9
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 9
+    stopSection: 1
+  - unitNum: 2
+    spawnTime: 11
+    stopSection: 1
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 2
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 1
+    spawnTime: 9
+    stopSection: 0
+  - unitNum: 1
+    spawnTime: 9
+    stopSection: 1
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 0
+  - unitNum: 0
+    spawnTime: 10
+    stopSection: 1
+  - unitNum: 2
+    spawnTime: 6
+    stopSection: 0
+  - unitNum: 2
+    spawnTime: 6
+    stopSection: 0
+  - unitNum: 2
     spawnTime: 6
     stopSection: 1
   - unitNum: 0
-    spawnTime: 10
+    spawnTime: 9
     stopSection: 0
   - unitNum: 0
-    spawnTime: 10
-    stopSection: 1
-  - unitNum: 0
-    spawnTime: 10
+    spawnTime: 9
     stopSection: 0
   - unitNum: 0
-    spawnTime: 10
+    spawnTime: 9
     stopSection: 0
   - unitNum: 0
-    spawnTime: 10
-    stopSection: 1
-  - unitNum: 1
-    spawnTime: 10
+    spawnTime: 9
     stopSection: 0
-  - unitNum: 1
-    spawnTime: 10
+  - unitNum: 0
+    spawnTime: 9
     stopSection: 1
   - unitNum: 2
-    spawnTime: 10
-    stopSection: 1
-  - unitNum: 0
-    spawnTime: 10
-    stopSection: 0
-  - unitNum: 0
-    spawnTime: 10
-    stopSection: 0
-  - unitNum: 0
-    spawnTime: 10
-    stopSection: 0
-  - unitNum: 0
-    spawnTime: 10
-    stopSection: 0
-  - unitNum: 0
-    spawnTime: 10
-    stopSection: 1
-  - unitNum: 1
-    spawnTime: 5
-    stopSection: 0
-  - unitNum: 1
-    spawnTime: 5
-    stopSection: 1
-  - unitNum: 2
-    spawnTime: 15
+    spawnTime: 6
     stopSection: 0
   - unitNum: 2
-    spawnTime: 15
-    stopSection: 1
-  - unitNum: 0
-    spawnTime: 15
-    stopSection: 0
-  - unitNum: 0
-    spawnTime: 15
-    stopSection: 0
-  - unitNum: 0
-    spawnTime: 15
-    stopSection: 0
-  - unitNum: 0
-    spawnTime: 15
-    stopSection: 0
-  - unitNum: 0
-    spawnTime: 15
-    stopSection: 0
-  - unitNum: 0
-    spawnTime: 15
-    stopSection: 0
-  - unitNum: 0
-    spawnTime: 15
-    stopSection: 0
-  - unitNum: 0
-    spawnTime: 15
-    stopSection: 0
-  - unitNum: 0
-    spawnTime: 15
-    stopSection: 0
-  - unitNum: 0
-    spawnTime: 15
-    stopSection: 1
-  - unitNum: 2
-    spawnTime: 10
+    spawnTime: 6
     stopSection: 0
   - unitNum: 2
-    spawnTime: 10
-    stopSection: 0
-  - unitNum: 2
-    spawnTime: 10
-    stopSection: 0
-  - unitNum: 2
-    spawnTime: 10
-    stopSection: 0
-  - unitNum: 2
-    spawnTime: 10
-    stopSection: 0
-  - unitNum: 2
-    spawnTime: 10
+    spawnTime: 6
     stopSection: 1
 --- !u!1 &920011270
 GameObject:
@@ -5960,9 +5979,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wall01: {fileID: 512570256}
   wall02: {fileID: 413779412}
-  firstSpawner: {fileID: 3650580143152790465}
-  secondSpawner: {fileID: 4753978723126035283}
-  thirdSpawner: {fileID: 424641856479962184}
+  era1FirstSpawner: {fileID: 0}
+  era1SecondSpawner: {fileID: 0}
+  era1ThirdSpawner: {fileID: 0}
+  era2FirstSpawner: {fileID: 0}
+  era2SecondSpawner: {fileID: 0}
+  era2ThirdSpawner: {fileID: 0}
 --- !u!1 &1189009030
 GameObject:
   m_ObjectHideFlags: 0
@@ -8118,6 +8140,7 @@ MonoBehaviour:
   goldText: {fileID: 574192924}
   diamondText: {fileID: 492277737}
   tutorial: {fileID: 1367464724}
+  daily: {fileID: 0}
 --- !u!1 &1695882598
 GameObject:
   m_ObjectHideFlags: 0
@@ -9791,6 +9814,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base
       objectReference: {fileID: 0}
+    - target: {fileID: 4813842237535260796, guid: 0486392939cf348019a7496e60b9017a, type: 3}
+      propertyPath: HP
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9897,11 +9924,6 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4446869208283151051, guid: 0486392939cf348019a7496e60b9017a, type: 3}
   m_PrefabInstance: {fileID: 280178217101470217}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &424641856479962184 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 962815712144322319, guid: 66dec3b4e2b074a14a79c5341711f901, type: 3}
-  m_PrefabInstance: {fileID: 1311756263408123388}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1311756263408123388
 PrefabInstance:
@@ -10041,6 +10063,10 @@ PrefabInstance:
     - target: {fileID: 801385999300426429, guid: 9264fc23580a546a99c4f36785032435, type: 3}
       propertyPath: m_Name
       value: 'Enemy base '
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258746182701727594, guid: 9264fc23580a546a99c4f36785032435, type: 3}
+      propertyPath: HP
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 4346515930670158805, guid: 9264fc23580a546a99c4f36785032435, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10206,16 +10232,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4881910434051320272, guid: 0486392939cf348019a7496e60b9017a, type: 3}
   m_PrefabInstance: {fileID: 280178217101470217}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3650580143152790465 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8871525514912437245, guid: f8ef0f057e5584c99a601fd80c7c8e8d, type: 3}
-  m_PrefabInstance: {fileID: 4933555943851243701}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4753978723126035283 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4136177227898662911, guid: a3172d727ebeb47f899127b36e9f42ed, type: 3}
-  m_PrefabInstance: {fileID: 1703558848763654897}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4933555943851243701
 PrefabInstance:
