@@ -38,19 +38,17 @@ public class PegScript : MonoBehaviour
 
     private List<Collider2D> allColliders = new List<Collider2D>();
 
-    // Start is called before the first frame update
     void Start()
     {
+        //reference ui
         pegUI = gameObject.transform.Find("Canvas").GetComponent<PegUI>();
-        
-        rend = GetComponent<SpriteRenderer>();
-        c = rend.material.color;
-        c.a = 1f;
 
+        GetRenderer();
+        //reference peg manager
         pegManager = GameObject.FindWithTag("Peg Layout").GetComponent<PegManager>();
-
+        //set buff points
         buffPoints = GameManager.instance.buff;
-        
+        //set up border peg
         if (borderPeg)
         {
             gameObject.GetComponents<Collider2D>(allColliders);
@@ -180,6 +178,13 @@ public class PegScript : MonoBehaviour
         medicPeg = true;
         gameObject.GetComponent<SpriteRenderer>().sprite = medicSprite;
         
+
+    }
+    private void GetRenderer()
+    {
+        rend = GetComponent<SpriteRenderer>();
+        c = rend.material.color;
+        c.a = 1f;
 
     }
 

@@ -26,23 +26,23 @@ public class Ball : MonoBehaviour
     public bool onFire;
     private Tutorial tut;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
+        //reference 
         ballUI = UI.GetComponent<BallUI>();
         animator.gameObject.GetComponent<Animator>();
         SetStats();
+        //check for tutorial
         if (GameManager.instance.tutorial)
         {
             tut = GameObject.Find("UI").transform.Find("Tutorial").GetComponent<Tutorial>();
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         Charge();
-       
 
     }
 
@@ -51,8 +51,6 @@ public class Ball : MonoBehaviour
 
         if (!collision.gameObject.CompareTag("Walls"))
         {
-
-            
                 peg = collision.gameObject.GetComponent<PegScript>();
                 buffPoints += peg.buffPoints;
 

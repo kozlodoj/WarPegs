@@ -41,20 +41,18 @@ public class EnemyScript : MonoBehaviour
 
     private UnitUI UI;
 
-    // Start is called before the first frame update
     void Start()
     {
         StartRoutine();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
             Move();
             RangedAttack();
             ManageHP();
-        ManageFreezeStop();
+            ManageFreezeStop();
        
     }
 
@@ -127,7 +125,6 @@ public class EnemyScript : MonoBehaviour
         
         if (collision.gameObject == player)
         {
-            
             player = null;
             playerS = null;
             canMove = true;
@@ -149,6 +146,8 @@ public class EnemyScript : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         onBase = false;
+        if (player != null)
+            agent.isStopped = true;
     }
 
     private IEnumerator HitWithCooldown()

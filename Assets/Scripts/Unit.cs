@@ -44,7 +44,6 @@ public class Unit : MonoBehaviour
     private void OnEnable()
     {
         StartRoutine();
-
     }
 
     void Update()
@@ -54,7 +53,6 @@ public class Unit : MonoBehaviour
             RangedAttack();
             ManageHP();
             ManageFreezeStop();
-        
     }
 
 
@@ -65,7 +63,6 @@ public class Unit : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
         if (!isRanged && enemy == null && enemyBase == null)
         {
             if (collision.gameObject == towManager.ClosestEnemy(gameObject.transform) && collision.gameObject.CompareTag("Enemy") && weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
@@ -146,6 +143,8 @@ public class Unit : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         onBase = false;
+        if (enemy != null)
+            agent.isStopped = true;
     }
 
     private IEnumerator HitWithCooldown()

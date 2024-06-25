@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
-
+    
     public float ballPower = 5;
     public float reloadRate = 5;
     public float reloadPerSec = 0.06f;
@@ -141,16 +141,19 @@ public class GameManager : MonoBehaviour
     }
     public void BuyUnit(int num)
     {
+        //buy unit 1
         if (num == 2 && !isUnitTwoActive)
         {
             AddGold(-unitTwoCost);
             isUnitTwoActive = true;
         }
+        //buy unit 2
         else if (num == 3 && !isUnitThreeActive)
         {
             AddGold(-unitThreeCost);
             isUnitThreeActive = true;
         }
+        //evolve
         else if (num == 4)
         {
             gold = 0;
@@ -194,7 +197,7 @@ public class GameManager : MonoBehaviour
         buffCost = (int)(buffCost * 2f);
     }
 
-
+    //set camera scale for screen resolution
     private void CameraScale()
     {
         if ((float)Screen.height / (float)Screen.width >= 2f)
@@ -238,24 +241,27 @@ public class GameManager : MonoBehaviour
     private void NextEra()
     {
         GameObject.Find("UI").GetComponent<StoryUI>().NextEra();
+        //deactivate unit 2 & 3
         isUnitTwoActive = false;
         isUnitThreeActive = false;
-
+        //change the cost of units and evolution
         unitThreeCost *= 3;
         unitTwoCost *= 3;
+        if (evolveCost == 0)
+            evolveCost = 1000;
         evolveCost *= 3;
-
+        //set gold and stats
         gold = 0;
         reloadPerSec = 0.06f;
         SetReloadTime();
         baseHP = 2;
+        buff = 1;
+        //set costs
         reloadCost = 27;
         hPCost = 90;
         buffCost = 3000;
-        buff = 1;
+        
     }
-
-
 
     public void ManageDaily()
     {
