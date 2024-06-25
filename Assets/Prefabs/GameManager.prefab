@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7003774582125818556}
   - component: {fileID: 1327309104899784101}
+  - component: {fileID: 7447642384571782930}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,14 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPower: 7
-  reloadRate: 15
-  buff: 2
+  reloadRate: 16.65
+  reloadPerSec: 0.06
+  buff: 1
   respawn: 2
   intialStat: 100
-  baseHP: 10
+  baseHP: 2
   initialBallCharge: 30
   gold: 0
-  diamonds: 800
+  diamonds: 0
   currentGold: 0
   randomSpawn: 0
   reactivatePegsOnSpawn: 0
@@ -63,14 +65,38 @@ MonoBehaviour:
   perkOneRecharge: 60
   perkTwoRecharge: 60
   gameOver: 0
-  unitTwoCost: 1000
-  unitThreeCost: 2000
-  perkOneCost: 300
-  perkTwoCost: 500
-  reloadCost: 20
-  hPCost: 20
-  buffCost: 100
+  unitTwoCost: 150
+  unitThreeCost: 400
+  perkOneCost: 200
+  perkTwoCost: 200
+  reloadCost: 9
+  hPCost: 30
+  buffCost: 1000
   storyMode: 0
   cameraScale: 0
   joyStickActive: 0
   freezeGame: 0
+  tutorial: 1
+  playerEra: 0
+  enemyEra: 0
+  evolveCost: 2000
+  bounces: 0
+  ballsShot: 0
+  enemiesDefeated: 0
+  unitTwoSpawned: 0
+  unitThreeSpawned: 0
+  goldCollected: 0
+  buffGathered: 0
+  dailyNum: 1
+--- !u!114 &7447642384571782930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401756500224349042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a74833e6ec24b5aa6c9d9ca362ebf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -68,6 +68,8 @@ public class GameManager : MonoBehaviour
 
     public int dailyNum = 1;
 
+    private SaveScript save;
+
 
     void Awake()
     {
@@ -80,8 +82,12 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+        save = gameObject.GetComponent<SaveScript>();
+        LoadGame();
         CameraScale();
         SetReloadTime();
+       
+
     }
 
     public void LevelSelect(int levelNum)
@@ -101,6 +107,7 @@ public class GameManager : MonoBehaviour
     public void BackToMenu()
     {
         currentGold = 0;
+        SaveGame();
         SceneManager.LoadScene(5);
         gameOver = false;
     }
@@ -141,6 +148,7 @@ public class GameManager : MonoBehaviour
     }
     public void BuyUnit(int num)
     {
+        SaveGame();
         //buy unit 1
         if (num == 2 && !isUnitTwoActive)
         {
@@ -164,6 +172,7 @@ public class GameManager : MonoBehaviour
     }
     public void BuyPerk(int num)
     {
+        SaveGame();
         if (num == 1 && !isPerkOneActive)
         {
             AddDiamond(-perkOneCost);
@@ -179,6 +188,7 @@ public class GameManager : MonoBehaviour
 
     public void BuyReloadTime()
     {
+        SaveGame();
         reloadPerSec += 0.005f;
         reloadRate = 1 / reloadPerSec;
         AddGold(-reloadCost);
@@ -186,18 +196,19 @@ public class GameManager : MonoBehaviour
     }
     public void BuyHP()
     {
+        SaveGame();
         baseHP = (int)(baseHP + 1);
         AddGold(-hPCost);
         hPCost = (int)(hPCost * 1.2f);
     }
     public void BuyBuff()
     {
+        SaveGame();
         buff++;
         AddGold(-buffCost);
         buffCost = (int)(buffCost * 2f);
     }
 
-    //set camera scale for screen resolution
     private void CameraScale()
     {
         if ((float)Screen.height / (float)Screen.width >= 2f)
@@ -260,13 +271,15 @@ public class GameManager : MonoBehaviour
         reloadCost = 27;
         hPCost = 90;
         buffCost = 3000;
-        
+        SaveGame();
+
     }
 
     public void ManageDaily()
     {
         if (SceneManager.GetActiveScene().name != "Story Menu")
         {
+            SaveGame();
             if (dailyNum == 1)
             {
                 GameObject.Find("UI").GetComponent<UIScript>().ManageDaily(false);
@@ -348,5 +361,14 @@ public class GameManager : MonoBehaviour
         unitTwoSpawned = 0;
         unitThreeSpawned = 0;
         buffGathered = 0;
+    }
+
+    public void LoadGame()
+    {
+        save.LoadGame();
+    }
+    public void SaveGame()
+    {
+        save.SaveGame();
     }
 }
