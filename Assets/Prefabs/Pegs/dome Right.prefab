@@ -351,7 +351,7 @@ MonoBehaviour:
   medicPeg: 0
   borderPeg: 1
   isDome: 1
-  numberOfBounces: 2
+  numberOfBounces: 1
   boucesLeft: 0
   isClone: 0
   buffPoints: 0
