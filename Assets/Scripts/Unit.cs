@@ -65,6 +65,7 @@ public class Unit : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
         if (!isRanged && enemy == null && enemyBase == null)
         {
             if (collision.gameObject == towManager.ClosestEnemy(gameObject.transform) && collision.gameObject.CompareTag("Enemy") && weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
@@ -151,30 +152,24 @@ public class Unit : MonoBehaviour
     {
         if (enemyS != null)
         {
-            weaponAnimator.SetFloat("speed", 1 / attackCooldown);
             weaponAnimator.SetBool("isHitting", true);
-            canHit = false;
             animationDone = false;
             while (!animationDone)
                 yield return null;
             if(enemyS != null)
             enemyS.DealDamage(attack);
             yield return new WaitForSeconds(attackCooldown);
-            canHit = true;
             StartCoroutine(HitWithCooldown());
         }
         else if (baseS != null)
         {
-            weaponAnimator.SetFloat("speed", 1 / attackCooldown);
             weaponAnimator.SetBool("isHitting", true);
-            canHit = false;
             animationDone = false;
             while (!animationDone)
                 yield return null;
             if(baseS != null)
             baseS.DealDamage(attack);
             yield return new WaitForSeconds(attackCooldown);
-            canHit = true;
             StartCoroutine(HitWithCooldown());
         }
 

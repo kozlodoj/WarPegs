@@ -108,7 +108,6 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOver = true;
-        //tutorial = false;
         Time.timeScale = 0;
         UIScript UI = GameObject.Find("UI").GetComponent<UIScript>();
         UI.ActivateGameOverUI();
@@ -154,7 +153,7 @@ public class GameManager : MonoBehaviour
         }
         else if (num == 4)
         {
-            AddGold(-evolveCost);
+            gold = 0;
             playerEra++;
             enemyEra = 0;
             NextEra();
@@ -246,6 +245,7 @@ public class GameManager : MonoBehaviour
         unitTwoCost *= 3;
         evolveCost *= 3;
 
+        gold = 0;
         reloadPerSec = 0.06f;
         SetReloadTime();
         baseHP = 2;

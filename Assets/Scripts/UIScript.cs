@@ -65,8 +65,13 @@ public class UIScript : MonoBehaviour
         if (GameManager.instance.storyMode)
         {
             currentCoin = gameOver.transform.Find("gold").gameObject.GetComponent<TextMeshProUGUI>();
-            dailyText = daily.transform.Find("Daily text").GetComponent<TextMeshProUGUI>();
-            rewardText = daily.transform.Find("Reward text").GetComponent<TextMeshProUGUI>();
+            if (GameManager.instance.dailyNum != 69)
+            {
+                dailyText = daily.transform.Find("Daily text").GetComponent<TextMeshProUGUI>();
+                rewardText = daily.transform.Find("Reward text").GetComponent<TextMeshProUGUI>();
+            }
+            else
+                daily.SetActive(false);
         }
         SetColors();
         if (!GameManager.instance.tutorial)
@@ -191,88 +196,92 @@ public class UIScript : MonoBehaviour
     }
     public void ManageDaily(bool isDone)
     {
-        if (GameManager.instance.dailyNum == 1 && !animationPlaying)
+        if (GameManager.instance.dailyNum != 69)
         {
-            dailyText.SetText("Gold collected " + GameManager.instance.goldCollected + "/100");
-            rewardText.SetText("40");
-            if (isDone)
+            if (GameManager.instance.dailyNum == 1 && !animationPlaying)
             {
-                dailyText.SetText("Gold collected 100/100");
-                daily.GetComponent<DailyScript>().DailyDoneAnimate();
-                animationPlaying = true;
-         
-            }
-        }
-        else if (GameManager.instance.dailyNum == 2 && !animationPlaying)
-        {
-            dailyText.SetText("Ball bounces " + GameManager.instance.bounces + "/150");
-            rewardText.SetText("50");
-            if (isDone)
-            {
-                dailyText.SetText("Ball bounces 150/150");
-                daily.GetComponent<DailyScript>().DailyDoneAnimate();
-                animationPlaying = true;
+                dailyText.SetText("Gold collected " + GameManager.instance.goldCollected + "/100");
+                rewardText.SetText("40");
+                if (isDone)
+                {
+                    dailyText.SetText("Gold collected 100/100");
+                    daily.GetComponent<DailyScript>().DailyDoneAnimate();
+                    animationPlaying = true;
 
+                }
             }
-        }
-        else if (GameManager.instance.dailyNum == 3 && !animationPlaying)
-        {
-            dailyText.SetText("Balls shot " + GameManager.instance.ballsShot + "/15");
-            rewardText.SetText("40");
-            if (isDone)
+            else if (GameManager.instance.dailyNum == 2 && !animationPlaying)
             {
-                dailyText.SetText("Balls shot 10/10");
-                daily.GetComponent<DailyScript>().DailyDoneAnimate();
-                animationPlaying = true;
+                dailyText.SetText("Ball bounces " + GameManager.instance.bounces + "/150");
+                rewardText.SetText("50");
+                if (isDone)
+                {
+                    dailyText.SetText("Ball bounces 150/150");
+                    daily.GetComponent<DailyScript>().DailyDoneAnimate();
+                    animationPlaying = true;
 
+                }
             }
-        }
-        else if (GameManager.instance.dailyNum == 4 && !animationPlaying)
-        {
-            dailyText.SetText("Archer spawned " + GameManager.instance.unitTwoSpawned + "/15");
-            rewardText.SetText("50");
-            if (isDone)
+            else if (GameManager.instance.dailyNum == 3 && !animationPlaying)
             {
-                dailyText.SetText("Archer spawned 15/15");
-                daily.GetComponent<DailyScript>().DailyDoneAnimate();
-                animationPlaying = true;
+                dailyText.SetText("Balls shot " + GameManager.instance.ballsShot + "/15");
+                rewardText.SetText("40");
+                if (isDone)
+                {
+                    dailyText.SetText("Balls shot 10/10");
+                    daily.GetComponent<DailyScript>().DailyDoneAnimate();
+                    animationPlaying = true;
 
+                }
             }
-        }
-        else if (GameManager.instance.dailyNum == 5 && !animationPlaying)
-        {
-            dailyText.SetText("Enemies defeated " + GameManager.instance.enemiesDefeated + "/20");
-            rewardText.SetText("50");
-            if (isDone)
+            else if (GameManager.instance.dailyNum == 4 && !animationPlaying)
             {
-                dailyText.SetText("Enemies defeated 20/20");
-                daily.GetComponent<DailyScript>().DailyDoneAnimate();
-                animationPlaying = true;
+                dailyText.SetText("Archer spawned " + GameManager.instance.unitTwoSpawned + "/15");
+                rewardText.SetText("50");
+                if (isDone)
+                {
+                    dailyText.SetText("Archer spawned 15/15");
+                    daily.GetComponent<DailyScript>().DailyDoneAnimate();
+                    animationPlaying = true;
 
+                }
             }
-        }
-        else if (GameManager.instance.dailyNum == 6 && !animationPlaying)
-        {
-            dailyText.SetText("Heavy spawned " + GameManager.instance.unitThreeSpawned + "/7");
-            rewardText.SetText("70");
-            if (isDone)
+            else if (GameManager.instance.dailyNum == 5 && !animationPlaying)
             {
-                dailyText.SetText("Enemies defeated 7/7");
-                daily.GetComponent<DailyScript>().DailyDoneAnimate();
-                animationPlaying = true;
+                dailyText.SetText("Enemies defeated " + GameManager.instance.enemiesDefeated + "/20");
+                rewardText.SetText("50");
+                if (isDone)
+                {
+                    dailyText.SetText("Enemies defeated 20/20");
+                    daily.GetComponent<DailyScript>().DailyDoneAnimate();
+                    animationPlaying = true;
 
+                }
             }
-        }
-        else if (GameManager.instance.dailyNum == 7 && !animationPlaying)
-        {
-            dailyText.SetText("X2 buff gained " + GameManager.instance.buffGathered + "/1");
-            rewardText.SetText("100");
-            if (isDone)
+            else if (GameManager.instance.dailyNum == 6 && !animationPlaying)
             {
-                dailyText.SetText("X2 buff gained 1/1");
-                daily.GetComponent<DailyScript>().DailyDoneAnimate();
-                animationPlaying = true;
+                dailyText.SetText("Heavy spawned " + GameManager.instance.unitThreeSpawned + "/7");
+                rewardText.SetText("70");
+                if (isDone)
+                {
+                    dailyText.SetText("Enemies defeated 7/7");
+                    daily.GetComponent<DailyScript>().DailyDoneAnimate();
+                    animationPlaying = true;
 
+                }
+            }
+            else if (GameManager.instance.dailyNum == 7 && !animationPlaying)
+            {
+                dailyText.SetText("X2 buff gained " + GameManager.instance.buffGathered + "/1");
+                rewardText.SetText("100");
+                if (isDone)
+                {
+                    dailyText.SetText("X2 buff gained 1/1");
+                    daily.GetComponent<DailyScript>().DailyDoneAnimate();
+                    animationPlaying = true;
+                    DailyDone();
+
+                }
             }
         }
     }
@@ -285,6 +294,12 @@ public class UIScript : MonoBehaviour
             if (GameManager.instance.dailyNum > 7)
                 daily.SetActive(false);
             ManageDaily(false);
+    }
+
+    public void DailyDone()
+    {
+        daily.SetActive(false);
+        GameManager.instance.dailyNum = 69;
     }
 
 

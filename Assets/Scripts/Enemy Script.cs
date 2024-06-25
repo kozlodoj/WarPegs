@@ -66,7 +66,6 @@ public class EnemyScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
         if (!isRanged && player == null && playerBase == null)
         {
             if (collision.gameObject == towManager.ClosestUnit(gameObject.transform) && collision.gameObject.CompareTag("Unit") && weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
@@ -156,30 +155,24 @@ public class EnemyScript : MonoBehaviour
     {
         if (playerS != null)
         {
-            weaponAnimator.SetFloat("speed", 1 / attackCooldown);
             weaponAnimator.SetBool("isHitting", true);
-            canHit = false;
             animationDone = false;
             while (!animationDone)
                 yield return null;
             if (playerS != null)
                 playerS.DealDamage(attack);
             yield return new WaitForSeconds(attackCooldown);
-            canHit = true;
             StartCoroutine(HitWithCooldown());
         }
         else if (baseS != null)
         {
-            weaponAnimator.SetFloat("speed", 1 / attackCooldown);
             weaponAnimator.SetBool("isHitting", true);
-            canHit = false;
             animationDone = false;
             while (!animationDone)
                 yield return null;
             if (baseS != null)
                 baseS.DealDamage(attack);
             yield return new WaitForSeconds(attackCooldown);
-            canHit = true;
             StartCoroutine(HitWithCooldown());
         }
 

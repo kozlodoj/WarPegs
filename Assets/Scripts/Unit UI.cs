@@ -12,10 +12,14 @@ public class UnitUI : MonoBehaviour
     private TextMeshProUGUI buffText;
     [SerializeField]
     private TextMeshProUGUI buffTextOutline;
+    [SerializeField]
+    private TextMeshProUGUI hpText;
 
     public void UpdateHP(float initialAmount, float amount)
     {
         hPBar.fillAmount = amount / initialAmount;
+        if (hpText != null)
+        hpText.SetText(amount.ToString("0"));
     }
 
     public void BufText(float amount)

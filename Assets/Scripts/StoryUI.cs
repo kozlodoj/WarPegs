@@ -55,6 +55,7 @@ public class StoryUI : MonoBehaviour
     {
         baseMenu.transform.Find("Era 1").gameObject.SetActive(false);
         baseMenu.transform.Find("Era 2").gameObject.SetActive(true);
+        SetGoldText(GameManager.instance.gold);
 
     }
     private void ManageEra()
