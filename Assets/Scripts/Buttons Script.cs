@@ -309,4 +309,9 @@ public class ButtonsScript : MonoBehaviour
     {
         GameManager.instance.reactivatePegsOnSpawn = isTrue;
     }
+
+    public void NewGame()
+    {
+        GameManager.instance.NewGame();
+    }
 }

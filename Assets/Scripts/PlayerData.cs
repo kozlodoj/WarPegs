@@ -35,4 +35,5 @@ public class PlayerData
         public int goldCollected;
         public float buffGathered;
         public int dailyNum;
+        public bool tutorial;
 }

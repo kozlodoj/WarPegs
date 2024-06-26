@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         save = gameObject.GetComponent<SaveScript>();
+        MakeNewGameData();
         LoadGame();
         CameraScale();
         SetReloadTime();
@@ -99,6 +100,7 @@ public class GameManager : MonoBehaviour
             storyMode = true;
         else
             storyMode = false;
+        SaveGame();
         SceneManager.LoadScene(levelNum);
         gameOver = false;
 
@@ -279,7 +281,7 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name != "Story Menu")
         {
-            SaveGame();
+            
             if (dailyNum == 1)
             {
                 GameObject.Find("UI").GetComponent<UIScript>().ManageDaily(false);
@@ -370,5 +372,13 @@ public class GameManager : MonoBehaviour
     public void SaveGame()
     {
         save.SaveGame();
+    }
+    public void MakeNewGameData()
+    {
+        save.NewGameFile();
+    }
+    public void NewGame()
+    {
+        save.LoadNewGame();
     }
 }
