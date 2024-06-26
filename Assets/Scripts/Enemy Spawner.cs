@@ -31,15 +31,12 @@ public class EnemySpawner : MonoBehaviour
     {
         randomSpawn = GameManager.instance.randomSpawn;
         towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
-        if (GameManager.instance.tutorial)
-            TutorialPattern();
-        else
-        {
+       
             if (randomSpawn)
                 StartCoroutine(SpawnNextEnemy(RandomTime()));
             else
                 StartCoroutine(SpawnPattern());
-        }
+        
     }
 
 
