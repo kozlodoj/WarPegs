@@ -33,11 +33,7 @@ public class Ball : MonoBehaviour
         ballUI = UI.GetComponent<BallUI>();
         animator.gameObject.GetComponent<Animator>();
         SetStats();
-        //check for tutorial
-        if (GameManager.instance.tutorial)
-        {
-            tut = GameObject.Find("UI").transform.Find("Tutorial").GetComponent<Tutorial>();
-        }
+   
     }
 
     void Update()
@@ -55,10 +51,7 @@ public class Ball : MonoBehaviour
                 buffPoints += peg.buffPoints;
 
                 ballUI.SetBuffText(buffPoints);
-            if (GameManager.instance.tutorial && tut.tutCounter == 2)
-            {
-                tut.BallHit(transform.position);
-            }
+
             peg.FadeOut();
             
 
@@ -113,15 +106,11 @@ public class Ball : MonoBehaviour
 
     public void SetStats()
     {
-        if (GameManager.instance.tutorial)
-        {
-            chargeTime = 7f;
-        }
-        else
-        {
+        
+        
             chargeTime = GameManager.instance.reloadRate;
             buffRate = GameManager.instance.intialStat / 100f;
-        }
+        
 
     }
     public float GetBuff()

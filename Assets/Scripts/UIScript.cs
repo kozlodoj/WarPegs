@@ -25,10 +25,13 @@ public class UIScript : MonoBehaviour
 
     [SerializeField]
     private GameObject gameOver;
+    private GameObject doubleButton;
     private TextMeshProUGUI currentCoin;
 
     [SerializeField]
     private TextMeshProUGUI goldText;
+    [SerializeField]
+    private TextMeshProUGUI goldCollectedText;
     [SerializeField]
     private TextMeshProUGUI diamondText;
     [SerializeField]
@@ -39,6 +42,8 @@ public class UIScript : MonoBehaviour
     private TextMeshProUGUI dailyText;
     private TextMeshProUGUI rewardText;
     private bool animationPlaying = false;
+    [SerializeField]
+    private BallLauncher louncher;
 
 
 
@@ -62,9 +67,11 @@ public class UIScript : MonoBehaviour
         touch = actionMap.FindAction("Touch");
         joyImage = joystick.GetComponent<Image>();
         outlineImage = joyOutline.GetComponent<Image>();
+        
         if (GameManager.instance.storyMode)
         {
             currentCoin = gameOver.transform.Find("gold").gameObject.GetComponent<TextMeshProUGUI>();
+            doubleButton = gameOver.transform.Find("X2").gameObject;
             if (GameManager.instance.dailyNum != 69)
             {
                 dailyText = daily.transform.Find("Daily text").GetComponent<TextMeshProUGUI>();
@@ -84,6 +91,7 @@ public class UIScript : MonoBehaviour
         if (GameManager.instance.storyMode)
         {
             SetGold(GameManager.instance.gold);
+            SetCollectedGold(GameManager.instance.currentGold);
             SetDiamonds(GameManager.instance.diamonds);
             if (GameManager.instance.tutorial)
             {
@@ -97,28 +105,17 @@ public class UIScript : MonoBehaviour
 
     private void ActivateJoystick (InputAction.CallbackContext context)
         {
-        if (tutScript != null)
-        {
-            if (context.ReadValue<Vector2>().y <= 1200 && tutScript.canUseJoy)
-            {
-                GameManager.instance.joyStickActive = true;
-                joystick.transform.position = context.ReadValue<Vector2>();
-                joyImage.color = filledJoy;
-                joyOutline.transform.position = context.ReadValue<Vector2>();
-                joyOutline.SetActive(true);
-            }
-        }
-        else
-        {
+       
             if (context.ReadValue<Vector2>().y <= 1200)
             {
+            if (GameManager.instance.tutorial)
+                tutorial.SetActive(false);
                 GameManager.instance.joyStickActive = true;
                 joystick.transform.position = context.ReadValue<Vector2>();
                 joyImage.color = filledJoy;
                 joyOutline.transform.position = context.ReadValue<Vector2>();
                 joyOutline.SetActive(true);
             }
-        }
 
     }
     private void DeactivateJoystic(InputAction.CallbackContext context)
@@ -143,11 +140,15 @@ public class UIScript : MonoBehaviour
         
         gameOver.SetActive(true);
         joystick.SetActive(false);
-        if (GameManager.instance.currentGold == 0 && !GameManager.instance.tutorial)
+        if (GameManager.instance.currentGold == 0)
         {
             GameManager.instance.currentGold += 9;
             GameManager.instance.gold += 9;
             currentCoin.SetText(GameManager.instance.currentGold.ToString());
+        }
+        if (GameManager.instance.tutorial)
+        {
+            doubleButton.SetActive(false);
         }
         GameManager.instance.tutorial = false;
         actionMap.Disable();
@@ -160,6 +161,11 @@ public class UIScript : MonoBehaviour
             goldText.SetText(amount.ToString());
             currentCoin.SetText(GameManager.instance.currentGold.ToString());
         }
+    }
+    public void SetCollectedGold(int amount)
+    {
+        goldCollectedText.SetText(amount.ToString());
+        currentCoin.SetText(GameManager.instance.currentGold.ToString());
     }
 
     public void SetDiamonds(int amount)
@@ -180,9 +186,16 @@ public class UIScript : MonoBehaviour
 
     private IEnumerator StartTutorial()
     {
-        yield return new WaitForSeconds(1f);
+        while (!louncher.isOcupied)
+        yield return null;
         tutorial.SetActive(true);
-        tutScript = tutorial.GetComponent<Tutorial>();
+        GameManager.instance.FreezeTow();
+        GameManager.instance.freezeGame = true;
+        while (louncher.isOcupied)
+            yield return null;
+        GameManager.instance.UnFreezeTow();
+        GameManager.instance.freezeGame = false;
+
     }
     public void KillOutline()
     {
@@ -196,7 +209,7 @@ public class UIScript : MonoBehaviour
     }
     public void ManageDaily(bool isDone)
     {
-        if (GameManager.instance.dailyNum != 69)
+        if (GameManager.instance.dailyNum != 69 && !GameManager.instance.tutorial)
         {
             if (GameManager.instance.dailyNum == 1 && !animationPlaying)
             {

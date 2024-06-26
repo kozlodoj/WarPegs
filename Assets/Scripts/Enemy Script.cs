@@ -180,9 +180,9 @@ public class EnemyScript : MonoBehaviour
     {
         if (currentHp <= 0)
         {
+                GameManager.instance.AddGold(goldDrop);
             if (!GameManager.instance.tutorial)
             {
-                GameManager.instance.AddGold(goldDrop);
                 GameManager.instance.enemiesDefeated++;
                 GameManager.instance.ManageDaily();
             }

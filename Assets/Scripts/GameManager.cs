@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-
         if (instance == null)
             instance = this;
 
@@ -84,11 +83,18 @@ public class GameManager : MonoBehaviour
 
         save = gameObject.GetComponent<SaveScript>();
         MakeNewGameData();
-        LoadGame();
         CameraScale();
+        LoadGame();
         SetReloadTime();
-       
+        
 
+    }
+    private void OnEnable()
+    {
+        if (tutorial)
+        {
+            LevelSelect(6);
+        }
     }
 
     public void LevelSelect(int levelNum)
@@ -112,6 +118,7 @@ public class GameManager : MonoBehaviour
         SaveGame();
         SceneManager.LoadScene(5);
         gameOver = false;
+        tutorial = false;
     }
 
     public void GameOver()
@@ -126,7 +133,7 @@ public class GameManager : MonoBehaviour
     {
         gold += amount;
         currentGold += amount;
-        if (SceneManager.GetActiveScene().name != "Story Menu" && !gameOver)
+        if (SceneManager.GetActiveScene().name != "Story Menu" && !gameOver && !tutorial)
             goldCollected += amount;
         ManageDaily();
         if (SceneManager.GetActiveScene().name == "Story Menu")
@@ -134,7 +141,7 @@ public class GameManager : MonoBehaviour
             GameObject.Find("UI").GetComponent<StoryUI>().SetGoldText(gold);
         }
         else
-        GameObject.Find("UI").GetComponent<UIScript>().SetGold(gold);
+        GameObject.Find("UI").GetComponent<UIScript>().SetCollectedGold(currentGold);
     }
 
     public void AddDiamond(int amount)
@@ -279,7 +286,7 @@ public class GameManager : MonoBehaviour
 
     public void ManageDaily()
     {
-        if (SceneManager.GetActiveScene().name != "Story Menu")
+        if (SceneManager.GetActiveScene().name != "Story Menu" && !tutorial)
         {
             
             if (dailyNum == 1)

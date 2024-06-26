@@ -32,7 +32,9 @@ public class BallLauncher : MonoBehaviour
     private Vector2 fireSpeed;
 
     private GameObject noBall;
+    private GameObject ready;
     private GameObject ghostBall;
+    private GameObject backButton;
 
 
     void Start()
@@ -43,7 +45,11 @@ public class BallLauncher : MonoBehaviour
         trajAnimation = trajectory.GetComponent<Animator>();
         trajLine = trajectory.GetComponent<LineRenderer>();
         noBall = transform.Find("noBall").gameObject;
+        ready = transform.Find("Ready").gameObject;
         ghostBall = transform.Find("GhostBall").gameObject;
+        backButton = GameObject.Find("UI").transform.Find("Back").gameObject;
+        if (GameManager.instance.tutorial)
+            backButton.SetActive(false);
 
     }
 
@@ -170,6 +176,7 @@ public class BallLauncher : MonoBehaviour
                     if (isTrajActive)
                         trajLine.colorGradient = newGradientGreen(theMagnitude);
                     noBall.SetActive(false);
+                    ready.SetActive(true);
                     isOcupied = true;
                 }
                 if (ballScript.isShot)
@@ -201,7 +208,8 @@ public class BallLauncher : MonoBehaviour
         ballRb = null;
         isOcupied = false;
         noBall.SetActive(true);
-        StartCoroutine(noBall.GetComponent<NoBall>().BlipOut());
+        ready.SetActive(false);
+        
     }
 
     private void SetSpeed()
