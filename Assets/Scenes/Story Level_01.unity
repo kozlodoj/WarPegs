@@ -2976,6 +2976,10 @@ MonoBehaviour:
   - {fileID: 6500178492605920635, guid: 4e66e0c57850740109dd477168da5ae5, type: 3}
   - {fileID: 6500178492605920635, guid: c32b4b0f80cf94832be00a8d423cca88, type: 3}
   - {fileID: 6500178492605920635, guid: d1724cb3d737543a0ad0a059725c2e20, type: 3}
+  era3enemies:
+  - {fileID: 6500178492605920635, guid: 3e2ec6e1c1486405a84f8df7027e1af6, type: 3}
+  - {fileID: 6500178492605920635, guid: beba41128a62341b38ccd345dcdb861c, type: 3}
+  - {fileID: 6500178492605920635, guid: af239d7dd958540e58ce4e3fd526b120, type: 3}
   spawnPattern:
   - unitNum: 0
     spawnTime: 2
@@ -3599,6 +3603,9 @@ MonoBehaviour:
   era2FirstSpawner: {fileID: 8871525514912437245, guid: f8ef0f057e5584c99a601fd80c7c8e8d, type: 3}
   era2SecondSpawner: {fileID: 4136177227898662911, guid: a3172d727ebeb47f899127b36e9f42ed, type: 3}
   era2ThirdSpawner: {fileID: 962815712144322319, guid: 66dec3b4e2b074a14a79c5341711f901, type: 3}
+  era3FirstSpawner: {fileID: 8871525514912437245, guid: cc7e8f559b8784519b5bcfb45abc7c73, type: 3}
+  era3SecondSpawner: {fileID: 4136177227898662911, guid: e7023ffe0b1ec49ad9e8c69bac68e519, type: 3}
+  era3ThirdSpawner: {fileID: 962815712144322319, guid: 553da8c2242a34312bd9f4636a64ddf7, type: 3}
 --- !u!1 &1287095963
 GameObject:
   m_ObjectHideFlags: 0
@@ -4965,8 +4972,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   era1PlayerBase: {fileID: 6865033561549177182, guid: a034ea1325d25431a9b542850258ed0b, type: 3}
   era2PlayerBase: {fileID: 4446869208283151051, guid: 0486392939cf348019a7496e60b9017a, type: 3}
+  era3PlayerBase: {fileID: 4446869208283151051, guid: 718eaf138300a47ffa73b11472f34c01, type: 3}
   era1EnemyBase: {fileID: 678645124042168735, guid: c46bc72e4496c474bb548718e950dc22, type: 3}
   era2EnemyBase: {fileID: 801385999300426429, guid: 9264fc23580a546a99c4f36785032435, type: 3}
+  era3EnemyBase: {fileID: 801385999300426429, guid: 18013e69f375d4eff905be9e1d5a1d1b, type: 3}
 --- !u!1 &2013740925
 GameObject:
   m_ObjectHideFlags: 0

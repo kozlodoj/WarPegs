@@ -27,6 +27,12 @@ public class UnitTrigger : MonoBehaviour
     private GameObject era2SecondSpawner;
     [SerializeField]
     private GameObject era2ThirdSpawner;
+    [SerializeField]
+    private GameObject era3FirstSpawner;
+    [SerializeField]
+    private GameObject era3SecondSpawner;
+    [SerializeField]
+    private GameObject era3ThirdSpawner;
 
 
     // Start is called before the first frame update
@@ -103,6 +109,12 @@ public class UnitTrigger : MonoBehaviour
             firstSpawner = Instantiate(era2FirstSpawner, gameObject.transform);
             secondSpawner = Instantiate(era2SecondSpawner, gameObject.transform);
             thirdSpawner = Instantiate(era2ThirdSpawner, gameObject.transform);
+        }
+        else if (GameManager.instance.playerEra == 2)
+        {
+            firstSpawner = Instantiate(era3FirstSpawner, gameObject.transform);
+            secondSpawner = Instantiate(era3SecondSpawner, gameObject.transform);
+            thirdSpawner = Instantiate(era3ThirdSpawner, gameObject.transform);
         }
     }
 }

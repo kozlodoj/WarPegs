@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     public bool tutorial = true;
 
     public int playerEra;
+    public int playerEraCount;
     public int enemyEra;
     public int evolveCost;
 
@@ -277,9 +278,18 @@ public class GameManager : MonoBehaviour
         baseHP = 2;
         buff = 1;
         //set costs
-        reloadCost = 27;
-        hPCost = 90;
-        buffCost = 3000;
+        if (playerEra == 1)
+        {
+            reloadCost = 27;
+            hPCost = 90;
+            buffCost = 3000;
+        }
+        else if (playerEra == 2)
+        {
+            reloadCost = 27 * 3;
+            hPCost = 90 * 3;
+            buffCost = 3000 * 3;
+        }
         SaveGame();
 
     }

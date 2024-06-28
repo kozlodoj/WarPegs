@@ -9,9 +9,14 @@ public class TowEraManager : MonoBehaviour
     [SerializeField]
     private GameObject era2PlayerBase;
     [SerializeField]
+    private GameObject era3PlayerBase;
+    [SerializeField]
     private GameObject era1EnemyBase;
     [SerializeField]
     private GameObject era2EnemyBase;
+    [SerializeField]
+    private GameObject era3EnemyBase;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -34,6 +39,10 @@ public class TowEraManager : MonoBehaviour
         {
             Instantiate(era2PlayerBase, gameObject.transform);
         }
+        else if (GameManager.instance.playerEra == 2)
+        {
+            Instantiate(era3PlayerBase, gameObject.transform);
+        }
         if (GameManager.instance.enemyEra == 0)
         {
             Instantiate(era1EnemyBase, gameObject.transform);
@@ -41,6 +50,11 @@ public class TowEraManager : MonoBehaviour
         else if (GameManager.instance.enemyEra == 1)
         {
             Instantiate(era2EnemyBase, gameObject.transform);
+
+        }
+        else if (GameManager.instance.enemyEra == 2)
+        {
+            Instantiate(era3EnemyBase, gameObject.transform);
         }
     }
 }

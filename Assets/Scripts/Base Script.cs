@@ -43,7 +43,7 @@ public class BaseScript : MonoBehaviour
         if (currentHp <= 0)
         {
             gameObject.SetActive(false);
-            if (GameManager.instance.enemyEra == 0 && isEnemy)
+            if (isEnemy)
             GameManager.instance.enemyEra++;
             if (GameManager.instance.enemyEra > GameManager.instance.playerEra)
                 GameManager.instance.evolveCost = 0;
