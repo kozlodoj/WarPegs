@@ -58,7 +58,7 @@ public class Trajectory : MonoBehaviour
     {
         foreach (Transform t in wall.transform)
         {
-            if (t.gameObject.GetComponent<Collider2D>() != null)
+            if (t.gameObject.activeInHierarchy && t.gameObject.GetComponent<Collider2D>() != null)
             {
                 GameObject fakeT = Instantiate(t.gameObject);
                 fakeT.transform.position = t.position;
@@ -139,9 +139,14 @@ public class Trajectory : MonoBehaviour
                     lineRenderer.positionCount = i;
                     ghost.SetActive(true);
                     ghost.transform.position = lineRenderer.GetPosition(i - 2);
-                    
-                    i = maxIterations;
 
+                    i = maxIterations;
+                    var totalPositions = lineRenderer.positionCount;
+                    lineRenderer.positionCount = totalPositions - 2;
+                }
+                else
+                {
+                    ghost.SetActive(false);
                 }
 
             }

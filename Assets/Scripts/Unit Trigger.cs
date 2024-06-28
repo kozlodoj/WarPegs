@@ -30,7 +30,7 @@ public class UnitTrigger : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         ManageEra();
         firstCollider = firstSpawner.GetComponent<BoxCollider2D>();

@@ -4351,6 +4351,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Launcher 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4758246791328270686, guid: c067c4613154d49b1ba31d99550b5413, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8101960441248614987, guid: c067c4613154d49b1ba31d99550b5413, type: 3}
       propertyPath: trajectory
       value: 
@@ -5269,6 +5273,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 926727099188597945, guid: 921d7ef21ad814bc6ac6597aceac9f3e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117988699895612070, guid: 921d7ef21ad814bc6ac6597aceac9f3e, type: 3}
+      propertyPath: maxBounces
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117988699895612070, guid: 921d7ef21ad814bc6ac6597aceac9f3e, type: 3}
+      propertyPath: maxIterations
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888080780022165217, guid: 921d7ef21ad814bc6ac6597aceac9f3e, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2461904043212881540, guid: 921d7ef21ad814bc6ac6597aceac9f3e, type: 3}

@@ -122,6 +122,7 @@ MonoBehaviour:
   hPBar: {fileID: 691776875819345963}
   buffText: {fileID: 6245393396989468329}
   buffTextOutline: {fileID: 748996458380940739}
+  hpText: {fileID: 0}
 --- !u!1 &2219919709332744746
 GameObject:
   m_ObjectHideFlags: 0
