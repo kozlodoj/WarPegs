@@ -33,6 +33,24 @@ public class UnitTrigger : MonoBehaviour
     private GameObject era3SecondSpawner;
     [SerializeField]
     private GameObject era3ThirdSpawner;
+    [SerializeField]
+    private GameObject era4FirstSpawner;
+    [SerializeField]
+    private GameObject era4SecondSpawner;
+    [SerializeField]
+    private GameObject era4ThirdSpawner;
+    [SerializeField]
+    private GameObject era5FirstSpawner;
+    [SerializeField]
+    private GameObject era5SecondSpawner;
+    [SerializeField]
+    private GameObject era5ThirdSpawner;
+    [SerializeField]
+    private GameObject era6FirstSpawner;
+    [SerializeField]
+    private GameObject era6SecondSpawner;
+    [SerializeField]
+    private GameObject era6ThirdSpawner;
 
 
     // Start is called before the first frame update
@@ -115,6 +133,24 @@ public class UnitTrigger : MonoBehaviour
             firstSpawner = Instantiate(era3FirstSpawner, gameObject.transform);
             secondSpawner = Instantiate(era3SecondSpawner, gameObject.transform);
             thirdSpawner = Instantiate(era3ThirdSpawner, gameObject.transform);
+        }
+        else if (GameManager.instance.playerEra == 3)
+        {
+            firstSpawner = Instantiate(era4FirstSpawner, gameObject.transform);
+            secondSpawner = Instantiate(era4SecondSpawner, gameObject.transform);
+            thirdSpawner = Instantiate(era4ThirdSpawner, gameObject.transform);
+        }
+        else if (GameManager.instance.playerEra == 4)
+        {
+            firstSpawner = Instantiate(era5FirstSpawner, gameObject.transform);
+            secondSpawner = Instantiate(era5SecondSpawner, gameObject.transform);
+            thirdSpawner = Instantiate(era5ThirdSpawner, gameObject.transform);
+        }
+        else if (GameManager.instance.playerEra == 5)
+        {
+            firstSpawner = Instantiate(era6FirstSpawner, gameObject.transform);
+            secondSpawner = Instantiate(era6SecondSpawner, gameObject.transform);
+            thirdSpawner = Instantiate(era6ThirdSpawner, gameObject.transform);
         }
     }
 }

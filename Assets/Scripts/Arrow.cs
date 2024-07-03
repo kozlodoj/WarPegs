@@ -8,7 +8,8 @@ public class Arrow : MonoBehaviour
     private float theDamage;
     private Transform target;
     private GameObject theTarget;
-
+    [SerializeField]
+    private float speed = 2f;
     [SerializeField]
     private bool isEnemy = false;
 
@@ -36,7 +37,7 @@ public class Arrow : MonoBehaviour
     {
         if (!GameManager.instance.freezeGame)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, Time.deltaTime * 2f);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, Time.deltaTime * speed);
             if (!target.gameObject.activeInHierarchy)
                 Destroy(gameObject);
         }

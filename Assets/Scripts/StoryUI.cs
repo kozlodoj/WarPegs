@@ -58,6 +58,9 @@ public class StoryUI : MonoBehaviour
             baseMenu.transform.Find("Era 1").gameObject.SetActive(false);
             baseMenu.transform.Find("Era 2").gameObject.SetActive(true);
             baseMenu.transform.Find("Era 3").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 4").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 5").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 6").gameObject.SetActive(false);
             SetGoldText(GameManager.instance.gold);
         }
         else if (GameManager.instance.playerEra == 2)
@@ -65,6 +68,39 @@ public class StoryUI : MonoBehaviour
             baseMenu.transform.Find("Era 1").gameObject.SetActive(false);
             baseMenu.transform.Find("Era 2").gameObject.SetActive(false);
             baseMenu.transform.Find("Era 3").gameObject.SetActive(true);
+            baseMenu.transform.Find("Era 4").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 5").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 6").gameObject.SetActive(false);
+            SetGoldText(GameManager.instance.gold);
+        }
+        else if (GameManager.instance.playerEra == 3)
+        {
+            baseMenu.transform.Find("Era 1").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 2").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 3").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 4").gameObject.SetActive(true);
+            baseMenu.transform.Find("Era 5").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 6").gameObject.SetActive(false);
+            SetGoldText(GameManager.instance.gold);
+        }
+        else if (GameManager.instance.playerEra == 4)
+        {
+            baseMenu.transform.Find("Era 1").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 2").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 3").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 4").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 5").gameObject.SetActive(true);
+            baseMenu.transform.Find("Era 6").gameObject.SetActive(false);
+            SetGoldText(GameManager.instance.gold);
+        }
+        else if (GameManager.instance.playerEra == 5)
+        {
+            baseMenu.transform.Find("Era 1").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 2").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 3").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 4").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 5").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 6").gameObject.SetActive(true);
             SetGoldText(GameManager.instance.gold);
         }
 
@@ -76,18 +112,54 @@ public class StoryUI : MonoBehaviour
             baseMenu.transform.Find("Era 1").gameObject.SetActive(true);
             baseMenu.transform.Find("Era 2").gameObject.SetActive(false);
             baseMenu.transform.Find("Era 3").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 4").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 5").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 6").gameObject.SetActive(false);
         }
         else if (GameManager.instance.playerEra == 1)
         {
             baseMenu.transform.Find("Era 1").gameObject.SetActive(false);
             baseMenu.transform.Find("Era 2").gameObject.SetActive(true);
             baseMenu.transform.Find("Era 3").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 4").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 5").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 6").gameObject.SetActive(false);
         }
         else if (GameManager.instance.playerEra == 2)
         {
             baseMenu.transform.Find("Era 1").gameObject.SetActive(false);
             baseMenu.transform.Find("Era 2").gameObject.SetActive(false);
             baseMenu.transform.Find("Era 3").gameObject.SetActive(true);
+            baseMenu.transform.Find("Era 4").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 5").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 6").gameObject.SetActive(false);
+        }
+        else if (GameManager.instance.playerEra == 3)
+        {
+            baseMenu.transform.Find("Era 1").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 2").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 3").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 4").gameObject.SetActive(true);
+            baseMenu.transform.Find("Era 5").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 6").gameObject.SetActive(false);
+        }
+        else if (GameManager.instance.playerEra == 4)
+        {
+            baseMenu.transform.Find("Era 1").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 2").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 3").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 4").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 5").gameObject.SetActive(true);
+            baseMenu.transform.Find("Era 6").gameObject.SetActive(false);
+        }
+        else if (GameManager.instance.playerEra == 5)
+        {
+            baseMenu.transform.Find("Era 1").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 2").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 3").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 4").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 5").gameObject.SetActive(false);
+            baseMenu.transform.Find("Era 6").gameObject.SetActive(true);
         }
     }
 

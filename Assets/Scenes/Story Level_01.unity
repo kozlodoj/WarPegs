@@ -2980,6 +2980,9 @@ MonoBehaviour:
   - {fileID: 6500178492605920635, guid: 3e2ec6e1c1486405a84f8df7027e1af6, type: 3}
   - {fileID: 6500178492605920635, guid: beba41128a62341b38ccd345dcdb861c, type: 3}
   - {fileID: 6500178492605920635, guid: af239d7dd958540e58ce4e3fd526b120, type: 3}
+  era4enemies: []
+  era5enemies: []
+  era6enemies: []
   spawnPattern:
   - unitNum: 0
     spawnTime: 2
@@ -3606,6 +3609,15 @@ MonoBehaviour:
   era3FirstSpawner: {fileID: 8871525514912437245, guid: cc7e8f559b8784519b5bcfb45abc7c73, type: 3}
   era3SecondSpawner: {fileID: 4136177227898662911, guid: e7023ffe0b1ec49ad9e8c69bac68e519, type: 3}
   era3ThirdSpawner: {fileID: 962815712144322319, guid: 553da8c2242a34312bd9f4636a64ddf7, type: 3}
+  era4FirstSpawner: {fileID: 8871525514912437245, guid: f52df078fef8647cab87e5bdbe0acf97, type: 3}
+  era4SecondSpawner: {fileID: 4136177227898662911, guid: 3c99007b7574a42709fe918639065acd, type: 3}
+  era4ThirdSpawner: {fileID: 962815712144322319, guid: bc4a7c97996f547f7b991abb98b2e0a5, type: 3}
+  era5FirstSpawner: {fileID: 8871525514912437245, guid: 80e09aec75e594d418f6f9c1f202aff0, type: 3}
+  era5SecondSpawner: {fileID: 4136177227898662911, guid: 3e6181c9bb0aa40c783f50fcb8767bfe, type: 3}
+  era5ThirdSpawner: {fileID: 962815712144322319, guid: bfda6b5febd134325b8e5b73c2fa4210, type: 3}
+  era6FirstSpawner: {fileID: 8871525514912437245, guid: 767b159cc29cc4224a65caf16b247f54, type: 3}
+  era6SecondSpawner: {fileID: 4136177227898662911, guid: 933289551778546349c276b9faaf6a85, type: 3}
+  era6ThirdSpawner: {fileID: 962815712144322319, guid: 005a5ecd00b694c848a41716ac2eed5d, type: 3}
 --- !u!1 &1287095963
 GameObject:
   m_ObjectHideFlags: 0
@@ -4973,9 +4985,15 @@ MonoBehaviour:
   era1PlayerBase: {fileID: 6865033561549177182, guid: a034ea1325d25431a9b542850258ed0b, type: 3}
   era2PlayerBase: {fileID: 4446869208283151051, guid: 0486392939cf348019a7496e60b9017a, type: 3}
   era3PlayerBase: {fileID: 4446869208283151051, guid: 718eaf138300a47ffa73b11472f34c01, type: 3}
+  era4PlayerBase: {fileID: 0}
+  era5PlayerBase: {fileID: 0}
+  era6PlayerBase: {fileID: 0}
   era1EnemyBase: {fileID: 678645124042168735, guid: c46bc72e4496c474bb548718e950dc22, type: 3}
   era2EnemyBase: {fileID: 801385999300426429, guid: 9264fc23580a546a99c4f36785032435, type: 3}
   era3EnemyBase: {fileID: 801385999300426429, guid: 18013e69f375d4eff905be9e1d5a1d1b, type: 3}
+  era4EnemyBase: {fileID: 0}
+  era5EnemyBase: {fileID: 0}
+  era6EnemyBase: {fileID: 0}
 --- !u!1 &2013740925
 GameObject:
   m_ObjectHideFlags: 0
