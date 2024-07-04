@@ -36,4 +36,6 @@ public class PlayerData
         public float buffGathered;
         public int dailyNum;
         public bool tutorial;
+        public int timeLine;
+        public float timeLineModifier;
 }

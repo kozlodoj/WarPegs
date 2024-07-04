@@ -314,4 +314,9 @@ public class ButtonsScript : MonoBehaviour
     {
         GameManager.instance.NewGame();
     }
+    public void DeleteSave()
+    {
+
+        GameManager.instance.DeleteSave();
+    }
 }

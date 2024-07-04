@@ -82,7 +82,7 @@ public class BuffBuy : MonoBehaviour
 
     private bool IsActive()
     {
-        if (GameManager.instance.gold >= GameManager.instance.buffCost)
+        if (GameManager.instance.diamonds >= GameManager.instance.buffCost)
             return true;
         else
             return false;

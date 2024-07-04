@@ -45,6 +45,8 @@ public class SaveScript : MonoBehaviour
         saveData.goldCollected = GameManager.instance.goldCollected;
         saveData.dailyNum = GameManager.instance.dailyNum;
         saveData.tutorial = GameManager.instance.tutorial;
+        saveData.timeLine = GameManager.instance.timeLine;
+        saveData.timeLineModifier = GameManager.instance.timeLineModifier;
 
         string savePlayerData = JsonUtility.ToJson(saveData);
         File.WriteAllText(saveFilePath, savePlayerData);
@@ -56,41 +58,48 @@ public class SaveScript : MonoBehaviour
         saveFilePath = Application.persistentDataPath + "/SaveData.json";
         if (File.Exists(saveFilePath))
         {
-           
             string loadPlayerData = File.ReadAllText(saveFilePath);
             saveData = JsonUtility.FromJson<PlayerData>(loadPlayerData);
-     
-            GameManager.instance.ballPower = saveData.ballPower;
-            GameManager.instance.reloadRate = saveData.reloadRate;
-            GameManager.instance.reloadPerSec = saveData.reloadPerSec;
-            GameManager.instance.buff = saveData.buff;
-            GameManager.instance.respawn = saveData.respawn;
-            GameManager.instance.intialStat = saveData.intialStat;
-            GameManager.instance.baseHP = saveData.baseHP;
-            GameManager.instance.initialBallCharge = saveData.initialBallCharge;
-            GameManager.instance.gold = saveData.gold;
-            GameManager.instance.diamonds = saveData.diamonds;
-            GameManager.instance.isUnitTwoActive = saveData.isUnitTwoActive;
-            GameManager.instance.isUnitThreeActive = saveData.isUnitThreeActive;
-            GameManager.instance.isPerkOneActive = saveData.isPerkOneActive;
-            GameManager.instance.isPerkTwoActive = saveData.isPerkTwoActive;
-            GameManager.instance.unitTwoCost = saveData.unitTwoCost;
-            GameManager.instance.unitThreeCost = saveData.unitThreeCost;
-            GameManager.instance.reloadCost = saveData.reloadCost;
-            GameManager.instance.hPCost = saveData.hPCost;
-            GameManager.instance.buffCost = saveData.buffCost;
-            GameManager.instance.playerEra = saveData.playerEra;
-            GameManager.instance.enemyEra = saveData.enemyEra;
-            GameManager.instance.evolveCost = saveData.evolveCost;
-            GameManager.instance.bounces = saveData.bounces;
-            GameManager.instance.ballsShot = saveData.ballsShot;
-            GameManager.instance.enemiesDefeated = saveData.enemiesDefeated;
-            GameManager.instance.unitTwoSpawned = saveData.unitTwoSpawned;
-            GameManager.instance.unitThreeSpawned = saveData.unitThreeSpawned;
-            GameManager.instance.goldCollected = saveData.goldCollected;
-            GameManager.instance.dailyNum = saveData.dailyNum;
-            GameManager.instance.tutorial = saveData.tutorial;
-
+            if (saveData.timeLineModifier == 0)
+            {
+                File.Delete(saveFilePath);
+            }
+            else
+            {
+                
+                GameManager.instance.ballPower = saveData.ballPower;
+                GameManager.instance.reloadRate = saveData.reloadRate;
+                GameManager.instance.reloadPerSec = saveData.reloadPerSec;
+                GameManager.instance.buff = saveData.buff;
+                GameManager.instance.respawn = saveData.respawn;
+                GameManager.instance.intialStat = saveData.intialStat;
+                GameManager.instance.baseHP = saveData.baseHP;
+                GameManager.instance.initialBallCharge = saveData.initialBallCharge;
+                GameManager.instance.gold = saveData.gold;
+                GameManager.instance.diamonds = saveData.diamonds;
+                GameManager.instance.isUnitTwoActive = saveData.isUnitTwoActive;
+                GameManager.instance.isUnitThreeActive = saveData.isUnitThreeActive;
+                GameManager.instance.isPerkOneActive = saveData.isPerkOneActive;
+                GameManager.instance.isPerkTwoActive = saveData.isPerkTwoActive;
+                GameManager.instance.unitTwoCost = saveData.unitTwoCost;
+                GameManager.instance.unitThreeCost = saveData.unitThreeCost;
+                GameManager.instance.reloadCost = saveData.reloadCost;
+                GameManager.instance.hPCost = saveData.hPCost;
+                GameManager.instance.buffCost = saveData.buffCost;
+                GameManager.instance.playerEra = saveData.playerEra;
+                GameManager.instance.enemyEra = saveData.enemyEra;
+                GameManager.instance.evolveCost = saveData.evolveCost;
+                GameManager.instance.bounces = saveData.bounces;
+                GameManager.instance.ballsShot = saveData.ballsShot;
+                GameManager.instance.enemiesDefeated = saveData.enemiesDefeated;
+                GameManager.instance.unitTwoSpawned = saveData.unitTwoSpawned;
+                GameManager.instance.unitThreeSpawned = saveData.unitThreeSpawned;
+                GameManager.instance.goldCollected = saveData.goldCollected;
+                GameManager.instance.dailyNum = saveData.dailyNum;
+                GameManager.instance.tutorial = saveData.tutorial;
+                GameManager.instance.timeLine = saveData.timeLine;
+                GameManager.instance.timeLineModifier = saveData.timeLineModifier;
+            }
         }
 
     }
@@ -133,6 +142,8 @@ public class SaveScript : MonoBehaviour
             saveData.goldCollected = GameManager.instance.goldCollected;
             saveData.dailyNum = GameManager.instance.dailyNum;
             saveData.tutorial = GameManager.instance.tutorial;
+            saveData.timeLine = GameManager.instance.timeLine;
+            saveData.timeLineModifier = GameManager.instance.timeLineModifier;
 
             string savePlayerData = JsonUtility.ToJson(saveData);
             File.WriteAllText(saveFilePath, savePlayerData);
@@ -147,39 +158,55 @@ public class SaveScript : MonoBehaviour
 
             string loadPlayerData = File.ReadAllText(saveFilePath);
             saveData = JsonUtility.FromJson<PlayerData>(loadPlayerData);
-
-            GameManager.instance.ballPower = saveData.ballPower;
-            GameManager.instance.reloadRate = saveData.reloadRate;
-            GameManager.instance.reloadPerSec = saveData.reloadPerSec;
-            GameManager.instance.buff = saveData.buff;
-            GameManager.instance.respawn = saveData.respawn;
-            GameManager.instance.intialStat = saveData.intialStat;
-            GameManager.instance.baseHP = saveData.baseHP;
-            GameManager.instance.initialBallCharge = saveData.initialBallCharge;
-            GameManager.instance.gold = saveData.gold;
-            GameManager.instance.diamonds = saveData.diamonds;
-            GameManager.instance.isUnitTwoActive = saveData.isUnitTwoActive;
-            GameManager.instance.isUnitThreeActive = saveData.isUnitThreeActive;
-            GameManager.instance.isPerkOneActive = saveData.isPerkOneActive;
-            GameManager.instance.isPerkTwoActive = saveData.isPerkTwoActive;
-            GameManager.instance.unitTwoCost = saveData.unitTwoCost;
-            GameManager.instance.unitThreeCost = saveData.unitThreeCost;
-            GameManager.instance.reloadCost = saveData.reloadCost;
-            GameManager.instance.hPCost = saveData.hPCost;
-            GameManager.instance.buffCost = saveData.buffCost;
-            GameManager.instance.playerEra = saveData.playerEra;
-            GameManager.instance.enemyEra = saveData.enemyEra;
-            GameManager.instance.evolveCost = saveData.evolveCost;
-            GameManager.instance.bounces = saveData.bounces;
-            GameManager.instance.ballsShot = saveData.ballsShot;
-            GameManager.instance.enemiesDefeated = saveData.enemiesDefeated;
-            GameManager.instance.unitTwoSpawned = saveData.unitTwoSpawned;
-            GameManager.instance.unitThreeSpawned = saveData.unitThreeSpawned;
-            GameManager.instance.goldCollected = saveData.goldCollected;
-            GameManager.instance.dailyNum = saveData.dailyNum;
-            GameManager.instance.tutorial = saveData.tutorial;
+            if (saveData.timeLineModifier == 0)
+            {
+                File.Delete(saveFilePath);
+            }
+            else
+            {
+                GameManager.instance.ballPower = saveData.ballPower;
+                GameManager.instance.reloadRate = saveData.reloadRate;
+                GameManager.instance.reloadPerSec = saveData.reloadPerSec;
+                GameManager.instance.buff = saveData.buff;
+                GameManager.instance.respawn = saveData.respawn;
+                GameManager.instance.intialStat = saveData.intialStat;
+                GameManager.instance.baseHP = saveData.baseHP;
+                GameManager.instance.initialBallCharge = saveData.initialBallCharge;
+                GameManager.instance.gold = saveData.gold;
+                GameManager.instance.diamonds = saveData.diamonds;
+                GameManager.instance.isUnitTwoActive = saveData.isUnitTwoActive;
+                GameManager.instance.isUnitThreeActive = saveData.isUnitThreeActive;
+                GameManager.instance.isPerkOneActive = saveData.isPerkOneActive;
+                GameManager.instance.isPerkTwoActive = saveData.isPerkTwoActive;
+                GameManager.instance.unitTwoCost = saveData.unitTwoCost;
+                GameManager.instance.unitThreeCost = saveData.unitThreeCost;
+                GameManager.instance.reloadCost = saveData.reloadCost;
+                GameManager.instance.hPCost = saveData.hPCost;
+                GameManager.instance.buffCost = saveData.buffCost;
+                GameManager.instance.playerEra = saveData.playerEra;
+                GameManager.instance.enemyEra = saveData.enemyEra;
+                GameManager.instance.evolveCost = saveData.evolveCost;
+                GameManager.instance.bounces = saveData.bounces;
+                GameManager.instance.ballsShot = saveData.ballsShot;
+                GameManager.instance.enemiesDefeated = saveData.enemiesDefeated;
+                GameManager.instance.unitTwoSpawned = saveData.unitTwoSpawned;
+                GameManager.instance.unitThreeSpawned = saveData.unitThreeSpawned;
+                GameManager.instance.goldCollected = saveData.goldCollected;
+                GameManager.instance.dailyNum = saveData.dailyNum;
+                GameManager.instance.tutorial = saveData.tutorial;
+                GameManager.instance.timeLine = saveData.timeLine;
+                GameManager.instance.timeLineModifier = saveData.timeLineModifier;
+            }
 
         }
+
+    }
+    public void DeleteSaveFiles()
+    {
+        saveFilePath = Application.persistentDataPath + "/NewGame.json";
+        File.Delete(saveFilePath);
+        saveFilePath = Application.persistentDataPath + "/SaveData.json";
+        File.Delete(saveFilePath);
 
     }
 }

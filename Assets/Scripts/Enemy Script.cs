@@ -44,6 +44,7 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         StartRoutine();
+        TimelineModifier();
     }
 
     void Update()
@@ -289,5 +290,10 @@ public class EnemyScript : MonoBehaviour
         yield return new WaitForSeconds(1f);
         arrow.SetActive(true);
         StartCoroutine(RangedWithCooldown(attackCooldown));
+    }
+    private void TimelineModifier()
+    {
+        HP *= GameManager.instance.timeLineModifier;
+        attack *= GameManager.instance.timeLineModifier;
     }
 }

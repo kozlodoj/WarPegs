@@ -59,6 +59,9 @@ public class GameManager : MonoBehaviour
     public int enemyEra;
     public int evolveCost;
 
+    public int timeLine;
+    public float timeLineModifier = 1f;
+
     public int bounces;
     public int ballsShot;
     public int enemiesDefeated;
@@ -174,10 +177,17 @@ public class GameManager : MonoBehaviour
         //evolve
         else if (num == 4)
         {
-            gold = 0;
-            playerEra++;
-            enemyEra = 0;
-            NextEra();
+            if (playerEra == 5)
+            {
+               NextTimeLine();
+            }
+            else
+            {
+                gold = 0;
+                playerEra++;
+                enemyEra = 0;
+                NextEra();
+            }
         }
     }
     public void BuyPerk(int num)
@@ -215,7 +225,7 @@ public class GameManager : MonoBehaviour
     {
         SaveGame();
         buff++;
-        AddGold(-buffCost);
+        AddDiamond(-buffCost);
         buffCost = (int)(buffCost * 2f);
     }
 
@@ -276,7 +286,6 @@ public class GameManager : MonoBehaviour
         reloadPerSec = 0.06f;
         SetReloadTime();
         baseHP = 2;
-        buff = 1;
         //set costs
         if (playerEra == 1)
         {
@@ -289,6 +298,24 @@ public class GameManager : MonoBehaviour
             reloadCost = 27 * 3;
             hPCost = 90 * 3;
             buffCost = 3000 * 3;
+        }
+        else if (playerEra == 3)
+        {
+            reloadCost = 27 * 6;
+            hPCost = 90 * 6;
+            buffCost = 3000 * 6;
+        }
+        else if (playerEra == 4)
+        {
+            reloadCost = 27 * 9;
+            hPCost = 90 * 9;
+            buffCost = 3000 * 9;
+        }
+        else if (playerEra == 5)
+        {
+            reloadCost = 27 * 12;
+            hPCost = 90 * 12;
+            buffCost = 3000 * 12;
         }
         SaveGame();
 
@@ -397,5 +424,32 @@ public class GameManager : MonoBehaviour
     public void NewGame()
     {
         save.LoadNewGame();
+    }
+    public void DeleteSave()
+    {
+        save.DeleteSaveFiles();
+    }
+    public void NextTimeLine()
+    {
+        timeLine++;
+        timeLineModifier *= 1.1f;
+        playerEra = 0;
+        enemyEra = 0;
+        //set gold and stats
+        gold = 0;
+        reloadPerSec = 0.06f;
+        SetReloadTime();
+        baseHP = 2;
+        //deactivate unit 2 & 3
+        isUnitTwoActive = false;
+        isUnitThreeActive = false;
+        //change the cost of units and evolution
+        unitThreeCost = 1200;
+        unitTwoCost = 400;
+        evolveCost = 2000;
+        GameObject.Find("UI").GetComponent<StoryUI>().NextEra();
+       
+       
+
     }
 }
