@@ -122,6 +122,7 @@ MonoBehaviour:
   hPBar: {fileID: 691776875819345963}
   buffText: {fileID: 6245393396989468329}
   buffTextOutline: {fileID: 2660780995641218248}
+  hpText: {fileID: 0}
 --- !u!1 &2219919709332744746
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,8 +806,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRanged: 0
   speed: 0.45
-  HP: 90
-  attack: 12
+  HP: 100
+  attack: 20
   attackCooldown: 1.7
   weaponAnimator: {fileID: 4960900289397910165}
   projectile: {fileID: 0}

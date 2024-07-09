@@ -275,47 +275,58 @@ public class GameManager : MonoBehaviour
         //deactivate unit 2 & 3
         isUnitTwoActive = false;
         isUnitThreeActive = false;
-        //change the cost of units and evolution
-        unitThreeCost *= 3;
-        unitTwoCost *= 3;
-        if (evolveCost == 0)
-            evolveCost = 1000;
-        evolveCost *= 3;
-        //set gold and stats
         gold = 0;
         reloadPerSec = 0.06f;
         SetReloadTime();
-        baseHP = 2;
         //set costs
         if (playerEra == 1)
         {
-            reloadCost = 27;
-            hPCost = 90;
-            buffCost = 3000;
+            reloadCost = 42;
+            hPCost = 140;
+            unitTwoCost = 700;
+            unitThreeCost = 1850;
+            evolveCost = 9320;
+            baseHP = 15;
+
         }
         else if (playerEra == 2)
         {
-            reloadCost = 27 * 3;
-            hPCost = 90 * 3;
-            buffCost = 3000 * 3;
+            reloadCost = 155;
+            hPCost = 517;
+            unitTwoCost = 2590;
+            unitThreeCost = 6890;
+            evolveCost = 34450;
+            baseHP = 40;
+
         }
         else if (playerEra == 3)
         {
-            reloadCost = 27 * 6;
-            hPCost = 90 * 6;
-            buffCost = 3000 * 6;
+            reloadCost = 529;
+            hPCost = 1763;
+            unitTwoCost = 8815;
+            unitThreeCost = 23500;
+            evolveCost = 117500;
+            baseHP = 150;
         }
         else if (playerEra == 4)
         {
-            reloadCost = 27 * 9;
-            hPCost = 90 * 9;
-            buffCost = 3000 * 9;
+            reloadCost = 1587;
+            hPCost = 5290;
+            unitTwoCost = 26450;
+            unitThreeCost = 70500;
+            evolveCost = 352600;
+            baseHP = 450;
+
         }
         else if (playerEra == 5)
         {
-            reloadCost = 27 * 12;
-            hPCost = 90 * 12;
-            buffCost = 3000 * 12;
+            reloadCost = 4104;
+            hPCost = 13680;
+            unitTwoCost = 68400;
+            unitThreeCost = 182400;
+            evolveCost = 912000;
+            baseHP = 1200;
+
         }
         SaveGame();
 
