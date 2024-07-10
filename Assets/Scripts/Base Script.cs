@@ -32,8 +32,15 @@ public class BaseScript : MonoBehaviour
 
     public void DealDamage(float amount)
     {
+        if (GameManager.instance.allEnemiesKilled)
+            amount *= 3;
         if (isEnemy && !GameManager.instance.tutorial)
+        {
+            if (amount < currentHp)
             GameManager.instance.AddGold(goldDrop * (int)amount);
+            else if (amount >= currentHp)
+            GameManager.instance.AddGold(goldDrop * (int)currentHp);
+        }
         currentHp -= amount;
         UI.UpdateHP(HP, currentHp);
     }
@@ -43,16 +50,18 @@ public class BaseScript : MonoBehaviour
         if (currentHp <= 0)
         {
             gameObject.SetActive(false);
-            if (isEnemy && GameManager.instance.enemyEra != 5 && GameManager.instance.enemyEra < GameManager.instance.playerEra)
+            if (isEnemy && GameManager.instance.enemyEra != 5)
             {
                 GameManager.instance.enemyEra++;
-                if (GameManager.instance.enemyEra == 5)
+                if (GameManager.instance.enemyEra == 5 || GameManager.instance.enemyEra > GameManager.instance.playerEra)
                 {
                     GameManager.instance.evolveCost = 0;
                 }
             }
             else if (GameManager.instance.enemyEra == GameManager.instance.playerEra && isEnemy)
                 GameManager.instance.evolveCost = 0;
+            if (isEnemy && GameManager.instance.enemyEra == 5)
+                GameManager.instance.canNextTimeline = true;
 
             GameManager.instance.GameOver();
         }

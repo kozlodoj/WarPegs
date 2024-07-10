@@ -39,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
     {
         randomSpawn = GameManager.instance.randomSpawn;
         towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
-       
+        GameManager.instance.allEnemiesKilled = false;
             if (randomSpawn)
                 StartCoroutine(SpawnNextEnemy(RandomTime()));
             else
@@ -269,6 +269,7 @@ public class EnemySpawner : MonoBehaviour
                 }
                 yield return new WaitForSeconds(0.5f);
             }
+            GameManager.instance.allEnemiesKilled = true;
         }
         else if (GameManager.instance.enemyEra == 1)
         {
@@ -293,6 +294,7 @@ public class EnemySpawner : MonoBehaviour
                 }
                 yield return new WaitForSeconds(0.5f);
             }
+            GameManager.instance.allEnemiesKilled = true;
         }
         else if (GameManager.instance.enemyEra == 2)
         {
@@ -317,6 +319,7 @@ public class EnemySpawner : MonoBehaviour
                 }
                 yield return new WaitForSeconds(0.5f);
             }
+            GameManager.instance.allEnemiesKilled = true;
         }
         else if (GameManager.instance.enemyEra == 3)
         {
@@ -341,6 +344,7 @@ public class EnemySpawner : MonoBehaviour
                 }
                 yield return new WaitForSeconds(0.5f);
             }
+            GameManager.instance.allEnemiesKilled = true;
         }
         else if (GameManager.instance.enemyEra == 4)
         {
@@ -365,6 +369,7 @@ public class EnemySpawner : MonoBehaviour
                 }
                 yield return new WaitForSeconds(0.5f);
             }
+            GameManager.instance.allEnemiesKilled = true;
         }
         else if (GameManager.instance.enemyEra == 5)
         {
@@ -389,6 +394,7 @@ public class EnemySpawner : MonoBehaviour
                 }
                 yield return new WaitForSeconds(0.5f);
             }
+            GameManager.instance.allEnemiesKilled = true;
         }
     }
 

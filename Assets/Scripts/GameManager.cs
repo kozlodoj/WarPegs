@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
     public int playerEraCount;
     public int enemyEra;
     public int evolveCost;
+    public bool canNextTimeline = false;
+    public bool allEnemiesKilled = false;
 
     public int timeLine;
     public float timeLineModifier = 1f;
@@ -177,17 +179,18 @@ public class GameManager : MonoBehaviour
         //evolve
         else if (num == 4)
         {
-            if (playerEra == 5)
-            {
-               NextTimeLine();
-            }
-            else
-            {
+            
                 gold = 0;
                 playerEra++;
                 enemyEra = 0;
                 NextEra();
-            }
+            
+        }
+        else if (num == 5)
+        {
+          
+                NextTimeLine();
+          
         }
     }
     public void BuyPerk(int num)
@@ -217,9 +220,47 @@ public class GameManager : MonoBehaviour
     public void BuyHP()
     {
         SaveGame();
-        baseHP = (int)(baseHP + 1);
-        AddGold(-hPCost);
-        hPCost = (int)(hPCost * 1.2f);
+        if (playerEra == 0)
+        {
+            baseHP = (int)(baseHP + 1);
+            AddGold(-hPCost);
+            hPCost = (int)(hPCost * 1.2f);
+        }
+        else if (playerEra == 1)
+        {
+            baseHP = (int)(baseHP + 15);
+            AddGold(-hPCost);
+            hPCost = (int)(hPCost * 1.2f);
+
+        }
+        else if (playerEra == 2)
+        {
+            baseHP = (int)(baseHP + 40);
+            AddGold(-hPCost);
+            hPCost = (int)(hPCost * 1.2f);
+
+        }
+        else if (playerEra == 3)
+        {
+            baseHP = (int)(baseHP + 150);
+            AddGold(-hPCost);
+            hPCost = (int)(hPCost * 1.2f);
+
+        }
+        else if (playerEra == 4)
+        {
+            baseHP = (int)(baseHP + 450);
+            AddGold(-hPCost);
+            hPCost = (int)(hPCost * 1.2f);
+
+        }
+        else if (playerEra == 5)
+        {
+            baseHP = (int)(baseHP + 1200);
+            AddGold(-hPCost);
+            hPCost = (int)(hPCost * 1.2f);
+
+        }
     }
     public void BuyBuff()
     {
@@ -269,9 +310,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    private void NextEra()
+    public void NextEra()
     {
-        GameObject.Find("UI").GetComponent<StoryUI>().NextEra();
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            GameObject.Find("UI").GetComponent<StoryUI>().NextEra();
+        }
         //deactivate unit 2 & 3
         isUnitTwoActive = false;
         isUnitThreeActive = false;
@@ -279,7 +323,17 @@ public class GameManager : MonoBehaviour
         reloadPerSec = 0.06f;
         SetReloadTime();
         //set costs
-        if (playerEra == 1)
+        if (playerEra == 0)
+        {
+            reloadCost = 9;
+            hPCost = 30;
+            unitTwoCost = 150;
+            unitThreeCost = 400;
+            evolveCost = 2000;
+            baseHP = 2;
+
+        }
+        else if (playerEra == 1)
         {
             reloadCost = 42;
             hPCost = 140;
@@ -458,6 +512,7 @@ public class GameManager : MonoBehaviour
         unitThreeCost = 1200;
         unitTwoCost = 400;
         evolveCost = 2000;
+        canNextTimeline = false;
         GameObject.Find("UI").GetComponent<StoryUI>().NextEra();
        
        

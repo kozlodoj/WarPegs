@@ -19,7 +19,7 @@ public class BuyScript : MonoBehaviour
     private GameObject priceText;
     [SerializeField]
     private int unitNum;
-
+    [SerializeField]
     private bool isActive = false;
 
     // Start is called before the first frame update
@@ -57,6 +57,11 @@ public class BuyScript : MonoBehaviour
             SetActive();
 
         }
+        else if (unitNum == 5 && isActive)
+            GameManager.instance.BuyUnit(unitNum);
+        if (isActive && unitNum == 4 || unitNum == 5)
+            isActive = false;
+
     }
     private void SetActive()
     {
@@ -64,6 +69,12 @@ public class BuyScript : MonoBehaviour
         priceText.SetActive(false);
         goldImage.gameObject.SetActive(false);
         isActive = true;
+        if (unitNum == 5)
+        {
+            priceText.GetComponent<TextMeshProUGUI>().color = Color.black;
+            priceText.GetComponent<TextMeshProUGUI>().SetText("GO");
+            priceText.SetActive(true);
+        }
     }
 
     private void CheckActive()
@@ -72,12 +83,16 @@ public class BuyScript : MonoBehaviour
             SetActive();
         else if (unitNum == 3 && GameManager.instance.isUnitThreeActive)
             SetActive();
-        if (cost >= GameManager.instance.gold && !isActive)
+        if (unitNum == 5 && GameManager.instance.canNextTimeline)
+            SetActive();
+        if (unitNum == 4)
+            SetPrice();
+        if (cost >= GameManager.instance.gold && !isActive && unitNum != 5)
         {
             priceText.GetComponent<TextMeshProUGUI>().color = transparentTextColor;
             goldImage.color = trGoldColor;
         }
-        if (cost <= GameManager.instance.gold && !isActive)
+        if (cost <= GameManager.instance.gold && !isActive && unitNum != 5)
         {
             priceText.GetComponent<TextMeshProUGUI>().color = textColor;
             goldImage.color = goldColor;
@@ -99,6 +114,10 @@ public class BuyScript : MonoBehaviour
         {
             cost = GameManager.instance.evolveCost;
             priceText.GetComponent<TextMeshProUGUI>().SetText(cost.ToString());
+        }
+        else if (unitNum == 5)
+        {
+            priceText.GetComponent<TextMeshProUGUI>().SetText("Win");
         }
     }
 }

@@ -23,6 +23,9 @@ public class ButtonsScript : MonoBehaviour
     public float perkTwoRecharge;
     public bool isRandom;
     public bool isReactivateActive;
+    public int playerEra;
+    public int enemyEra;
+    public int timeline;
 
     [SerializeField]
     private TextMeshProUGUI powerText;
@@ -58,6 +61,12 @@ public class ButtonsScript : MonoBehaviour
     private TextMeshProUGUI perkOneRechargeText;
     [SerializeField]
     private TextMeshProUGUI perkTwoRechargeText;
+    [SerializeField]
+    private TextMeshProUGUI playerEraText;
+    [SerializeField]
+    private TextMeshProUGUI enemyEraText;
+    [SerializeField]
+    private TextMeshProUGUI timelineText;
 
     private void Start()
     {
@@ -260,6 +269,61 @@ public class ButtonsScript : MonoBehaviour
         perkTwoRechargeText.SetText(perkTwoRecharge.ToString());
         GameManager.instance.perkTwoRecharge = perkTwoRecharge;
     }
+    public void playerEraPlus()
+    {
+        if (playerEra < 5)
+        {
+            playerEra++;
+            playerEraText.SetText(playerEra.ToString());
+            GameManager.instance.playerEra = playerEra;
+            GameManager.instance.NextEra();
+        }
+    }
+    public void playerEraMinus()
+    {
+        if (playerEra > 0)
+        {
+            playerEra--;
+            playerEraText.SetText(playerEra.ToString());
+            GameManager.instance.playerEra = playerEra;
+            GameManager.instance.NextEra();
+        }
+    }
+    public void enemyEraPlus()
+    {
+        if (enemyEra < 5)
+        {
+            enemyEra++;
+            enemyEraText.SetText(enemyEra.ToString());
+            GameManager.instance.enemyEra = enemyEra;
+        }
+    }
+    public void enemyEraMinus()
+    {
+        if (enemyEra > 0)
+        {
+            enemyEra--;
+            enemyEraText.SetText(enemyEra.ToString());
+            GameManager.instance.enemyEra = enemyEra;
+        }
+    }
+    public void timelinePlus()
+    {
+            timeline++;
+            GameManager.instance.timeLineModifier *= 1.1f;
+            timelineText.SetText(timeline.ToString());
+            GameManager.instance.timeLine = timeline;
+    }
+    public void timelineMinus()
+    {
+        if (timeline > 0)
+        {
+            timeline--;
+            GameManager.instance.timeLineModifier /= 1.1f;
+            timelineText.SetText(timeline.ToString());
+            GameManager.instance.timeLine = timeline;
+        }
+    }
 
     private void UpdateStats()
     {
@@ -280,6 +344,9 @@ public class ButtonsScript : MonoBehaviour
         buffCost = GameManager.instance.buffCost;
         perkOneRecharge = GameManager.instance.perkOneRecharge;
         perkTwoRecharge = GameManager.instance.perkTwoRecharge;
+        playerEra = GameManager.instance.playerEra;
+        enemyEra = GameManager.instance.enemyEra;
+        timeline = GameManager.instance.timeLine;
 
         powerText.SetText(power.ToString());
         reloadText.SetText(reload.ToString());
@@ -298,6 +365,9 @@ public class ButtonsScript : MonoBehaviour
         perkTwoRechargeText.SetText(perkTwoRecharge.ToString());
         randomToggle.isOn = isRandom;
         reactivateToggle.isOn = isReactivateActive;
+        playerEraText.SetText(playerEra.ToString());
+        enemyEraText.SetText(enemyEra.ToString());
+        timelineText.SetText(timeline.ToString());
     }
 
     public void RandomSpawn(bool isTrue)
