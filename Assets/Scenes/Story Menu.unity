@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 2
+  isActive: 0
 --- !u!114 &13994914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,7 +706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &155410059
 RectTransform:
   m_ObjectHideFlags: 0
@@ -916,6 +917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 4
+  isActive: 0
 --- !u!114 &177362190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,6 +1340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 4
+  isActive: 0
 --- !u!114 &194721358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1488,6 +1491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 4
+  isActive: 0
 --- !u!114 &196853103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3779,6 +3783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 3
+  isActive: 0
 --- !u!114 &476815200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4156,6 +4161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 2
+  isActive: 0
 --- !u!114 &484369610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4570,6 +4576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 3
+  isActive: 0
 --- !u!114 &533453332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6011,6 +6018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 4
+  isActive: 0
 --- !u!114 &734002908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6254,6 +6262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 3
+  isActive: 0
 --- !u!1 &742752326
 GameObject:
   m_ObjectHideFlags: 0
@@ -7480,6 +7489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 2
+  isActive: 0
 --- !u!114 &932693525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8441,6 +8451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 3
+  isActive: 0
 --- !u!114 &1037882977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8628,6 +8639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 2
+  isActive: 0
 --- !u!114 &1045122265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9654,6 +9666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 2
+  isActive: 0
 --- !u!114 &1156803148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9803,6 +9816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 3
+  isActive: 0
 --- !u!114 &1182686476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10781,6 +10795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 5
+  isActive: 0
 --- !u!114 &1276975467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12774,7 +12789,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1636829460
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14489,6 +14504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 2
+  isActive: 0
 --- !u!114 &1891749834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15361,6 +15377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 4
+  isActive: 0
 --- !u!114 &1965191183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15510,6 +15527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   unitNum: 3
+  isActive: 0
 --- !u!114 &1972630946
 MonoBehaviour:
   m_ObjectHideFlags: 0
