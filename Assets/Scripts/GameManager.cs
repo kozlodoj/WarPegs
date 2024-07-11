@@ -92,7 +92,8 @@ public class GameManager : MonoBehaviour
         CameraScale();
         LoadGame();
         SetReloadTime();
-        
+        Vibration.Init();
+
 
     }
     private void OnEnable()

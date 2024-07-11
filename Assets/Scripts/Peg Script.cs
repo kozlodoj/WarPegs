@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PegScript : MonoBehaviour
 {
     private SpriteRenderer rend;
@@ -57,6 +58,7 @@ public class PegScript : MonoBehaviour
             buffPoints = 0;
             
         }
+        
     }
 
     public void FadeOut()
@@ -117,6 +119,7 @@ public class PegScript : MonoBehaviour
 
     IEnumerator FaderOut()
     {
+        Vibration.VibratePop();
         for (float f = 1f; f >= 0; f -= fadeRate)
         {
             Color c = rend.material.color;

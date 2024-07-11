@@ -19,7 +19,12 @@ public class UnitUI : MonoBehaviour
     {
         hPBar.fillAmount = amount / initialAmount;
         if (hpText != null)
-        hpText.SetText(amount.ToString("0"));
+        {
+            if(amount >= 0)
+            hpText.SetText(amount.ToString("0"));
+            else
+                hpText.SetText("0");
+        }
     }
 
     public void BufText(float amount)

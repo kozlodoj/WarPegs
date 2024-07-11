@@ -686,7 +686,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1024
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -706,7 +706,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.031785727, y: 0}
+  m_Offset: {x: 0.029358506, y: -0.17120361}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -717,7 +717,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0635715, y: 1}
+  m_Size: {x: 0.81899476, y: 2.0516791}
   m_EdgeRadius: 0
 --- !u!95 &2066797197067558250
 Animator:
@@ -956,3 +956,4 @@ MonoBehaviour:
   hPBar: {fileID: 3222427453029716606}
   buffText: {fileID: 0}
   buffTextOutline: {fileID: 0}
+  hpText: {fileID: 0}

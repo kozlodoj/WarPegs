@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2336021000827251952}
   - component: {fileID: 6644860310910760578}
   - component: {fileID: 6734700032950542699}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: 'Enemy base '
   m_TagString: Enemy base
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -140,7 +140,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -160,9 +160,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.020346045, y: -0.16765738}
+  m_Offset: {x: 0.76909924, y: 0.23331809}
   serializedVersion: 2
-  m_Radius: 0.4574132
+  m_Radius: 1.0498989
 --- !u!1 &949788363373558776
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 1294802573471192798}
   - component: {fileID: 7586659844962368964}
   - component: {fileID: 3682371329151024237}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 6069891661952949627}
   - component: {fileID: 3415377696561351483}
   - component: {fileID: 6443154327216182442}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: HP Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 148260620556840007}
   - component: {fileID: 6088525241467543150}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: enemy base inside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 82594485493991635}
   - component: {fileID: 9162194515736579752}
   - component: {fileID: 5473009550132514957}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 6271600007430382174}
   - component: {fileID: 2270401789097695458}
   - component: {fileID: 8544518064896101942}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 3261898508506603938}
   - component: {fileID: 1239372509840306686}
   - component: {fileID: 4043202659760543093}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -738,7 +738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7547425614139924332}
   - component: {fileID: 7674489649142310022}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: enemy base outside
   m_TagString: Untagged
   m_Icon: {fileID: 0}

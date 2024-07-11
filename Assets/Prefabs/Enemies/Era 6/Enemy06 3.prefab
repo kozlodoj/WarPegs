@@ -362,7 +362,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6500178492605920635}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 0.2
+  m_Radius: 0.075
   m_Speed: 0.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -408,7 +408,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1024
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -428,7 +428,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.031785727, y: 0}
+  m_Offset: {x: -0.016216725, y: -0.15568995}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -439,7 +439,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0635715, y: 1}
+  m_Size: {x: 0.7521915, y: 2.1209679}
   m_EdgeRadius: 0
 --- !u!95 &682585711072513216
 Animator:

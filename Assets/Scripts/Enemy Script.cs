@@ -21,6 +21,7 @@ public class EnemyScript : MonoBehaviour
     private int goldDrop;
     private bool canMove = true;
     private bool onBase;
+    private float initialStoppingDistance;
     [SerializeField]
     private float attackCooldown = 1.5f;
     private bool canHit = true;
@@ -141,18 +142,32 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+       
         if (collision.gameObject.CompareTag("Enemy base"))
+        {
+            
             onBase = true;
+            if (isRanged)
+                agent.stoppingDistance = 0.2f;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        
         onBase = false;
+        if (isRanged)
+            agent.stoppingDistance = initialStoppingDistance;
         if (player != null)
+        {
+            canMove = false;
             agent.isStopped = true;
+        }
     }
 
     private IEnumerator HitWithCooldown()
     {
+        while (!canHit)
+            yield return null;
         if (playerS != null)
         {
             weaponAnimator.SetBool("isHitting", true);
@@ -161,7 +176,7 @@ public class EnemyScript : MonoBehaviour
                 yield return null;
             if (playerS != null)
                 playerS.DealDamage(attack);
-            yield return new WaitForSeconds(attackCooldown);
+            StartCoroutine(AttackCoolDown());
             StartCoroutine(HitWithCooldown());
         }
         else if (baseS != null)
@@ -172,7 +187,7 @@ public class EnemyScript : MonoBehaviour
                 yield return null;
             if (baseS != null)
                 baseS.DealDamage(attack);
-            yield return new WaitForSeconds(attackCooldown);
+            StartCoroutine(AttackCoolDown());
             StartCoroutine(HitWithCooldown());
         }
 
@@ -220,22 +235,22 @@ public class EnemyScript : MonoBehaviour
         UI = transform.Find("Canvas").GetComponent<UnitUI>();
         currentHp = HP;
         UI.UpdateHP(HP, currentHp);
+        initialStoppingDistance = agent.stoppingDistance;
+        if (isRanged)
+            StartCoroutine(RangedAttack());
     }
 
-    private void RangedAttack()
+    private IEnumerator RangedAttack()
     {
-        if (target != null)
+        while (target == null)
+            yield return null;
+        while (!canHit)
+            yield return null;
+        while (!CanShoot(target.transform.position))
+            yield return null;
+        if (!GameManager.instance.gameOver)
         {
-            if (isRanged && CanShoot(target.transform.position) && !GameManager.instance.gameOver)
-            {
-                if (canHit)
-                {
-                    weaponAnimator.SetBool("isHitting", true);
-                    canHit = false;
-
-                }
-
-            }
+            weaponAnimator.SetBool("isHitting", true);
         }
     }
 
@@ -246,15 +261,6 @@ public class EnemyScript : MonoBehaviour
         else
             weaponAnimator.speed = 1;
     }
-
-    private IEnumerator RangedWithCooldown(float cooldown)
-    {
-
-        yield return new WaitForSeconds(cooldown);
-        canHit = true;
-
-    }
-
     private bool CanShoot(Vector3 position)
     {
 
@@ -274,7 +280,6 @@ public class EnemyScript : MonoBehaviour
 
     public void StopAnimationRanged()
     {
-
         weaponAnimator.SetBool("isHitting", false);
         arrow.SetActive(false);
         if (CanShoot(target.transform.position))
@@ -283,17 +288,24 @@ public class EnemyScript : MonoBehaviour
             newArrow.GetComponent<Arrow>().SetTarget(target, attack);
         }
         StartCoroutine(ResetArrow());
+        StartCoroutine(AttackCoolDown());
     }
 
     private IEnumerator ResetArrow()
     {
         yield return new WaitForSeconds(1f);
         arrow.SetActive(true);
-        StartCoroutine(RangedWithCooldown(attackCooldown));
+        StartCoroutine(RangedAttack());
     }
     private void TimelineModifier()
     {
         HP *= GameManager.instance.timeLineModifier;
         attack *= GameManager.instance.timeLineModifier;
+    }
+    private IEnumerator AttackCoolDown()
+    {
+        canHit = false;
+        yield return new WaitForSeconds(attackCooldown);
+        canHit = true;
     }
 }

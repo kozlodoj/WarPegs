@@ -197,6 +197,7 @@ MonoBehaviour:
   hPBar: {fileID: 691776875819345963}
   buffText: {fileID: 6245393396989468329}
   buffTextOutline: {fileID: 8725976068351294156}
+  hpText: {fileID: 0}
 --- !u!1 &2159796757013689126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,7 +1030,7 @@ BoxCollider2D:
     m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1046,7 +1047,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.015893936, y: 0}
+  m_Offset: {x: 0.052579343, y: 0.09303999}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1057,7 +1058,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0317879, y: 1}
+  m_Size: {x: 0.65595376, y: 2.017854}
   m_EdgeRadius: 0
 --- !u!50 &6207433962479224753
 Rigidbody2D:

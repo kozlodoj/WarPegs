@@ -27,6 +27,7 @@ public class Unit : MonoBehaviour
     private bool animationDone = false;
     private bool canMove = true;
     private bool onBase;
+    private float initialStoppingDistance;
     private UnitUI UI;
     private GameObject enemy;
     private GameObject enemyBase;
@@ -50,7 +51,6 @@ public class Unit : MonoBehaviour
     {
         
             Move();
-            RangedAttack();
             ManageHP();
             ManageFreezeStop();
     }
@@ -137,18 +137,30 @@ public class Unit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.CompareTag("Player Base"))
+        {
             onBase = true;
+            if (isRanged)
+            agent.stoppingDistance = 0.2f;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         onBase = false;
+        if (isRanged)
+        agent.stoppingDistance = initialStoppingDistance;
         if (enemy != null)
+        {
+            canMove = false;
             agent.isStopped = true;
+        }
     }
 
     private IEnumerator HitWithCooldown()
     {
+        while (!canHit)
+            yield return null;
         if (enemyS != null)
         {
             weaponAnimator.SetBool("isHitting", true);
@@ -157,7 +169,7 @@ public class Unit : MonoBehaviour
                 yield return null;
             if(enemyS != null)
             enemyS.DealDamage(attack);
-            yield return new WaitForSeconds(attackCooldown);
+            StartCoroutine(AttackCoolDown());
             StartCoroutine(HitWithCooldown());
         }
         else if (baseS != null)
@@ -168,7 +180,7 @@ public class Unit : MonoBehaviour
                 yield return null;
             if(baseS != null)
             baseS.DealDamage(attack);
-            yield return new WaitForSeconds(attackCooldown);
+            StartCoroutine(AttackCoolDown());
             StartCoroutine(HitWithCooldown());
         }
 
@@ -227,23 +239,23 @@ public class Unit : MonoBehaviour
         UI = transform.Find("Canvas").GetComponent<UnitUI>();
         currentHp = HP;
         UI.UpdateHP(HP, currentHp);
+        initialStoppingDistance = agent.stoppingDistance;
+        if (isRanged)
+            StartCoroutine(RangedAttack());
     }
 
-    private void RangedAttack()
+    private IEnumerator RangedAttack()
     {
-        if (target != null)
-        {
-            if (isRanged && CanShoot(target.transform.position) && !GameManager.instance.gameOver)
-            {
-
-                if (canHit)
+        while (target == null)
+            yield return null;
+        while (!canHit)
+            yield return null;
+        while (!CanShoot(target.transform.position))
+            yield return null;
+        if (!GameManager.instance.gameOver)
                 {
                     weaponAnimator.SetBool("isHitting", true);
-
                 }
-
-            }
-        }
     }
 
     private bool CanShoot(Vector3 position)
@@ -258,34 +270,43 @@ public class Unit : MonoBehaviour
             return false;
     }
 
-    private IEnumerator RangedWithCooldown(float cooldown)
-    {
+    //private IEnumerator RangedWithCooldown(float cooldown)
+    //{
 
-        yield return new WaitForSeconds(cooldown);
-        canHit = true;
+    //    yield return new WaitForSeconds(cooldown);
+    //    canHit = true;
 
-    }
+    //}
     public void StopAnimationRanged()
     {
         weaponAnimator.SetBool("isHitting", false);
-        canHit = false;
         arrow.SetActive(false);
+        if (CanShoot(target.transform.position))
+        {
             GameObject newArrow = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
             newArrow.GetComponent<Arrow>().SetTarget(target, attack);
+        }
         StartCoroutine(ResetArrow());
+        StartCoroutine(AttackCoolDown());
     }
 
     private IEnumerator ResetArrow()
     {
         yield return new WaitForSeconds(1f);
         arrow.SetActive(true);
-        StartCoroutine(RangedWithCooldown(attackCooldown));
+        StartCoroutine(RangedAttack());
     }
 
     public void StopAnimationMelee()
     {
         weaponAnimator.SetBool("isHitting", false);
         animationDone = true;
+    }
+    private IEnumerator AttackCoolDown()
+    {
+        canHit = false;
+        yield return new WaitForSeconds(attackCooldown);
+        canHit = true;
     }
 
 

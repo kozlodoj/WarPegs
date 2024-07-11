@@ -18,6 +18,7 @@ public class UnitSpawner : MonoBehaviour
     private PegManager pegs;
 
     private Freeze freezeScript;
+    private Animator animator;
 
     private void Start()
     {
@@ -32,6 +33,7 @@ public class UnitSpawner : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+        animator = gameObject.GetComponent<Animator>();
         spawnPoint = GameObject.FindWithTag("Unit Spawn Point").transform;
         towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
         reactivateOnSpawn = GameManager.instance.reactivatePegsOnSpawn;
@@ -45,6 +47,7 @@ public class UnitSpawner : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            animator.SetBool("animate", true);
             GameObject newUnit = Instantiate(unitPrefab, spawnPoint) as GameObject;
             newUnit.GetComponent<Unit>().Buff(collision.gameObject.GetComponent<Ball>().GetBuff());
             towManager.UpdateUnitList(newUnit);
@@ -73,5 +76,10 @@ public class UnitSpawner : MonoBehaviour
                 GameManager.instance.ManageDaily();
             }
         }
+    }
+    public void VibrateandAnimationStop()
+    {
+        animator.SetBool("animate", false);
+        Vibration.VibratePeek();
     }
 }
