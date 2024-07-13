@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a16e9aa6ac68246c8b277da7070d900e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitPrefab: {fileID: 9190209784107580706, guid: aaf3d4a9cf90945e39b58e79dd27ce1e, type: 3}
+  unitPrefab: {fileID: 9190209784107580706, guid: 7f701961855c6465a90022ab7bfa90e6, type: 3}
   unitNum: 0
   spawnPoint: {fileID: 0}
 --- !u!212 &2341053199118244295

@@ -37,9 +37,12 @@ public class BaseScript : MonoBehaviour
         if (isEnemy && !GameManager.instance.tutorial)
         {
             if (amount < currentHp)
-            GameManager.instance.AddGold(goldDrop * (int)amount);
+                GameManager.instance.AddGold(goldDrop * (int)amount);
             else if (amount >= currentHp)
-            GameManager.instance.AddGold(goldDrop * (int)currentHp);
+            {
+                amount = currentHp;
+                GameManager.instance.AddGold(goldDrop * (int)amount);
+            }
         }
         currentHp -= amount;
         UI.UpdateHP(HP, currentHp);
