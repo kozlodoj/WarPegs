@@ -163,7 +163,7 @@ RectTransform:
   m_GameObject: {fileID: 7775415717071847760}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.333333, y: 3.333333, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5339195694689678380}
@@ -277,8 +277,8 @@ Transform:
   m_GameObject: {fileID: 8886577788414726084}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.059, y: 6.968, z: 0}
-  m_LocalScale: {x: 0.44, y: 0.44, z: 1}
+  m_LocalPosition: {x: -1.7905, y: 6.8002, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1734810853344281968}
@@ -325,7 +325,7 @@ SpriteRenderer:
   m_SortingLayerID: 1571261219
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6f32ce165603a448684685199a005b5d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 122f5d6d62f6142c9893f908e3a634bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -368,9 +368,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.008259177, y: 0}
   serializedVersion: 2
-  m_Radius: 0.68
+  m_Radius: 0.2711686
 --- !u!114 &1208014098404619007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,9 +387,10 @@ MonoBehaviour:
   borderPeg: 0
   isDome: 0
   numberOfBounces: 0
+  boucesLeft: 0
   isClone: 0
   buffPoints: 10
-  medicSprite: {fileID: 21300000, guid: 6c41fc1f169614e69afc5f1e51f21657, type: 3}
+  medicSprite: {fileID: 21300000, guid: d8549561afc11440e8cc9502f8cbc618, type: 3}
   additionalSpriteLeft: {fileID: 0}
   additionalSpriteRight: {fileID: 0}
   crackedSprite: {fileID: 0}

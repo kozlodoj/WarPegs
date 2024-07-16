@@ -800,7 +800,7 @@ GameObject:
   - component: {fileID: 1491935476519909929}
   - component: {fileID: 2980913426901463119}
   m_Layer: 7
-  m_Name: Unit01 4
+  m_Name: Unit01 1
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -948,7 +948,7 @@ Animator:
   m_GameObject: {fileID: 9190209784107580706}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8e0a756ff481143938a65bbed94ee9cc, type: 2}
+  m_Controller: {fileID: 9100000, guid: 787fe48208525435a871f36ba2fe5e3f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
