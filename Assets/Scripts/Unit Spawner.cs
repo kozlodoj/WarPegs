@@ -63,6 +63,7 @@ public class UnitSpawner : MonoBehaviour
             if (GameManager.instance.freezeGame)
             {
                 GameManager.instance.UnFreezeTow();
+                if (freezeScript != null)
                 freezeScript.ResetFreeze();
             }
             if (unitNum == 2)

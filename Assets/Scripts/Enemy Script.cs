@@ -216,6 +216,8 @@ public class EnemyScript : MonoBehaviour
                 target = towManager.ClosestUnit(gameObject.transform);
                 if (target != null)
                     agent.SetDestination(target.transform.position);
+                else
+                    agent.isStopped = true;
             }
             if (GameManager.instance.freezeGame)
             {
@@ -246,7 +248,7 @@ public class EnemyScript : MonoBehaviour
             yield return null;
         while (!canHit)
             yield return null;
-        while (!CanShoot(target.transform.position))
+        while (target == null || !CanShoot(target.transform.position))
             yield return null;
         if (!GameManager.instance.gameOver)
         {

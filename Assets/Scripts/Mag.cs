@@ -78,4 +78,16 @@ public class Mag : MonoBehaviour
        Instantiate(RandomBall(), slots[2].transform.position, slots[2].transform.rotation);
         
     }
+    public void ChargeOneBall()
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            var slotScript = slots[i].GetComponent<SlotScript>();
+            if (slotScript.isOcupied && !slotScript.ballCharged)
+            {
+                slotScript.ChargeTheBall();
+                i = slots.Count;
+            }
+        }
+    }
 }

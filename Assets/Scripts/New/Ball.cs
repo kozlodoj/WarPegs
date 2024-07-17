@@ -25,6 +25,7 @@ public class Ball : MonoBehaviour
     private Transform fireTransform;
     public bool onFire;
     private Tutorial tut;
+    private Rigidbody2D ballRb;
 
     
     void Start()
@@ -32,6 +33,7 @@ public class Ball : MonoBehaviour
         //reference 
         ballUI = UI.GetComponent<BallUI>();
         animator.gameObject.GetComponent<Animator>();
+        ballRb = GetComponent<Rigidbody2D>();
         SetStats();
    
     }
@@ -49,11 +51,22 @@ public class Ball : MonoBehaviour
         {
                 peg = collision.gameObject.GetComponent<PegScript>();
                 buffPoints += peg.buffPoints;
-
                 ballUI.SetBuffText(buffPoints);
+                peg.FadeOut();
+            if (!peg.feverMode)
+            {
+                if (peg.speedPeg)
+                    ballRb.velocity *= 2;
+                if (peg.twinPeg)
+                {
+                    GameObject newBall = Instantiate(gameObject) as GameObject;
+                    var rb = newBall.GetComponent<Rigidbody2D>();
+                    var newVelocity = ballRb.velocity + (Vector2.right * 2f);
+                    rb.velocity = newVelocity;
 
-            peg.FadeOut();
-            
+                }
+            }
+
 
         }
     }
@@ -125,6 +138,10 @@ public class Ball : MonoBehaviour
     {
         animator.SetBool("fire", true);
         onFire = true;
+    }
+    public void FullCharge()
+    {
+        timePassed = chargeTime;
     }
     
 }

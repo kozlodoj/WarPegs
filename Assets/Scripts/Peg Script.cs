@@ -7,23 +7,42 @@ public class PegScript : MonoBehaviour
 {
     private SpriteRenderer rend;
 
-    private float fadeRate = 0.1f;
+    //private float fadeRate = 0.1f;
     private Color c;
-    [SerializeField]
-    private bool medicPeg;
+    public bool medicPeg;
     public bool borderPeg;
     public bool isDome;
+    public bool buffPeg;
+    public bool speedPeg;
+    public bool twinPeg;
+    public bool bombPeg;
+    public bool chargePeg;
+    public bool feverPeg;
+    public bool feverMode;
+    public bool coinPeg;
+    public bool freezePeg;
+    [SerializeField]
+    private float freeazeTime;
+    private bool bombTriggered;
     [SerializeField]
     private int numberOfBounces;
     [SerializeField]
     private int boucesLeft;
     public bool isClone = false;
+    [SerializeField]
+    private float buffMultiplier;
+
 
     public float buffPoints;
     private float currentBuff;
 
+    private int coinDrop;
+
     private PegManager pegManager;
     private PegUI pegUI;
+    private Mag magScript;
+    [SerializeField]
+    private Sprite regularSprite;
     [SerializeField]
     private Sprite medicSprite;
     [SerializeField]
@@ -35,7 +54,26 @@ public class PegScript : MonoBehaviour
     [SerializeField]
     private Sprite fullSprite;
     [SerializeField]
+    private Sprite coinPegSprite;
+    [SerializeField]
     private bool dontRespawn;
+    [SerializeField]
+    private Color buffColor;
+    [SerializeField]
+    private Color speedColor;
+    [SerializeField]
+    private Color twinColor;
+    [SerializeField]
+    private Color bombColor;
+    [SerializeField]
+    private Color chargeColor;
+    [SerializeField]
+    private Color feverColor;
+    [SerializeField]
+    private Color freezeColor;
+    private Color currentColor;
+
+    private Animator anim;
 
     private List<Collider2D> allColliders = new List<Collider2D>();
 
@@ -47,8 +85,8 @@ public class PegScript : MonoBehaviour
         GetRenderer();
         //reference peg manager
         pegManager = GameObject.FindWithTag("Peg Layout").GetComponent<PegManager>();
-        //set buff points
-        buffPoints = GameManager.instance.buff;
+        //reference animator
+        anim = gameObject.GetComponent<Animator>();
         //set up border peg
         if (borderPeg)
         {
@@ -63,45 +101,94 @@ public class PegScript : MonoBehaviour
 
     public void FadeOut()
     {
-        if (borderPeg)
+        if (feverMode)
         {
-            boucesLeft--;
-        }
-        if (borderPeg && boucesLeft == 1)
-            buffPoints = currentBuff;
-        if (!borderPeg || boucesLeft <= 0)
-        {
-            if (borderPeg)
-            {
-                foreach (Collider2D col in allColliders)
-                    col.enabled = false;
-            }
-            StartCoroutine(FaderOut());
+            Vibration.VibratePop();
+            anim.SetBool("fadeOut", true);
+            anim.SetBool("fadeIn", false);
             pegUI.BuffText(buffPoints);
-            gameObject.GetComponent<Collider2D>().enabled = false;
+        }
+        else
+        {
+            if (bombTriggered)
+            {
+                Vibration.Vibrate();
+                anim.SetBool("blowUp", true);
+                anim.SetBool("fadeIn", false);
+                bombTriggered = false;
+            }
+            else
+            {
+                if (buffPeg)
+                {
+                    Vibration.Vibrate();
+                    anim.SetBool("fadeOutBuff", true);
+                    anim.SetBool("fadeIn", false);
+                    pegUI.BuffText(buffPoints);
+                }
+                else if (bombPeg)
+                {
+                    Vibration.VibrateNope();
+                    anim.SetBool("isBomb", true);
+                    anim.SetBool("blowUp", false);
+                    anim.SetBool("fadeIn", false);
+                    bombTriggered = true;
+
+                }
+                else if (chargePeg)
+                {
+                    Vibration.VibrateNope();
+                    anim.SetBool("fadeOut", true);
+                    anim.SetBool("fadeIn", false);
+                    magScript.ChargeOneBall();
+                }
+                else if (feverPeg)
+                {
+                    Vibration.VibrateNope();
+                    pegManager.ActivateFever();
+                    anim.SetBool("fadeOut", true);
+                    anim.SetBool("fadeIn", false);
+                }
+                else if (coinPeg)
+                {
+                    Vibration.VibratePeek();
+                    GameManager.instance.AddGold(coinDrop);
+                    anim.SetBool("fadeOut", true);
+                    anim.SetBool("fadeIn", false);
+                    pegUI.BuffText(coinDrop);
+                }
+                else if (freezePeg)
+                {
+                    Vibration.VibratePeek();
+                    anim.SetBool("fadeOut", true);
+                    anim.SetBool("fadeIn", false);
+                    GameManager.instance.FreezeTow();
+                    StartCoroutine(FreezeTimer());
+                }
+                else
+                {
+                    Vibration.VibratePop();
+                    anim.SetBool("fadeOut", true);
+                    anim.SetBool("fadeIn", false);
+                    pegUI.BuffText(buffPoints);
+                }
+            }
         }
     }
 
     public void FadeIn()
     {
-        if (!gameObject.activeSelf && !dontRespawn)
-        {
-            if (borderPeg)
-            {
-                foreach (Collider2D col in allColliders)
-                    col.enabled = true;
-            }
-            gameObject.SetActive(true);
-            boucesLeft = numberOfBounces;
-            StartCoroutine(FaderIn());
-            gameObject.GetComponent<Collider2D>().enabled = true;
-        }
+        anim.SetBool("fadeIn", true);
+        anim.SetBool("fadeOut", false);
+        anim.SetBool("fadeOutBuff", false);
+        anim.SetBool("isBomb", false);
+        pegUI.BuffText(0);
     }
     public void ReactivateDome()
     {
         gameObject.SetActive(true);
         boucesLeft = numberOfBounces;
-        StartCoroutine(FaderIn());
+        FadeIn();
         gameObject.GetComponent<Collider2D>().enabled = true;
     }
     private void Burn()
@@ -111,55 +198,20 @@ public class PegScript : MonoBehaviour
             foreach (Collider2D col in allColliders)
                 col.enabled = false;
         }
-        gameObject.GetComponent<Collider2D>().enabled = false;
-        StartCoroutine(FaderOut());
+        FadeOut();
         pegUI.BuffText(buffPoints);
         
     }
 
-    IEnumerator FaderOut()
-    {
-        Vibration.VibratePop();
-        for (float f = 1f; f >= 0; f -= fadeRate)
-        {
-            Color c = rend.material.color;
-            c.a = f;
-            rend.material.color = c;
-            if (borderPeg && additionalSpriteLeft != null)
-            {
-                additionalSpriteLeft.material.color = c;
-                additionalSpriteRight.material.color = c;
-            }
-            yield return new WaitForSeconds(fadeRate / 2);
-        }
-        pegUI.ResetScale();
-        gameObject.SetActive(false);
-    }
-
-    IEnumerator FaderIn()
-    {
-        if (fullSprite != null)
-            gameObject.GetComponent<SpriteRenderer>().sprite = fullSprite;
-
-        for (float f = 0.1f; f <= 1; f += fadeRate)
-        {
-            Color c = rend.material.color;
-            c.a = f;
-            rend.material.color = c;
-            if (borderPeg && additionalSpriteLeft != null)
-            {
-                additionalSpriteLeft.material.color = c;
-                additionalSpriteRight.material.color = c;
-            }
-            yield return new WaitForSeconds(fadeRate / 2);
-        }
-        
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (medicPeg && !isClone)
+        if (medicPeg && !isClone && !feverMode)
+        {
+            pegManager.ResetPegs();
+            pegManager.SetAllPegTypes();
             pegManager.ReactivatePegs();
+        }
         if (borderPeg && crackedSprite != null)
             gameObject.GetComponent<SpriteRenderer>().sprite = crackedSprite;
         if (!isClone)
@@ -183,12 +235,148 @@ public class PegScript : MonoBehaviour
         
 
     }
+    public void SetBuffPeg()
+    {
+        buffPeg = true;
+        gameObject.GetComponent<SpriteRenderer>().color = buffColor;
+        buffPoints *= buffMultiplier;
+    }
+    public void SetSpeedPeg()
+    {
+        speedPeg = true;
+        gameObject.GetComponent<SpriteRenderer>().color = speedColor;
+    }
+    public void SetTwinPeg()
+    {
+        twinPeg = true;
+        gameObject.GetComponent<SpriteRenderer>().color = twinColor;
+    }
+    public void SetBombPeg()
+    {
+        bombPeg = true;
+        buffPoints = 0;
+        gameObject.GetComponent<SpriteRenderer>().color = bombColor;
+
+    }
+    public void SetChargePeg()
+    {
+        chargePeg = true;
+        magScript = GameObject.Find("Mag").GetComponent<Mag>();
+        buffPoints = 0;
+        gameObject.GetComponent<SpriteRenderer>().color = chargeColor;
+    }
+    public void SetFeverPeg()
+    {
+        feverPeg = true;
+        gameObject.GetComponent<SpriteRenderer>().color = feverColor;
+        buffPoints = 0;
+    }
+    public void SetCoinPeg()
+    {
+        coinPeg = true;
+        gameObject.GetComponent<SpriteRenderer>().sprite = coinPegSprite;
+        buffPoints = 0;
+        var era = GameManager.instance.enemyEra;
+        if (era == 0)
+            coinDrop = 20;
+        else if (era == 1)
+            coinDrop = 92;
+        else if (era == 2)
+            coinDrop = 340;
+        else if (era == 3)
+            coinDrop = 1160;
+        else if (era == 4)
+            coinDrop = 3480;
+        else if (era == 5)
+            coinDrop = 9000;
+
+    }
+
+    public void SetFreezePeg()
+    {
+        freezePeg = true;
+        gameObject.GetComponent<SpriteRenderer>().color = freezeColor;
+        buffPoints = 0;
+    }
+    public void ResetPeg()
+    {
+        medicPeg = false;
+        buffPeg = false;
+        speedPeg = false;
+        twinPeg = false;
+        bombPeg = false;
+        chargePeg = false;
+        feverPeg = false;
+        coinPeg = false;
+        freezePeg = false;
+        ResetAnimations();
+        SetBuffPoints();
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        gameObject.GetComponent<SpriteRenderer>().sprite = regularSprite;
+
+    }
+    public void SetBuffPoints()
+    {
+        buffPoints = GameManager.instance.buff;
+    }
     private void GetRenderer()
     {
         rend = GetComponent<SpriteRenderer>();
         c = rend.material.color;
         c.a = 1f;
 
+    }
+    public void StopFadeInAnim()
+    {
+        anim.SetBool("fadeIn", false);
+    }
+    public void StopFadeOutAnim()
+    {
+        if(buffPeg)
+            anim.SetBool("fadeOutBuff", false);
+        else
+            anim.SetBool("fadeOut", false);
+    }
+    public void BlowUp()
+    {
+        anim.SetBool("blowUp", false);
+    
+    }
+    private void ResetAnimations()
+    {
+        anim.SetBool("fadeIn", false);
+        anim.SetBool("fadeOut", false);
+        anim.SetBool("fadeOutBuff", false);
+        anim.SetBool("blowUp", false);
+        anim.SetBool("isBomb", false);
+    }
+
+    public void FeverActivate()
+    {
+        feverMode = true;
+        currentBuff = buffPoints;
+        buffPoints = GameManager.instance.buff * 2;
+        currentColor = gameObject.GetComponent<SpriteRenderer>().color;
+        gameObject.GetComponent<SpriteRenderer>().color = feverColor;
+        anim.SetBool("fever", true);
+        StartCoroutine(FeverTimer());
+    }
+
+    private IEnumerator FeverTimer()
+    {
+        yield return new WaitForSeconds(10f);
+        Vibration.VibrateNope();
+        anim.SetBool("fever", false);
+        gameObject.GetComponent<SpriteRenderer>().color = currentColor;
+        buffPoints = currentBuff;
+        feverMode = false;
+        
+    }
+    private IEnumerator FreezeTimer()
+    {
+        yield return new WaitForSeconds(freeazeTime);
+        Vibration.VibrateNope();
+        GameManager.instance.UnFreezeTow();
     }
 
 }

@@ -107,4 +107,9 @@ public class SlotScript : MonoBehaviour
                 ballScript.ActivateCharging();
         }
     }
+
+    public void ChargeTheBall()
+    {
+        ballScript.FullCharge();
+    }
 }

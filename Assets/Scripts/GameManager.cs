@@ -15,6 +15,14 @@ public class GameManager : MonoBehaviour
     public float intialStat = 100f;
     public int baseHP;
     public float initialBallCharge;
+    public int buffPegs;
+    public int speedPegs;
+    public int twinPegs;
+    public int bombPegs;
+    public int chargePegs;
+    public int feverPegs;
+    public int coinPegs;
+    public int freezePegs;
 
     public int gold;
     public int diamonds;

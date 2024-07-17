@@ -20,13 +20,16 @@ public class PegUI : MonoBehaviour
 
     private void Update()
     {
-        ScaleText();
+        //ScaleText();
     }
 
     public void BuffText(float amount)
     {
+        if (amount == 0)
+            buffText.SetText(" ");
+        else
         buffText.SetText("+ " + amount.ToString());
-        scale = true;
+        //scale = true;
        
     }
     private void ScaleText()
