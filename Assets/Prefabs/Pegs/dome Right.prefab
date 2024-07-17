@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 103551615496768108}
   - component: {fileID: 5583562751599326804}
   - component: {fileID: 7698668277367518518}
+  - component: {fileID: 2286659872099561352}
   m_Layer: 7
   m_Name: dome Right
   m_TagString: Peg
@@ -351,16 +352,36 @@ MonoBehaviour:
   medicPeg: 0
   borderPeg: 1
   isDome: 1
+  buffPeg: 0
+  speedPeg: 0
+  twinPeg: 0
+  bombPeg: 0
+  chargePeg: 0
+  feverPeg: 0
+  feverMode: 0
+  coinPeg: 0
+  freezePeg: 0
+  freeazeTime: 0
   numberOfBounces: 1
   boucesLeft: 0
   isClone: 0
+  buffMultiplier: 0
   buffPoints: 0
+  regularSprite: {fileID: 0}
   medicSprite: {fileID: 0}
   additionalSpriteLeft: {fileID: 0}
   additionalSpriteRight: {fileID: 0}
   crackedSprite: {fileID: 21300000, guid: 989b32e00165f439ba5f9d84b9e19845, type: 3}
   fullSprite: {fileID: 21300000, guid: 124be050a95824bb2a543a62f0970d31, type: 3}
+  coinPegSprite: {fileID: 0}
   dontRespawn: 1
+  buffColor: {r: 0, g: 0, b: 0, a: 0}
+  speedColor: {r: 0, g: 0, b: 0, a: 0}
+  twinColor: {r: 0, g: 0, b: 0, a: 0}
+  bombColor: {r: 0, g: 0, b: 0, a: 0}
+  chargeColor: {r: 0, g: 0, b: 0, a: 0}
+  feverColor: {r: 0, g: 0, b: 0, a: 0}
+  freezeColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!58 &7698668277367518518
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -396,3 +417,24 @@ CircleCollider2D:
   m_Offset: {x: -0.012195021, y: 0.30323312}
   serializedVersion: 2
   m_Radius: 1.2976214
+--- !u!95 &2286659872099561352
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8093145751944336624}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4ee2ddbda692145488d9531f751d9888, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

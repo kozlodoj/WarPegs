@@ -165,13 +165,24 @@ public class PegScript : MonoBehaviour
                     GameManager.instance.FreezeTow();
                     StartCoroutine(FreezeTimer());
                 }
-                else
+                else if (!isDome)
                 {
                     Vibration.VibratePop();
                     anim.SetBool("fadeOut", true);
                     anim.SetBool("fadeIn", false);
                     pegUI.BuffText(buffPoints);
                 }
+                else {
+                    Vibration.VibratePop();
+                    boucesLeft--;
+                    if (boucesLeft == 0)
+                    {
+                        anim.SetBool("fadeOut", true);
+                    }
+                    else
+                    gameObject.GetComponent<SpriteRenderer>().sprite = crackedSprite;
+                }
+
             }
         }
     }
@@ -180,9 +191,17 @@ public class PegScript : MonoBehaviour
     {
         anim.SetBool("fadeIn", true);
         anim.SetBool("fadeOut", false);
-        anim.SetBool("fadeOutBuff", false);
-        anim.SetBool("isBomb", false);
+        if (!isDome)
+        {
+            anim.SetBool("fadeOutBuff", false);
+            anim.SetBool("isBomb", false);
+        }
         pegUI.BuffText(0);
+        if (isDome)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = fullSprite;
+            boucesLeft = numberOfBounces;
+        }
     }
     public void ReactivateDome()
     {
@@ -212,8 +231,6 @@ public class PegScript : MonoBehaviour
             pegManager.SetAllPegTypes();
             pegManager.ReactivatePegs();
         }
-        if (borderPeg && crackedSprite != null)
-            gameObject.GetComponent<SpriteRenderer>().sprite = crackedSprite;
         if (!isClone)
         {
             GameManager.instance.bounces++;
@@ -342,24 +359,35 @@ public class PegScript : MonoBehaviour
         anim.SetBool("blowUp", false);
     
     }
+    public void StopDomeAnimation()
+    {
+        anim.SetBool("fadeOut", false);
+        anim.SetBool("fadeIn", false);
+    }
     private void ResetAnimations()
     {
         anim.SetBool("fadeIn", false);
         anim.SetBool("fadeOut", false);
-        anim.SetBool("fadeOutBuff", false);
-        anim.SetBool("blowUp", false);
-        anim.SetBool("isBomb", false);
+        if (!isDome)
+        {
+            anim.SetBool("fadeOutBuff", false);
+            anim.SetBool("blowUp", false);
+            anim.SetBool("isBomb", false);
+        }
     }
 
     public void FeverActivate()
     {
-        feverMode = true;
-        currentBuff = buffPoints;
-        buffPoints = GameManager.instance.buff * 2;
-        currentColor = gameObject.GetComponent<SpriteRenderer>().color;
-        gameObject.GetComponent<SpriteRenderer>().color = feverColor;
-        anim.SetBool("fever", true);
-        StartCoroutine(FeverTimer());
+        if (!isDome)
+        {
+            feverMode = true;
+            currentBuff = buffPoints;
+            buffPoints = GameManager.instance.buff * 2;
+            currentColor = gameObject.GetComponent<SpriteRenderer>().color;
+            gameObject.GetComponent<SpriteRenderer>().color = feverColor;
+            anim.SetBool("fever", true);
+            StartCoroutine(FeverTimer());
+        }
     }
 
     private IEnumerator FeverTimer()
