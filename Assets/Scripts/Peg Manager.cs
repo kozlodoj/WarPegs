@@ -14,6 +14,7 @@ public class PegManager : MonoBehaviour
     private int feverPegs;
     private int coinPegs;
     private int freezePegs;
+    private int lightningPegs;
 
     [SerializeField]
     private GameObject theMedic;
@@ -30,6 +31,7 @@ public class PegManager : MonoBehaviour
         feverPegs = GameManager.instance.feverPegs;
         coinPegs = GameManager.instance.coinPegs;
         freezePegs = GameManager.instance.freezePegs;
+        lightningPegs = GameManager.instance.lightningPegs;
         
         GetAllPegs();
         SetAllPegTypes();
@@ -177,6 +179,19 @@ public class PegManager : MonoBehaviour
                 i--;
         }
     }
+    public void SetLightningPegs()
+    {
+        for (int i = 0; i < lightningPegs; i++)
+        {
+            var peg = allPegs[RandomNum()];
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
+            {
+                peg.SetLightningPeg();
+            }
+            else
+                i--;
+        }
+    }
 
     public void ActivateFever()
     {
@@ -202,6 +217,7 @@ public class PegManager : MonoBehaviour
             SetFeverPegs();
             SetCoinPegs();
             SetFreezePegs();
+            SetLightningPegs();
         }
     }
 

@@ -514,10 +514,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.39714646, y: 1.0869961}
-      - {x: -0.2766955, y: -0.4423809}
-      - {x: 0.26622438, y: -1.6015844}
-      - {x: 0.7927332, y: -0.31612104}
+    - - {x: 0.31955886, y: 0.23353243}
+      - {x: -0.2572987, y: -0.5199685}
+      - {x: -0.28658724, y: -1.2427421}
+      - {x: 0.23022318, y: -0.539185}
   m_UseDelaunayMesh: 0
 --- !u!114 &6052009484611878510
 MonoBehaviour:
@@ -593,9 +593,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.23367083, y: -0.26883376}
+  m_Offset: {x: -0.29186153, y: -0.36096913}
   serializedVersion: 2
-  m_Radius: 1.008015
+  m_Radius: 0.5085454
 --- !u!1 &7272795403587536858
 GameObject:
   m_ObjectHideFlags: 0

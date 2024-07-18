@@ -21,6 +21,9 @@ public class PegScript : MonoBehaviour
     public bool feverMode;
     public bool coinPeg;
     public bool freezePeg;
+    public bool lightningPeg;
+    [SerializeField]
+    private GameObject lightningRadius;
     [SerializeField]
     private float freeazeTime;
     private bool bombTriggered;
@@ -31,7 +34,8 @@ public class PegScript : MonoBehaviour
     public bool isClone = false;
     [SerializeField]
     private float buffMultiplier;
-
+    private LineRenderer line;
+    public Ball theBall;
 
     public float buffPoints;
     private float currentBuff;
@@ -71,6 +75,8 @@ public class PegScript : MonoBehaviour
     private Color feverColor;
     [SerializeField]
     private Color freezeColor;
+    [SerializeField]
+    private Color lightningColor;
     private Color currentColor;
 
     private Animator anim;
@@ -87,6 +93,11 @@ public class PegScript : MonoBehaviour
         pegManager = GameObject.FindWithTag("Peg Layout").GetComponent<PegManager>();
         //reference animator
         anim = gameObject.GetComponent<Animator>();
+        //reference lightning
+        if (!isDome)
+        lightningRadius = gameObject.transform.Find("lightningRadius").gameObject;
+        //get linerenderer
+        line = gameObject.GetComponent<LineRenderer>();
         //set up border peg
         if (borderPeg)
         {
@@ -103,6 +114,7 @@ public class PegScript : MonoBehaviour
     {
         if (feverMode)
         {
+            
             Vibration.VibratePop();
             anim.SetBool("fadeOut", true);
             anim.SetBool("fadeIn", false);
@@ -165,13 +177,20 @@ public class PegScript : MonoBehaviour
                     GameManager.instance.FreezeTow();
                     StartCoroutine(FreezeTimer());
                 }
+                else if (lightningPeg)
+                {
+                    Vibration.VibratePop();
+                    StartCoroutine(LightningNextPeg(theBall));
+                }
                 else if (!isDome)
                 {
+                    
                     Vibration.VibratePop();
                     anim.SetBool("fadeOut", true);
                     anim.SetBool("fadeIn", false);
                     pegUI.BuffText(buffPoints);
                 }
+                
                 else {
                     Vibration.VibratePop();
                     boucesLeft--;
@@ -308,13 +327,19 @@ public class PegScript : MonoBehaviour
             coinDrop = 9000;
 
     }
-
     public void SetFreezePeg()
     {
         freezePeg = true;
         gameObject.GetComponent<SpriteRenderer>().color = freezeColor;
         buffPoints = 0;
     }
+    public void SetLightningPeg()
+    {
+        lightningPeg = true;
+        gameObject.GetComponent<SpriteRenderer>().color = lightningColor;
+        buffPoints = 0;
+    }
+
     public void ResetPeg()
     {
         medicPeg = false;
@@ -326,6 +351,11 @@ public class PegScript : MonoBehaviour
         feverPeg = false;
         coinPeg = false;
         freezePeg = false;
+        lightningPeg = false;
+        if (lightningRadius != null)
+        {
+            lightningRadius.SetActive(false);
+        }
         ResetAnimations();
         SetBuffPoints();
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
@@ -387,6 +417,28 @@ public class PegScript : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().color = feverColor;
             anim.SetBool("fever", true);
             StartCoroutine(FeverTimer());
+        }
+    }
+    public IEnumerator LightningNextPeg(Ball theball)
+    {
+        if (!isDome)
+        {
+            lightningRadius.SetActive(true);
+            yield return new WaitForSeconds(0.05f);
+            anim.SetBool("fadeOut", true);
+            anim.SetBool("fadeIn", false);
+            theball.AddBuffPoints(buffPoints);
+            pegUI.BuffText(buffPoints);
+            var nextPeg = lightningRadius.GetComponent<lightningscript>().ClosestPeg();
+            if (nextPeg != null)
+            {
+                StartCoroutine(nextPeg.LightningNextPeg(theball));
+                line.SetPosition(0, transform.position);
+                line.SetPosition(1, nextPeg.transform.position);
+                line.enabled = true;
+                yield return new WaitForSeconds(0.5f);
+                line.enabled = false;
+            }
         }
     }
 

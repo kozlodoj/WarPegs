@@ -2184,6 +2184,10 @@ PrefabInstance:
       propertyPath: freezePegs
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1327309104899784101, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
+      propertyPath: lightningPegs
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6401756500224349042, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
       propertyPath: m_Name
       value: GameManager

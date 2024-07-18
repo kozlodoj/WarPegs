@@ -50,6 +50,7 @@ public class Ball : MonoBehaviour
         if (!collision.gameObject.CompareTag("Walls"))
         {
                 peg = collision.gameObject.GetComponent<PegScript>();
+                peg.theBall = gameObject.GetComponent<Ball>();
                 buffPoints += peg.buffPoints;
                 ballUI.SetBuffText(buffPoints);
                 peg.FadeOut();
@@ -142,6 +143,11 @@ public class Ball : MonoBehaviour
     public void FullCharge()
     {
         timePassed = chargeTime;
+    }
+    public void AddBuffPoints(float amount)
+    {
+        buffPoints += amount;
+        ballUI.SetBuffText(buffPoints);
     }
     
 }
