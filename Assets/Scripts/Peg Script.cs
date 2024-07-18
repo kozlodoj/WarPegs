@@ -423,6 +423,7 @@ public class PegScript : MonoBehaviour
     {
         if (!isDome)
         {
+            Vibration.VibratePop();
             lightningRadius.SetActive(true);
             yield return new WaitForSeconds(0.05f);
             anim.SetBool("fadeOut", true);
