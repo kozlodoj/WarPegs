@@ -26,6 +26,7 @@ public class ButtonsScript : MonoBehaviour
     public int playerEra;
     public int enemyEra;
     public int timeline;
+    public int specialPegs;
 
     [SerializeField]
     private TextMeshProUGUI powerText;
@@ -67,6 +68,8 @@ public class ButtonsScript : MonoBehaviour
     private TextMeshProUGUI enemyEraText;
     [SerializeField]
     private TextMeshProUGUI timelineText;
+    [SerializeField]
+    private TextMeshProUGUI specialPegsText;
 
     private void Start()
     {
@@ -325,6 +328,24 @@ public class ButtonsScript : MonoBehaviour
         }
     }
 
+    public void SpecialPegsPlus()
+    {
+        if (specialPegs < 8)
+        {
+            specialPegs++;
+            GameManager.instance.numberOfSpecialPegs++;
+            specialPegsText.SetText(specialPegs.ToString());
+        }
+    }
+    public void SpecialPegsMinus()
+    {
+        if (specialPegs > 0)
+        {
+            specialPegs--;
+            GameManager.instance.numberOfSpecialPegs--;
+            specialPegsText.SetText(specialPegs.ToString());
+        }
+    }
     private void UpdateStats()
     {
         power = GameManager.instance.ballPower;
@@ -347,6 +368,7 @@ public class ButtonsScript : MonoBehaviour
         playerEra = GameManager.instance.playerEra;
         enemyEra = GameManager.instance.enemyEra;
         timeline = GameManager.instance.timeLine;
+        specialPegs = GameManager.instance.numberOfSpecialPegs;
 
         powerText.SetText(power.ToString());
         reloadText.SetText(reload.ToString());
@@ -368,6 +390,7 @@ public class ButtonsScript : MonoBehaviour
         playerEraText.SetText(playerEra.ToString());
         enemyEraText.SetText(enemyEra.ToString());
         timelineText.SetText(timeline.ToString());
+        specialPegsText.SetText(specialPegs.ToString());
     }
 
     public void RandomSpawn(bool isTrue)

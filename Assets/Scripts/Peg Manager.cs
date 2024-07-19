@@ -5,6 +5,7 @@ using UnityEngine;
 public class PegManager : MonoBehaviour
 {
     private List<PegScript> allPegs = new List<PegScript>();
+    private List<int> usedNumbers = new List<int>();
     private int medicPegs;
     private int buffPegs;
     private int speedPegs;
@@ -15,6 +16,8 @@ public class PegManager : MonoBehaviour
     private int coinPegs;
     private int freezePegs;
     private int lightningPegs;
+
+    private int numberOfPegs;
 
     [SerializeField]
     private GameObject theMedic;
@@ -32,6 +35,8 @@ public class PegManager : MonoBehaviour
         coinPegs = GameManager.instance.coinPegs;
         freezePegs = GameManager.instance.freezePegs;
         lightningPegs = GameManager.instance.lightningPegs;
+
+        numberOfPegs = GameManager.instance.numberOfSpecialPegs;
         
         GetAllPegs();
         SetAllPegTypes();
@@ -66,7 +71,7 @@ public class PegManager : MonoBehaviour
             for (int i = 0; i < medicPegs; i++)
             {
                 var peg = allPegs[RandomNum()];
-                if (!peg.borderPeg)
+                if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
                 {
                     peg.SetMedic();
                 }
@@ -80,7 +85,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < buffPegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
             {
                 peg.SetBuffPeg();
             }
@@ -93,7 +98,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < speedPegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
             {
                 peg.SetSpeedPeg();
             }
@@ -106,7 +111,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < twinPegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
             {
                 peg.SetTwinPeg();
             }
@@ -119,7 +124,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < bombPegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
             {
                 peg.SetBombPeg();
             }
@@ -132,7 +137,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < chargePegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
             {
                 peg.SetChargePeg();
             }
@@ -145,7 +150,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < feverPegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
             {
                 peg.SetFeverPeg();
             }
@@ -158,7 +163,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < coinPegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
             {
                 peg.SetCoinPeg();
             }
@@ -171,7 +176,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < freezePegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
             {
                 peg.SetFreezePeg();
             }
@@ -209,15 +214,37 @@ public class PegManager : MonoBehaviour
         if (!GameManager.instance.tutorial)
         {
             SetMedics();
-            SetBuffPegs();
-            SetSpeedPegs();
-            SetTwinPegs();
-            SetBombPegs();
-            SetChargePegs();
-            SetFeverPegs();
-            SetCoinPegs();
-            SetFreezePegs();
-            SetLightningPegs();
+            for (int i = 0; i < numberOfPegs; i++)
+            {
+                var currentStep = i;
+                var randomNum = RandomPegNum();
+                foreach (int num in usedNumbers)
+                    if (randomNum == num)
+                    {
+                        i--;
+                    }
+                if (i == currentStep)
+                    {
+                        usedNumbers.Add(randomNum);
+                        if (randomNum == 0)
+                            SetBuffPegs();
+                        else if (randomNum == 1)
+                            SetSpeedPegs();
+                        else if (randomNum == 2)
+                            SetTwinPegs();
+                        else if (randomNum == 3)
+                            SetBombPegs();
+                        else if (randomNum == 4)
+                            SetChargePegs();
+                        else if (randomNum == 5)
+                            SetCoinPegs();
+                        else if (randomNum == 6)
+                            SetFreezePegs();
+                        else if (randomNum == 7)
+                            SetLightningPegs();
+                    }
+            }
+            //SetFeverPegs();
         }
     }
 
@@ -232,6 +259,10 @@ public class PegManager : MonoBehaviour
     private int RandomNum()
     {
         return Random.Range(0, allPegs.Count);
+    }
+    private int RandomPegNum()
+    {
+        return Random.Range(0, 8);
     }
     //for tutorial
     public void ActivateMedic()

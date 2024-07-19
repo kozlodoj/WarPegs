@@ -245,7 +245,7 @@ public class PegScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (medicPeg && !isClone && !feverMode)
-        {
+        { 
             pegManager.ResetPegs();
             pegManager.SetAllPegTypes();
             pegManager.ReactivatePegs();
