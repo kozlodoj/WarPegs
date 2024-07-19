@@ -5,7 +5,6 @@ using UnityEngine;
 public class PegManager : MonoBehaviour
 {
     private List<PegScript> allPegs = new List<PegScript>();
-    private List<int> usedNumbers = new List<int>();
     private int medicPegs;
     private int buffPegs;
     private int speedPegs;
@@ -21,6 +20,7 @@ public class PegManager : MonoBehaviour
 
     [SerializeField]
     private GameObject theMedic;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +37,8 @@ public class PegManager : MonoBehaviour
         lightningPegs = GameManager.instance.lightningPegs;
 
         numberOfPegs = GameManager.instance.numberOfSpecialPegs;
-        
+
+        anim = gameObject.GetComponent<Animator>();
         GetAllPegs();
         SetAllPegTypes();
         
@@ -71,7 +72,7 @@ public class PegManager : MonoBehaviour
             for (int i = 0; i < medicPegs; i++)
             {
                 var peg = allPegs[RandomNum()];
-                if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
+                if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg && !peg.lightningPeg)
                 {
                     peg.SetMedic();
                 }
@@ -85,7 +86,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < buffPegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg && !peg.lightningPeg)
             {
                 peg.SetBuffPeg();
             }
@@ -98,7 +99,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < speedPegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg && !peg.lightningPeg)
             {
                 peg.SetSpeedPeg();
             }
@@ -111,7 +112,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < twinPegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg && !peg.lightningPeg)
             {
                 peg.SetTwinPeg();
             }
@@ -124,7 +125,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < bombPegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg && !peg.lightningPeg)
             {
                 peg.SetBombPeg();
             }
@@ -137,7 +138,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < chargePegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg && !peg.lightningPeg)
             {
                 peg.SetChargePeg();
             }
@@ -150,7 +151,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < feverPegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg && !peg.lightningPeg)
             {
                 peg.SetFeverPeg();
             }
@@ -163,7 +164,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < coinPegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg && !peg.lightningPeg)
             {
                 peg.SetCoinPeg();
             }
@@ -176,7 +177,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < freezePegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg && !peg.lightningPeg)
             {
                 peg.SetFreezePeg();
             }
@@ -189,7 +190,7 @@ public class PegManager : MonoBehaviour
         for (int i = 0; i < lightningPegs; i++)
         {
             var peg = allPegs[RandomNum()];
-            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg)
+            if (!peg.borderPeg && !peg.medicPeg && !peg.buffPeg && !peg.speedPeg && !peg.twinPeg && !peg.bombPeg && !peg.chargePeg && !peg.feverPeg && !peg.coinPeg && !peg.freezePeg && !peg.lightningPeg)
             {
                 peg.SetLightningPeg();
             }
@@ -202,13 +203,21 @@ public class PegManager : MonoBehaviour
     {
         foreach (PegScript peg in allPegs)
         {
-            if (peg.gameObject.activeInHierarchy)
                 peg.FeverActivate();
+            anim.SetBool("fever", true);
+            StartCoroutine(FeverCountdown());
         }
+    }
+    private IEnumerator FeverCountdown()
+    {
+        yield return new WaitForSeconds(10f);
+        anim.SetBool("fever", false);
     }
 
     public void SetAllPegTypes()
     {
+        List<int> usedNum = new List<int>();
+        bool isUsed = false;
         foreach (PegScript peg in allPegs)
             peg.SetBuffPoints();
         if (!GameManager.instance.tutorial)
@@ -216,33 +225,39 @@ public class PegManager : MonoBehaviour
             SetMedics();
             for (int i = 0; i < numberOfPegs; i++)
             {
-                var currentStep = i;
                 var randomNum = RandomPegNum();
-                foreach (int num in usedNumbers)
-                    if (randomNum == num)
+                foreach (int num in usedNum)
+                {
+                    if (num == randomNum)
                     {
-                        i--;
+                        isUsed = true;
                     }
-                if (i == currentStep)
-                    {
-                        usedNumbers.Add(randomNum);
-                        if (randomNum == 0)
-                            SetBuffPegs();
-                        else if (randomNum == 1)
-                            SetSpeedPegs();
-                        else if (randomNum == 2)
-                            SetTwinPegs();
-                        else if (randomNum == 3)
-                            SetBombPegs();
-                        else if (randomNum == 4)
-                            SetChargePegs();
-                        else if (randomNum == 5)
-                            SetCoinPegs();
-                        else if (randomNum == 6)
-                            SetFreezePegs();
-                        else if (randomNum == 7)
-                            SetLightningPegs();
-                    }
+                }
+                usedNum.Add(randomNum);
+                if (isUsed)
+                {
+                    isUsed = false;
+                    i--;
+                }
+                else
+                {
+                    if (randomNum == 0)
+                        SetBuffPegs();
+                    else if (randomNum == 1)
+                        SetSpeedPegs();
+                    else if (randomNum == 2)
+                        SetTwinPegs();
+                    else if (randomNum == 3)
+                        SetBombPegs();
+                    else if (randomNum == 4)
+                        SetChargePegs();
+                    else if (randomNum == 5)
+                        SetCoinPegs();
+                    else if (randomNum == 6)
+                        SetFreezePegs();
+                    else if (randomNum == 7)
+                        SetLightningPegs();
+                }
             }
             //SetFeverPegs();
         }
@@ -250,6 +265,7 @@ public class PegManager : MonoBehaviour
 
     public void ResetPegs()
     {
+        anim.SetBool("fever", false);
         foreach (PegScript peg in allPegs)
         {
             peg.ResetPeg();
@@ -270,4 +286,5 @@ public class PegManager : MonoBehaviour
         theMedic.GetComponent<PegScript>().SetMedic();
         theMedic.SetActive(true);
     }
+   
 }

@@ -41,6 +41,8 @@ public class Unit : MonoBehaviour
     private GameObject projectile;
     [SerializeField]
     private GameObject arrow;
+    [SerializeField]
+    private GameObject iceCube;
 
     private void OnEnable()
     {
@@ -206,6 +208,8 @@ public class Unit : MonoBehaviour
         {
             if (!GameManager.instance.gameOver || !GameManager.instance.freezeGame)
             {
+                if (iceCube != null)
+                iceCube.SetActive(false);
                 agent.isStopped = false;
                 target = towManager.ClosestEnemy(gameObject.transform);
                 if (target != null)
@@ -214,6 +218,8 @@ public class Unit : MonoBehaviour
             if (GameManager.instance.freezeGame)
             {
                 agent.isStopped = true;
+                if (iceCube != null)
+                    iceCube.SetActive(true);
             }
         }
 

@@ -47,6 +47,8 @@ public class SaveScript : MonoBehaviour
         saveData.tutorial = GameManager.instance.tutorial;
         saveData.timeLine = GameManager.instance.timeLine;
         saveData.timeLineModifier = GameManager.instance.timeLineModifier;
+        saveData.numberOfSpecialPegs = GameManager.instance.numberOfSpecialPegs;
+        saveData.feverBounces = GameManager.instance.feverBounces;
 
         string savePlayerData = JsonUtility.ToJson(saveData);
         File.WriteAllText(saveFilePath, savePlayerData);
@@ -60,7 +62,7 @@ public class SaveScript : MonoBehaviour
         {
             string loadPlayerData = File.ReadAllText(saveFilePath);
             saveData = JsonUtility.FromJson<PlayerData>(loadPlayerData);
-            if (saveData.timeLineModifier == 0)
+            if (saveData.timeLineModifier == 0 || saveData.numberOfSpecialPegs == 0)
             {
                 File.Delete(saveFilePath);
             }
@@ -99,6 +101,8 @@ public class SaveScript : MonoBehaviour
                 GameManager.instance.tutorial = saveData.tutorial;
                 GameManager.instance.timeLine = saveData.timeLine;
                 GameManager.instance.timeLineModifier = saveData.timeLineModifier;
+                GameManager.instance.numberOfSpecialPegs = saveData.numberOfSpecialPegs;
+                GameManager.instance.feverBounces = saveData.feverBounces;
             }
         }
 
@@ -144,6 +148,8 @@ public class SaveScript : MonoBehaviour
             saveData.tutorial = GameManager.instance.tutorial;
             saveData.timeLine = GameManager.instance.timeLine;
             saveData.timeLineModifier = GameManager.instance.timeLineModifier;
+            saveData.numberOfSpecialPegs = GameManager.instance.numberOfSpecialPegs;
+            saveData.feverBounces = GameManager.instance.feverBounces;
 
             string savePlayerData = JsonUtility.ToJson(saveData);
             File.WriteAllText(saveFilePath, savePlayerData);
@@ -158,7 +164,7 @@ public class SaveScript : MonoBehaviour
 
             string loadPlayerData = File.ReadAllText(saveFilePath);
             saveData = JsonUtility.FromJson<PlayerData>(loadPlayerData);
-            if (saveData.timeLineModifier == 0)
+            if (saveData.timeLineModifier == 0 || saveData.numberOfSpecialPegs == 0)
             {
                 File.Delete(saveFilePath);
             }
@@ -196,6 +202,8 @@ public class SaveScript : MonoBehaviour
                 GameManager.instance.tutorial = saveData.tutorial;
                 GameManager.instance.timeLine = saveData.timeLine;
                 GameManager.instance.timeLineModifier = saveData.timeLineModifier;
+                GameManager.instance.numberOfSpecialPegs = saveData.numberOfSpecialPegs;
+                GameManager.instance.feverBounces = saveData.feverBounces;
             }
 
         }

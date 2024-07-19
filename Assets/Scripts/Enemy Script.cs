@@ -38,6 +38,8 @@ public class EnemyScript : MonoBehaviour
     private GameObject projectile;
     [SerializeField]
     private GameObject arrow;
+    [SerializeField]
+    private GameObject iceCube;
 
 
     private UnitUI UI;
@@ -213,6 +215,8 @@ public class EnemyScript : MonoBehaviour
             if (!GameManager.instance.gameOver || !GameManager.instance.freezeGame)
             {
                 agent.isStopped = false;
+                if (iceCube != null)
+                    iceCube.SetActive(false);
                 target = towManager.ClosestUnit(gameObject.transform);
                 if (target != null)
                     agent.SetDestination(target.transform.position);
@@ -222,6 +226,8 @@ public class EnemyScript : MonoBehaviour
             if (GameManager.instance.freezeGame)
             {
                 agent.isStopped = true;
+                if (iceCube != null && !GameManager.instance.tutorial)
+                    iceCube.SetActive(true);
             }
         }
         

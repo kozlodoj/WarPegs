@@ -74,7 +74,7 @@ public class UnitTrigger : MonoBehaviour
             thirdSpawner.SetActive(false);
             firstSpawner.transform.localPosition = new Vector2(0, -4.4f);
             firstCollider.offset = new Vector2(0, 0);
-            firstCollider.size = new Vector2(9, 1);
+            firstCollider.size = new Vector2(10, 1);
         }
         else if (GameManager.instance.isUnitTwoActive && GameManager.instance.isUnitThreeActive)
         {

@@ -38,4 +38,7 @@ public class PlayerData
         public bool tutorial;
         public int timeLine;
         public float timeLineModifier;
+        public int numberOfSpecialPegs;
+        public int feverBounces;
+
 }

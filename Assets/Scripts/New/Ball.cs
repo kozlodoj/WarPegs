@@ -27,6 +27,8 @@ public class Ball : MonoBehaviour
     private Tutorial tut;
     private Rigidbody2D ballRb;
 
+    private int bounces;
+
     
     void Start()
     {
@@ -51,24 +53,17 @@ public class Ball : MonoBehaviour
         {
                 peg = collision.gameObject.GetComponent<PegScript>();
                 peg.theBall = gameObject.GetComponent<Ball>();
+            if (bounces == GameManager.instance.feverBounces - 1)
+                peg.ActivateFeverMode();
                 buffPoints += peg.buffPoints;
                 ballUI.SetBuffText(buffPoints);
                 peg.FadeOut();
-            if (!peg.feverMode)
-            {
+            bounces++;
+            
+   
                 if (peg.speedPeg)
-                    ballRb.velocity *= 2;
-                if (peg.twinPeg)
-                {
-                    GameObject newBall = Instantiate(gameObject) as GameObject;
-                    var rb = newBall.GetComponent<Rigidbody2D>();
-                    var newVelocity = ballRb.velocity + (Vector2.right * 2f);
-                    rb.velocity = newVelocity;
-
-                }
-            }
-
-
+                    ballRb.velocity *= peg.speedPegMultiplier;
+  
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -148,6 +143,13 @@ public class Ball : MonoBehaviour
     {
         buffPoints += amount;
         ballUI.SetBuffText(buffPoints);
+    }
+    public void TwinBall()
+    {
+        GameObject newBall = Instantiate(gameObject) as GameObject;
+        var rb = newBall.GetComponent<Rigidbody2D>();
+        var newVelocity = ballRb.velocity + (Vector2.right * 2f);
+        rb.velocity = newVelocity;
     }
     
 }

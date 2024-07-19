@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public int freezePegs;
     public int lightningPegs;
     public int numberOfSpecialPegs;
+    public int feverBounces;
 
     public int gold;
     public int diamonds;

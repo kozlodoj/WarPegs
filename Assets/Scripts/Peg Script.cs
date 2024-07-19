@@ -25,6 +25,8 @@ public class PegScript : MonoBehaviour
     [SerializeField]
     private GameObject lightningRadius;
     [SerializeField]
+    private SpriteRenderer outlineSprite;
+    [SerializeField]
     private float freeazeTime;
     private bool bombTriggered;
     [SerializeField]
@@ -38,8 +40,7 @@ public class PegScript : MonoBehaviour
     public Ball theBall;
 
     public float buffPoints;
-    private float currentBuff;
-
+    public float speedPegMultiplier = 2;
     private int coinDrop;
 
     private PegManager pegManager;
@@ -62,21 +63,21 @@ public class PegScript : MonoBehaviour
     [SerializeField]
     private bool dontRespawn;
     [SerializeField]
-    private Color buffColor;
+    private Sprite buffSprite;
     [SerializeField]
-    private Color speedColor;
+    private Sprite speedSprite;
     [SerializeField]
-    private Color twinColor;
+    private Sprite twinSprite;
     [SerializeField]
-    private Color bombColor;
+    private Sprite bombSprite;
     [SerializeField]
-    private Color chargeColor;
+    private Sprite chargeSprite;
     [SerializeField]
     private Color feverColor;
     [SerializeField]
-    private Color freezeColor;
+    private Sprite freezeSprite;
     [SerializeField]
-    private Color lightningColor;
+    private Sprite lightningSprite;
     private Color currentColor;
 
     private Animator anim;
@@ -103,7 +104,6 @@ public class PegScript : MonoBehaviour
         {
             gameObject.GetComponents<Collider2D>(allColliders);
             boucesLeft = numberOfBounces;
-            currentBuff = buffPoints;
             buffPoints = 0;
             
         }
@@ -112,16 +112,7 @@ public class PegScript : MonoBehaviour
 
     public void FadeOut()
     {
-        if (feverMode)
-        {
-            
-            Vibration.VibratePop();
-            anim.SetBool("fadeOut", true);
-            anim.SetBool("fadeIn", false);
-            pegUI.BuffText(buffPoints);
-        }
-        else
-        {
+        
             if (bombTriggered)
             {
                 Vibration.Vibrate();
@@ -154,20 +145,19 @@ public class PegScript : MonoBehaviour
                     anim.SetBool("fadeIn", false);
                     magScript.ChargeOneBall();
                 }
-                else if (feverPeg)
-                {
-                    Vibration.VibrateNope();
-                    pegManager.ActivateFever();
-                    anim.SetBool("fadeOut", true);
-                    anim.SetBool("fadeIn", false);
-                }
+                //else if (feverPeg)
+                //{
+                //    Vibration.VibrateNope();
+                //    pegManager.ActivateFever();
+                //    anim.SetBool("fadeOut", true);
+                //    anim.SetBool("fadeIn", false);
+                //}
                 else if (coinPeg)
                 {
                     Vibration.VibratePeek();
                     GameManager.instance.AddGold(coinDrop);
                     anim.SetBool("fadeOut", true);
                     anim.SetBool("fadeIn", false);
-                    pegUI.BuffText(coinDrop);
                 }
                 else if (freezePeg)
                 {
@@ -181,6 +171,21 @@ public class PegScript : MonoBehaviour
                 {
                     Vibration.VibratePop();
                     StartCoroutine(LightningNextPeg(theBall));
+                }
+                else if (medicPeg && !isClone)
+                {
+                    Vibration.VibrateNope();
+                    pegManager.ResetPegs();
+                    pegManager.SetAllPegTypes();
+                    pegManager.ReactivatePegs();
+                }
+                else if (twinPeg)
+                {
+                    Vibration.VibratePop();
+                    anim.SetBool("fadeOut", true);
+                    anim.SetBool("fadeIn", false);
+                    pegUI.BuffText(buffPoints);
+                    theBall.TwinBall();
                 }
                 else if (!isDome)
                 {
@@ -203,7 +208,7 @@ public class PegScript : MonoBehaviour
                 }
 
             }
-        }
+        
     }
 
     public void FadeIn()
@@ -237,6 +242,7 @@ public class PegScript : MonoBehaviour
                 col.enabled = false;
         }
         FadeOut();
+        theBall.AddBuffPoints(buffPoints);
         pegUI.BuffText(buffPoints);
         
     }
@@ -244,12 +250,7 @@ public class PegScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (medicPeg && !isClone && !feverMode)
-        { 
-            pegManager.ResetPegs();
-            pegManager.SetAllPegTypes();
-            pegManager.ReactivatePegs();
-        }
+
         if (!isClone)
         {
             GameManager.instance.bounces++;
@@ -261,7 +262,10 @@ public class PegScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Fire"))
+        {
+            theBall = collision.gameObject.transform.parent.gameObject.GetComponent<PegScript>().theBall;
             Burn();
+        }
     }
 
     public void SetMedic()
@@ -274,38 +278,36 @@ public class PegScript : MonoBehaviour
     public void SetBuffPeg()
     {
         buffPeg = true;
-        gameObject.GetComponent<SpriteRenderer>().color = buffColor;
+        gameObject.GetComponent<SpriteRenderer>().sprite = buffSprite;
         buffPoints *= buffMultiplier;
     }
     public void SetSpeedPeg()
     {
         speedPeg = true;
-        gameObject.GetComponent<SpriteRenderer>().color = speedColor;
+        gameObject.GetComponent<SpriteRenderer>().sprite = speedSprite;
     }
     public void SetTwinPeg()
     {
         twinPeg = true;
-        gameObject.GetComponent<SpriteRenderer>().color = twinColor;
+        gameObject.GetComponent<SpriteRenderer>().sprite = twinSprite;
     }
     public void SetBombPeg()
     {
         bombPeg = true;
-        buffPoints = 0;
-        gameObject.GetComponent<SpriteRenderer>().color = bombColor;
+        gameObject.GetComponent<SpriteRenderer>().sprite = bombSprite;
 
     }
     public void SetChargePeg()
     {
         chargePeg = true;
         magScript = GameObject.Find("Mag").GetComponent<Mag>();
-        buffPoints = 0;
-        gameObject.GetComponent<SpriteRenderer>().color = chargeColor;
+        gameObject.GetComponent<SpriteRenderer>().sprite = chargeSprite;
     }
     public void SetFeverPeg()
     {
         feverPeg = true;
         gameObject.GetComponent<SpriteRenderer>().color = feverColor;
-        buffPoints = 0;
+        
     }
     public void SetCoinPeg()
     {
@@ -330,14 +332,12 @@ public class PegScript : MonoBehaviour
     public void SetFreezePeg()
     {
         freezePeg = true;
-        gameObject.GetComponent<SpriteRenderer>().color = freezeColor;
-        buffPoints = 0;
+        gameObject.GetComponent<SpriteRenderer>().sprite = freezeSprite;
     }
     public void SetLightningPeg()
     {
         lightningPeg = true;
-        gameObject.GetComponent<SpriteRenderer>().color = lightningColor;
-        buffPoints = 0;
+        gameObject.GetComponent<SpriteRenderer>().sprite = lightningSprite;
     }
 
     public void ResetPeg()
@@ -364,6 +364,9 @@ public class PegScript : MonoBehaviour
     }
     public void SetBuffPoints()
     {
+        if (buffPeg)
+            buffPoints = GameManager.instance.buff * 5f;
+        else
         buffPoints = GameManager.instance.buff;
     }
     private void GetRenderer()
@@ -411,10 +414,7 @@ public class PegScript : MonoBehaviour
         if (!isDome)
         {
             feverMode = true;
-            currentBuff = buffPoints;
-            buffPoints = GameManager.instance.buff * 2;
-            currentColor = gameObject.GetComponent<SpriteRenderer>().color;
-            gameObject.GetComponent<SpriteRenderer>().color = feverColor;
+            buffPoints *= 2;
             anim.SetBool("fever", true);
             StartCoroutine(FeverTimer());
         }
@@ -426,10 +426,20 @@ public class PegScript : MonoBehaviour
             Vibration.VibratePop();
             lightningRadius.SetActive(true);
             yield return new WaitForSeconds(0.05f);
-            anim.SetBool("fadeOut", true);
-            anim.SetBool("fadeIn", false);
-            theball.AddBuffPoints(buffPoints);
-            pegUI.BuffText(buffPoints);
+            if (lightningPeg)
+            {
+                anim.SetBool("fadeOut", true);
+                anim.SetBool("fadeIn", false);
+                theball.AddBuffPoints(buffPoints);
+                pegUI.BuffText(buffPoints);
+            }
+            else
+            {
+                FadeOut();
+                if (!bombPeg)
+                    theball.AddBuffPoints(buffPoints);
+
+            }
             var nextPeg = lightningRadius.GetComponent<lightningscript>().ClosestPeg();
             if (nextPeg != null)
             {
@@ -448,8 +458,7 @@ public class PegScript : MonoBehaviour
         yield return new WaitForSeconds(10f);
         Vibration.VibrateNope();
         anim.SetBool("fever", false);
-        gameObject.GetComponent<SpriteRenderer>().color = currentColor;
-        buffPoints = currentBuff;
+        SetBuffPoints();
         feverMode = false;
         
     }
@@ -458,6 +467,10 @@ public class PegScript : MonoBehaviour
         yield return new WaitForSeconds(freeazeTime);
         Vibration.VibrateNope();
         GameManager.instance.UnFreezeTow();
+    }
+    public void ActivateFeverMode()
+    {
+        pegManager.ActivateFever();
     }
 
 }

@@ -690,6 +690,7 @@ MonoBehaviour:
   freezePeg: 0
   lightningPeg: 0
   lightningRadius: {fileID: 1898227117018562004}
+  outlineSprite: {fileID: 6331536155878949442}
   freeazeTime: 5
   numberOfBounces: 0
   boucesLeft: 0
@@ -697,6 +698,7 @@ MonoBehaviour:
   buffMultiplier: 5
   theBall: {fileID: 0}
   buffPoints: 1
+  speedPegMultiplier: 2
   regularSprite: {fileID: 21300000, guid: 122f5d6d62f6142c9893f908e3a634bf, type: 3}
   medicSprite: {fileID: 21300000, guid: f01681fddc3a14d7083174d43587d8a8, type: 3}
   additionalSpriteLeft: {fileID: 0}
@@ -705,14 +707,14 @@ MonoBehaviour:
   fullSprite: {fileID: 0}
   coinPegSprite: {fileID: 21300000, guid: da8f2447dc9234e368eded12265b7779, type: 3}
   dontRespawn: 0
-  buffColor: {r: 1, g: 0.5944522, b: 0, a: 0}
-  speedColor: {r: 0, g: 0.6064098, b: 1, a: 0}
-  twinColor: {r: 0.05013609, g: 1, b: 0, a: 0}
-  bombColor: {r: 1, g: 0, b: 0, a: 0}
-  chargeColor: {r: 1, g: 0, b: 0.98682785, a: 0}
+  buffSprite: {fileID: 21300000, guid: 0eaab5d218db64b10be931c9cd4c8f2b, type: 3}
+  speedSprite: {fileID: 21300000, guid: da2cb4271f637432988737ed839bd6ff, type: 3}
+  twinSprite: {fileID: 21300000, guid: 9ac4c9d5b9e774283b2b1803ef811140, type: 3}
+  bombSprite: {fileID: 21300000, guid: 721e897a9b64c4d559af53fd0c7d6fcc, type: 3}
+  chargeSprite: {fileID: 21300000, guid: d1c317027867e4266bebe58f4c1b2f43, type: 3}
   feverColor: {r: 0, g: 1, b: 0.46529675, a: 0}
-  freezeColor: {r: 0, g: 1, b: 0.9428439, a: 0}
-  lightningColor: {r: 0, g: 0, b: 1, a: 0}
+  freezeSprite: {fileID: 21300000, guid: 768fc39287eec4f8cb4ccfc6cb6ea959, type: 3}
+  lightningSprite: {fileID: 21300000, guid: b5e4025f743d543fbb3dcd48c94a7417, type: 3}
 --- !u!95 &4226505355738097837
 Animator:
   serializedVersion: 5

@@ -27,6 +27,7 @@ public class ButtonsScript : MonoBehaviour
     public int enemyEra;
     public int timeline;
     public int specialPegs;
+    public int feverBounces;
 
     [SerializeField]
     private TextMeshProUGUI powerText;
@@ -70,6 +71,8 @@ public class ButtonsScript : MonoBehaviour
     private TextMeshProUGUI timelineText;
     [SerializeField]
     private TextMeshProUGUI specialPegsText;
+    [SerializeField]
+    private TextMeshProUGUI feverBouncesText;
 
     private void Start()
     {
@@ -346,6 +349,21 @@ public class ButtonsScript : MonoBehaviour
             specialPegsText.SetText(specialPegs.ToString());
         }
     }
+    public void FeverBouncesPlus()
+    {
+        feverBounces++;
+        GameManager.instance.feverBounces++;
+        feverBouncesText.SetText(feverBounces.ToString());
+    }
+    public void FeverBouncesMinus()
+    {
+        if (feverBounces > 0)
+        {
+            feverBounces--;
+            GameManager.instance.feverBounces--;
+            feverBouncesText.SetText(feverBounces.ToString());
+        }
+    }
     private void UpdateStats()
     {
         power = GameManager.instance.ballPower;
@@ -369,6 +387,7 @@ public class ButtonsScript : MonoBehaviour
         enemyEra = GameManager.instance.enemyEra;
         timeline = GameManager.instance.timeLine;
         specialPegs = GameManager.instance.numberOfSpecialPegs;
+        feverBounces = GameManager.instance.feverBounces;
 
         powerText.SetText(power.ToString());
         reloadText.SetText(reload.ToString());
@@ -391,6 +410,7 @@ public class ButtonsScript : MonoBehaviour
         enemyEraText.SetText(enemyEra.ToString());
         timelineText.SetText(timeline.ToString());
         specialPegsText.SetText(specialPegs.ToString());
+        feverBouncesText.SetText(feverBounces.ToString());
     }
 
     public void RandomSpawn(bool isTrue)
