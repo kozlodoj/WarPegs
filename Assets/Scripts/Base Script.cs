@@ -13,10 +13,12 @@ public class BaseScript : MonoBehaviour
     private int goldDrop;
 
     private UnitUI UI;
+    private HitGlowScript hitGlowScript;
 
     // Start is called before the first frame update
     void Start()
     {
+        hitGlowScript = gameObject.GetComponent<HitGlowScript>();
         UI = transform.Find("Canvas").GetComponent<UnitUI>();
         if (!isEnemy)
             HP = GameManager.instance.baseHP;
@@ -32,6 +34,7 @@ public class BaseScript : MonoBehaviour
 
     public void DealDamage(float amount)
     {
+        hitGlowScript.gotHit = true;
         if (GameManager.instance.allEnemiesKilled)
             amount *= 3;
         if (isEnemy && !GameManager.instance.tutorial)

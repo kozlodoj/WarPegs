@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+
 public class Unit : MonoBehaviour
 {
     [SerializeField]
@@ -44,9 +46,12 @@ public class Unit : MonoBehaviour
     [SerializeField]
     private GameObject iceCube;
 
+    private HitGlowScript hitGlowScript;
     private void OnEnable()
     {
         StartRoutine();
+        
+
     }
 
     void Update()
@@ -55,11 +60,13 @@ public class Unit : MonoBehaviour
             Move();
             ManageHP();
             ManageFreezeStop();
+            
     }
 
 
     public void DealDamage(float amount)
     {
+        hitGlowScript.gotHit = true;
         currentHp -= amount;
         UI.UpdateHP(HP, currentHp);
     }
@@ -246,6 +253,7 @@ public class Unit : MonoBehaviour
         currentHp = HP;
         UI.UpdateHP(HP, currentHp);
         initialStoppingDistance = agent.stoppingDistance;
+        hitGlowScript = gameObject.GetComponent<HitGlowScript>();
         if (isRanged)
             StartCoroutine(RangedAttack());
     }

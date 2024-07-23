@@ -287,7 +287,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d533c8171b40246ce84d096f2cb37fd5, type: 3}
+      m_Icon: {fileID: 2800000, guid: 25e47445b50f541c7bb24915f12b77c6, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -365,12 +365,13 @@ PlayerSettings:
       m_Kind: 3
       m_SubKind: iPad
     - m_Textures:
-      - {fileID: 2800000, guid: a2e8a0f88d2694b8082b03c493d2a6db, type: 3}
+      - {fileID: 2800000, guid: 25e47445b50f541c7bb24915f12b77c6, type: 3}
       m_Width: 180
       m_Height: 180
       m_Kind: 0
       m_SubKind: iPhone
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 0}
       m_Width: 120
       m_Height: 120
       m_Kind: 0
@@ -795,7 +796,24 @@ PlayerSettings:
   webGLMemoryGeometricGrowthStep: 0.2
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: DOTWEEN
+    EmbeddedLinux: DOTWEEN
+    GameCoreScarlett: DOTWEEN
+    GameCoreXboxOne: DOTWEEN
+    LinuxHeadlessSimulation: DOTWEEN
+    Nintendo Switch: DOTWEEN
+    PS4: DOTWEEN
+    PS5: DOTWEEN
+    QNX: DOTWEEN
+    Stadia: DOTWEEN
+    Standalone: DOTWEEN
+    VisionOS: DOTWEEN
+    WebGL: DOTWEEN
+    Windows Store Apps: DOTWEEN
+    XboxOne: DOTWEEN
+    iPhone: DOTWEEN
+    tvOS: DOTWEEN
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

@@ -44,6 +44,8 @@ public class EnemyScript : MonoBehaviour
 
     private UnitUI UI;
 
+    private HitGlowScript hitGlowScript;
+
     void Start()
     {
         StartRoutine();
@@ -62,6 +64,7 @@ public class EnemyScript : MonoBehaviour
 
     public void DealDamage(float amount)
     {
+        hitGlowScript.gotHit = true;
         currentHp -= amount;
         UI.UpdateHP(HP, currentHp);
     }
@@ -244,6 +247,7 @@ public class EnemyScript : MonoBehaviour
         currentHp = HP;
         UI.UpdateHP(HP, currentHp);
         initialStoppingDistance = agent.stoppingDistance;
+        hitGlowScript = gameObject.GetComponent<HitGlowScript>();
         if (isRanged)
             StartCoroutine(RangedAttack());
     }
