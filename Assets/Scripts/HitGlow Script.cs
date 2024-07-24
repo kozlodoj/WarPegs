@@ -29,6 +29,7 @@ public class HitGlowScript : MonoBehaviour
     private void HitShaderRoutine()
     {
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
         materials = new Material[spriteRenderers.Length];
 
         for (int i = 0; i < materials.Length; i++)
