@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 7.851, y: -7.4, z: 0}
-  m_LocalScale: {x: 1.0212001, y: 1.2320963, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2320963, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -136,13 +136,39 @@ MonoBehaviour:
   medicPeg: 0
   borderPeg: 1
   isDome: 0
+  buffPeg: 0
+  speedPeg: 0
+  twinPeg: 0
+  bombPeg: 0
+  chargePeg: 0
+  feverPeg: 0
+  feverMode: 0
+  coinPeg: 0
+  freezePeg: 0
+  lightningPeg: 0
+  lightningRadius: {fileID: 0}
+  outlineSprite: {fileID: 0}
+  freeazeTime: 0
   numberOfBounces: 3
   boucesLeft: 3
   isClone: 0
+  buffMultiplier: 0
+  theBall: {fileID: 0}
   buffPoints: 0
+  speedPegMultiplier: 2
+  regularSprite: {fileID: 0}
   medicSprite: {fileID: 0}
   additionalSpriteLeft: {fileID: 0}
   additionalSpriteRight: {fileID: 0}
   crackedSprite: {fileID: 21300000, guid: 989b32e00165f439ba5f9d84b9e19845, type: 3}
   fullSprite: {fileID: 0}
+  coinPegSprite: {fileID: 0}
   dontRespawn: 0
+  buffSprite: {fileID: 0}
+  speedSprite: {fileID: 0}
+  twinSprite: {fileID: 0}
+  bombSprite: {fileID: 0}
+  chargeSprite: {fileID: 0}
+  feverColor: {r: 0, g: 0, b: 0, a: 0}
+  freezeSprite: {fileID: 0}
+  lightningSprite: {fileID: 0}

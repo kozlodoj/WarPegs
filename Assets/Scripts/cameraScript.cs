@@ -8,11 +8,6 @@ public class cameraScript : MonoBehaviour
     void Start()
     {
         gameObject.GetComponent<Camera>().orthographicSize = GameManager.instance.cameraScale;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        transform.position = GameManager.instance.cameraYoffset;
     }
 }

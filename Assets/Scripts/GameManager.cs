@@ -87,6 +87,8 @@ public class GameManager : MonoBehaviour
 
     private SaveScript save;
 
+    public Vector3 cameraYoffset;
+    public Vector3 topUIoffset;
 
     void Awake()
     {
@@ -284,17 +286,21 @@ public class GameManager : MonoBehaviour
 
     private void CameraScale()
     {
+        topUIoffset = new Vector3(0, -(Screen.height - Screen.safeArea.height - (Screen.safeArea.y * 1.5f)), 0);
         if ((float)Screen.height / (float)Screen.width >= 2f)
         {
             GameObject camera = GameObject.Find("Main Camera");
-            cameraScale = ((float)Screen.height / (float)Screen.width) * 5f;
+            cameraScale = ((float)Screen.height / (float)Screen.width) * 5.64f;
             camera.GetComponent<Camera>().orthographicSize = cameraScale;
+            cameraYoffset = new Vector3(0, cameraScale - 10f, -10f);
+            camera.transform.position = cameraYoffset;
         }
         else
         {
             GameObject camera = GameObject.Find("Main Camera");
             cameraScale = 10;
             camera.GetComponent<Camera>().orthographicSize = cameraScale;
+            cameraYoffset = new Vector3(0, 0, -10f);
         }
 
     }

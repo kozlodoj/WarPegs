@@ -25,8 +25,11 @@ public class UIScript : MonoBehaviour
 
     [SerializeField]
     private GameObject gameOver;
+    [SerializeField]
+    private GameObject pauseMenu;
     private GameObject doubleButton;
     private TextMeshProUGUI currentCoin;
+    private TextMeshProUGUI currentCoinPause;
 
     [SerializeField]
     private TextMeshProUGUI goldText;
@@ -45,6 +48,8 @@ public class UIScript : MonoBehaviour
     [SerializeField]
     private BallLauncher louncher;
 
+    private float joyStickLine;
+    private Transform topUI;
 
 
     private void OnEnable()
@@ -67,11 +72,15 @@ public class UIScript : MonoBehaviour
         touch = actionMap.FindAction("Touch");
         joyImage = joystick.GetComponent<Image>();
         outlineImage = joyOutline.GetComponent<Image>();
-        
+        topUI = gameObject.transform.Find("TopBG").transform;
+        var offsetUI = topUI.localPosition + GameManager.instance.topUIoffset;
+        topUI.localPosition = offsetUI;
+        joyStickLine = Screen.height / 1.6f;
         if (GameManager.instance.storyMode)
         {
             currentCoin = gameOver.transform.Find("gold").gameObject.GetComponent<TextMeshProUGUI>();
             doubleButton = gameOver.transform.Find("X2").gameObject;
+            currentCoinPause = pauseMenu.transform.Find("gold").gameObject.GetComponent<TextMeshProUGUI>();
             if (GameManager.instance.dailyNum != 69)
             {
                 dailyText = daily.transform.Find("Daily text").GetComponent<TextMeshProUGUI>();
@@ -106,7 +115,7 @@ public class UIScript : MonoBehaviour
     private void ActivateJoystick (InputAction.CallbackContext context)
         {
        
-            if (context.ReadValue<Vector2>().y <= 1200)
+            if (context.ReadValue<Vector2>().y <= joyStickLine)
             {
             if (GameManager.instance.tutorial)
                 tutorial.SetActive(false);
@@ -152,6 +161,22 @@ public class UIScript : MonoBehaviour
         }
         GameManager.instance.tutorial = false;
         actionMap.Disable();
+    }
+    public void PauseGame()
+    {
+        GameManager.instance.PauseGame();
+        currentCoinPause.SetText(GameManager.instance.currentGold.ToString());
+        pauseMenu.SetActive(true);
+        KillOutline();
+        actionMap.Disable();
+        joystick.SetActive(false);
+    }
+    public void ResumeGame()
+    {
+        GameManager.instance.ResumeGame();
+        pauseMenu.SetActive(false);
+        joystick.SetActive(true);
+        actionMap.Enable();
     }
 
     public void SetGold(int amount)

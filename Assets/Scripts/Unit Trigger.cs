@@ -72,9 +72,9 @@ public class UnitTrigger : MonoBehaviour
             wall02.SetActive(false);
             secondSpawner.SetActive(false);
             thirdSpawner.SetActive(false);
-            firstSpawner.transform.localPosition = new Vector2(0, -4.4f);
+            firstSpawner.transform.localPosition = new Vector2(0, -4f);
             firstCollider.offset = new Vector2(0, 0);
-            firstCollider.size = new Vector2(10, 1);
+            firstCollider.size = new Vector2(12, 1);
         }
         else if (GameManager.instance.isUnitTwoActive && GameManager.instance.isUnitThreeActive)
         {
@@ -89,13 +89,13 @@ public class UnitTrigger : MonoBehaviour
             wall02.SetActive(false);
             secondSpawner.SetActive(true);
             thirdSpawner.SetActive(false);
-            wall01.transform.localPosition = new Vector2(0, -4f);
-            firstSpawner.transform.localPosition = new Vector2(-2.5f, -4.4f);
-            secondSpawner.transform.localPosition = new Vector2(2.5f, -4.4f);
+            wall01.transform.localPosition = new Vector2(0, -3.5f);
+            firstSpawner.transform.localPosition = new Vector2(-2.8f, -4f);
+            secondSpawner.transform.localPosition = new Vector2(2.8f, -4f);
             firstCollider.offset = new Vector2(0, 0);
-            firstCollider.size = new Vector2(4.5f, 1);
+            firstCollider.size = new Vector2(5.2f, 1);
             secondCollider.offset = new Vector2(0, 0);
-            secondCollider.size = new Vector2(4.5f, 1);
+            secondCollider.size = new Vector2(5.2f, 1);
         }
         else if (!GameManager.instance.isUnitTwoActive && GameManager.instance.isUnitThreeActive)
         {
@@ -103,13 +103,13 @@ public class UnitTrigger : MonoBehaviour
             wall02.SetActive(false);
             secondSpawner.SetActive(false);
             thirdSpawner.SetActive(true);
-            wall01.transform.localPosition = new Vector2(2, -4f);
-            firstSpawner.transform.localPosition = new Vector2(-1.5f, -4.4f);
-            thirdSpawner.transform.localPosition = new Vector2(3.6f, -4.4f);
+            wall01.transform.localPosition = new Vector2(2, -3.5f);
+            firstSpawner.transform.localPosition = new Vector2(-1.8f, -4f);
+            thirdSpawner.transform.localPosition = new Vector2(3.9f, -4f);
             firstCollider.offset = new Vector2(0, 0);
-            firstCollider.size = new Vector2(6, 1);
+            firstCollider.size = new Vector2(7, 1);
             thirdCollider.offset = new Vector2(0, 0);
-            thirdCollider.size = new Vector2(2.2f, 1);
+            thirdCollider.size = new Vector2(3f, 1);
         }
 
     }

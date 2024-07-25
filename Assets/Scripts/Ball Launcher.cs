@@ -47,7 +47,7 @@ public class BallLauncher : MonoBehaviour
         noBall = transform.Find("noBall").gameObject;
         ready = transform.Find("Ready").gameObject;
         ghostBall = transform.Find("GhostBall").gameObject;
-        backButton = GameObject.Find("UI").transform.Find("Back").gameObject;
+        backButton = GameObject.Find("UI").transform.Find("TopBG").gameObject.transform.Find("Back").gameObject;
         if (GameManager.instance.tutorial)
             backButton.SetActive(false);
 

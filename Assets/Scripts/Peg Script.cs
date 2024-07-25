@@ -41,6 +41,8 @@ public class PegScript : MonoBehaviour
 
     public float buffPoints;
     public float speedPegMultiplier = 2;
+    [SerializeField]
+    private int lightningCount;
     private int coinDrop;
 
     private PegManager pegManager;
@@ -170,7 +172,7 @@ public class PegScript : MonoBehaviour
                 else if (lightningPeg)
                 {
                     Vibration.VibratePop();
-                    StartCoroutine(LightningNextPeg(theBall));
+                    StartCoroutine(LightningNextPeg(theBall, lightningCount));
                 }
                 else if (medicPeg && !isClone)
                 {
@@ -419,36 +421,40 @@ public class PegScript : MonoBehaviour
             StartCoroutine(FeverTimer());
         }
     }
-    public IEnumerator LightningNextPeg(Ball theball)
+    public IEnumerator LightningNextPeg(Ball theball, int pegsLeftToHit)
     {
-        if (!isDome)
+        if (pegsLeftToHit > 0)
         {
-            Vibration.VibratePop();
-            lightningRadius.SetActive(true);
-            yield return new WaitForSeconds(0.05f);
-            if (lightningPeg)
+            if (!isDome)
             {
-                anim.SetBool("fadeOut", true);
-                anim.SetBool("fadeIn", false);
-                theball.AddBuffPoints(buffPoints);
-                pegUI.BuffText(buffPoints);
-            }
-            else
-            {
-                FadeOut();
-                if (!bombPeg)
+                Vibration.VibratePop();
+                lightningRadius.SetActive(true);
+                yield return new WaitForSeconds(0.05f);
+                if (lightningPeg)
+                {
+                    anim.SetBool("fadeOut", true);
+                    anim.SetBool("fadeIn", false);
                     theball.AddBuffPoints(buffPoints);
+                    pegUI.BuffText(buffPoints);
+                }
+                else
+                {
+                    FadeOut();
+                    if (!bombPeg)
+                        theball.AddBuffPoints(buffPoints);
 
-            }
-            var nextPeg = lightningRadius.GetComponent<lightningscript>().ClosestPeg();
-            if (nextPeg != null)
-            {
-                StartCoroutine(nextPeg.LightningNextPeg(theball));
-                line.SetPosition(0, transform.position);
-                line.SetPosition(1, nextPeg.transform.position);
-                line.enabled = true;
-                yield return new WaitForSeconds(0.5f);
-                line.enabled = false;
+                }
+                pegsLeftToHit--;
+                var nextPeg = lightningRadius.GetComponent<lightningscript>().ClosestPeg();
+                if (nextPeg != null && pegsLeftToHit > 0)
+                {
+                    StartCoroutine(nextPeg.LightningNextPeg(theball, pegsLeftToHit));
+                    line.SetPosition(0, transform.position);
+                    line.SetPosition(1, nextPeg.transform.position);
+                    line.enabled = true;
+                    yield return new WaitForSeconds(0.5f);
+                    line.enabled = false;
+                }
             }
         }
     }
