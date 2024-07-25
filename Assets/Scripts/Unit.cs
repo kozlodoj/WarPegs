@@ -45,6 +45,8 @@ public class Unit : MonoBehaviour
     private GameObject arrow;
     [SerializeField]
     private GameObject iceCube;
+    [SerializeField]
+    private GameObject deathDummy;
 
     private HitGlowScript hitGlowScript;
     private void OnEnable()
@@ -206,8 +208,18 @@ public class Unit : MonoBehaviour
     private void ManageHP()
     {
         if (currentHp <= 0)
-            gameObject.SetActive(false);
+        {
+            hitGlowScript.gotHit = true;
+            StartCoroutine(Die());
+        }
 
+    }
+
+    private IEnumerator Die()
+    {
+        yield return new WaitForSeconds(0.1f);
+        gameObject.SetActive(false);
+        Instantiate(deathDummy, gameObject.transform.position, gameObject.transform.rotation);
     }
     private void Move()
     {

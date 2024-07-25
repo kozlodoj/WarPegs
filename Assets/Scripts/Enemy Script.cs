@@ -40,6 +40,8 @@ public class EnemyScript : MonoBehaviour
     private GameObject arrow;
     [SerializeField]
     private GameObject iceCube;
+    [SerializeField]
+    private GameObject deathDummy;
 
 
     private UnitUI UI;
@@ -207,9 +209,16 @@ public class EnemyScript : MonoBehaviour
                 GameManager.instance.enemiesDefeated++;
                 GameManager.instance.ManageDaily();
             }
-            gameObject.SetActive(false);
+            hitGlowScript.gotHit = true;
+            StartCoroutine(Die());
         }
 
+    }
+    private IEnumerator Die()
+    {
+        yield return new WaitForSeconds(0.1f);
+        gameObject.SetActive(false);
+        Instantiate(deathDummy, gameObject.transform.position, gameObject.transform.rotation);
     }
     private void Move()
     {

@@ -931,6 +931,7 @@ MonoBehaviour:
   projectile: {fileID: 5298016835684235932, guid: 049b8994c2601497c8fcd8549c5c3436, type: 3}
   arrow: {fileID: 8934276188384734375}
   iceCube: {fileID: 8715798299049235695}
+  deathDummy: {fileID: 9190209784107580706, guid: ced2ffcd093754a02924d32c1498ee2f, type: 3}
 --- !u!61 &7682108536013082628
 BoxCollider2D:
   m_ObjectHideFlags: 0
