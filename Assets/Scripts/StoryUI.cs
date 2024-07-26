@@ -13,15 +13,24 @@ public class StoryUI : MonoBehaviour
     private TextMeshProUGUI TimeLineText;
     private GameObject baseMenu;
     private GameObject store;
+    private Transform topUI;
 
+    [SerializeField]
+    private GameObject cardsMenu;
+    [SerializeField]
+    private GameObject storeMenu;
+    private TOWMenu towMenu;
     // Start is called before the first frame update
     void Start()
     {
-        
+        topUI = gameObject.transform.Find("TopBG").transform;
+        var offsetUI = topUI.localPosition + GameManager.instance.topUIoffset;
+        topUI.localPosition = offsetUI;
         baseMenu = GameObject.Find("Base Menu");
         store = transform.Find("Store").gameObject;
         SetGoldText(GameManager.instance.gold);
         SetDiamondText(GameManager.instance.diamonds);
+        towMenu = GameObject.Find("TOW").GetComponent<TOWMenu>();
         ManageEra();
         
     }
@@ -43,20 +52,31 @@ public class StoryUI : MonoBehaviour
     {
         GameManager.instance.BackToMenu();
     }
-    public void ActivateStore()
-    {
-        baseMenu.SetActive(false);
-        store.SetActive(true);
-    }
+    //public void ActivateStore()
+    //{
+    //    baseMenu.SetActive(false);
+    //    store.SetActive(true);
+    //}
     public void ActivateBaseMenu()
     {
-        store.SetActive(false);
+        DeactivateMenus();
         baseMenu.SetActive(true);
+    }
+    public void ActivateCardsMenu()
+    {
+        DeactivateMenus();
+        cardsMenu.SetActive(true);
+    }
+    public void ActivateStoreMenu()
+    {
+        DeactivateMenus();
+        storeMenu.SetActive(true);
     }
 
     public void NextEra()
     {
         SetTimeLineText();
+        towMenu.SetTheScene();
         if (GameManager.instance.playerEra == 0)
         {
             baseMenu.transform.Find("Era 1").gameObject.SetActive(true);
@@ -122,6 +142,7 @@ public class StoryUI : MonoBehaviour
     private void ManageEra()
     {
         SetTimeLineText();
+        towMenu.SetTheScene();
         if (GameManager.instance.playerEra == 0)
         {
             baseMenu.transform.Find("Era 1").gameObject.SetActive(true);
@@ -183,4 +204,10 @@ public class StoryUI : MonoBehaviour
         TimeLineText.SetText("timeline " + (GameManager.instance.timeLine + 1) + " era " + (GameManager.instance.playerEra + 1));
     }
 
+    private void DeactivateMenus()
+    {
+        baseMenu.SetActive(false);
+        cardsMenu.SetActive(false);
+        storeMenu.SetActive(false);
+    }
 }
