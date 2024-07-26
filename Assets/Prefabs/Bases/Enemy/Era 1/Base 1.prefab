@@ -515,8 +515,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.2011652, y: 0.1505704}
-      - {x: -0.20849061, y: -0.48870802}
+    - - {x: -0.45070028, y: 0.42505932}
+      - {x: -0.5328858, y: -0.25164986}
       - {x: 0.13741064, y: -1.3490987}
       - {x: 0.34831238, y: -0.69273657}
   m_UseDelaunayMesh: 0
@@ -609,7 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74186d5e79abe4ebb88c3df3be3c58eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitDuration: 0.2
+  hitDuration: 0.07
   gotHit: 0
 --- !u!1 &7272795403587536858
 GameObject:

@@ -11,15 +11,17 @@ public class BaseScript : MonoBehaviour
     private bool isEnemy;
     [SerializeField]
     private int goldDrop;
-
+    private bool isDead;
     private UnitUI UI;
     private HitGlowScript hitGlowScript;
+    private GameObject coin;
 
     // Start is called before the first frame update
     void Start()
     {
         hitGlowScript = gameObject.GetComponent<HitGlowScript>();
         UI = transform.Find("Canvas").GetComponent<UnitUI>();
+        coin = GameObject.Find("UI").GetComponent<UIScript>().coin;
         if (!isEnemy)
             HP = GameManager.instance.baseHP;
         currentHp = HP;
@@ -40,11 +42,19 @@ public class BaseScript : MonoBehaviour
         if (isEnemy && !GameManager.instance.tutorial)
         {
             if (amount < currentHp)
+            {
                 GameManager.instance.AddGold(goldDrop * (int)amount);
+                Instantiate(coin, gameObject.transform.position, gameObject.transform.rotation);
+                Instantiate(coin, gameObject.transform.position, gameObject.transform.rotation);
+                Instantiate(coin, gameObject.transform.position, gameObject.transform.rotation);
+            }
             else if (amount >= currentHp)
             {
                 amount = currentHp;
                 GameManager.instance.AddGold(goldDrop * (int)amount);
+                Instantiate(coin, gameObject.transform.position, gameObject.transform.rotation);
+                Instantiate(coin, gameObject.transform.position, gameObject.transform.rotation);
+                Instantiate(coin, gameObject.transform.position, gameObject.transform.rotation);
             }
         }
         currentHp -= amount;
@@ -53,8 +63,9 @@ public class BaseScript : MonoBehaviour
 
     private void ManageHP()
     {
-        if (currentHp <= 0)
+        if (currentHp <= 0 && !isDead)
         {
+            isDead = true;
             gameObject.SetActive(false);
             if (isEnemy && GameManager.instance.enemyEra != 5)
             {

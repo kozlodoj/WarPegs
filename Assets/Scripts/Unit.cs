@@ -29,6 +29,7 @@ public class Unit : MonoBehaviour
     private bool animationDone = false;
     private bool canMove = true;
     private bool onBase;
+    private bool isDead;
     private float initialStoppingDistance;
     private UnitUI UI;
     private GameObject enemy;
@@ -207,8 +208,9 @@ public class Unit : MonoBehaviour
 
     private void ManageHP()
     {
-        if (currentHp <= 0)
+        if (currentHp <= 0 && !isDead)
         {
+            isDead = true;
             hitGlowScript.gotHit = true;
             StartCoroutine(Die());
         }

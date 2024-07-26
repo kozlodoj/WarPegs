@@ -21,6 +21,7 @@ public class EnemyScript : MonoBehaviour
     private int goldDrop;
     private bool canMove = true;
     private bool onBase;
+    private bool isDead;
     private float initialStoppingDistance;
     [SerializeField]
     private float attackCooldown = 1.5f;
@@ -42,6 +43,7 @@ public class EnemyScript : MonoBehaviour
     private GameObject iceCube;
     [SerializeField]
     private GameObject deathDummy;
+    private GameObject coin;
 
 
     private UnitUI UI;
@@ -201,8 +203,9 @@ public class EnemyScript : MonoBehaviour
     }
     private void ManageHP()
     {
-        if (currentHp <= 0)
+        if (currentHp <= 0 && !isDead)
         {
+            isDead = true;
                 GameManager.instance.AddGold(goldDrop);
             if (!GameManager.instance.tutorial)
             {
@@ -217,6 +220,7 @@ public class EnemyScript : MonoBehaviour
     private IEnumerator Die()
     {
         yield return new WaitForSeconds(0.1f);
+        Instantiate(coin, gameObject.transform.position, gameObject.transform.rotation);
         gameObject.SetActive(false);
         Instantiate(deathDummy, gameObject.transform.position, gameObject.transform.rotation);
     }
@@ -257,6 +261,7 @@ public class EnemyScript : MonoBehaviour
         UI.UpdateHP(HP, currentHp);
         initialStoppingDistance = agent.stoppingDistance;
         hitGlowScript = gameObject.GetComponent<HitGlowScript>();
+        coin = GameObject.Find("UI").GetComponent<UIScript>().coin;
         if (isRanged)
             StartCoroutine(RangedAttack());
     }

@@ -51,6 +51,8 @@ public class UIScript : MonoBehaviour
     private float joyStickLine;
     private Transform topUI;
 
+    public Vector3 counterPosition;
+    public GameObject coin;
 
     private void OnEnable()
     {
@@ -76,6 +78,8 @@ public class UIScript : MonoBehaviour
         var offsetUI = topUI.localPosition + GameManager.instance.topUIoffset;
         topUI.localPosition = offsetUI;
         joyStickLine = Screen.height / 1.6f;
+        counterPosition = Camera.main.ScreenToWorldPoint(topUI.transform.Find("Gold collected").gameObject.transform.position);
+        counterPosition.z = 0;
         if (GameManager.instance.storyMode)
         {
             currentCoin = gameOver.transform.Find("gold").gameObject.GetComponent<TextMeshProUGUI>();
@@ -189,10 +193,17 @@ public class UIScript : MonoBehaviour
     }
     public void SetCollectedGold(int amount)
     {
-        goldCollectedText.SetText(amount.ToString());
         currentCoin.SetText(GameManager.instance.currentGold.ToString());
+        if (amount == 0)
+            goldCollectedText.SetText(amount.ToString());
+        else
+        StartCoroutine(CollectedTextUpdate(amount));
     }
-
+    private IEnumerator CollectedTextUpdate(int amount)
+    {
+        yield return new WaitForSeconds(coin.GetComponent<Coin>().speed * 1.3f);
+        goldCollectedText.SetText(amount.ToString());
+    }
     public void SetDiamonds(int amount)
     {
         if (GameManager.instance.storyMode)

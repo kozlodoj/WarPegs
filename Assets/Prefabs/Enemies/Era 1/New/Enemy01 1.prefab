@@ -400,6 +400,7 @@ MonoBehaviour:
   arrow: {fileID: 0}
   iceCube: {fileID: 4523343747309690922}
   deathDummy: {fileID: 9190209784107580706, guid: b2ea077e6dec64e38bfc63b711a4f835, type: 3}
+  coin: {fileID: 6624791311795985430, guid: 582555a0044124eefaf7e49f8bc28981, type: 3}
 --- !u!61 &6798319531999433122
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -490,7 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74186d5e79abe4ebb88c3df3be3c58eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitDuration: 0.2
+  hitDuration: 0.07
   gotHit: 0
 --- !u!1 &6849402528765698730
 GameObject:

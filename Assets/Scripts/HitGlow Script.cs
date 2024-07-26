@@ -7,7 +7,7 @@ public class HitGlowScript : MonoBehaviour
 {
 
     [SerializeField]
-    private float hitDuration = 0.2f;
+    private float hitDuration = 0.1f;
     private int hitEffectAmount = Shader.PropertyToID("_HitEffectAmount");
     private SpriteRenderer[] spriteRenderers;
     private Material[] materials;

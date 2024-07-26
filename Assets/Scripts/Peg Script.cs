@@ -81,7 +81,7 @@ public class PegScript : MonoBehaviour
     [SerializeField]
     private Sprite lightningSprite;
     private Color currentColor;
-
+    private GameObject coin;
     private Animator anim;
 
     private List<Collider2D> allColliders = new List<Collider2D>();
@@ -157,7 +157,8 @@ public class PegScript : MonoBehaviour
                 else if (coinPeg)
                 {
                     Vibration.VibratePeek();
-                    GameManager.instance.AddGold(coinDrop);
+                Instantiate(coin, gameObject.transform.position, gameObject.transform.rotation);
+                GameManager.instance.AddGold(coinDrop);
                     anim.SetBool("fadeOut", true);
                     anim.SetBool("fadeIn", false);
                 }
@@ -315,6 +316,7 @@ public class PegScript : MonoBehaviour
     {
         coinPeg = true;
         gameObject.GetComponent<SpriteRenderer>().sprite = coinPegSprite;
+        coin = GameObject.Find("UI").GetComponent<UIScript>().coin;
         buffPoints = 0;
         var era = GameManager.instance.enemyEra;
         if (era == 0)

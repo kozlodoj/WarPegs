@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
-    
+
+
     public float ballPower = 5;
     public float reloadRate = 5;
     public float reloadPerSec = 0.06f;
@@ -106,6 +108,7 @@ public class GameManager : MonoBehaviour
         LoadGame();
         SetReloadTime();
         Vibration.Init();
+        DOTween.Init().SetCapacity(500, 50);
 
 
     }
