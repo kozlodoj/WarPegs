@@ -60,6 +60,7 @@ public class StoryUI : MonoBehaviour
     public void ActivateBaseMenu()
     {
         DeactivateMenus();
+        towMenu.gameObject.SetActive(true);
         baseMenu.SetActive(true);
     }
     public void ActivateCardsMenu()
@@ -209,5 +210,6 @@ public class StoryUI : MonoBehaviour
         baseMenu.SetActive(false);
         cardsMenu.SetActive(false);
         storeMenu.SetActive(false);
+        towMenu.gameObject.SetActive(false);
     }
 }
