@@ -222,6 +222,7 @@ public class EnemyScript : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Instantiate(coin, gameObject.transform.position, gameObject.transform.rotation);
         gameObject.SetActive(false);
+        if(deathDummy != null)
         Instantiate(deathDummy, gameObject.transform.position, gameObject.transform.rotation);
     }
     private void Move()

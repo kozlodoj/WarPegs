@@ -202,7 +202,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8bf2a22f6e9af4bb99b605bc69882564, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 6798319531999433122}
   - component: {fileID: 2066797197067558250}
   - component: {fileID: 9135558680853743674}
+  - component: {fileID: 6389397220555471045}
   m_Layer: 9
   m_Name: Enemy03 2
   m_TagString: Enemy
@@ -369,7 +370,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8bf2a22f6e9af4bb99b605bc69882564, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -471,6 +472,8 @@ MonoBehaviour:
   weaponAnimator: {fileID: 2066797197067558250}
   projectile: {fileID: 5298016835684235932, guid: fbf1ad342a2c4466685fbb40cf3e4d20, type: 3}
   arrow: {fileID: 3220352254642516578}
+  iceCube: {fileID: 0}
+  deathDummy: {fileID: 0}
 --- !u!61 &6798319531999433122
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -549,6 +552,20 @@ SortingGroup:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &6389397220555471045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500178492605920635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74186d5e79abe4ebb88c3df3be3c58eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitDuration: 0.07
+  gotHit: 0
 --- !u!1 &8920660980913631492
 GameObject:
   m_ObjectHideFlags: 0

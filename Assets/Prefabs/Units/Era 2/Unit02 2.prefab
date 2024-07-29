@@ -632,6 +632,7 @@ GameObject:
   - component: {fileID: 7275956036166128028}
   - component: {fileID: 104986830647713388}
   - component: {fileID: -7087045646601404120}
+  - component: {fileID: 1379409608343257218}
   m_Layer: 7
   m_Name: Unit02 2
   m_TagString: Unit
@@ -676,7 +677,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8bf2a22f6e9af4bb99b605bc69882564, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -728,6 +729,8 @@ MonoBehaviour:
   weaponAnimator: {fileID: 104986830647713388}
   projectile: {fileID: 5298016835684235932, guid: 75083188ee54747d392031981209fdb7, type: 3}
   arrow: {fileID: 4269271866941714414}
+  iceCube: {fileID: 0}
+  deathDummy: {fileID: 0}
 --- !u!61 &7682108536013082628
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -855,6 +858,20 @@ SortingGroup:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &1379409608343257218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190209784107580706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74186d5e79abe4ebb88c3df3be3c58eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitDuration: 0.07
+  gotHit: 0
 --- !u!1001 &8038983068631549062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -863,6 +880,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7849501315632889475}
     m_Modifications:
+    - target: {fileID: 805933329771145783, guid: c25981c90a69440f7b8dda0d545afa34, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8bf2a22f6e9af4bb99b605bc69882564, type: 2}
     - target: {fileID: 1471789058040457249, guid: c25981c90a69440f7b8dda0d545afa34, type: 3}
       propertyPath: m_Name
       value: Spear

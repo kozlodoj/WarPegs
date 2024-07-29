@@ -459,7 +459,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8bf2a22f6e9af4bb99b605bc69882564, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -543,7 +543,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8bf2a22f6e9af4bb99b605bc69882564, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -799,6 +799,7 @@ GameObject:
   - component: {fileID: 7275956036166128028}
   - component: {fileID: 1491935476519909929}
   - component: {fileID: 2980913426901463119}
+  - component: {fileID: 3315451868166284686}
   m_Layer: 7
   m_Name: Unit06 1
   m_TagString: Unit
@@ -844,6 +845,8 @@ MonoBehaviour:
   weaponAnimator: {fileID: 1491935476519909929}
   projectile: {fileID: 0}
   arrow: {fileID: 0}
+  iceCube: {fileID: 0}
+  deathDummy: {fileID: 0}
 --- !u!61 &7682108536013082628
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -971,3 +974,17 @@ SortingGroup:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &3315451868166284686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190209784107580706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74186d5e79abe4ebb88c3df3be3c58eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitDuration: 0.07
+  gotHit: 0

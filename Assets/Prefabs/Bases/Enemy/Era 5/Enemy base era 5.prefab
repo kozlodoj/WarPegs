@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 3258746182701727594}
   - component: {fileID: 3238801494507051941}
   - component: {fileID: 8775002251877261654}
+  - component: {fileID: 3603845499855790569}
   m_Layer: 10
   m_Name: Enemy base era 5
   m_TagString: Enemy base
@@ -315,6 +316,20 @@ CircleCollider2D:
   m_Offset: {x: 0.9081033, y: -0.1194731}
   serializedVersion: 2
   m_Radius: 0.6758588
+--- !u!114 &3603845499855790569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801385999300426429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74186d5e79abe4ebb88c3df3be3c58eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitDuration: 0.07
+  gotHit: 0
 --- !u!1 &1457240044288463608
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +382,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8bf2a22f6e9af4bb99b605bc69882564, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -782,7 +797,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8bf2a22f6e9af4bb99b605bc69882564, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -866,7 +881,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8bf2a22f6e9af4bb99b605bc69882564, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

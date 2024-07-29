@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8bf2a22f6e9af4bb99b605bc69882564, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 4813842237535260796}
   - component: {fileID: 8153322250520763563}
   - component: {fileID: 8086254513794697600}
+  - component: {fileID: 3021930844823950028}
   m_Layer: 8
   m_Name: Base era 3
   m_TagString: Player Base
@@ -372,6 +373,20 @@ CircleCollider2D:
   m_Offset: {x: -0.353819, y: -0.316985}
   serializedVersion: 2
   m_Radius: 0.6935772
+--- !u!114 &3021930844823950028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4446869208283151051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74186d5e79abe4ebb88c3df3be3c58eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitDuration: 0.07
+  gotHit: 0
 --- !u!1 &5640159416192612462
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,7 +573,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8bf2a22f6e9af4bb99b605bc69882564, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -898,7 +913,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8bf2a22f6e9af4bb99b605bc69882564, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
