@@ -154,7 +154,7 @@ Transform:
   m_GameObject: {fileID: 15046749}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.14, y: 4.53, z: 0}
+  m_LocalPosition: {x: 3.01, y: 4.53, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1866,6 +1866,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2461904043212881540, guid: 921d7ef21ad814bc6ac6597aceac9f3e, type: 3}
   m_PrefabInstance: {fileID: 2037910883}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &381278145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 381278146}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &381278146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381278145}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.12, y: 5.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1905631319}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &385620901
 GameObject:
   m_ObjectHideFlags: 0
@@ -7288,6 +7319,7 @@ Transform:
   - {fileID: 1031657979}
   - {fileID: 890750831}
   - {fileID: 775517556}
+  - {fileID: 381278146}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1905631320
@@ -7306,13 +7338,13 @@ MonoBehaviour:
   era2PlayerBase: {fileID: 6865033561549177182, guid: c7b8ee04aa30c4b20bffde074ae625f2, type: 3}
   era3PlayerBase: {fileID: 6865033561549177182, guid: f1bde14d63d554fc99df024ebc56fde9, type: 3}
   era4PlayerBase: {fileID: 6865033561549177182, guid: 89fc2e5018ef14a5eab75aa58a0a492f, type: 3}
-  era5PlayerBase: {fileID: 4446869208283151051, guid: 9638b6e99d9b1437981aa4626d593c44, type: 3}
+  era5PlayerBase: {fileID: 6865033561549177182, guid: fbc9163a3aa6d4228bd27e4928e72f28, type: 3}
   era6PlayerBase: {fileID: 4446869208283151051, guid: 0697622060c714c089bc803c33fdc0aa, type: 3}
   era1EnemyBase: {fileID: 6865033561549177182, guid: 12e9a7e2a6ef448f58a9759ceb541472, type: 3}
   era2EnemyBase: {fileID: 6865033561549177182, guid: 1e1b852113ec048d0a0e516b546384b4, type: 3}
   era3EnemyBase: {fileID: 6865033561549177182, guid: c17ac5a74ea4f4c0493f5d8fff484df5, type: 3}
   era4EnemyBase: {fileID: 6865033561549177182, guid: 9e7d8f58f921e4355a2cc5da04ea46cc, type: 3}
-  era5EnemyBase: {fileID: 801385999300426429, guid: 455ca5acdc065449eb77f0af6478b432, type: 3}
+  era5EnemyBase: {fileID: 6865033561549177182, guid: 55efe2e1db4b341bc9afe9bb6f384589, type: 3}
   era6EnemyBase: {fileID: 801385999300426429, guid: ff2d205ce5e934f4bae7fb5e780a664d, type: 3}
 --- !u!1 &1909218400
 GameObject:

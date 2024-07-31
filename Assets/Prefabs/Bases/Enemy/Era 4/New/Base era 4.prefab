@@ -115,7 +115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.29, y: 0.86}
+  m_AnchoredPosition: {x: -0.48, y: 0.86}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7890842488877823751
@@ -223,7 +223,7 @@ Transform:
   m_GameObject: {fileID: 5061610502929100773}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 1.1300001, z: 0}
+  m_LocalPosition: {x: -0.19, y: 1.1300001, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -462,7 +462,7 @@ Transform:
   m_GameObject: {fileID: 6865033561549177182}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.02, y: 5.3, z: 0}
+  m_LocalPosition: {x: 5.22, y: 5.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -514,10 +514,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.2196999, y: 1.1652713}
-      - {x: -1.3104169, y: -0.38946533}
-      - {x: -0.8304763, y: -1.6919496}
-      - {x: -0.5818267, y: 0.33040577}
+    - - {x: -0.36954975, y: 0.8903923}
+      - {x: -0.45146298, y: -0.36614275}
+      - {x: -0.15601206, y: -1.4685931}
+      - {x: 0.1939888, y: 0.49443346}
   m_UseDelaunayMesh: 0
 --- !u!114 &6052009484611878510
 MonoBehaviour:
@@ -531,7 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a881267bcfbd54afba844e145cc19c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 2300
+  HP: 29000
   isEnemy: 1
   goldDrop: 1
 --- !u!50 &4622375298827384481
@@ -593,9 +593,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.70817196, y: -0.06751919}
+  m_Offset: {x: 0.017387152, y: -0.048296213}
   serializedVersion: 2
-  m_Radius: 0.5016626
+  m_Radius: 0.3955257
 --- !u!114 &5671643140123885204
 MonoBehaviour:
   m_ObjectHideFlags: 0

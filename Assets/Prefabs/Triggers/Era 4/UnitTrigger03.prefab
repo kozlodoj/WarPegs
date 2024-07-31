@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a16e9aa6ac68246c8b277da7070d900e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitPrefab: {fileID: 9190209784107580706, guid: a8d4344eafec44535ae23794ab4bf7d0, type: 3}
+  unitPrefab: {fileID: 9190209784107580706, guid: 76a545fba539d4d959611db961b86ea4, type: 3}
   unitNum: 3
   spawnPoint: {fileID: 0}
 --- !u!212 &6601776402394179066
@@ -136,7 +136,7 @@ SpriteRenderer:
   m_SortingLayerID: -377937017
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 934c746cafa3047599aaf4115ba28650, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 080d03d129836421f9acbee86bb0ca8a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

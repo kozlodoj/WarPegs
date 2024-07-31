@@ -293,7 +293,7 @@ public class Unit : MonoBehaviour
         Vector2 currentPosition = transform.position;
         Vector2 directionToTarget = (Vector2)position - currentPosition;
         float distance = directionToTarget.magnitude;
-        if (distance <= agent.stoppingDistance)
+        if (distance <= agent.stoppingDistance + 0.2f)
             return true;
         else
             return false;

@@ -48,7 +48,10 @@ public class Arrow : MonoBehaviour
                 angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.AngleAxis(angle, Vector3.forward), Time.deltaTime * 0.5f);
             if (!target.gameObject.activeInHierarchy)
+            {
+                DOTween.Kill(gameObject.name.ToString());
                 Destroy(gameObject);
+            }
         }
         
     }

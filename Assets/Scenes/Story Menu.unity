@@ -9684,7 +9684,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 300, y: 0}
-  m_SizeDelta: {x: 200, y: 300}
+  m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1037882976
 MonoBehaviour:
@@ -9777,7 +9777,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 84629fdd5b68342c2bc6b7f6bad25d0c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 080d03d129836421f9acbee86bb0ca8a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17535,8 +17535,8 @@ MonoBehaviour:
   eraThreeEnemyBase: {fileID: 6865033561549177182, guid: cecd02c4a51714af982997676cbeec0e, type: 3}
   eraFourPlayerBase: {fileID: 6865033561549177182, guid: 428ca285b455c4789aa4eb98271196a3, type: 3}
   eraFourEnemyBase: {fileID: 6865033561549177182, guid: 45eda2592089c4b61b6737ed58502ea3, type: 3}
-  eraFivePlayerBase: {fileID: 4446869208283151051, guid: e6566036eb5ff4905b1b48ef14eb7c3b, type: 3}
-  eraFiveEnemyBase: {fileID: 801385999300426429, guid: 2e50e04ed2a60414eb55348295507581, type: 3}
+  eraFivePlayerBase: {fileID: 6865033561549177182, guid: 7c7b76c9118034f9790a08cc5bfcb1ff, type: 3}
+  eraFiveEnemyBase: {fileID: 6865033561549177182, guid: 844a3eca69e21471fbffff0d1a81b845, type: 3}
   eraSixPlayerBase: {fileID: 4446869208283151051, guid: 828262413ea664638a6f44594dfb3221, type: 3}
   eraSixEnemyBase: {fileID: 801385999300426429, guid: b51f9a2e3551742a3be2f137b453e02d, type: 3}
 --- !u!1 &2041977835
