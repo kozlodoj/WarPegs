@@ -4046,7 +4046,7 @@ MonoBehaviour:
   - {fileID: 6500178492605920635, guid: 56287e48fbdff4d57a68b0e141fd9caa, type: 3}
   - {fileID: 6500178492605920635, guid: 919b79f518c354d41bbf7af678bead03, type: 3}
   era3enemies:
-  - {fileID: 6500178492605920635, guid: e7cfc45bc65744fff9c935f5905b3d40, type: 3}
+  - {fileID: 6500178492605920635, guid: 8ae01ea8d3f694c6cb2d70141853b5a8, type: 3}
   - {fileID: 6500178492605920635, guid: 8ae01ea8d3f694c6cb2d70141853b5a8, type: 3}
   - {fileID: 6500178492605920635, guid: 1a55d1470917e4692bf61204454b14a2, type: 3}
   era4enemies:
