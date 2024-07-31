@@ -27,6 +27,8 @@ public class UIScript : MonoBehaviour
     private GameObject gameOver;
     [SerializeField]
     private GameObject pauseMenu;
+    [SerializeField]
+    private GameObject pauseButton;
     private GameObject doubleButton;
     private TextMeshProUGUI currentCoin;
     private TextMeshProUGUI currentCoinPause;
@@ -153,6 +155,7 @@ public class UIScript : MonoBehaviour
         
         gameOver.SetActive(true);
         joystick.SetActive(false);
+        pauseButton.SetActive(false);
         if (GameManager.instance.currentGold == 0)
         {
             GameManager.instance.currentGold += 9;

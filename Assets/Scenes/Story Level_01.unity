@@ -154,7 +154,7 @@ Transform:
   m_GameObject: {fileID: 15046749}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.63, y: 2.23, z: 0}
+  m_LocalPosition: {x: 3.14, y: 4.53, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -198,8 +198,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1192224217
-  m_SortingLayer: 5
+  m_SortingLayerID: -377937017
+  m_SortingLayer: 1
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 911e38fb9ca844c7eb8aaf6243309bce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4019,7 +4019,7 @@ Transform:
   m_GameObject: {fileID: 890750830}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.29, y: 5.55, z: 0}
+  m_LocalPosition: {x: 5.46, y: 4.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4042,17 +4042,17 @@ MonoBehaviour:
   - {fileID: 6500178492605920635, guid: 95f52f4dcc96e4ac5acb7a1460361d04, type: 3}
   - {fileID: 6500178492605920635, guid: a3967a55654e447aa914538cca592ea2, type: 3}
   era2enemies:
-  - {fileID: 6500178492605920635, guid: 4e66e0c57850740109dd477168da5ae5, type: 3}
-  - {fileID: 6500178492605920635, guid: c32b4b0f80cf94832be00a8d423cca88, type: 3}
-  - {fileID: 6500178492605920635, guid: d1724cb3d737543a0ad0a059725c2e20, type: 3}
+  - {fileID: 6500178492605920635, guid: e2b150418153e405d8ab8d53c82febbb, type: 3}
+  - {fileID: 6500178492605920635, guid: 56287e48fbdff4d57a68b0e141fd9caa, type: 3}
+  - {fileID: 6500178492605920635, guid: 919b79f518c354d41bbf7af678bead03, type: 3}
   era3enemies:
-  - {fileID: 6500178492605920635, guid: 3e2ec6e1c1486405a84f8df7027e1af6, type: 3}
-  - {fileID: 6500178492605920635, guid: beba41128a62341b38ccd345dcdb861c, type: 3}
-  - {fileID: 6500178492605920635, guid: af239d7dd958540e58ce4e3fd526b120, type: 3}
+  - {fileID: 6500178492605920635, guid: e7cfc45bc65744fff9c935f5905b3d40, type: 3}
+  - {fileID: 6500178492605920635, guid: 8ae01ea8d3f694c6cb2d70141853b5a8, type: 3}
+  - {fileID: 6500178492605920635, guid: 1a55d1470917e4692bf61204454b14a2, type: 3}
   era4enemies:
-  - {fileID: 6500178492605920635, guid: 1c45d69dcc0584283a49d4f17407593a, type: 3}
-  - {fileID: 6500178492605920635, guid: 25af5b38d97044f52b16be95682d0f80, type: 3}
-  - {fileID: 6500178492605920635, guid: 21203142ae90746488bdd05229f94e47, type: 3}
+  - {fileID: 6500178492605920635, guid: 5f1c82f0b099f452faa7df7297f3427e, type: 3}
+  - {fileID: 6500178492605920635, guid: df832a453eaa44d8abfdc8f12faec1d1, type: 3}
+  - {fileID: 6500178492605920635, guid: 0c0c3e14a4a034e7cb487a909f987705, type: 3}
   era5enemies:
   - {fileID: 6500178492605920635, guid: cb5d5061b46d74dc896921db90691342, type: 3}
   - {fileID: 6500178492605920635, guid: 697c4e7b63362494d8fcba437357b0d3, type: 3}
@@ -5105,12 +5105,12 @@ MonoBehaviour:
   era2FirstSpawner: {fileID: 8871525514912437245, guid: f8ef0f057e5584c99a601fd80c7c8e8d, type: 3}
   era2SecondSpawner: {fileID: 4136177227898662911, guid: a3172d727ebeb47f899127b36e9f42ed, type: 3}
   era2ThirdSpawner: {fileID: 962815712144322319, guid: 66dec3b4e2b074a14a79c5341711f901, type: 3}
-  era3FirstSpawner: {fileID: 8871525514912437245, guid: cc7e8f559b8784519b5bcfb45abc7c73, type: 3}
-  era3SecondSpawner: {fileID: 4136177227898662911, guid: e7023ffe0b1ec49ad9e8c69bac68e519, type: 3}
-  era3ThirdSpawner: {fileID: 962815712144322319, guid: 553da8c2242a34312bd9f4636a64ddf7, type: 3}
-  era4FirstSpawner: {fileID: 8871525514912437245, guid: f52df078fef8647cab87e5bdbe0acf97, type: 3}
-  era4SecondSpawner: {fileID: 4136177227898662911, guid: 3c99007b7574a42709fe918639065acd, type: 3}
-  era4ThirdSpawner: {fileID: 962815712144322319, guid: bc4a7c97996f547f7b991abb98b2e0a5, type: 3}
+  era3FirstSpawner: {fileID: 8871525514912437245, guid: 092dcff11ac694ed7b00ea7c750403a8, type: 3}
+  era3SecondSpawner: {fileID: 4136177227898662911, guid: 991d59ff060bf4a3092964358a272358, type: 3}
+  era3ThirdSpawner: {fileID: 962815712144322319, guid: dd4b5434dfe14469c939d544f12b544e, type: 3}
+  era4FirstSpawner: {fileID: 8871525514912437245, guid: a3b31f450cc6b4dce8d1dc15255f26bc, type: 3}
+  era4SecondSpawner: {fileID: 4136177227898662911, guid: 6250163bf10214e23908fcd15cf4bc4d, type: 3}
+  era4ThirdSpawner: {fileID: 962815712144322319, guid: eca0974890d664dda92e4c69bd0613cc, type: 3}
   era5FirstSpawner: {fileID: 8871525514912437245, guid: 80e09aec75e594d418f6f9c1f202aff0, type: 3}
   era5SecondSpawner: {fileID: 4136177227898662911, guid: 3e6181c9bb0aa40c783f50fcb8767bfe, type: 3}
   era5ThirdSpawner: {fileID: 962815712144322319, guid: bfda6b5febd134325b8e5b73c2fa4210, type: 3}
@@ -6772,6 +6772,7 @@ MonoBehaviour:
   controlsAsset: {fileID: -944628639613478452, guid: 68a7b9018dccb46b588914a68260a42c, type: 3}
   gameOver: {fileID: 1419373708}
   pauseMenu: {fileID: 525411094}
+  pauseButton: {fileID: 856111363}
   goldText: {fileID: 574192924}
   goldCollectedText: {fileID: 1799828683}
   diamondText: {fileID: 492277737}
@@ -7302,15 +7303,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   era1PlayerBase: {fileID: 6865033561549177182, guid: 19d8e32d94ceb4a709fde7595b8e8782, type: 3}
-  era2PlayerBase: {fileID: 4446869208283151051, guid: 0486392939cf348019a7496e60b9017a, type: 3}
-  era3PlayerBase: {fileID: 4446869208283151051, guid: 718eaf138300a47ffa73b11472f34c01, type: 3}
-  era4PlayerBase: {fileID: 4446869208283151051, guid: 1d6f137d17fd5454fae046348556fe35, type: 3}
+  era2PlayerBase: {fileID: 6865033561549177182, guid: c7b8ee04aa30c4b20bffde074ae625f2, type: 3}
+  era3PlayerBase: {fileID: 6865033561549177182, guid: f1bde14d63d554fc99df024ebc56fde9, type: 3}
+  era4PlayerBase: {fileID: 6865033561549177182, guid: 89fc2e5018ef14a5eab75aa58a0a492f, type: 3}
   era5PlayerBase: {fileID: 4446869208283151051, guid: 9638b6e99d9b1437981aa4626d593c44, type: 3}
   era6PlayerBase: {fileID: 4446869208283151051, guid: 0697622060c714c089bc803c33fdc0aa, type: 3}
   era1EnemyBase: {fileID: 6865033561549177182, guid: 12e9a7e2a6ef448f58a9759ceb541472, type: 3}
-  era2EnemyBase: {fileID: 801385999300426429, guid: 9264fc23580a546a99c4f36785032435, type: 3}
-  era3EnemyBase: {fileID: 801385999300426429, guid: 18013e69f375d4eff905be9e1d5a1d1b, type: 3}
-  era4EnemyBase: {fileID: 801385999300426429, guid: 839cba89d3bbd4551b30517dee3ad253, type: 3}
+  era2EnemyBase: {fileID: 6865033561549177182, guid: 1e1b852113ec048d0a0e516b546384b4, type: 3}
+  era3EnemyBase: {fileID: 6865033561549177182, guid: c17ac5a74ea4f4c0493f5d8fff484df5, type: 3}
+  era4EnemyBase: {fileID: 6865033561549177182, guid: 9e7d8f58f921e4355a2cc5da04ea46cc, type: 3}
   era5EnemyBase: {fileID: 801385999300426429, guid: 455ca5acdc065449eb77f0af6478b432, type: 3}
   era6EnemyBase: {fileID: 801385999300426429, guid: ff2d205ce5e934f4bae7fb5e780a664d, type: 3}
 --- !u!1 &1909218400

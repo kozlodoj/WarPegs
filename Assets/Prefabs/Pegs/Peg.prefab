@@ -568,7 +568,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.7905, y: 6.8002, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1734810853344281968}
@@ -618,7 +618,7 @@ SpriteRenderer:
   m_SortingLayerID: 1571261219
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 122f5d6d62f6142c9893f908e3a634bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc5a2af84c9d342a0927a26dcf614460, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -661,9 +661,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008259177, y: 0}
+  m_Offset: {x: 0.0082591865, y: 0.03419876}
   serializedVersion: 2
-  m_Radius: 0.2711686
+  m_Radius: 0.23336962
 --- !u!114 &1208014098404619007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -700,22 +700,22 @@ MonoBehaviour:
   buffPoints: 1
   speedPegMultiplier: 2
   lightningCount: 10
-  regularSprite: {fileID: 21300000, guid: 122f5d6d62f6142c9893f908e3a634bf, type: 3}
-  medicSprite: {fileID: 21300000, guid: f01681fddc3a14d7083174d43587d8a8, type: 3}
+  regularSprite: {fileID: 21300000, guid: bc5a2af84c9d342a0927a26dcf614460, type: 3}
+  medicSprite: {fileID: 21300000, guid: 15723f1e369be424192d6ec0df9dff32, type: 3}
   additionalSpriteLeft: {fileID: 0}
   additionalSpriteRight: {fileID: 0}
   crackedSprite: {fileID: 0}
   fullSprite: {fileID: 0}
-  coinPegSprite: {fileID: 21300000, guid: da8f2447dc9234e368eded12265b7779, type: 3}
+  coinPegSprite: {fileID: 21300000, guid: 64e2e157a91364ec8b5d8c5bfd6dfba0, type: 3}
   dontRespawn: 0
-  buffSprite: {fileID: 21300000, guid: 0eaab5d218db64b10be931c9cd4c8f2b, type: 3}
-  speedSprite: {fileID: 21300000, guid: da2cb4271f637432988737ed839bd6ff, type: 3}
-  twinSprite: {fileID: 21300000, guid: 9ac4c9d5b9e774283b2b1803ef811140, type: 3}
-  bombSprite: {fileID: 21300000, guid: 721e897a9b64c4d559af53fd0c7d6fcc, type: 3}
-  chargeSprite: {fileID: 21300000, guid: d1c317027867e4266bebe58f4c1b2f43, type: 3}
+  buffSprite: {fileID: 21300000, guid: a6b6a43fd87014860bcb54bcab1d6083, type: 3}
+  speedSprite: {fileID: 21300000, guid: 1df5db937b23e40bfbe8b595fb4a2ffb, type: 3}
+  twinSprite: {fileID: 21300000, guid: 8418adbf952c24b5f8879cc7cf0b43f6, type: 3}
+  bombSprite: {fileID: 21300000, guid: f24622aac31914889a0025725fd135f7, type: 3}
+  chargeSprite: {fileID: 21300000, guid: bacb244d3326840d49a8e7718c21ce2f, type: 3}
   feverColor: {r: 0, g: 1, b: 0.46529675, a: 0}
-  freezeSprite: {fileID: 21300000, guid: 768fc39287eec4f8cb4ccfc6cb6ea959, type: 3}
-  lightningSprite: {fileID: 21300000, guid: b5e4025f743d543fbb3dcd48c94a7417, type: 3}
+  freezeSprite: {fileID: 21300000, guid: 018192ac31b00445b85927d034c3ab4e, type: 3}
+  lightningSprite: {fileID: 21300000, guid: d12df6f4a6e484da1a771a4f25197cb8, type: 3}
 --- !u!95 &4226505355738097837
 Animator:
   serializedVersion: 5

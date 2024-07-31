@@ -312,7 +312,7 @@ public class Unit : MonoBehaviour
         arrow.SetActive(false);
         if (CanShoot(target.transform.position))
         {
-            GameObject newArrow = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
+            GameObject newArrow = Instantiate(projectile, arrow.transform.position, transform.rotation) as GameObject;
             newArrow.GetComponent<Arrow>().SetTarget(target, attack);
         }
         StartCoroutine(ResetArrow());
