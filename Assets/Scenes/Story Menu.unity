@@ -4078,7 +4078,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -300, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &445969231
 MonoBehaviour:
@@ -4156,7 +4156,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2572188d4c37a446a84265e702979e5f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a92fabb5b6fd49548a62cb89a8ddfb4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4425,7 +4425,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 300, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &476815199
 MonoBehaviour:
@@ -4518,7 +4518,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8fb3ad7c76d9e4dabb0d0ed2e7008f6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6577dc424168c4de3851d7789469c395, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4848,7 +4848,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &484369609
 MonoBehaviour:
@@ -4941,7 +4941,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f4d6326f2f4bb497eb9dd385d812acf5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 23dad2c1b891a46deac0cc2f0a729de5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13992,7 +13992,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -300, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1544487288
 MonoBehaviour:
@@ -14070,7 +14070,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 49423142e07b3449a90253dfb8a69809, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dc6da902aed5e409f90e5422768995c5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16173,7 +16173,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1891749833
 MonoBehaviour:
@@ -16266,7 +16266,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8eaec8579e8c44399b839deee5ad903a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 98bc1d27333d345089248045cb3faebb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17196,7 +17196,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 300, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1972630945
 MonoBehaviour:
@@ -17289,7 +17289,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3146aa89609e14e1389077a1266c7d44, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 14abb8ca160d34a3db0ed951c015c231, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17537,8 +17537,8 @@ MonoBehaviour:
   eraFourEnemyBase: {fileID: 6865033561549177182, guid: 45eda2592089c4b61b6737ed58502ea3, type: 3}
   eraFivePlayerBase: {fileID: 6865033561549177182, guid: 7c7b76c9118034f9790a08cc5bfcb1ff, type: 3}
   eraFiveEnemyBase: {fileID: 6865033561549177182, guid: 844a3eca69e21471fbffff0d1a81b845, type: 3}
-  eraSixPlayerBase: {fileID: 4446869208283151051, guid: 828262413ea664638a6f44594dfb3221, type: 3}
-  eraSixEnemyBase: {fileID: 801385999300426429, guid: b51f9a2e3551742a3be2f137b453e02d, type: 3}
+  eraSixPlayerBase: {fileID: 6865033561549177182, guid: f7cdb89f8abce4b8dbf11d69c9352ef3, type: 3}
+  eraSixEnemyBase: {fileID: 6865033561549177182, guid: ff01a95ced2594722a4779601f5c594f, type: 3}
 --- !u!1 &2041977835
 GameObject:
   m_ObjectHideFlags: 0

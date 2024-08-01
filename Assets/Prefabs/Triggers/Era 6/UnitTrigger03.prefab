@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3351956504272434918}
   - component: {fileID: 7496657840770456005}
   - component: {fileID: 6601776402394179066}
-  - component: {fileID: 3330337669196012867}
+  - component: {fileID: 7657712680796080392}
   m_Layer: 0
   m_Name: UnitTrigger03
   m_TagString: Unit03
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 962815712144322319}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.4, z: 0}
+  m_LocalPosition: {x: 0, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -67,18 +67,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.034542084, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.4833333, y: 1.6666666}
+    oldSize: {x: 1.3333334, y: 1.6666666}
     newSize: {x: 1.4833333, y: 2.3333333}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2763324, y: 1}
+  m_Size: {x: 1.9, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &7496657840770456005
 MonoBehaviour:
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a16e9aa6ac68246c8b277da7070d900e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitPrefab: {fileID: 9190209784107580706, guid: d72b271d77d9d4a9ba87a2450b95060b, type: 3}
+  unitPrefab: {fileID: 9190209784107580706, guid: f1c33efe903624100bd039a35eb3ddb4, type: 3}
   unitNum: 3
   spawnPoint: {fileID: 0}
 --- !u!212 &6601776402394179066
@@ -133,10 +133,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -377937017
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8fb3ad7c76d9e4dabb0d0ed2e7008f6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6577dc424168c4de3851d7789469c395, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -147,7 +147,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &3330337669196012867
+--- !u!95 &7657712680796080392
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0

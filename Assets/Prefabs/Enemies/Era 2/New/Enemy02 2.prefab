@@ -667,9 +667,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRanged: 1
   speed: 0.45
-  HP: 22
-  attack: 20
-  goldDrop: 55
+  HP: 15
+  attack: 15
+  goldDrop: 150
   attackCooldown: 1.9
   weaponAnimator: {fileID: 2066797197067558250}
   projectile: {fileID: 5298016835684235932, guid: e17ecb34084e7482981f20ff67e12ef5, type: 3}

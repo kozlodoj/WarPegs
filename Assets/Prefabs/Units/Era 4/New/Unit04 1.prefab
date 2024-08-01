@@ -924,7 +924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRanged: 0
   speed: 0.45
-  HP: 270
+  HP: 300
   attack: 150
   attackCooldown: 1.6
   weaponAnimator: {fileID: 1491935476519909929}

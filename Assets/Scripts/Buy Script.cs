@@ -103,17 +103,17 @@ public class BuyScript : MonoBehaviour
         if (unitNum == 2)
         {
             cost = GameManager.instance.unitTwoCost;
-            priceText.GetComponent<TextMeshProUGUI>().SetText(cost.ToString());
+            priceText.GetComponent<TextMeshProUGUI>().SetText(GameManager.instance.RoundedNum(cost));
         }
         else if (unitNum == 3)
         {
             cost = GameManager.instance.unitThreeCost;
-            priceText.GetComponent<TextMeshProUGUI>().SetText(cost.ToString());
+            priceText.GetComponent<TextMeshProUGUI>().SetText(GameManager.instance.RoundedNum(cost));
         }
         else if (unitNum == 4)
         {
             cost = GameManager.instance.evolveCost;
-            priceText.GetComponent<TextMeshProUGUI>().SetText(cost.ToString());
+            priceText.GetComponent<TextMeshProUGUI>().SetText(GameManager.instance.RoundedNum(cost));
         }
         else if (unitNum == 5)
         {

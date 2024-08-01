@@ -37,7 +37,7 @@ public class StoryUI : MonoBehaviour
 
     public void SetGoldText(int amount)
     {
-        goldText.SetText(amount.ToString());
+        goldText.SetText(GameManager.instance.RoundedNum(amount));
     }
     public void SetDiamondText(int amount)
     {

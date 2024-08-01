@@ -293,10 +293,20 @@ public class Unit : MonoBehaviour
         Vector2 currentPosition = transform.position;
         Vector2 directionToTarget = (Vector2)position - currentPosition;
         float distance = directionToTarget.magnitude;
-        if (distance <= agent.stoppingDistance + 0.2f)
-            return true;
+        if (!onBase)
+        {
+            if (distance <= agent.stoppingDistance + 0.2f)
+                return true;
+            else
+                return false;
+        }
         else
-            return false;
+        {
+            if (distance <= initialStoppingDistance)
+                return true;
+            else
+                return false;
+        }
     }
 
     //private IEnumerator RangedWithCooldown(float cooldown)

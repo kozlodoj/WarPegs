@@ -356,50 +356,50 @@ public class GameManager : MonoBehaviour
         }
         else if (playerEra == 1)
         {
-            reloadCost = 42;
-            hPCost = 140;
-            unitTwoCost = 700;
-            unitThreeCost = 1850;
-            evolveCost = 9320;
+            reloadCost = 230;
+            hPCost = 680;
+            unitTwoCost = 3500;
+            unitThreeCost = 10500;
+            evolveCost = 21000;
             baseHP = 15;
 
         }
         else if (playerEra == 2)
         {
-            reloadCost = 155;
-            hPCost = 517;
-            unitTwoCost = 2590;
-            unitThreeCost = 6890;
-            evolveCost = 34450;
+            reloadCost = 2300;
+            hPCost = 6800;
+            unitTwoCost = 35000;
+            unitThreeCost = 105000;
+            evolveCost = 160000;
             baseHP = 40;
 
         }
         else if (playerEra == 3)
         {
-            reloadCost = 529;
-            hPCost = 1763;
-            unitTwoCost = 8815;
-            unitThreeCost = 23500;
-            evolveCost = 117500;
+            reloadCost = 14000;
+            hPCost = 43000;
+            unitTwoCost = 222000;
+            unitThreeCost = 666000;
+            evolveCost = 1175000;
             baseHP = 150;
         }
         else if (playerEra == 4)
         {
-            reloadCost = 1587;
-            hPCost = 5290;
-            unitTwoCost = 26450;
-            unitThreeCost = 70500;
-            evolveCost = 352600;
+            reloadCost = 95000;
+            hPCost = 285000;
+            unitTwoCost = 1450000;
+            unitThreeCost = 4300000;
+            evolveCost = 8400000;
             baseHP = 450;
 
         }
         else if (playerEra == 5)
         {
-            reloadCost = 4104;
-            hPCost = 13680;
-            unitTwoCost = 68400;
-            unitThreeCost = 182400;
-            evolveCost = 912000;
+            reloadCost = 650000;
+            hPCost = 2000000;
+            unitTwoCost = 10000000;
+            unitThreeCost = 30000000;
+            evolveCost = 93000000;
             baseHP = 1200;
 
         }
@@ -537,6 +537,20 @@ public class GameManager : MonoBehaviour
         GameObject.Find("UI").GetComponent<StoryUI>().NextEra();
        
        
+
+    }
+
+    public string RoundedNum(float amount)
+    {
+        string result = amount.ToString();
+
+        if (amount < 1000)
+            result = amount.ToString();
+        else if (amount < 1000000)
+            result = ((float)amount / 1000).ToString("0.0k");
+        else if (amount > 1000000)
+            result = ((float)amount / 1000000).ToString("0.0m");
+        return result;
 
     }
 }

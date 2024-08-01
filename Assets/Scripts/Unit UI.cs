@@ -21,7 +21,7 @@ public class UnitUI : MonoBehaviour
         if (hpText != null)
         {
             if(amount >= 0)
-            hpText.SetText(amount.ToString("0"));
+            hpText.SetText(GameManager.instance.RoundedNum(amount));
             else
                 hpText.SetText("0");
         }

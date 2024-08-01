@@ -160,7 +160,7 @@ public class UIScript : MonoBehaviour
         {
             GameManager.instance.currentGold += 9;
             GameManager.instance.gold += 9;
-            currentCoin.SetText(GameManager.instance.currentGold.ToString());
+            currentCoin.SetText(GameManager.instance.RoundedNum(GameManager.instance.currentGold));
         }
         if (GameManager.instance.tutorial)
         {
@@ -172,7 +172,7 @@ public class UIScript : MonoBehaviour
     public void PauseGame()
     {
         GameManager.instance.PauseGame();
-        currentCoinPause.SetText(GameManager.instance.currentGold.ToString());
+        currentCoinPause.SetText(GameManager.instance.RoundedNum(GameManager.instance.currentGold));
         pauseMenu.SetActive(true);
         KillOutline();
         actionMap.Disable();
@@ -190,13 +190,15 @@ public class UIScript : MonoBehaviour
     {
         if (GameManager.instance.storyMode)
         {
-            goldText.SetText(amount.ToString());
-            currentCoin.SetText(GameManager.instance.currentGold.ToString());
+            
+            goldText.SetText(GameManager.instance.RoundedNum(amount));
+            currentCoin.SetText(GameManager.instance.RoundedNum(GameManager.instance.currentGold));
+          
         }
     }
     public void SetCollectedGold(int amount)
     {
-        currentCoin.SetText(GameManager.instance.currentGold.ToString());
+        currentCoin.SetText(GameManager.instance.RoundedNum(GameManager.instance.currentGold));
         if (amount == 0)
             goldCollectedText.SetText(amount.ToString());
         else
@@ -205,13 +207,14 @@ public class UIScript : MonoBehaviour
     private IEnumerator CollectedTextUpdate(int amount)
     {
         yield return new WaitForSeconds(coin.GetComponent<Coin>().speed * 1.3f);
-        goldCollectedText.SetText(amount.ToString());
+        goldCollectedText.SetText(GameManager.instance.RoundedNum(amount));
+        
     }
     public void SetDiamonds(int amount)
     {
         if (GameManager.instance.storyMode)
         {
-            diamondText.SetText(amount.ToString());
+            diamondText.SetText(GameManager.instance.RoundedNum(amount));
         }
     }
 

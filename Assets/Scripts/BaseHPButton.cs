@@ -28,7 +28,7 @@ public class BaseHPButton : MonoBehaviour
         rateText = transform.Find("HPText").gameObject.GetComponent<TextMeshProUGUI>();
         goldImage = costText.transform.Find("gold").gameObject.GetComponent<Image>();
         rateText.SetText(GameManager.instance.baseHP.ToString() + " HP");
-        costText.SetText(GameManager.instance.hPCost.ToString());
+        costText.SetText(GameManager.instance.RoundedNum(GameManager.instance.hPCost));
 
         textColor = costText.GetComponent<TextMeshProUGUI>().color;
         transperentTextColor = textColor;
@@ -47,7 +47,7 @@ public class BaseHPButton : MonoBehaviour
         if (EraChanged())
         {
             rateText.SetText(GameManager.instance.baseHP.ToString() + " HP");
-            costText.SetText(GameManager.instance.hPCost.ToString());
+            costText.SetText(GameManager.instance.RoundedNum(GameManager.instance.hPCost));
         }
     }
 
@@ -56,7 +56,7 @@ public class BaseHPButton : MonoBehaviour
         if (IsActive())
         {
             GameManager.instance.BuyHP();
-            costText.SetText(GameManager.instance.hPCost.ToString());
+            costText.SetText(GameManager.instance.RoundedNum(GameManager.instance.hPCost));
             rateText.SetText(GameManager.instance.baseHP.ToString() + " HP");
             CheckActive();
         }
@@ -77,7 +77,7 @@ public class BaseHPButton : MonoBehaviour
         gameObject.GetComponent<Image>().color = theColor;
         costText.GetComponent<TextMeshProUGUI>().color = transperentTextColor;
         goldImage.color = trGoldColor;
-        costText.SetText(GameManager.instance.hPCost.ToString());
+        costText.SetText(GameManager.instance.RoundedNum(GameManager.instance.hPCost));
         rateText.SetText(GameManager.instance.baseHP.ToString() + " HP");
     }
 

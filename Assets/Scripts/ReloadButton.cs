@@ -28,7 +28,7 @@ public class ReloadButton : MonoBehaviour
         rateText = transform.Find("ReloadRate Text").gameObject.GetComponent<TextMeshProUGUI>();
         goldImage = costText.transform.Find("gold").gameObject.GetComponent<Image>();
         rateText.SetText((1 / GameManager.instance.reloadRate).ToString("0.000") + " ball/sec");
-        costText.SetText(GameManager.instance.reloadCost.ToString());
+        costText.SetText(GameManager.instance.RoundedNum(GameManager.instance.reloadCost));
 
         textColor = costText.GetComponent<TextMeshProUGUI>().color;
         transperentTextColor = textColor;
@@ -47,7 +47,7 @@ public class ReloadButton : MonoBehaviour
         if (EraChanged())
         {
             rateText.SetText((1 / GameManager.instance.reloadRate).ToString("0.000") + " ball/sec");
-            costText.SetText(GameManager.instance.reloadCost.ToString());
+            costText.SetText(GameManager.instance.RoundedNum(GameManager.instance.reloadCost));
         }
     }
 
@@ -56,7 +56,7 @@ public class ReloadButton : MonoBehaviour
         if (IsActive())
         {
             GameManager.instance.BuyReloadTime();
-            costText.SetText(GameManager.instance.reloadCost.ToString());
+            costText.SetText(GameManager.instance.RoundedNum(GameManager.instance.reloadCost));
             rateText.SetText((1 / GameManager.instance.reloadRate).ToString("0.000") + " ball/sec");
             CheckActive();
         }
@@ -78,7 +78,7 @@ public class ReloadButton : MonoBehaviour
         gameObject.GetComponent<Image>().color = theColor;
         costText.GetComponent<TextMeshProUGUI>().color = transperentTextColor;
         goldImage.color = trGoldColor;
-        costText.SetText(GameManager.instance.reloadCost.ToString());
+        costText.SetText(GameManager.instance.RoundedNum(GameManager.instance.reloadCost));
         rateText.SetText((1 / GameManager.instance.reloadRate).ToString("0.000") + " ball/sec");
     }
 
