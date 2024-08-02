@@ -138,11 +138,11 @@ public class Trajectory : MonoBehaviour
                 {
                     lineRenderer.positionCount = i;
                     ghost.SetActive(true);
-                    ghost.transform.position = lineRenderer.GetPosition(i - 2);
+                    ghost.transform.position = lineRenderer.GetPosition(i - 1);
 
                     i = maxIterations;
                     var totalPositions = lineRenderer.positionCount;
-                    lineRenderer.positionCount = totalPositions - 2;
+                    lineRenderer.positionCount = totalPositions - 1;
                 }
                 else
                 {

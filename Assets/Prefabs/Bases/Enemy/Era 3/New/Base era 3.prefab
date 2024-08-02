@@ -514,10 +514,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.9791465, y: 0.48871565}
-      - {x: -1.1450369, y: -0.5698805}
-      - {x: -0.8304763, y: -1.6919496}
-      - {x: -0.46155024, y: -0.3311152}
+    - - {x: -0.21895933, y: 0.75701666}
+      - {x: -0.20598245, y: -0.7263894}
+      - {x: 0.44395447, y: -1.8931756}
+      - {x: 0.47750425, y: -0.018096864}
   m_UseDelaunayMesh: 0
 --- !u!114 &6052009484611878510
 MonoBehaviour:
@@ -531,7 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a881267bcfbd54afba844e145cc19c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 16000
+  HP: 45000
   isEnemy: 1
   goldDrop: 1
 --- !u!50 &4622375298827384481
@@ -593,9 +593,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.60293007, y: -0.65386724}
+  m_Offset: {x: 0.3137653, y: -0.51971686}
   serializedVersion: 2
-  m_Radius: 0.47159338
+  m_Radius: 0.4268763
 --- !u!114 &5671643140123885204
 MonoBehaviour:
   m_ObjectHideFlags: 0

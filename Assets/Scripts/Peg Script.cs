@@ -322,15 +322,15 @@ public class PegScript : MonoBehaviour
         if (era == 0)
             coinDrop = 20;
         else if (era == 1)
-            coinDrop = 92;
+            coinDrop = 250;
         else if (era == 2)
-            coinDrop = 340;
+            coinDrop = 2500;
         else if (era == 3)
-            coinDrop = 1160;
+            coinDrop = 22000;
         else if (era == 4)
-            coinDrop = 3480;
+            coinDrop = 150000;
         else if (era == 5)
-            coinDrop = 9000;
+            coinDrop = 2000000;
 
     }
     public void SetFreezePeg()

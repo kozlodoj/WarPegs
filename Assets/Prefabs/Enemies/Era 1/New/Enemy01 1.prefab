@@ -231,7 +231,7 @@ MonoBehaviour:
   m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6500178492605920635
@@ -400,7 +400,6 @@ MonoBehaviour:
   arrow: {fileID: 0}
   iceCube: {fileID: 4523343747309690922}
   deathDummy: {fileID: 9190209784107580706, guid: b2ea077e6dec64e38bfc63b711a4f835, type: 3}
-  coin: {fileID: 6624791311795985430, guid: 582555a0044124eefaf7e49f8bc28981, type: 3}
 --- !u!61 &6798319531999433122
 BoxCollider2D:
   m_ObjectHideFlags: 0

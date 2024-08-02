@@ -19,7 +19,7 @@ public class Arrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        id = DOTween.TotalPlayingTweens();
+        id = DOTween.TotalPlayingTweens() + Random.Range(0, 1000);
         transform.DOMove(target.position, 1.2f / speed).SetId(id);
         
     }

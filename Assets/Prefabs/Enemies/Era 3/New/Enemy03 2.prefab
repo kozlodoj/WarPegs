@@ -390,7 +390,7 @@ MonoBehaviour:
   m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6500178492605920635
@@ -550,8 +550,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRanged: 1
   speed: 0.45
-  HP: 50
-  attack: 50
+  HP: 200
+  attack: 200
   goldDrop: 1500
   attackCooldown: 1.9
   weaponAnimator: {fileID: 2066797197067558250}

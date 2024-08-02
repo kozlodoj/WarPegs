@@ -47,6 +47,10 @@ public class StoryUI : MonoBehaviour
     {
         GameManager.instance.LevelSelect(6);
     }
+    public void EventPlay()
+    {
+        GameManager.instance.LevelSelect(7);
+    }
 
     public void BackToMenu()
     {

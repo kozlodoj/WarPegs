@@ -11,8 +11,6 @@ public class UnitUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI buffText;
     [SerializeField]
-    private TextMeshProUGUI buffTextOutline;
-    [SerializeField]
     private TextMeshProUGUI hpText;
 
     public void UpdateHP(float initialAmount, float amount)
@@ -32,12 +30,10 @@ public class UnitUI : MonoBehaviour
         if (amount != 1)
         {
             buffText.SetText("X" + amount.ToString());
-            buffTextOutline.SetText("X" + amount.ToString());
         }
         else
         {
             buffText.SetText("");
-            buffTextOutline.SetText("");
         }
     }
 }

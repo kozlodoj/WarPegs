@@ -346,7 +346,7 @@ MonoBehaviour:
   m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6500178492605920635
@@ -506,13 +506,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRanged: 1
   speed: 0.45
-  HP: 2000
-  attack: 450
+  HP: 15000
+  attack: 1500
   goldDrop: 22000
-  attackCooldown: 1.7
+  attackCooldown: 4
   weaponAnimator: {fileID: 682585711072513216}
   projectile: {fileID: 5298016835684235932, guid: 18dc679c53fe24f0da6f57e127902515, type: 3}
-  arrow: {fileID: 3322813319724996963}
+  arrow: {fileID: 4116430502129251044}
   iceCube: {fileID: 442044085886508587}
   deathDummy: {fileID: 9190209784107580706, guid: 407e92c8e599d49cda0b97a3f50c2214, type: 3}
 --- !u!61 &6798319531999433122

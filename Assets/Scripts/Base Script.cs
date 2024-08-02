@@ -67,18 +67,19 @@ public class BaseScript : MonoBehaviour
         {
             isDead = true;
             gameObject.SetActive(false);
+            if (isEnemy && GameManager.instance.enemyEra == 5)
+                GameManager.instance.canNextTimeline = true;
             if (isEnemy && GameManager.instance.enemyEra != 5)
             {
                 GameManager.instance.enemyEra++;
-                if (GameManager.instance.enemyEra == 5 || GameManager.instance.enemyEra > GameManager.instance.playerEra)
+                if (GameManager.instance.enemyEra > GameManager.instance.playerEra)
                 {
                     GameManager.instance.evolveCost = 0;
                 }
             }
             else if (GameManager.instance.enemyEra == GameManager.instance.playerEra && isEnemy)
                 GameManager.instance.evolveCost = 0;
-            if (isEnemy && GameManager.instance.enemyEra == 5)
-                GameManager.instance.canNextTimeline = true;
+            
 
             GameManager.instance.GameOver();
         }

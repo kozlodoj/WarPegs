@@ -545,11 +545,29 @@ public class GameManager : MonoBehaviour
         string result = amount.ToString();
 
         if (amount < 1000)
-            result = amount.ToString();
+            result = amount.ToString("0");
+        else if (amount < 10000)
+        {
+            //if (amount % 1 == 0)
+            //    result = ((float)amount / 1000).ToString("0k");
+            //else
+                result = ((float)amount / 1000).ToString("0.00k");
+        }
         else if (amount < 1000000)
-            result = ((float)amount / 1000).ToString("0.0k");
-        else if (amount > 1000000)
-            result = ((float)amount / 1000000).ToString("0.0m");
+        {
+            //if (amount % 1 == 0)
+            //    result = ((float)amount / 1000).ToString("0k");
+            //else
+                result = ((float)amount / 1000).ToString("0.0k");
+        }
+        else if (amount >= 1000000)
+        {
+            //var am = (float)amount / 1000000;
+            //if (am % 1 == 0)
+                result = ((float)amount / 1000000).ToString("0.0m");
+            //else
+            //    result = am.ToString("0.0m");
+        }
         return result;
 
     }

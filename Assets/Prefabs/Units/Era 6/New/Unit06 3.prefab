@@ -903,9 +903,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRanged: 1
   speed: 0.45
-  HP: 7000
-  attack: 1500
-  attackCooldown: 1.9
+  HP: 2000000
+  attack: 150000
+  attackCooldown: 5
   weaponAnimator: {fileID: 104986830647713388}
   projectile: {fileID: 5298016835684235932, guid: 27f7521491278460b89c6baca9cf1cb1, type: 3}
   arrow: {fileID: 8541681361917457345}
