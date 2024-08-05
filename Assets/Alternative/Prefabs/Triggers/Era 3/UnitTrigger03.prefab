@@ -95,6 +95,7 @@ MonoBehaviour:
   unitPrefab: {fileID: 7182217297680381887, guid: e7f3032cefa8a47959d7f92da0b33cba, type: 3}
   unitNum: 3
   spawnPoint: {fileID: 0}
+  isEvent: 1
 --- !u!212 &3883973424107360826
 SpriteRenderer:
   m_ObjectHideFlags: 0

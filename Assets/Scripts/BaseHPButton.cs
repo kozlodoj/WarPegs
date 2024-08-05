@@ -19,6 +19,7 @@ public class BaseHPButton : MonoBehaviour
     private int currentEra = 0;
     private int previousEra = 0;
 
+    public bool isEvent;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,9 +28,16 @@ public class BaseHPButton : MonoBehaviour
         costText = transform.Find("Cost Text").gameObject.GetComponent<TextMeshProUGUI>();
         rateText = transform.Find("HPText").gameObject.GetComponent<TextMeshProUGUI>();
         goldImage = costText.transform.Find("gold").gameObject.GetComponent<Image>();
-        rateText.SetText(GameManager.instance.baseHP.ToString() + " HP");
-        costText.SetText(GameManager.instance.RoundedNum(GameManager.instance.hPCost));
-
+        if (!isEvent)
+        {
+            rateText.SetText(GameManager.instance.baseHP.ToString() + " HP");
+            costText.SetText(GameManager.instance.RoundedNum(GameManager.instance.hPCost));
+        }
+        else
+        {
+            rateText.SetText(EventManager.instance.baseHP.ToString() + " HP");
+            costText.SetText(GameManager.instance.RoundedNum(EventManager.instance.hPCost));
+        }
         textColor = costText.GetComponent<TextMeshProUGUI>().color;
         transperentTextColor = textColor;
         transperentTextColor.a = 0.1f;
@@ -44,20 +52,32 @@ public class BaseHPButton : MonoBehaviour
     {
         if (!IsActive())
             NotEnoughMoney();
-        if (EraChanged())
+        if (EraChanged() && !isEvent)
         {
             rateText.SetText(GameManager.instance.baseHP.ToString() + " HP");
             costText.SetText(GameManager.instance.RoundedNum(GameManager.instance.hPCost));
+        }
+        else if (EraChanged() && isEvent)
+        {
+            rateText.SetText(EventManager.instance.baseHP.ToString() + " HP");
+            costText.SetText(GameManager.instance.RoundedNum(EventManager.instance.hPCost));
         }
     }
 
     public void BuyHP()
     {
-        if (IsActive())
+        if (IsActive() && !isEvent)
         {
             GameManager.instance.BuyHP();
             costText.SetText(GameManager.instance.RoundedNum(GameManager.instance.hPCost));
             rateText.SetText(GameManager.instance.baseHP.ToString() + " HP");
+            CheckActive();
+        }
+        if (IsActive() && isEvent)
+        {
+            EventManager.instance.BuyHP();
+            costText.SetText(GameManager.instance.RoundedNum(EventManager.instance.hPCost));
+            rateText.SetText(EventManager.instance.baseHP.ToString() + " HP");
             CheckActive();
         }
     }
@@ -77,16 +97,34 @@ public class BaseHPButton : MonoBehaviour
         gameObject.GetComponent<Image>().color = theColor;
         costText.GetComponent<TextMeshProUGUI>().color = transperentTextColor;
         goldImage.color = trGoldColor;
-        costText.SetText(GameManager.instance.RoundedNum(GameManager.instance.hPCost));
-        rateText.SetText(GameManager.instance.baseHP.ToString() + " HP");
+        if (!isEvent)
+        {
+            costText.SetText(GameManager.instance.RoundedNum(GameManager.instance.hPCost));
+            rateText.SetText(GameManager.instance.baseHP.ToString() + " HP");
+        }
+        else
+        {
+            costText.SetText(GameManager.instance.RoundedNum(EventManager.instance.hPCost));
+            rateText.SetText(EventManager.instance.baseHP.ToString() + " HP");
+        }
     }
 
     private bool IsActive()
     {
-        if (GameManager.instance.gold >= GameManager.instance.hPCost)
-            return true;
+        if (!isEvent)
+        {
+            if (GameManager.instance.gold >= GameManager.instance.hPCost)
+                return true;
+            else
+                return false;
+        }
         else
-            return false;
+        {
+            if (EventManager.instance.gold >= EventManager.instance.hPCost)
+                return true;
+            else
+                return false;
+        }
 
     }
     private void CheckActive()
@@ -98,13 +136,27 @@ public class BaseHPButton : MonoBehaviour
     }
     private bool EraChanged()
     {
-        currentEra = GameManager.instance.playerEra;
-        if (currentEra == previousEra)
-            return false;
+        if (!isEvent)
+        {
+            currentEra = GameManager.instance.playerEra;
+            if (currentEra == previousEra)
+                return false;
+            else
+            {
+                previousEra = currentEra;
+                return true;
+            }
+        }
         else
         {
-            previousEra = currentEra;
-            return true;
+            currentEra = EventManager.instance.playerEra;
+            if (currentEra == previousEra)
+                return false;
+            else
+            {
+                previousEra = currentEra;
+                return true;
+            }
         }
     }
 }

@@ -20,15 +20,27 @@ public class UnitSpawner : MonoBehaviour
     private Freeze freezeScript;
     private Animator animator;
 
+    public bool isEvent;
     private void Start()
     {
-        if (GameManager.instance.storyMode)
+        if (GameManager.instance.storyMode && !isEvent)
         {
             if (unitNum == 2 && !GameManager.instance.isUnitTwoActive)
             {
                 gameObject.SetActive(false);
             }
             if (unitNum == 3 && !GameManager.instance.isUnitThreeActive)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            if (unitNum == 2 && !EventManager.instance.isUnitTwoActive)
+            {
+                gameObject.SetActive(false);
+            }
+            if (unitNum == 3 && !EventManager.instance.isUnitThreeActive)
             {
                 gameObject.SetActive(false);
             }
@@ -51,36 +63,41 @@ public class UnitSpawner : MonoBehaviour
             GameObject newUnit = Instantiate(unitPrefab, spawnPoint) as GameObject;
             newUnit.GetComponent<Unit>().Buff(collision.gameObject.GetComponent<Ball>().GetBuff());
             towManager.UpdateUnitList(newUnit);
-            if (collision.gameObject.GetComponent<Ball>().GetBuff() >= 2f)
-            {
-                GameManager.instance.buffGathered = 1;
-                GameManager.instance.ManageDaily();
-            }
-            if (reactivateOnSpawn)
-                pegs.ReactivatePegs();
-            if (unitNum == 3)
-                StartCoroutine(pegs.ReactivateDome());
-            if (GameManager.instance.freezeGame)
-            {
-                GameManager.instance.UnFreezeTow();
-                if (freezeScript != null)
-                freezeScript.ResetFreeze();
-            }
-            if (unitNum == 2)
-            {
-                GameManager.instance.unitTwoSpawned++;
-                GameManager.instance.ManageDaily();
-            }
-            else if (unitNum == 3)
-            {
-                GameManager.instance.unitThreeSpawned++;
-                GameManager.instance.ManageDaily();
-            }
+            if (!isEvent)
+            CheckDaily(collision.gameObject);
         }
     }
     public void VibrateandAnimationStop()
     {
         animator.SetBool("animate", false);
         Vibration.VibratePeek();
+    }
+    private void CheckDaily(GameObject collision)
+    {
+        if (collision.gameObject.GetComponent<Ball>().GetBuff() >= 2f)
+        {
+            GameManager.instance.buffGathered = 1;
+            GameManager.instance.ManageDaily();
+        }
+        if (reactivateOnSpawn)
+            pegs.ReactivatePegs();
+        if (unitNum == 3)
+            StartCoroutine(pegs.ReactivateDome());
+        if (GameManager.instance.freezeGame)
+        {
+            GameManager.instance.UnFreezeTow();
+            if (freezeScript != null)
+                freezeScript.ResetFreeze();
+        }
+        if (unitNum == 2)
+        {
+            GameManager.instance.unitTwoSpawned++;
+            GameManager.instance.ManageDaily();
+        }
+        else if (unitNum == 3)
+        {
+            GameManager.instance.unitThreeSpawned++;
+            GameManager.instance.ManageDaily();
+        }
     }
 }

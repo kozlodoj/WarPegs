@@ -14,6 +14,8 @@ public class LayoutManager : MonoBehaviour
     private GameObject tutorialLayout;
     private PegManager tutPegs;
     private GameObject tut;
+
+    public bool isEvent;
     // Start is called before the first frame update
     void Awake()
     {
@@ -28,21 +30,35 @@ public class LayoutManager : MonoBehaviour
 
     private void RandomLayout()
     {
-        if (GameManager.instance.tutorial)
+        if (!isEvent)
         {
-            tut = Instantiate(tutorialLayout, gameObject.transform) as GameObject;
-            tutPegs = tut.GetComponent<PegManager>();
-        }
+            if (GameManager.instance.tutorial)
+            {
+                tut = Instantiate(tutorialLayout, gameObject.transform) as GameObject;
+                tutPegs = tut.GetComponent<PegManager>();
+            }
 
+            else
+            {
+                if (!GameManager.instance.isUnitTwoActive && !GameManager.instance.isUnitThreeActive)
+                    Instantiate(oneUnits[Random.Range(0, oneUnits.Count)], gameObject.transform);
+                if (GameManager.instance.isUnitTwoActive && !GameManager.instance.isUnitThreeActive)
+                    Instantiate(twoUnits[Random.Range(0, twoUnits.Count)], gameObject.transform);
+                if (!GameManager.instance.isUnitTwoActive && GameManager.instance.isUnitThreeActive)
+                    Instantiate(twoUnits[Random.Range(0, twoUnits.Count)], gameObject.transform);
+                if (GameManager.instance.isUnitTwoActive && GameManager.instance.isUnitThreeActive)
+                    Instantiate(threeUnits[Random.Range(0, threeUnits.Count)], gameObject.transform);
+            }
+        }
         else
         {
-            if (!GameManager.instance.isUnitTwoActive && !GameManager.instance.isUnitThreeActive)
+            if (!EventManager.instance.isUnitTwoActive && !EventManager.instance.isUnitThreeActive)
                 Instantiate(oneUnits[Random.Range(0, oneUnits.Count)], gameObject.transform);
-            if (GameManager.instance.isUnitTwoActive && !GameManager.instance.isUnitThreeActive)
+            if (EventManager.instance.isUnitTwoActive && !EventManager.instance.isUnitThreeActive)
                 Instantiate(twoUnits[Random.Range(0, twoUnits.Count)], gameObject.transform);
-            if (!GameManager.instance.isUnitTwoActive && GameManager.instance.isUnitThreeActive)
+            if (!EventManager.instance.isUnitTwoActive && EventManager.instance.isUnitThreeActive)
                 Instantiate(twoUnits[Random.Range(0, twoUnits.Count)], gameObject.transform);
-            if (GameManager.instance.isUnitTwoActive && GameManager.instance.isUnitThreeActive)
+            if (EventManager.instance.isUnitTwoActive && EventManager.instance.isUnitThreeActive)
                 Instantiate(threeUnits[Random.Range(0, threeUnits.Count)], gameObject.transform);
         }
     }

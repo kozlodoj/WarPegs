@@ -52,6 +52,7 @@ public class UnitTrigger : MonoBehaviour
     [SerializeField]
     private GameObject era6ThirdSpawner;
 
+    public bool isEvent;
 
     // Start is called before the first frame update
     void Awake()
@@ -66,91 +67,184 @@ public class UnitTrigger : MonoBehaviour
 
     private void ManageSpawners()
     {
-        if (!GameManager.instance.isUnitTwoActive && !GameManager.instance.isUnitThreeActive)
+        if (!isEvent)
         {
-            wall01.SetActive(false);
-            wall02.SetActive(false);
-            secondSpawner.SetActive(false);
-            thirdSpawner.SetActive(false);
-            firstSpawner.transform.localPosition = new Vector2(0, -4f);
-            firstCollider.offset = new Vector2(0, 0);
-            firstCollider.size = new Vector2(12, 1);
+            if (!GameManager.instance.isUnitTwoActive && !GameManager.instance.isUnitThreeActive)
+            {
+                wall01.SetActive(false);
+                wall02.SetActive(false);
+                secondSpawner.SetActive(false);
+                thirdSpawner.SetActive(false);
+                firstSpawner.transform.localPosition = new Vector2(0, -4f);
+                firstCollider.offset = new Vector2(0, 0);
+                firstCollider.size = new Vector2(12, 1);
+            }
+            else if (GameManager.instance.isUnitTwoActive && GameManager.instance.isUnitThreeActive)
+            {
+                wall01.SetActive(true);
+                wall02.SetActive(true);
+                secondSpawner.SetActive(true);
+                thirdSpawner.SetActive(true);
+            }
+            else if (GameManager.instance.isUnitTwoActive && !GameManager.instance.isUnitThreeActive)
+            {
+                wall01.SetActive(true);
+                wall02.SetActive(false);
+                secondSpawner.SetActive(true);
+                thirdSpawner.SetActive(false);
+                wall01.transform.localPosition = new Vector2(0, -3.5f);
+                firstSpawner.transform.localPosition = new Vector2(-2.8f, -4f);
+                secondSpawner.transform.localPosition = new Vector2(2.8f, -4f);
+                firstCollider.offset = new Vector2(0, 0);
+                firstCollider.size = new Vector2(5.2f, 1);
+                secondCollider.offset = new Vector2(0, 0);
+                secondCollider.size = new Vector2(5.2f, 1);
+            }
+            else if (!GameManager.instance.isUnitTwoActive && GameManager.instance.isUnitThreeActive)
+            {
+                wall01.SetActive(true);
+                wall02.SetActive(false);
+                secondSpawner.SetActive(false);
+                thirdSpawner.SetActive(true);
+                wall01.transform.localPosition = new Vector2(2, -3.5f);
+                firstSpawner.transform.localPosition = new Vector2(-1.8f, -4f);
+                thirdSpawner.transform.localPosition = new Vector2(3.9f, -4f);
+                firstCollider.offset = new Vector2(0, 0);
+                firstCollider.size = new Vector2(7, 1);
+                thirdCollider.offset = new Vector2(0, 0);
+                thirdCollider.size = new Vector2(3f, 1);
+            }
         }
-        else if (GameManager.instance.isUnitTwoActive && GameManager.instance.isUnitThreeActive)
+        else
         {
-            wall01.SetActive(true);
-            wall02.SetActive(true);
-            secondSpawner.SetActive(true);
-            thirdSpawner.SetActive(true);
-        }
-        else if (GameManager.instance.isUnitTwoActive && !GameManager.instance.isUnitThreeActive)
-        {
-            wall01.SetActive(true);
-            wall02.SetActive(false);
-            secondSpawner.SetActive(true);
-            thirdSpawner.SetActive(false);
-            wall01.transform.localPosition = new Vector2(0, -3.5f);
-            firstSpawner.transform.localPosition = new Vector2(-2.8f, -4f);
-            secondSpawner.transform.localPosition = new Vector2(2.8f, -4f);
-            firstCollider.offset = new Vector2(0, 0);
-            firstCollider.size = new Vector2(5.2f, 1);
-            secondCollider.offset = new Vector2(0, 0);
-            secondCollider.size = new Vector2(5.2f, 1);
-        }
-        else if (!GameManager.instance.isUnitTwoActive && GameManager.instance.isUnitThreeActive)
-        {
-            wall01.SetActive(true);
-            wall02.SetActive(false);
-            secondSpawner.SetActive(false);
-            thirdSpawner.SetActive(true);
-            wall01.transform.localPosition = new Vector2(2, -3.5f);
-            firstSpawner.transform.localPosition = new Vector2(-1.8f, -4f);
-            thirdSpawner.transform.localPosition = new Vector2(3.9f, -4f);
-            firstCollider.offset = new Vector2(0, 0);
-            firstCollider.size = new Vector2(7, 1);
-            thirdCollider.offset = new Vector2(0, 0);
-            thirdCollider.size = new Vector2(3f, 1);
+            if (!EventManager.instance.isUnitTwoActive && !EventManager.instance.isUnitThreeActive)
+            {
+                wall01.SetActive(false);
+                wall02.SetActive(false);
+                secondSpawner.SetActive(false);
+                thirdSpawner.SetActive(false);
+                firstSpawner.transform.localPosition = new Vector2(0, -4f);
+                firstCollider.offset = new Vector2(0, 0);
+                firstCollider.size = new Vector2(12, 1);
+            }
+            else if (EventManager.instance.isUnitTwoActive && EventManager.instance.isUnitThreeActive)
+            {
+                wall01.SetActive(true);
+                wall02.SetActive(true);
+                secondSpawner.SetActive(true);
+                thirdSpawner.SetActive(true);
+            }
+            else if (EventManager.instance.isUnitTwoActive && !EventManager.instance.isUnitThreeActive)
+            {
+                wall01.SetActive(true);
+                wall02.SetActive(false);
+                secondSpawner.SetActive(true);
+                thirdSpawner.SetActive(false);
+                wall01.transform.localPosition = new Vector2(0, -3.5f);
+                firstSpawner.transform.localPosition = new Vector2(-2.8f, -4f);
+                secondSpawner.transform.localPosition = new Vector2(2.8f, -4f);
+                firstCollider.offset = new Vector2(0, 0);
+                firstCollider.size = new Vector2(5.2f, 1);
+                secondCollider.offset = new Vector2(0, 0);
+                secondCollider.size = new Vector2(5.2f, 1);
+            }
+            else if (!EventManager.instance.isUnitTwoActive && EventManager.instance.isUnitThreeActive)
+            {
+                wall01.SetActive(true);
+                wall02.SetActive(false);
+                secondSpawner.SetActive(false);
+                thirdSpawner.SetActive(true);
+                wall01.transform.localPosition = new Vector2(2, -3.5f);
+                firstSpawner.transform.localPosition = new Vector2(-1.8f, -4f);
+                thirdSpawner.transform.localPosition = new Vector2(3.9f, -4f);
+                firstCollider.offset = new Vector2(0, 0);
+                firstCollider.size = new Vector2(7, 1);
+                thirdCollider.offset = new Vector2(0, 0);
+                thirdCollider.size = new Vector2(3f, 1);
+            }
         }
 
     }
 
     private void ManageEra()
     {
-        if (GameManager.instance.playerEra == 0)
+        if (!isEvent)
         {
-            firstSpawner = Instantiate(era1FirstSpawner, gameObject.transform);
-            secondSpawner = Instantiate(era1SecondSpawner, gameObject.transform);
-            thirdSpawner = Instantiate(era1ThirdSpawner, gameObject.transform);
+            if (GameManager.instance.playerEra == 0)
+            {
+                firstSpawner = Instantiate(era1FirstSpawner, gameObject.transform);
+                secondSpawner = Instantiate(era1SecondSpawner, gameObject.transform);
+                thirdSpawner = Instantiate(era1ThirdSpawner, gameObject.transform);
+            }
+            else if (GameManager.instance.playerEra == 1)
+            {
+                firstSpawner = Instantiate(era2FirstSpawner, gameObject.transform);
+                secondSpawner = Instantiate(era2SecondSpawner, gameObject.transform);
+                thirdSpawner = Instantiate(era2ThirdSpawner, gameObject.transform);
+            }
+            else if (GameManager.instance.playerEra == 2)
+            {
+                firstSpawner = Instantiate(era3FirstSpawner, gameObject.transform);
+                secondSpawner = Instantiate(era3SecondSpawner, gameObject.transform);
+                thirdSpawner = Instantiate(era3ThirdSpawner, gameObject.transform);
+            }
+            else if (GameManager.instance.playerEra == 3)
+            {
+                firstSpawner = Instantiate(era4FirstSpawner, gameObject.transform);
+                secondSpawner = Instantiate(era4SecondSpawner, gameObject.transform);
+                thirdSpawner = Instantiate(era4ThirdSpawner, gameObject.transform);
+            }
+            else if (GameManager.instance.playerEra == 4)
+            {
+                firstSpawner = Instantiate(era5FirstSpawner, gameObject.transform);
+                secondSpawner = Instantiate(era5SecondSpawner, gameObject.transform);
+                thirdSpawner = Instantiate(era5ThirdSpawner, gameObject.transform);
+            }
+            else if (GameManager.instance.playerEra == 5)
+            {
+                firstSpawner = Instantiate(era6FirstSpawner, gameObject.transform);
+                secondSpawner = Instantiate(era6SecondSpawner, gameObject.transform);
+                thirdSpawner = Instantiate(era6ThirdSpawner, gameObject.transform);
+            }
         }
-        else if (GameManager.instance.playerEra == 1)
+        else
         {
-            firstSpawner = Instantiate(era2FirstSpawner, gameObject.transform);
-            secondSpawner = Instantiate(era2SecondSpawner, gameObject.transform);
-            thirdSpawner = Instantiate(era2ThirdSpawner, gameObject.transform);
-        }
-        else if (GameManager.instance.playerEra == 2)
-        {
-            firstSpawner = Instantiate(era3FirstSpawner, gameObject.transform);
-            secondSpawner = Instantiate(era3SecondSpawner, gameObject.transform);
-            thirdSpawner = Instantiate(era3ThirdSpawner, gameObject.transform);
-        }
-        else if (GameManager.instance.playerEra == 3)
-        {
-            firstSpawner = Instantiate(era4FirstSpawner, gameObject.transform);
-            secondSpawner = Instantiate(era4SecondSpawner, gameObject.transform);
-            thirdSpawner = Instantiate(era4ThirdSpawner, gameObject.transform);
-        }
-        else if (GameManager.instance.playerEra == 4)
-        {
-            firstSpawner = Instantiate(era5FirstSpawner, gameObject.transform);
-            secondSpawner = Instantiate(era5SecondSpawner, gameObject.transform);
-            thirdSpawner = Instantiate(era5ThirdSpawner, gameObject.transform);
-        }
-        else if (GameManager.instance.playerEra == 5)
-        {
-            firstSpawner = Instantiate(era6FirstSpawner, gameObject.transform);
-            secondSpawner = Instantiate(era6SecondSpawner, gameObject.transform);
-            thirdSpawner = Instantiate(era6ThirdSpawner, gameObject.transform);
+            if (EventManager.instance.playerEra == 0)
+            {
+                firstSpawner = Instantiate(era1FirstSpawner, gameObject.transform);
+                secondSpawner = Instantiate(era1SecondSpawner, gameObject.transform);
+                thirdSpawner = Instantiate(era1ThirdSpawner, gameObject.transform);
+            }
+            else if (EventManager.instance.playerEra == 1)
+            {
+                firstSpawner = Instantiate(era2FirstSpawner, gameObject.transform);
+                secondSpawner = Instantiate(era2SecondSpawner, gameObject.transform);
+                thirdSpawner = Instantiate(era2ThirdSpawner, gameObject.transform);
+            }
+            else if (EventManager.instance.playerEra == 2)
+            {
+                firstSpawner = Instantiate(era3FirstSpawner, gameObject.transform);
+                secondSpawner = Instantiate(era3SecondSpawner, gameObject.transform);
+                thirdSpawner = Instantiate(era3ThirdSpawner, gameObject.transform);
+            }
+            else if (EventManager.instance.playerEra == 3)
+            {
+                firstSpawner = Instantiate(era4FirstSpawner, gameObject.transform);
+                secondSpawner = Instantiate(era4SecondSpawner, gameObject.transform);
+                thirdSpawner = Instantiate(era4ThirdSpawner, gameObject.transform);
+            }
+            else if (EventManager.instance.playerEra == 4)
+            {
+                firstSpawner = Instantiate(era5FirstSpawner, gameObject.transform);
+                secondSpawner = Instantiate(era5SecondSpawner, gameObject.transform);
+                thirdSpawner = Instantiate(era5ThirdSpawner, gameObject.transform);
+            }
+            else if (EventManager.instance.playerEra == 5)
+            {
+                firstSpawner = Instantiate(era6FirstSpawner, gameObject.transform);
+                secondSpawner = Instantiate(era6SecondSpawner, gameObject.transform);
+                thirdSpawner = Instantiate(era6ThirdSpawner, gameObject.transform);
+            }
         }
     }
 }

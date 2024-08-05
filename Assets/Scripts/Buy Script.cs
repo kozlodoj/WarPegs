@@ -22,6 +22,8 @@ public class BuyScript : MonoBehaviour
     [SerializeField]
     private bool isActive = false;
 
+    public bool isEvent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,16 +53,32 @@ public class BuyScript : MonoBehaviour
 
     public void Buy()
     {
-        if (cost <= GameManager.instance.gold && !isActive)
+        if (!isEvent)
         {
-            GameManager.instance.BuyUnit(unitNum);
-            SetActive();
+            if (cost <= GameManager.instance.gold && !isActive)
+            {
+                GameManager.instance.BuyUnit(unitNum);
+                SetActive();
 
+            }
+            else if (unitNum == 5 && isActive)
+                GameManager.instance.BuyUnit(unitNum);
+            if (isActive && unitNum == 4 || unitNum == 5)
+                isActive = false;
         }
-        else if (unitNum == 5 && isActive)
-            GameManager.instance.BuyUnit(unitNum);
-        if (isActive && unitNum == 4 || unitNum == 5)
-            isActive = false;
+        else
+        {
+            if (cost <= EventManager.instance.gold && !isActive)
+            {
+                EventManager.instance.BuyUnit(unitNum);
+                SetActive();
+
+            }
+            else if (unitNum == 5 && isActive)
+                EventManager.instance.BuyUnit(unitNum);
+            if (isActive && unitNum == 4 || unitNum == 5)
+                isActive = false;
+        }
 
     }
     private void SetActive()
@@ -79,45 +97,94 @@ public class BuyScript : MonoBehaviour
 
     private void CheckActive()
     {
-        if (unitNum == 2 && GameManager.instance.isUnitTwoActive)
-            SetActive();
-        else if (unitNum == 3 && GameManager.instance.isUnitThreeActive)
-            SetActive();
-        if (unitNum == 5 && GameManager.instance.canNextTimeline)
-            SetActive();
-        if (unitNum == 4)
-            SetPrice();
-        if (cost >= GameManager.instance.gold && !isActive && unitNum != 5)
+        if (!isEvent)
         {
-            priceText.GetComponent<TextMeshProUGUI>().color = transparentTextColor;
-            goldImage.color = trGoldColor;
+            if (unitNum == 2 && GameManager.instance.isUnitTwoActive)
+                SetActive();
+            else if (unitNum == 3 && GameManager.instance.isUnitThreeActive)
+                SetActive();
+            if (unitNum == 5 && GameManager.instance.canNextTimeline)
+                SetActive();
+            if (unitNum == 4)
+                SetPrice();
+            if (cost >= GameManager.instance.gold && !isActive && unitNum != 5)
+            {
+                priceText.GetComponent<TextMeshProUGUI>().color = transparentTextColor;
+                goldImage.color = trGoldColor;
+            }
+            if (cost <= GameManager.instance.gold && !isActive && unitNum != 5)
+            {
+                priceText.GetComponent<TextMeshProUGUI>().color = textColor;
+                goldImage.color = goldColor;
+            }
         }
-        if (cost <= GameManager.instance.gold && !isActive && unitNum != 5)
+        else
         {
-            priceText.GetComponent<TextMeshProUGUI>().color = textColor;
-            goldImage.color = goldColor;
+            if (unitNum == 2 && EventManager.instance.isUnitTwoActive)
+                SetActive();
+            else if (unitNum == 3 && EventManager.instance.isUnitThreeActive)
+                SetActive();
+            if (unitNum == 5 && EventManager.instance.canNextTimeline)
+                SetActive();
+            if (unitNum == 4)
+                SetPrice();
+            if (cost >= EventManager.instance.gold && !isActive && unitNum != 5)
+            {
+                priceText.GetComponent<TextMeshProUGUI>().color = transparentTextColor;
+                goldImage.color = trGoldColor;
+            }
+            if (cost <= EventManager.instance.gold && !isActive && unitNum != 5)
+            {
+                priceText.GetComponent<TextMeshProUGUI>().color = textColor;
+                goldImage.color = goldColor;
+            }
         }
     }
     private void SetPrice()
     {
-        if (unitNum == 2)
+        if (!isEvent)
         {
-            cost = GameManager.instance.unitTwoCost;
-            priceText.GetComponent<TextMeshProUGUI>().SetText(GameManager.instance.RoundedNum(cost));
+            if (unitNum == 2)
+            {
+                cost = GameManager.instance.unitTwoCost;
+                priceText.GetComponent<TextMeshProUGUI>().SetText(GameManager.instance.RoundedNum(cost));
+            }
+            else if (unitNum == 3)
+            {
+                cost = GameManager.instance.unitThreeCost;
+                priceText.GetComponent<TextMeshProUGUI>().SetText(GameManager.instance.RoundedNum(cost));
+            }
+            else if (unitNum == 4)
+            {
+                cost = GameManager.instance.evolveCost;
+                priceText.GetComponent<TextMeshProUGUI>().SetText(GameManager.instance.RoundedNum(cost));
+            }
+            else if (unitNum == 5)
+            {
+                priceText.GetComponent<TextMeshProUGUI>().SetText("Win");
+            }
         }
-        else if (unitNum == 3)
+        else
         {
-            cost = GameManager.instance.unitThreeCost;
-            priceText.GetComponent<TextMeshProUGUI>().SetText(GameManager.instance.RoundedNum(cost));
-        }
-        else if (unitNum == 4)
-        {
-            cost = GameManager.instance.evolveCost;
-            priceText.GetComponent<TextMeshProUGUI>().SetText(GameManager.instance.RoundedNum(cost));
-        }
-        else if (unitNum == 5)
-        {
-            priceText.GetComponent<TextMeshProUGUI>().SetText("Win");
+            if (unitNum == 2)
+            {
+                cost = EventManager.instance.unitTwoCost;
+                priceText.GetComponent<TextMeshProUGUI>().SetText(GameManager.instance.RoundedNum(cost));
+            }
+            else if (unitNum == 3)
+            {
+                cost = EventManager.instance.unitThreeCost;
+                priceText.GetComponent<TextMeshProUGUI>().SetText(GameManager.instance.RoundedNum(cost));
+            }
+            else if (unitNum == 4)
+            {
+                cost = EventManager.instance.evolveCost;
+                priceText.GetComponent<TextMeshProUGUI>().SetText(GameManager.instance.RoundedNum(cost));
+            }
+            else if (unitNum == 5)
+            {
+                priceText.GetComponent<TextMeshProUGUI>().SetText("Win");
+            }
         }
     }
 }

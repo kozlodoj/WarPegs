@@ -4198,6 +4198,7 @@ MonoBehaviour:
   - unitNum: 2
     spawnTime: 10
     stopSection: 1
+  isEvent: 0
 --- !u!1 &907825576
 GameObject:
   m_ObjectHideFlags: 0
@@ -5148,6 +5149,7 @@ MonoBehaviour:
   era6FirstSpawner: {fileID: 8871525514912437245, guid: 68f7f23c157004c2490dd12619647de7, type: 3}
   era6SecondSpawner: {fileID: 4136177227898662911, guid: a65d726cced03467196a4baa40fa5ca1, type: 3}
   era6ThirdSpawner: {fileID: 962815712144322319, guid: 7f4b9cfe7dcbf4d6ab0b387a1f758832, type: 3}
+  isEvent: 0
 --- !u!1 &1214701955
 GameObject:
   m_ObjectHideFlags: 0
@@ -6399,6 +6401,7 @@ MonoBehaviour:
   unitPrefab: {fileID: 0}
   unitNum: 0
   spawnPoint: {fileID: 0}
+  isEvent: 0
 --- !u!1 &1591731204
 GameObject:
   m_ObjectHideFlags: 0
@@ -6608,6 +6611,7 @@ MonoBehaviour:
   threeUnits:
   - {fileID: 3997118020219018874, guid: 09b768201bacc41d2a7ac7fcb3cc405c, type: 3}
   tutorialLayout: {fileID: 2596620059831547436, guid: 76df676b013074be4a8914b3674c67d8, type: 3}
+  isEvent: 0
 --- !u!1001 &1646976711
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6671,7 +6675,7 @@ PrefabInstance:
     - target: {fileID: 8101960441248614987, guid: c067c4613154d49b1ba31d99550b5413, type: 3}
       propertyPath: dummy
       value: 
-      objectReference: {fileID: 2252193437602304218, guid: 74d20b0e0c1a5412c984e803d456c5b0, type: 3}
+      objectReference: {fileID: 2252193437602304218, guid: d043bd85d817f481b9dc133942299d8c, type: 3}
     - target: {fileID: 8101960441248614987, guid: c067c4613154d49b1ba31d99550b5413, type: 3}
       propertyPath: trajectory
       value: 
@@ -6816,6 +6820,7 @@ MonoBehaviour:
   louncher: {fileID: 784552964}
   counterPosition: {x: 0, y: 0, z: 0}
   coin: {fileID: 6624791311795985430, guid: 582555a0044124eefaf7e49f8bc28981, type: 3}
+  isEvent: 0
 --- !u!1 &1710489685
 GameObject:
   m_ObjectHideFlags: 0
@@ -7350,6 +7355,7 @@ MonoBehaviour:
   era4EnemyBase: {fileID: 6865033561549177182, guid: 9e7d8f58f921e4355a2cc5da04ea46cc, type: 3}
   era5EnemyBase: {fileID: 6865033561549177182, guid: 55efe2e1db4b341bc9afe9bb6f384589, type: 3}
   era6EnemyBase: {fileID: 6865033561549177182, guid: 5462c59db51934a5cb0aa0fba3ad0099, type: 3}
+  isEvent: 0
 --- !u!1 &1909218400
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,19 +33,36 @@ public class TOWMenu : MonoBehaviour
 
     private int playerEra;
     private int enemyEra;
- 
+
+    public bool isEvent;
     public void SetTheScene()
     {
-        playerEra = GameManager.instance.playerEra;
-        enemyEra = GameManager.instance.enemyEra;
-        var playerBase = GameObject.FindWithTag("Player Base");
-        if (playerBase != null)
-            Destroy(playerBase);
-        SetPlayerBase();
-        var enemyBase = GameObject.FindWithTag("Enemy base");
-        if (enemyBase != null)
-            Destroy(enemyBase);
-        SetEnemyBase();
+        if (!isEvent)
+        {
+            playerEra = GameManager.instance.playerEra;
+            enemyEra = GameManager.instance.enemyEra;
+            var playerBase = GameObject.FindWithTag("Player Base");
+            if (playerBase != null)
+                Destroy(playerBase);
+            SetPlayerBase();
+            var enemyBase = GameObject.FindWithTag("Enemy base");
+            if (enemyBase != null)
+                Destroy(enemyBase);
+            SetEnemyBase();
+        }
+        else
+        {
+            playerEra = EventManager.instance.playerEra;
+            enemyEra = EventManager.instance.enemyEra;
+            var playerBase = GameObject.FindWithTag("Player Base");
+            if (playerBase != null)
+                Destroy(playerBase);
+            SetPlayerBase();
+            var enemyBase = GameObject.FindWithTag("Enemy base");
+            if (enemyBase != null)
+                Destroy(enemyBase);
+            SetEnemyBase();
+        }
         
     }
     private void SetPlayerBase()

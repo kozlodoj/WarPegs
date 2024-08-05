@@ -115,11 +115,18 @@ public class Ball : MonoBehaviour
 
     public void SetStats()
     {
-        
-        
+
+        if (!GameManager.instance.isEvent)
+        {
             chargeTime = GameManager.instance.reloadRate;
             buffRate = GameManager.instance.intialStat / 100f;
-        
+        }
+        else
+        {
+            chargeTime = EventManager.instance.reloadRate;
+            buffRate = GameManager.instance.intialStat / 100f;
+        }
+
 
     }
     public float GetBuff()

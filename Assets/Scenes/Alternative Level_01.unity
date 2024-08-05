@@ -4251,6 +4251,7 @@ MonoBehaviour:
   - unitNum: 2
     spawnTime: 10
     stopSection: 1
+  isEvent: 1
 --- !u!1 &907825576
 GameObject:
   m_ObjectHideFlags: 0
@@ -5201,6 +5202,7 @@ MonoBehaviour:
   era6FirstSpawner: {fileID: 5267610109306437553, guid: 5befbab3536a741eda826caa74222396, type: 3}
   era6SecondSpawner: {fileID: 8254451508556525150, guid: 9cc557264a1544084b79c079ee6de34f, type: 3}
   era6ThirdSpawner: {fileID: 7343951221493229482, guid: a4899a343ecc7445e8cbb2bb011d04c5, type: 3}
+  isEvent: 1
 --- !u!1 &1214701955
 GameObject:
   m_ObjectHideFlags: 0
@@ -6453,6 +6455,7 @@ MonoBehaviour:
   unitPrefab: {fileID: 0}
   unitNum: 0
   spawnPoint: {fileID: 0}
+  isEvent: 1
 --- !u!1 &1591731204
 GameObject:
   m_ObjectHideFlags: 0
@@ -6662,6 +6665,7 @@ MonoBehaviour:
   threeUnits:
   - {fileID: 3997118020219018874, guid: 09b768201bacc41d2a7ac7fcb3cc405c, type: 3}
   tutorialLayout: {fileID: 2596620059831547436, guid: 76df676b013074be4a8914b3674c67d8, type: 3}
+  isEvent: 1
 --- !u!1001 &1646976711
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6725,7 +6729,7 @@ PrefabInstance:
     - target: {fileID: 8101960441248614987, guid: c067c4613154d49b1ba31d99550b5413, type: 3}
       propertyPath: dummy
       value: 
-      objectReference: {fileID: 2252193437602304218, guid: 74d20b0e0c1a5412c984e803d456c5b0, type: 3}
+      objectReference: {fileID: 2252193437602304218, guid: d043bd85d817f481b9dc133942299d8c, type: 3}
     - target: {fileID: 8101960441248614987, guid: c067c4613154d49b1ba31d99550b5413, type: 3}
       propertyPath: trajectory
       value: 
@@ -6870,6 +6874,7 @@ MonoBehaviour:
   louncher: {fileID: 784552964}
   counterPosition: {x: 0, y: 0, z: 0}
   coin: {fileID: 6624791311795985430, guid: 582555a0044124eefaf7e49f8bc28981, type: 3}
+  isEvent: 1
 --- !u!1 &1710489685
 GameObject:
   m_ObjectHideFlags: 0
@@ -7391,7 +7396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639ae492595bf4dc8b1083433e21dfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  era1PlayerBase: {fileID: 6973743632846302942, guid: 335d0bb722ab84851ad136141398beca, type: 3}
+  era1PlayerBase: {fileID: 6973743632846302942, guid: 6236890e173ad454f846363c236c7c21, type: 3}
   era2PlayerBase: {fileID: 6973743632846302942, guid: 74ea27c263c6a4ca9b1f9e937a10b442, type: 3}
   era3PlayerBase: {fileID: 6973743632846302942, guid: 3e8c1702ef2bf4f86b03cc0b68ca4f92, type: 3}
   era4PlayerBase: {fileID: 6973743632846302942, guid: 97f63e36b2cf340a195feb5795e50d0a, type: 3}
@@ -7403,6 +7408,7 @@ MonoBehaviour:
   era4EnemyBase: {fileID: 6973743632846302942, guid: 3aa1e211fd1af49aaae180f2ecad6f7a, type: 3}
   era5EnemyBase: {fileID: 6973743632846302942, guid: c1ce3ad82b26e47cbbe79197853b4150, type: 3}
   era6EnemyBase: {fileID: 6973743632846302942, guid: 2094fc5f923014723a9b4fa32e0326c7, type: 3}
+  isEvent: 1
 --- !u!1 &1909218400
 GameObject:
   m_ObjectHideFlags: 0

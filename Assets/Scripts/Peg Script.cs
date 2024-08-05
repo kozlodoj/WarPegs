@@ -158,8 +158,11 @@ public class PegScript : MonoBehaviour
                 {
                     Vibration.VibratePeek();
                 Instantiate(coin, gameObject.transform.position, gameObject.transform.rotation);
+                if(!GameManager.instance.isEvent)
                 GameManager.instance.AddGold(coinDrop);
-                    anim.SetBool("fadeOut", true);
+                else
+                    EventManager.instance.AddGold(coinDrop);
+                anim.SetBool("fadeOut", true);
                     anim.SetBool("fadeIn", false);
                 }
                 else if (freezePeg)
@@ -254,7 +257,7 @@ public class PegScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (!isClone)
+        if (!isClone && !GameManager.instance.isEvent)
         {
             GameManager.instance.bounces++;
             GameManager.instance.ManageDaily();
@@ -318,19 +321,24 @@ public class PegScript : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sprite = coinPegSprite;
         coin = GameObject.Find("UI").GetComponent<UIScript>().coin;
         buffPoints = 0;
-        var era = GameManager.instance.enemyEra;
+        var era = 0;
+        if (!GameManager.instance.isEvent)
+            era = GameManager.instance.enemyEra;
+        else
+            era = EventManager.instance.enemyEra;
         if (era == 0)
-            coinDrop = 20;
-        else if (era == 1)
-            coinDrop = 250;
-        else if (era == 2)
-            coinDrop = 2500;
-        else if (era == 3)
-            coinDrop = 22000;
-        else if (era == 4)
-            coinDrop = 150000;
-        else if (era == 5)
-            coinDrop = 2000000;
+                coinDrop = 20;
+            else if (era == 1)
+                coinDrop = 250;
+            else if (era == 2)
+                coinDrop = 2500;
+            else if (era == 3)
+                coinDrop = 22000;
+            else if (era == 4)
+                coinDrop = 150000;
+            else if (era == 5)
+                coinDrop = 2000000;
+   
 
     }
     public void SetFreezePeg()

@@ -50,6 +50,23 @@ public class SaveScript : MonoBehaviour
         saveData.numberOfSpecialPegs = GameManager.instance.numberOfSpecialPegs;
         saveData.feverBounces = GameManager.instance.feverBounces;
 
+        saveData.reloadRateEvent = EventManager.instance.reloadRate;
+        saveData.reloadPerSecEvent = EventManager.instance.reloadPerSec;
+        saveData.baseHPEvent = EventManager.instance.baseHP;
+        saveData.isUnitTwoActiveEvent = EventManager.instance.isUnitTwoActive;
+        saveData.isUnitThreeActiveEvent = EventManager.instance.isUnitThreeActive;
+        saveData.unitTwoCostEvent = EventManager.instance.unitTwoCost;
+        saveData.unitThreeCostEvent = EventManager.instance.unitThreeCost;
+        saveData.reloadCostEvent = EventManager.instance.reloadCost;
+        saveData.hPCostEvent = EventManager.instance.hPCost;
+        saveData.playerEraEvent = EventManager.instance.playerEra;
+        saveData.enemyEraEvent = EventManager.instance.enemyEra;
+        saveData.evolveCostEvent = EventManager.instance.evolveCost;
+        saveData.canNextTimelineEvent = EventManager.instance.canNextTimeline;
+        saveData.timeLineEvent = EventManager.instance.timeLine;
+        saveData.timeLineModifierEvent = EventManager.instance.timeLineModifier;
+        saveData.goldEvent = EventManager.instance.gold;
+
         string savePlayerData = JsonUtility.ToJson(saveData);
         File.WriteAllText(saveFilePath, savePlayerData);
        
@@ -62,9 +79,10 @@ public class SaveScript : MonoBehaviour
         {
             string loadPlayerData = File.ReadAllText(saveFilePath);
             saveData = JsonUtility.FromJson<PlayerData>(loadPlayerData);
-            if (saveData.timeLineModifier == 0 || saveData.numberOfSpecialPegs == 0)
+            if (saveData.reloadPerSecEvent == 0 || saveData.reloadCostEvent == 0)
             {
-                File.Delete(saveFilePath);
+                
+                DeleteSaveFiles();
             }
             else
             {
@@ -103,6 +121,23 @@ public class SaveScript : MonoBehaviour
                 GameManager.instance.timeLineModifier = saveData.timeLineModifier;
                 GameManager.instance.numberOfSpecialPegs = saveData.numberOfSpecialPegs;
                 GameManager.instance.feverBounces = saveData.feverBounces;
+
+                EventManager.instance.reloadRate = saveData.reloadRateEvent;
+                EventManager.instance.reloadPerSec = saveData.reloadPerSecEvent;
+                EventManager.instance.baseHP = saveData.baseHPEvent;
+                EventManager.instance.isUnitTwoActive = saveData.isUnitTwoActiveEvent;
+                EventManager.instance.isUnitThreeActive = saveData.isUnitThreeActiveEvent;
+                EventManager.instance.unitTwoCost = saveData.unitTwoCostEvent;
+                EventManager.instance.unitThreeCost = saveData.unitThreeCostEvent;
+                EventManager.instance.reloadCost = saveData.reloadCostEvent;
+                EventManager.instance.hPCost = saveData.hPCostEvent;
+                EventManager.instance.playerEra = saveData.playerEraEvent;
+                EventManager.instance.enemyEra = saveData.enemyEraEvent;
+                EventManager.instance.evolveCost = saveData.evolveCostEvent;
+                EventManager.instance.canNextTimeline = saveData.canNextTimelineEvent;
+                EventManager.instance.timeLine = saveData.timeLineEvent;
+                EventManager.instance.timeLineModifier = saveData.timeLineModifierEvent;
+                EventManager.instance.gold = saveData.goldEvent;
             }
         }
 
@@ -151,6 +186,23 @@ public class SaveScript : MonoBehaviour
             saveData.numberOfSpecialPegs = GameManager.instance.numberOfSpecialPegs;
             saveData.feverBounces = GameManager.instance.feverBounces;
 
+            saveData.reloadRateEvent = EventManager.instance.reloadRate;
+            saveData.reloadPerSecEvent = EventManager.instance.reloadPerSec;
+            saveData.baseHPEvent = EventManager.instance.baseHP;
+            saveData.isUnitTwoActiveEvent = EventManager.instance.isUnitTwoActive;
+            saveData.isUnitThreeActiveEvent = EventManager.instance.isUnitThreeActive;
+            saveData.unitTwoCostEvent = EventManager.instance.unitTwoCost;
+            saveData.unitThreeCostEvent = EventManager.instance.unitThreeCost;
+            saveData.reloadCostEvent = EventManager.instance.reloadCost;
+            saveData.hPCostEvent = EventManager.instance.hPCost;
+            saveData.playerEraEvent = EventManager.instance.playerEra;
+            saveData.enemyEraEvent = EventManager.instance.enemyEra;
+            saveData.evolveCostEvent = EventManager.instance.evolveCost;
+            saveData.canNextTimelineEvent = EventManager.instance.canNextTimeline;
+            saveData.timeLineEvent = EventManager.instance.timeLine;
+            saveData.timeLineModifierEvent = EventManager.instance.timeLineModifier;
+            saveData.goldEvent = EventManager.instance.gold;
+
             string savePlayerData = JsonUtility.ToJson(saveData);
             File.WriteAllText(saveFilePath, savePlayerData);
         }
@@ -164,12 +216,7 @@ public class SaveScript : MonoBehaviour
 
             string loadPlayerData = File.ReadAllText(saveFilePath);
             saveData = JsonUtility.FromJson<PlayerData>(loadPlayerData);
-            if (saveData.timeLineModifier == 0 || saveData.numberOfSpecialPegs == 0)
-            {
-                File.Delete(saveFilePath);
-            }
-            else
-            {
+           
                 GameManager.instance.ballPower = saveData.ballPower;
                 GameManager.instance.reloadRate = saveData.reloadRate;
                 GameManager.instance.reloadPerSec = saveData.reloadPerSec;
@@ -204,7 +251,24 @@ public class SaveScript : MonoBehaviour
                 GameManager.instance.timeLineModifier = saveData.timeLineModifier;
                 GameManager.instance.numberOfSpecialPegs = saveData.numberOfSpecialPegs;
                 GameManager.instance.feverBounces = saveData.feverBounces;
-            }
+
+                EventManager.instance.reloadRate = saveData.reloadRateEvent;
+                EventManager.instance.reloadPerSec = saveData.reloadPerSecEvent;
+                EventManager.instance.baseHP = saveData.baseHPEvent;
+                EventManager.instance.isUnitTwoActive = saveData.isUnitTwoActiveEvent;
+                EventManager.instance.isUnitThreeActive = saveData.isUnitThreeActiveEvent;
+                EventManager.instance.unitTwoCost = saveData.unitTwoCostEvent;
+                EventManager.instance.unitThreeCost = saveData.unitThreeCostEvent;
+                EventManager.instance.reloadCost = saveData.reloadCostEvent;
+                EventManager.instance.hPCost = saveData.hPCostEvent;
+                EventManager.instance.playerEra = saveData.playerEraEvent;
+                EventManager.instance.enemyEra = saveData.enemyEraEvent;
+                EventManager.instance.evolveCost = saveData.evolveCostEvent;
+                EventManager.instance.canNextTimeline = saveData.canNextTimelineEvent;
+                EventManager.instance.timeLine = saveData.timeLineEvent;
+                EventManager.instance.timeLineModifier = saveData.timeLineModifierEvent;
+                EventManager.instance.gold = saveData.goldEvent;
+            
 
         }
 
@@ -215,6 +279,7 @@ public class SaveScript : MonoBehaviour
         File.Delete(saveFilePath);
         saveFilePath = Application.persistentDataPath + "/SaveData.json";
         File.Delete(saveFilePath);
+        
 
     }
 }

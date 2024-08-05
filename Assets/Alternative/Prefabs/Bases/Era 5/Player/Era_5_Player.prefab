@@ -343,6 +343,7 @@ MonoBehaviour:
   HP: 2
   isEnemy: 0
   goldDrop: 0
+  isEvent: 1
 --- !u!50 &3292897671015265341
 Rigidbody2D:
   serializedVersion: 4

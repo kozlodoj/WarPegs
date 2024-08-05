@@ -254,6 +254,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 2
   isActive: 0
+  isEvent: 0
 --- !u!114 &13994914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1069,6 +1070,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 4
   isActive: 0
+  isEvent: 0
 --- !u!114 &177362190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1492,6 +1494,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 4
   isActive: 0
+  isEvent: 0
 --- !u!114 &194721358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1643,6 +1646,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 4
   isActive: 0
+  isEvent: 0
 --- !u!114 &196853103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2061,6 +2065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a886ad76c60f64fc9876a6fe531b7030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEvent: 0
 --- !u!114 &218392346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4501,6 +4506,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 3
   isActive: 0
+  isEvent: 0
 --- !u!114 &476815200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4924,6 +4930,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 2
   isActive: 0
+  isEvent: 0
 --- !u!114 &484369610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5473,6 +5480,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 3
   isActive: 0
+  isEvent: 0
 --- !u!114 &533453332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6985,6 +6993,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 4
   isActive: 0
+  isEvent: 0
 --- !u!114 &734002908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7229,6 +7238,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 3
   isActive: 0
+  isEvent: 0
 --- !u!1 &742752326
 GameObject:
   m_ObjectHideFlags: 0
@@ -8259,6 +8269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4491cdd053d1f49f2a942f14ef8ab120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEvent: 0
 --- !u!114 &858054346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8588,6 +8599,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 2
   isActive: 0
+  isEvent: 0
 --- !u!114 &932693525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9760,6 +9772,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 3
   isActive: 0
+  isEvent: 0
 --- !u!114 &1037882977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9948,6 +9961,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 2
   isActive: 0
+  isEvent: 0
 --- !u!114 &1045122265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10986,6 +11000,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 2
   isActive: 0
+  isEvent: 0
 --- !u!114 &1156803148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11165,7 +11180,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2104079571}
         m_TargetAssemblyTypeName: StoryUI, Assembly-CSharp
-        m_MethodName: EventPlay
+        m_MethodName: EventMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11269,6 +11284,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 3
   isActive: 0
+  isEvent: 0
 --- !u!114 &1182686476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12324,6 +12340,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 5
   isActive: 0
+  isEvent: 0
 --- !u!114 &1276975467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12457,6 +12474,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1305226294
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 882843771840807979, guid: 7ce260e5a13df42ed860be3d08c7e45c, type: 3}
+      propertyPath: m_Name
+      value: EventManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698067815396714898, guid: 7ce260e5a13df42ed860be3d08c7e45c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698067815396714898, guid: 7ce260e5a13df42ed860be3d08c7e45c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698067815396714898, guid: 7ce260e5a13df42ed860be3d08c7e45c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698067815396714898, guid: 7ce260e5a13df42ed860be3d08c7e45c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698067815396714898, guid: 7ce260e5a13df42ed860be3d08c7e45c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698067815396714898, guid: 7ce260e5a13df42ed860be3d08c7e45c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698067815396714898, guid: 7ce260e5a13df42ed860be3d08c7e45c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698067815396714898, guid: 7ce260e5a13df42ed860be3d08c7e45c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698067815396714898, guid: 7ce260e5a13df42ed860be3d08c7e45c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698067815396714898, guid: 7ce260e5a13df42ed860be3d08c7e45c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7ce260e5a13df42ed860be3d08c7e45c, type: 3}
 --- !u!1 &1314791901
 GameObject:
   m_ObjectHideFlags: 0
@@ -16382,6 +16456,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 2
   isActive: 0
+  isEvent: 0
 --- !u!114 &1891749834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17255,6 +17330,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 4
   isActive: 0
+  isEvent: 0
 --- !u!114 &1965191183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17405,6 +17481,7 @@ MonoBehaviour:
   cost: 1000
   unitNum: 3
   isActive: 0
+  isEvent: 0
 --- !u!114 &1972630946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17731,6 +17808,7 @@ MonoBehaviour:
   eraFiveEnemyBase: {fileID: 6865033561549177182, guid: 844a3eca69e21471fbffff0d1a81b845, type: 3}
   eraSixPlayerBase: {fileID: 6865033561549177182, guid: f7cdb89f8abce4b8dbf11d69c9352ef3, type: 3}
   eraSixEnemyBase: {fileID: 6865033561549177182, guid: ff01a95ced2594722a4779601f5c594f, type: 3}
+  isEvent: 0
 --- !u!1 &2041977835
 GameObject:
   m_ObjectHideFlags: 0
@@ -18362,6 +18440,7 @@ MonoBehaviour:
   TimeLineText: {fileID: 220268854}
   cardsMenu: {fileID: 1395268926}
   storeMenu: {fileID: 1571739187}
+  isEvent: 0
 --- !u!1 &2121999230
 GameObject:
   m_ObjectHideFlags: 0
@@ -18446,3 +18525,4 @@ SceneRoots:
   - {fileID: 1466821893}
   - {fileID: 242952454}
   - {fileID: 2026494091}
+  - {fileID: 1305226294}

@@ -378,7 +378,7 @@ MonoBehaviour:
   projectile: {fileID: 5091592129154128396, guid: dd96f6c1b2eb2488a9de1f9dd2f3f75d, type: 3}
   arrow: {fileID: 4116430502129251044}
   iceCube: {fileID: 442044085886508587}
-  deathDummy: {fileID: 9190209784107580706, guid: 6ef3d762605f0483e8e1e8e9e0d6af88, type: 3}
+  deathDummy: {fileID: 9190209784107580706, guid: c68fa43d4c0f84f4fabd0a9be719ea92, type: 3}
 --- !u!61 &6798319531999433122
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -697,7 +697,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hPBar: {fileID: 3222427453029716606}
   buffText: {fileID: 0}
-  buffTextOutline: {fileID: 0}
   hpText: {fileID: 0}
 --- !u!1 &9070720077193412016
 GameObject:

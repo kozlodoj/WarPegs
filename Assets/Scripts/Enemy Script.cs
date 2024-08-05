@@ -206,11 +206,18 @@ public class EnemyScript : MonoBehaviour
         if (currentHp <= 0 && !isDead)
         {
             isDead = true;
-                GameManager.instance.AddGold(goldDrop);
-            if (!GameManager.instance.tutorial)
+            if (!GameManager.instance.isEvent)
             {
-                GameManager.instance.enemiesDefeated++;
-                GameManager.instance.ManageDaily();
+                GameManager.instance.AddGold(goldDrop);
+                if (!GameManager.instance.tutorial)
+                {
+                    GameManager.instance.enemiesDefeated++;
+                    GameManager.instance.ManageDaily();
+                }
+            }
+            else
+            {
+                EventManager.instance.AddGold(goldDrop);
             }
             hitGlowScript.gotHit = true;
             StartCoroutine(Die());
@@ -337,8 +344,16 @@ public class EnemyScript : MonoBehaviour
     }
     private void TimelineModifier()
     {
-        HP *= GameManager.instance.timeLineModifier;
-        attack *= GameManager.instance.timeLineModifier;
+        if (!GameManager.instance.isEvent)
+        {
+            HP *= GameManager.instance.timeLineModifier;
+            attack *= GameManager.instance.timeLineModifier;
+        }
+        else
+        {
+            HP *= EventManager.instance.timeLineModifier;
+            attack *= EventManager.instance.timeLineModifier;
+        }
     }
     private IEnumerator AttackCoolDown()
     {

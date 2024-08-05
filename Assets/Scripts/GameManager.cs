@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
     public Vector3 cameraYoffset;
     public Vector3 topUIoffset;
 
+    public bool isEvent;
     void Awake()
     {
         if (instance == null)
@@ -103,9 +104,9 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         save = gameObject.GetComponent<SaveScript>();
-        MakeNewGameData();
         CameraScale();
         LoadGame();
+        MakeNewGameData();
         SetReloadTime();
         Vibration.Init();
         DOTween.Init().SetCapacity(500, 50);
@@ -129,6 +130,13 @@ public class GameManager : MonoBehaviour
             storyMode = true;
         else
             storyMode = false;
+        if (levelNum == 7)
+        {
+            isEvent = true;
+            EventManager.instance.currentGold = 0;
+        }
+        else
+            isEvent = false;
         SaveGame();
         SceneManager.LoadScene(levelNum);
         gameOver = false;
@@ -521,23 +529,9 @@ public class GameManager : MonoBehaviour
         timeLineModifier *= 1.1f;
         playerEra = 0;
         enemyEra = 0;
-        //set gold and stats
-        gold = 0;
-        reloadPerSec = 0.06f;
-        SetReloadTime();
-        baseHP = 2;
-        //deactivate unit 2 & 3
-        isUnitTwoActive = false;
-        isUnitThreeActive = false;
-        //change the cost of units and evolution
-        unitThreeCost = 1200;
-        unitTwoCost = 400;
-        evolveCost = 2000;
+        NextEra();
         canNextTimeline = false;
-        GameObject.Find("UI").GetComponent<StoryUI>().NextEra();
-       
-       
-
+    
     }
 
     public string RoundedNum(float amount)
@@ -546,27 +540,29 @@ public class GameManager : MonoBehaviour
 
         if (amount < 1000)
             result = amount.ToString("0");
-        else if (amount < 10000)
+        else if (amount <= 10000)
         {
-            //if (amount % 1 == 0)
-            //    result = ((float)amount / 1000).ToString("0k");
-            //else
+            var am = (float)amount / 1000;
+            if (am % 1 == 0)
+                result = ((float)amount / 1000).ToString("0k");
+            else
                 result = ((float)amount / 1000).ToString("0.00k");
         }
         else if (amount < 1000000)
         {
-            //if (amount % 1 == 0)
-            //    result = ((float)amount / 1000).ToString("0k");
-            //else
+            var am = (float)amount / 1000;
+            if (am % 1 == 0)
+                result = ((float)amount / 1000).ToString("0k");
+            else
                 result = ((float)amount / 1000).ToString("0.0k");
         }
         else if (amount >= 1000000)
         {
-            //var am = (float)amount / 1000000;
-            //if (am % 1 == 0)
-                result = ((float)amount / 1000000).ToString("0.0m");
-            //else
-            //    result = am.ToString("0.0m");
+            var am = (float)amount / 1000000;
+            if (am % 1 == 0)
+                result = ((float)amount / 1000000).ToString("0m");
+            else
+                result = am.ToString("0.0m");
         }
         return result;
 
