@@ -61,7 +61,6 @@ public class UnitTrigger : MonoBehaviour
         firstCollider = firstSpawner.GetComponent<BoxCollider2D>();
         secondCollider = secondSpawner.GetComponent<BoxCollider2D>();
         thirdCollider = thirdSpawner.GetComponent<BoxCollider2D>();
-        if (GameManager.instance.storyMode)
             ManageSpawners();
     }
 

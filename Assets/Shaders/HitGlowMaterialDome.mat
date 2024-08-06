@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HitGlowMaterial
+  m_Name: HitGlowMaterialDome
   m_Shader: {fileID: -6465566751694194690, guid: 8f8af1e55caac4c80a5a138237b3b3f4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -43,7 +43,7 @@ Material:
     m_Floats:
     - _HitEffectAmount: 0
     m_Colors:
-    - _HitEffectColor: {r: 1.4980394, g: 1.4980394, b: 1.4980394, a: 0}
+    - _HitEffectColor: {r: 11.984313, g: 11.984313, b: 11.984313, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5776913593621925201
 MonoBehaviour:

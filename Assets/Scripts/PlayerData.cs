@@ -40,26 +40,4 @@ public class PlayerData
         public float timeLineModifier;
         public int numberOfSpecialPegs;
         public int feverBounces;
-
-        public float reloadRateEvent = 5;
-        public float reloadPerSecEvent = 0.06f;
-        public int baseHPEvent;
-        public bool isUnitTwoActiveEvent;
-        public bool isUnitThreeActiveEvent;
-        public int unitTwoCostEvent;
-        public int unitThreeCostEvent;
-
-        public int reloadCostEvent;
-        public int hPCostEvent;
-
-        public int playerEraEvent;
-        public int enemyEraEvent;
-        public int evolveCostEvent;
-        public bool canNextTimelineEvent;
-
-        public int timeLineEvent;
-        public float timeLineModifierEvent;
-
-        public int goldEvent;
-
 }

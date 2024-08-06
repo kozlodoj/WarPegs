@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5245635351343449155}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -270,7 +270,7 @@ Transform:
   m_GameObject: {fileID: 6973743632846302942}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3, y: 4.81, z: 0}
+  m_LocalPosition: {x: -5.3, y: 3.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -323,10 +323,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.44833994, y: 0.64380884}
-      - {x: -0.6641667, y: 0.5013046}
-      - {x: -1.0544376, y: -0.8119068}
-      - {x: 0.7261443, y: -0.85360545}
+    - - {x: 0.9260855, y: 1.7630386}
+      - {x: -0.079092264, y: 1.3966451}
+      - {x: -0.12363815, y: 0.09229827}
+      - {x: 0.9323797, y: 0.06701046}
   m_UseDelaunayMesh: 0
 --- !u!114 &2208643578622433647
 MonoBehaviour:
@@ -403,9 +403,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.20402256, y: -0.36407346}
+  m_Offset: {x: 0.62785244, y: 0.6465087}
   serializedVersion: 2
-  m_Radius: 0.34788808
+  m_Radius: 0.42123938
 --- !u!114 &5488870590112585116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,7 +460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 1, y: 1.5}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3943953318863822421
@@ -642,7 +642,7 @@ Transform:
   m_GameObject: {fileID: 8981352460199449457}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

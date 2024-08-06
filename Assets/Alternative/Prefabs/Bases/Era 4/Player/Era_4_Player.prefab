@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5245635351343449155}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -270,7 +270,7 @@ Transform:
   m_GameObject: {fileID: 6973743632846302942}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3, y: 4.81, z: 0}
+  m_LocalPosition: {x: -5.3, y: 3.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -323,10 +323,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.27979898, y: 0.6016736}
-      - {x: -0.6641667, y: 0.5013046}
-      - {x: -1.0544376, y: -0.8119068}
-      - {x: 0.43119812, y: -0.85360545}
+    - - {x: 0.94359684, y: 1.7163529}
+      - {x: -0.12561345, y: 1.5533614}
+      - {x: -0.25287056, y: 0.12742972}
+      - {x: 1.0323734, y: 0.11078006}
   m_UseDelaunayMesh: 0
 --- !u!114 &2208643578622433647
 MonoBehaviour:
@@ -403,9 +403,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.12677467, y: -0.43429857}
+  m_Offset: {x: 0.64654064, y: 0.7242166}
   serializedVersion: 2
-  m_Radius: 0.34086525
+  m_Radius: 0.46611023
 --- !u!114 &5488870590112585116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,7 +460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1, y: 2}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3943953318863822421
@@ -642,7 +642,7 @@ Transform:
   m_GameObject: {fileID: 8981352460199449457}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: 1, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -7,7 +7,9 @@ public class SaveScript : MonoBehaviour
 {
 
     private string saveFilePath;
+    private string saveFilePath2;
     private PlayerData saveData;
+    private EventData eventData;
 
     public void SaveGame()
     {
@@ -50,26 +52,37 @@ public class SaveScript : MonoBehaviour
         saveData.numberOfSpecialPegs = GameManager.instance.numberOfSpecialPegs;
         saveData.feverBounces = GameManager.instance.feverBounces;
 
-        saveData.reloadRateEvent = EventManager.instance.reloadRate;
-        saveData.reloadPerSecEvent = EventManager.instance.reloadPerSec;
-        saveData.baseHPEvent = EventManager.instance.baseHP;
-        saveData.isUnitTwoActiveEvent = EventManager.instance.isUnitTwoActive;
-        saveData.isUnitThreeActiveEvent = EventManager.instance.isUnitThreeActive;
-        saveData.unitTwoCostEvent = EventManager.instance.unitTwoCost;
-        saveData.unitThreeCostEvent = EventManager.instance.unitThreeCost;
-        saveData.reloadCostEvent = EventManager.instance.reloadCost;
-        saveData.hPCostEvent = EventManager.instance.hPCost;
-        saveData.playerEraEvent = EventManager.instance.playerEra;
-        saveData.enemyEraEvent = EventManager.instance.enemyEra;
-        saveData.evolveCostEvent = EventManager.instance.evolveCost;
-        saveData.canNextTimelineEvent = EventManager.instance.canNextTimeline;
-        saveData.timeLineEvent = EventManager.instance.timeLine;
-        saveData.timeLineModifierEvent = EventManager.instance.timeLineModifier;
-        saveData.goldEvent = EventManager.instance.gold;
-
         string savePlayerData = JsonUtility.ToJson(saveData);
         File.WriteAllText(saveFilePath, savePlayerData);
        
+    }
+    public void SaveEvent()
+    {
+
+        saveFilePath2 = Application.persistentDataPath + "/EventData.json";
+        eventData = new EventData();
+
+
+        eventData.reloadRateEvent = EventManager.instance.reloadRate;
+        eventData.reloadPerSecEvent = EventManager.instance.reloadPerSec;
+        eventData.baseHPEvent = EventManager.instance.baseHP;
+        eventData.isUnitTwoActiveEvent = EventManager.instance.isUnitTwoActive;
+        eventData.isUnitThreeActiveEvent = EventManager.instance.isUnitThreeActive;
+        eventData.unitTwoCostEvent = EventManager.instance.unitTwoCost;
+        eventData.unitThreeCostEvent = EventManager.instance.unitThreeCost;
+        eventData.reloadCostEvent = EventManager.instance.reloadCost;
+        eventData.hPCostEvent = EventManager.instance.hPCost;
+        eventData.playerEraEvent = EventManager.instance.playerEra;
+        eventData.enemyEraEvent = EventManager.instance.enemyEra;
+        eventData.evolveCostEvent = EventManager.instance.evolveCost;
+        eventData.canNextTimelineEvent = EventManager.instance.canNextTimeline;
+        eventData.timeLineEvent = EventManager.instance.timeLine;
+        eventData.timeLineModifierEvent = EventManager.instance.timeLineModifier;
+        eventData.goldEvent = EventManager.instance.gold;
+
+        string savePlayerData = JsonUtility.ToJson(eventData);
+        File.WriteAllText(saveFilePath2, savePlayerData);
+
     }
 
     public void LoadGame()
@@ -79,14 +92,7 @@ public class SaveScript : MonoBehaviour
         {
             string loadPlayerData = File.ReadAllText(saveFilePath);
             saveData = JsonUtility.FromJson<PlayerData>(loadPlayerData);
-            if (saveData.reloadPerSecEvent == 0 || saveData.reloadCostEvent == 0)
-            {
-                
-                DeleteSaveFiles();
-            }
-            else
-            {
-                
+            
                 GameManager.instance.ballPower = saveData.ballPower;
                 GameManager.instance.reloadRate = saveData.reloadRate;
                 GameManager.instance.reloadPerSec = saveData.reloadPerSec;
@@ -121,24 +127,34 @@ public class SaveScript : MonoBehaviour
                 GameManager.instance.timeLineModifier = saveData.timeLineModifier;
                 GameManager.instance.numberOfSpecialPegs = saveData.numberOfSpecialPegs;
                 GameManager.instance.feverBounces = saveData.feverBounces;
+        }
 
-                EventManager.instance.reloadRate = saveData.reloadRateEvent;
-                EventManager.instance.reloadPerSec = saveData.reloadPerSecEvent;
-                EventManager.instance.baseHP = saveData.baseHPEvent;
-                EventManager.instance.isUnitTwoActive = saveData.isUnitTwoActiveEvent;
-                EventManager.instance.isUnitThreeActive = saveData.isUnitThreeActiveEvent;
-                EventManager.instance.unitTwoCost = saveData.unitTwoCostEvent;
-                EventManager.instance.unitThreeCost = saveData.unitThreeCostEvent;
-                EventManager.instance.reloadCost = saveData.reloadCostEvent;
-                EventManager.instance.hPCost = saveData.hPCostEvent;
-                EventManager.instance.playerEra = saveData.playerEraEvent;
-                EventManager.instance.enemyEra = saveData.enemyEraEvent;
-                EventManager.instance.evolveCost = saveData.evolveCostEvent;
-                EventManager.instance.canNextTimeline = saveData.canNextTimelineEvent;
-                EventManager.instance.timeLine = saveData.timeLineEvent;
-                EventManager.instance.timeLineModifier = saveData.timeLineModifierEvent;
-                EventManager.instance.gold = saveData.goldEvent;
-            }
+    }
+    public void LoadEvent()
+    {
+        saveFilePath2 = Application.persistentDataPath + "/EventData.json";
+        if (File.Exists(saveFilePath2))
+        {
+            string loadPlayerData = File.ReadAllText(saveFilePath2);
+            eventData = JsonUtility.FromJson<EventData>(loadPlayerData);
+
+            EventManager.instance.reloadRate = eventData.reloadRateEvent;
+            EventManager.instance.reloadPerSec = eventData.reloadPerSecEvent;
+            EventManager.instance.baseHP = eventData.baseHPEvent;
+            EventManager.instance.isUnitTwoActive = eventData.isUnitTwoActiveEvent;
+            EventManager.instance.isUnitThreeActive = eventData.isUnitThreeActiveEvent;
+            EventManager.instance.unitTwoCost = eventData.unitTwoCostEvent;
+            EventManager.instance.unitThreeCost = eventData.unitThreeCostEvent;
+            EventManager.instance.reloadCost = eventData.reloadCostEvent;
+            EventManager.instance.hPCost = eventData.hPCostEvent;
+            EventManager.instance.playerEra = eventData.playerEraEvent;
+            EventManager.instance.enemyEra = eventData.enemyEraEvent;
+            EventManager.instance.evolveCost = eventData.evolveCostEvent;
+            EventManager.instance.canNextTimeline = eventData.canNextTimelineEvent;
+            EventManager.instance.timeLine = eventData.timeLineEvent;
+            EventManager.instance.timeLineModifier = eventData.timeLineModifierEvent;
+            EventManager.instance.gold = eventData.goldEvent;
+
         }
 
     }
@@ -186,25 +202,37 @@ public class SaveScript : MonoBehaviour
             saveData.numberOfSpecialPegs = GameManager.instance.numberOfSpecialPegs;
             saveData.feverBounces = GameManager.instance.feverBounces;
 
-            saveData.reloadRateEvent = EventManager.instance.reloadRate;
-            saveData.reloadPerSecEvent = EventManager.instance.reloadPerSec;
-            saveData.baseHPEvent = EventManager.instance.baseHP;
-            saveData.isUnitTwoActiveEvent = EventManager.instance.isUnitTwoActive;
-            saveData.isUnitThreeActiveEvent = EventManager.instance.isUnitThreeActive;
-            saveData.unitTwoCostEvent = EventManager.instance.unitTwoCost;
-            saveData.unitThreeCostEvent = EventManager.instance.unitThreeCost;
-            saveData.reloadCostEvent = EventManager.instance.reloadCost;
-            saveData.hPCostEvent = EventManager.instance.hPCost;
-            saveData.playerEraEvent = EventManager.instance.playerEra;
-            saveData.enemyEraEvent = EventManager.instance.enemyEra;
-            saveData.evolveCostEvent = EventManager.instance.evolveCost;
-            saveData.canNextTimelineEvent = EventManager.instance.canNextTimeline;
-            saveData.timeLineEvent = EventManager.instance.timeLine;
-            saveData.timeLineModifierEvent = EventManager.instance.timeLineModifier;
-            saveData.goldEvent = EventManager.instance.gold;
-
             string savePlayerData = JsonUtility.ToJson(saveData);
             File.WriteAllText(saveFilePath, savePlayerData);
+        }
+    }
+    public void NewEventFile()
+    {
+
+        saveFilePath2 = Application.persistentDataPath + "/NewEvent.json";
+        if (!File.Exists(saveFilePath2))
+        {
+            eventData = new EventData();
+
+            eventData.reloadRateEvent = EventManager.instance.reloadRate;
+            eventData.reloadPerSecEvent = EventManager.instance.reloadPerSec;
+            eventData.baseHPEvent = EventManager.instance.baseHP;
+            eventData.isUnitTwoActiveEvent = EventManager.instance.isUnitTwoActive;
+            eventData.isUnitThreeActiveEvent = EventManager.instance.isUnitThreeActive;
+            eventData.unitTwoCostEvent = EventManager.instance.unitTwoCost;
+            eventData.unitThreeCostEvent = EventManager.instance.unitThreeCost;
+            eventData.reloadCostEvent = EventManager.instance.reloadCost;
+            eventData.hPCostEvent = EventManager.instance.hPCost;
+            eventData.playerEraEvent = EventManager.instance.playerEra;
+            eventData.enemyEraEvent = EventManager.instance.enemyEra;
+            eventData.evolveCostEvent = EventManager.instance.evolveCost;
+            eventData.canNextTimelineEvent = EventManager.instance.canNextTimeline;
+            eventData.timeLineEvent = EventManager.instance.timeLine;
+            eventData.timeLineModifierEvent = EventManager.instance.timeLineModifier;
+            eventData.goldEvent = EventManager.instance.gold;
+
+            string savePlayerData = JsonUtility.ToJson(eventData);
+            File.WriteAllText(saveFilePath2, savePlayerData);
         }
     }
 
@@ -252,34 +280,74 @@ public class SaveScript : MonoBehaviour
                 GameManager.instance.numberOfSpecialPegs = saveData.numberOfSpecialPegs;
                 GameManager.instance.feverBounces = saveData.feverBounces;
 
-                EventManager.instance.reloadRate = saveData.reloadRateEvent;
-                EventManager.instance.reloadPerSec = saveData.reloadPerSecEvent;
-                EventManager.instance.baseHP = saveData.baseHPEvent;
-                EventManager.instance.isUnitTwoActive = saveData.isUnitTwoActiveEvent;
-                EventManager.instance.isUnitThreeActive = saveData.isUnitThreeActiveEvent;
-                EventManager.instance.unitTwoCost = saveData.unitTwoCostEvent;
-                EventManager.instance.unitThreeCost = saveData.unitThreeCostEvent;
-                EventManager.instance.reloadCost = saveData.reloadCostEvent;
-                EventManager.instance.hPCost = saveData.hPCostEvent;
-                EventManager.instance.playerEra = saveData.playerEraEvent;
-                EventManager.instance.enemyEra = saveData.enemyEraEvent;
-                EventManager.instance.evolveCost = saveData.evolveCostEvent;
-                EventManager.instance.canNextTimeline = saveData.canNextTimelineEvent;
-                EventManager.instance.timeLine = saveData.timeLineEvent;
-                EventManager.instance.timeLineModifier = saveData.timeLineModifierEvent;
-                EventManager.instance.gold = saveData.goldEvent;
-            
+        }
+
+    }
+    public void LoadNewEvent()
+    {
+        saveFilePath2 = Application.persistentDataPath + "/NewEvent.json";
+        if (File.Exists(saveFilePath2))
+        {
+            var saveFilePath = Application.persistentDataPath + "/EventData.json";
+            File.Delete(saveFilePath);
+
+            string loadPlayerData = File.ReadAllText(saveFilePath2);
+            eventData = JsonUtility.FromJson<EventData>(loadPlayerData);
+
+            EventManager.instance.reloadRate = eventData.reloadRateEvent;
+            EventManager.instance.reloadPerSec = eventData.reloadPerSecEvent;
+            EventManager.instance.baseHP = eventData.baseHPEvent;
+            EventManager.instance.isUnitTwoActive = eventData.isUnitTwoActiveEvent;
+            EventManager.instance.isUnitThreeActive = eventData.isUnitThreeActiveEvent;
+            EventManager.instance.unitTwoCost = eventData.unitTwoCostEvent;
+            EventManager.instance.unitThreeCost = eventData.unitThreeCostEvent;
+            EventManager.instance.reloadCost = eventData.reloadCostEvent;
+            EventManager.instance.hPCost = eventData.hPCostEvent;
+            EventManager.instance.playerEra = eventData.playerEraEvent;
+            EventManager.instance.enemyEra = eventData.enemyEraEvent;
+            EventManager.instance.evolveCost = eventData.evolveCostEvent;
+            EventManager.instance.canNextTimeline = eventData.canNextTimelineEvent;
+            EventManager.instance.timeLine = eventData.timeLineEvent;
+            EventManager.instance.timeLineModifier = eventData.timeLineModifierEvent;
+            EventManager.instance.gold = eventData.goldEvent;
+
 
         }
 
     }
     public void DeleteSaveFiles()
     {
-        saveFilePath = Application.persistentDataPath + "/NewGame.json";
-        File.Delete(saveFilePath);
-        saveFilePath = Application.persistentDataPath + "/SaveData.json";
-        File.Delete(saveFilePath);
         
-
+        var saveFilePath = Application.persistentDataPath + "/SaveData.json";
+        File.Delete(saveFilePath);
+        DeleteNewGame();
+        
+    }
+    private void DeleteNewGame()
+    {
+        var saveFilePath = Application.persistentDataPath + "/NewGame.json";
+        File.Delete(saveFilePath);
+        DeleteEventFileNew();
+        
+    }
+    private void DeleteEventFileNew()
+    {
+        var saveFilePath2 = Application.persistentDataPath + "/NewEvent.json";
+        File.Delete(saveFilePath2);
+        DeleteEventFile();
+    }
+    private void DeleteEventFile()
+    {
+        var saveFilePath2 = Application.persistentDataPath + "/EventData.json";
+        File.Delete(saveFilePath2);
+    }
+    public void CheckForSave()
+    {
+        var saveFilePath = Application.persistentDataPath + "/CheckFile.json";
+        if (!File.Exists(saveFilePath))
+        {
+            DeleteSaveFiles();
+            File.Create(saveFilePath);
+        }
     }
 }

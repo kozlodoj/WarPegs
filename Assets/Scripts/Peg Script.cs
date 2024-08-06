@@ -83,6 +83,9 @@ public class PegScript : MonoBehaviour
     private Color currentColor;
     private GameObject coin;
     private Animator anim;
+    [SerializeField]
+    private GameObject crack;
+    private HitGlowScript hitGlowScript;
 
     private List<Collider2D> allColliders = new List<Collider2D>();
 
@@ -109,7 +112,9 @@ public class PegScript : MonoBehaviour
             buffPoints = 0;
             
         }
-        
+        if (isDome)
+            hitGlowScript = gameObject.GetComponent<HitGlowScript>();
+
     }
 
     public void FadeOut()
@@ -205,12 +210,15 @@ public class PegScript : MonoBehaviour
                 else {
                     Vibration.VibratePop();
                     boucesLeft--;
-                    if (boucesLeft == 0)
-                    {
-                        anim.SetBool("fadeOut", true);
-                    }
-                    else
-                    gameObject.GetComponent<SpriteRenderer>().sprite = crackedSprite;
+                if (boucesLeft == 0)
+                {
+                    anim.SetBool("fadeOut", true);
+                    hitGlowScript.gotHit = true;
+                }
+                else
+                {
+                    hitGlowScript.gotHit = true;
+                }
                 }
 
             }
@@ -229,7 +237,6 @@ public class PegScript : MonoBehaviour
         pegUI.BuffText(0);
         if (isDome)
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = fullSprite;
             boucesLeft = numberOfBounces;
         }
     }

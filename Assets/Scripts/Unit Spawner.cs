@@ -63,6 +63,8 @@ public class UnitSpawner : MonoBehaviour
             GameObject newUnit = Instantiate(unitPrefab, spawnPoint) as GameObject;
             newUnit.GetComponent<Unit>().Buff(collision.gameObject.GetComponent<Ball>().GetBuff());
             towManager.UpdateUnitList(newUnit);
+            if (unitNum == 3)
+                StartCoroutine(pegs.ReactivateDome());
             if (!isEvent)
             CheckDaily(collision.gameObject);
         }
@@ -81,8 +83,6 @@ public class UnitSpawner : MonoBehaviour
         }
         if (reactivateOnSpawn)
             pegs.ReactivatePegs();
-        if (unitNum == 3)
-            StartCoroutine(pegs.ReactivateDome());
         if (GameManager.instance.freezeGame)
         {
             GameManager.instance.UnFreezeTow();

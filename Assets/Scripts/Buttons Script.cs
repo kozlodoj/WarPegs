@@ -136,12 +136,14 @@ public class ButtonsScript : MonoBehaviour
         reloadEvent -= 0.005f;
         reloadTextEvent.SetText(reloadEvent.ToString("0.000"));
         EventManager.instance.reloadPerSec = reloadEvent;
+        EventManager.instance.SaveEvent();
     }
     public void ReloadEventPlus()
     {
         reloadEvent += 0.005f;
         reloadTextEvent.SetText(reloadEvent.ToString("0.000"));
         EventManager.instance.reloadPerSec = reloadEvent;
+        EventManager.instance.SaveEvent();
     }
     public void BuffMinus()
     {
@@ -250,6 +252,7 @@ public class ButtonsScript : MonoBehaviour
         goldEvent -= 1000f;
         goldTextEvent.SetText(goldEvent.ToString());
         EventManager.instance.gold = (int)goldEvent;
+        EventManager.instance.SaveEvent();
 
     }
 
@@ -258,6 +261,7 @@ public class ButtonsScript : MonoBehaviour
         goldEvent += 1000f;
         goldTextEvent.SetText(goldEvent.ToString());
         EventManager.instance.gold = (int)goldEvent;
+        EventManager.instance.SaveEvent();
     }
 
     //public void chargeMinus()
@@ -371,6 +375,7 @@ public class ButtonsScript : MonoBehaviour
             enemyEra++;
             enemyEraText.SetText(enemyEra.ToString());
             GameManager.instance.enemyEra = enemyEra;
+            
         }
     }
     public void enemyEraMinus()
@@ -380,6 +385,7 @@ public class ButtonsScript : MonoBehaviour
             enemyEra--;
             enemyEraText.SetText(enemyEra.ToString());
             GameManager.instance.enemyEra = enemyEra;
+            
         }
     }
     public void enemyEraEventPlus()
@@ -389,6 +395,7 @@ public class ButtonsScript : MonoBehaviour
             enemyEraEvent++;
             enemyEraTextEvent.SetText(enemyEraEvent.ToString());
             EventManager.instance.enemyEra = enemyEraEvent;
+            EventManager.instance.SaveEvent();
         }
     }
     public void enemyEraEventMinus()
@@ -398,6 +405,7 @@ public class ButtonsScript : MonoBehaviour
             enemyEraEvent--;
             enemyEraTextEvent.SetText(enemyEraEvent.ToString());
             EventManager.instance.enemyEra = enemyEraEvent;
+            EventManager.instance.SaveEvent();
         }
     
     }
@@ -425,6 +433,7 @@ public class ButtonsScript : MonoBehaviour
         EventManager.instance.timeLineModifier *= 1.1f;
         timelineTextEvent.SetText(timelineEvent.ToString());
         EventManager.instance.timeLine = timelineEvent;
+        EventManager.instance.SaveEvent();
     }
     public void timelineEventMinus()
     {
@@ -434,6 +443,7 @@ public class ButtonsScript : MonoBehaviour
             EventManager.instance.timeLineModifier /= 1.1f;
             timelineTextEvent.SetText(timelineEvent.ToString());
             EventManager.instance.timeLine = timelineEvent;
+            EventManager.instance.SaveEvent();
         }
     }
 
@@ -542,6 +552,10 @@ public class ButtonsScript : MonoBehaviour
     public void NewGame()
     {
         GameManager.instance.NewGame();
+    }
+    public void NewEvent()
+    {
+        EventManager.instance.NewEvent();
     }
     public void DeleteSave()
     {

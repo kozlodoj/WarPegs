@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance = null;
+    public static GameManager instance;
 
 
     public float ballPower = 5;
@@ -97,7 +97,6 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
-
         else if (instance != this)
             Destroy(gameObject);
 
@@ -105,8 +104,9 @@ public class GameManager : MonoBehaviour
 
         save = gameObject.GetComponent<SaveScript>();
         CameraScale();
-        LoadGame();
+        save.CheckForSave();
         MakeNewGameData();
+        LoadGame();
         SetReloadTime();
         Vibration.Init();
         DOTween.Init().SetCapacity(500, 50);

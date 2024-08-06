@@ -31,20 +31,25 @@ public class EventManager : MonoBehaviour
     public int gold;
     public int currentGold;
 
-    private void Awake()
+    private SaveScript save;
+
+    void Awake()
     {
         if (instance == null)
             instance = this;
-
         else if (instance != this)
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+        save = gameObject.GetComponent<SaveScript>();
+        save.NewEventFile();
+        save.LoadEvent();
 
         SetReloadTime();
     }
     public void AddGold(int amount)
     {
+        SaveEvent();
         gold += amount;
         currentGold += amount;
         if (SceneManager.GetActiveScene().name == "Event Menu")
@@ -56,7 +61,7 @@ public class EventManager : MonoBehaviour
     }
     public void BuyUnit(int num)
     {
-        GameManager.instance.SaveGame();
+        SaveEvent();
         //buy unit 1
         if (num == 2 && !isUnitTwoActive)
         {
@@ -158,7 +163,7 @@ public class EventManager : MonoBehaviour
             baseHP = 1200;
 
         }
-        GameManager.instance.SaveGame();
+        SaveEvent();
 
     }
     public void NextTimeLine()
@@ -177,7 +182,7 @@ public class EventManager : MonoBehaviour
     }
     public void BuyReloadTime()
     {
-        GameManager.instance.SaveGame();
+        SaveEvent();
         reloadPerSec += 0.005f;
         reloadRate = 1 / reloadPerSec;
         AddGold(-reloadCost);
@@ -185,7 +190,7 @@ public class EventManager : MonoBehaviour
     }
     public void BuyHP()
     {
-        GameManager.instance.SaveGame();
+        SaveEvent();
         if (playerEra == 0)
         {
             baseHP = (int)(baseHP + 1);
@@ -227,6 +232,14 @@ public class EventManager : MonoBehaviour
             hPCost = (int)(hPCost * 1.2f);
 
         }
+    }
+    public void NewEvent()
+    {
+        save.LoadNewEvent();
+    }
+    public void SaveEvent()
+    {
+        save.SaveEvent();
     }
 
 }
