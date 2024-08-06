@@ -115,7 +115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.71, y: 0.87}
+  m_AnchoredPosition: {x: -1.49, y: 1.27}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7890842488877823751
@@ -195,7 +195,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hPBar: {fileID: 9069525240512540399}
   buffText: {fileID: 0}
-  buffTextOutline: {fileID: 0}
   hpText: {fileID: 5990811363310319954}
 --- !u!1 &5061610502929100773
 GameObject:
@@ -223,7 +222,7 @@ Transform:
   m_GameObject: {fileID: 5061610502929100773}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 0, z: 0}
+  m_LocalPosition: {x: -1.15, y: 0.8, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -462,7 +461,7 @@ Transform:
   m_GameObject: {fileID: 6865033561549177182}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.12, y: 5.3, z: 0}
+  m_LocalPosition: {x: 5.9, y: 4.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -514,10 +513,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.21895933, y: 0.75701666}
-      - {x: -0.20598245, y: -0.7263894}
-      - {x: 0.44395447, y: -1.8931756}
-      - {x: 0.47750425, y: -0.018096864}
+    - - {x: -0.7847643, y: 1.2199478}
+      - {x: -0.9518168, y: 0.2251916}
+      - {x: -0.5847821, y: -1.1216235}
+      - {x: -0.24261141, y: 0.856329}
   m_UseDelaunayMesh: 0
 --- !u!114 &6052009484611878510
 MonoBehaviour:
@@ -534,6 +533,7 @@ MonoBehaviour:
   HP: 45000
   isEnemy: 1
   goldDrop: 1
+  isEvent: 0
 --- !u!50 &4622375298827384481
 Rigidbody2D:
   serializedVersion: 4
@@ -593,9 +593,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.3137653, y: -0.51971686}
+  m_Offset: {x: -0.36777228, y: 0.34185016}
   serializedVersion: 2
-  m_Radius: 0.4268763
+  m_Radius: 0.6069053
 --- !u!114 &5671643140123885204
 MonoBehaviour:
   m_ObjectHideFlags: 0

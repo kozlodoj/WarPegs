@@ -20,7 +20,7 @@ public class Arrow : MonoBehaviour
     void Start()
     {
         id = DOTween.TotalPlayingTweens() + Random.Range(0, 1000);
-        transform.DOMove(target.position, 1.2f / speed).SetId(id);
+        transform.DOMove(new Vector3(target.position.x, target.position.y + 0.25f, target.position.z), 1.2f / speed).SetId(id);
         
     }
 

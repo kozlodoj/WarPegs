@@ -230,7 +230,7 @@ public class EnemyScript : MonoBehaviour
         Instantiate(coin, gameObject.transform.position, gameObject.transform.rotation);
         gameObject.SetActive(false);
         if(deathDummy != null)
-        Instantiate(deathDummy, gameObject.transform.position, gameObject.transform.rotation);
+        Instantiate(deathDummy, gameObject.transform.Find("Body").transform.position, gameObject.transform.rotation);
     }
     private void Move()
     {
