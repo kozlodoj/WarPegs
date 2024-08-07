@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
     public int perkOneCost = 300;
     public int perkTwoCost = 500;
 
+    public int gachaSpinPrice;
     public int reloadCost;
     public int hPCost;
     public int buffCost;
@@ -93,6 +94,11 @@ public class GameManager : MonoBehaviour
     public Vector3 topUIoffset;
 
     public bool isEvent;
+
+    public List<int> pegCards = new List<int>();
+    [SerializeField]
+    public List<SpecialPeg> specPegsList = new List<SpecialPeg>();
+
     void Awake()
     {
         if (instance == null)
@@ -107,6 +113,7 @@ public class GameManager : MonoBehaviour
         save.CheckForSave();
         MakeNewGameData();
         LoadGame();
+        LoadPegCards();
         SetReloadTime();
         Vibration.Init();
         DOTween.Init().SetCapacity(500, 50);
@@ -510,6 +517,10 @@ public class GameManager : MonoBehaviour
     public void SaveGame()
     {
         save.SaveGame();
+    }
+    public void LoadPegCards()
+    {
+        save.LoadSpecPegs();
     }
     public void MakeNewGameData()
     {

@@ -24,7 +24,8 @@ public class DiamondBuy : MonoBehaviour
 
     [SerializeField]
     private GameObject infoText;
-
+    [SerializeField]
+    private CardsMenuScript gacha;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,11 +53,15 @@ public class DiamondBuy : MonoBehaviour
     }
     public void Buy()
     {
-        if (cost <= GameManager.instance.diamonds && !isActive)
+        if (cost <= GameManager.instance.diamonds && !isActive && perkNum != 3)
         {
             GameManager.instance.BuyPerk(perkNum);
             SetActive();
-
+        }
+        else if (cost <= GameManager.instance.diamonds && perkNum == 3)
+        {
+            gacha.GachaOneRoll();
+            GameManager.instance.AddDiamond(-cost);
         }
     }
     private void SetActive()
@@ -94,6 +99,11 @@ public class DiamondBuy : MonoBehaviour
         if (perkNum == 2)
         {
             cost = GameManager.instance.perkTwoCost;
+            priceText.GetComponent<TextMeshProUGUI>().SetText(cost.ToString());
+        }
+        if (perkNum == 3)
+        {
+            cost = GameManager.instance.gachaSpinPrice;
             priceText.GetComponent<TextMeshProUGUI>().SetText(cost.ToString());
         }
     }

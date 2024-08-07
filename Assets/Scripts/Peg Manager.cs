@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PegManager : MonoBehaviour
 {
+    
     private List<PegScript> allPegs = new List<PegScript>();
+    private List<int> usedNum = new List<int>();
     private int medicPegs;
     private int buffPegs;
     private int speedPegs;
@@ -36,14 +38,15 @@ public class PegManager : MonoBehaviour
         freezePegs = GameManager.instance.freezePegs;
         lightningPegs = GameManager.instance.lightningPegs;
 
-        numberOfPegs = GameManager.instance.numberOfSpecialPegs;
+     
 
         anim = gameObject.GetComponent<Animator>();
         GetAllPegs();
+        
         SetAllPegTypes();
         
     }
-
+ 
     public void ReactivatePegs()
     {
         foreach (PegScript peg in allPegs)
@@ -216,50 +219,42 @@ public class PegManager : MonoBehaviour
 
     public void SetAllPegTypes()
     {
-        List<int> usedNum = new List<int>();
-        bool isUsed = false;
+        numberOfPegs = GameManager.instance.specPegsList.Count;
+        
         foreach (PegScript peg in allPegs)
             peg.SetBuffPoints();
         if (!GameManager.instance.tutorial)
         {
             SetMedics();
-            for (int i = 0; i < numberOfPegs; i++)
+            if (numberOfPegs != 0)
             {
-                var randomNum = RandomPegNum();
-                foreach (int num in usedNum)
+                for (int i = 0; i < numberOfPegs; i++)
                 {
-                    if (num == randomNum)
+                    var num = GameManager.instance.specPegsList[i].pegNumber;
+                    var chance = GameManager.instance.specPegsList[i].chance;
+                    if (RandomPegNum() <= chance)
                     {
-                        isUsed = true;
+                        if (num == 0)
+                            SetBombPegs();
+                        else if (num == 1)
+                            SetBuffPegs();
+                        else if (num == 2)
+                            SetChargePegs();
+                        else if (num == 3)
+                            SetTwinPegs();
+                        else if (num == 4)
+                            SetCoinPegs();
+                        else if (num == 5)
+                            SetFreezePegs();
+                        else if (num == 6)
+                            SetLightningPegs();
+                        else if (num == 7)
+                            SetSpeedPegs();
                     }
                 }
-                usedNum.Add(randomNum);
-                if (isUsed)
-                {
-                    isUsed = false;
-                    i--;
-                }
-                else
-                {
-                    if (randomNum == 0)
-                        SetBuffPegs();
-                    else if (randomNum == 1)
-                        SetSpeedPegs();
-                    else if (randomNum == 2)
-                        SetTwinPegs();
-                    else if (randomNum == 3)
-                        SetBombPegs();
-                    else if (randomNum == 4)
-                        SetChargePegs();
-                    else if (randomNum == 5)
-                        SetCoinPegs();
-                    else if (randomNum == 6)
-                        SetFreezePegs();
-                    else if (randomNum == 7)
-                        SetLightningPegs();
-                }
+
             }
-            //SetFeverPegs();
+           
         }
     }
 
@@ -278,7 +273,7 @@ public class PegManager : MonoBehaviour
     }
     private int RandomPegNum()
     {
-        return Random.Range(0, 8);
+        return Random.Range(0, 101);
     }
     //for tutorial
     public void ActivateMedic()

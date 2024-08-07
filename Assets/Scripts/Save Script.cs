@@ -11,6 +11,8 @@ public class SaveScript : MonoBehaviour
     private PlayerData saveData;
     private EventData eventData;
 
+    [SerializeField]
+    private GameObject pegCard;
     public void SaveGame()
     {
        
@@ -349,5 +351,32 @@ public class SaveScript : MonoBehaviour
             DeleteSaveFiles();
             File.Create(saveFilePath);
         }
+    }
+    public void SaveSpecPegCard(SpecPeg data, int slot)
+    {
+       var saveFilePath = Application.persistentDataPath + "/" + slot + "SlotData.json";
+        var saveData = new SpecPeg();
+        saveData = data;
+        string savePlayerData = JsonUtility.ToJson(saveData);
+        File.WriteAllText(saveFilePath, savePlayerData);
+    }
+    public void LoadSpecPegs()
+    {
+        
+        for (int i = 0; i < 8; i++)
+        {
+            var saveFilePath = Application.persistentDataPath + "/" + i + "SlotData.json";
+            if (File.Exists(saveFilePath))
+            {
+                var saveData = new SpecPeg();
+                string loadPlayerData = File.ReadAllText(saveFilePath);
+                saveData = JsonUtility.FromJson<SpecPeg>(loadPlayerData);
+                var newPegCard = Instantiate(pegCard).GetComponent<SpecialPeg>();
+                newPegCard.data = saveData;
+                newPegCard.LoadData();
+                GameManager.instance.specPegsList.Add(newPegCard);
+            }
+        }
+        
     }
 }
