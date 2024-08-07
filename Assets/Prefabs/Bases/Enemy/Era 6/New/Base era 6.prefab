@@ -115,7 +115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.42, y: 0.7}
+  m_AnchoredPosition: {x: -1.1, y: 1.1}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7890842488877823751
@@ -195,7 +195,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hPBar: {fileID: 9069525240512540399}
   buffText: {fileID: 0}
-  buffTextOutline: {fileID: 0}
   hpText: {fileID: 5990811363310319954}
 --- !u!1 &5061610502929100773
 GameObject:
@@ -223,7 +222,7 @@ Transform:
   m_GameObject: {fileID: 5061610502929100773}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09000015, y: 0.55, z: 0}
+  m_LocalPosition: {x: -0.81, y: 0.95, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -462,7 +461,7 @@ Transform:
   m_GameObject: {fileID: 6865033561549177182}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.15, y: 5.3, z: 0}
+  m_LocalPosition: {x: 5.9, y: 4.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -514,10 +513,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.25856686, y: 1.1460481}
-      - {x: -0.4198749, y: -0.21775436}
-      - {x: 0.09140396, y: -0.9181979}
-      - {x: 0.22552538, y: 0.7725273}
+    - - {x: -1.0257826, y: 1.4454494}
+      - {x: -1.1496656, y: 0.21263504}
+      - {x: -0.43254852, y: -1.011761}
+      - {x: -0.27971458, y: 0.82866484}
   m_UseDelaunayMesh: 0
 --- !u!114 &6052009484611878510
 MonoBehaviour:
@@ -534,6 +533,7 @@ MonoBehaviour:
   HP: 22500000
   isEnemy: 1
   goldDrop: 1
+  isEvent: 0
 --- !u!50 &4622375298827384481
 Rigidbody2D:
   serializedVersion: 4
@@ -593,9 +593,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.19190133, y: -0.048296213}
+  m_Offset: {x: -0.7998652, y: 0.28853047}
   serializedVersion: 2
-  m_Radius: 0.48583186
+  m_Radius: 0.33613056
 --- !u!114 &5671643140123885204
 MonoBehaviour:
   m_ObjectHideFlags: 0

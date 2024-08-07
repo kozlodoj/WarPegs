@@ -115,7 +115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.67, y: 0.7}
+  m_AnchoredPosition: {x: 1.1, y: 1.1}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7890842488877823751
@@ -195,7 +195,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hPBar: {fileID: 9069525240512540399}
   buffText: {fileID: 0}
-  buffTextOutline: {fileID: 0}
   hpText: {fileID: 5990811363310319954}
 --- !u!1 &5061610502929100773
 GameObject:
@@ -223,7 +222,7 @@ Transform:
   m_GameObject: {fileID: 5061610502929100773}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.38, y: 0.5500002, z: 0}
+  m_LocalPosition: {x: 0.81, y: 0.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -462,7 +461,7 @@ Transform:
   m_GameObject: {fileID: 6865033561549177182}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.47, y: 5.3, z: 0}
+  m_LocalPosition: {x: -5.9, y: 4.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -515,10 +514,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.57914233, y: 1.0024176}
-      - {x: 0.038334608, y: -0.0867548}
-      - {x: 0.2668414, y: -1.05847}
-      - {x: 0.75897694, y: -0.19581693}
+    - - {x: 1.0282443, y: 1.3953819}
+      - {x: 0.3751614, y: 0.38105965}
+      - {x: 0.6036682, y: -0.7590687}
+      - {x: 1.1145158, y: 0.14100939}
   m_UseDelaunayMesh: 0
 --- !u!114 &6052009484611878510
 MonoBehaviour:
@@ -535,6 +534,7 @@ MonoBehaviour:
   HP: 2
   isEnemy: 0
   goldDrop: 0
+  isEvent: 0
 --- !u!50 &4622375298827384481
 Rigidbody2D:
   serializedVersion: 4
@@ -594,9 +594,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.23374414, y: -0.18223}
+  m_Offset: {x: 0.6828462, y: 0.44464135}
   serializedVersion: 2
-  m_Radius: 0.3228793
+  m_Radius: 0.4819361
 --- !u!114 &5864169629096029904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,7 +636,7 @@ Transform:
   m_GameObject: {fileID: 7272795403587536858}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.27, y: -0.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
