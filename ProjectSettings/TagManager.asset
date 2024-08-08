@@ -22,6 +22,7 @@ TagManager:
   - Freeze
   - Fire
   - Unit Spawn Point
+  - Peg Card
   layers:
   - Default
   - TransparentFX

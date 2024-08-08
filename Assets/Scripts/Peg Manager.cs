@@ -219,7 +219,7 @@ public class PegManager : MonoBehaviour
 
     public void SetAllPegTypes()
     {
-        numberOfPegs = GameManager.instance.specPegsList.Count;
+        numberOfPegs = GameManager.instance.PegCardsList.Count;
         
         foreach (PegScript peg in allPegs)
             peg.SetBuffPoints();
@@ -230,8 +230,8 @@ public class PegManager : MonoBehaviour
             {
                 for (int i = 0; i < numberOfPegs; i++)
                 {
-                    var num = GameManager.instance.specPegsList[i].pegNumber;
-                    var chance = GameManager.instance.specPegsList[i].chance;
+                    var num = GameManager.instance.PegCardsList[i].pegNumber;
+                    var chance = GameManager.instance.PegCardsList[i].chance;
                     if (RandomPegNum() <= chance)
                     {
                         if (num == 0)

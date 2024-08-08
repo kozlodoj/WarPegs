@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using Newtonsoft.Json;
+
 
 public class SaveScript : MonoBehaviour
 {
@@ -102,7 +104,7 @@ public class SaveScript : MonoBehaviour
                 GameManager.instance.respawn = saveData.respawn;
                 GameManager.instance.intialStat = saveData.intialStat;
                 GameManager.instance.baseHP = saveData.baseHP;
-                GameManager.instance.initialBallCharge = saveData.initialBallCharge;
+                //GameManager.instance.initialBallCharge = saveData.initialBallCharge;
                 GameManager.instance.gold = saveData.gold;
                 GameManager.instance.diamonds = saveData.diamonds;
                 GameManager.instance.isUnitTwoActive = saveData.isUnitTwoActive;
@@ -254,7 +256,7 @@ public class SaveScript : MonoBehaviour
                 GameManager.instance.respawn = saveData.respawn;
                 GameManager.instance.intialStat = saveData.intialStat;
                 GameManager.instance.baseHP = saveData.baseHP;
-                GameManager.instance.initialBallCharge = saveData.initialBallCharge;
+                //GameManager.instance.initialBallCharge = saveData.initialBallCharge;
                 GameManager.instance.gold = saveData.gold;
                 GameManager.instance.diamonds = saveData.diamonds;
                 GameManager.instance.isUnitTwoActive = saveData.isUnitTwoActive;
@@ -352,31 +354,23 @@ public class SaveScript : MonoBehaviour
             File.Create(saveFilePath);
         }
     }
-    public void SaveSpecPegCard(SpecPeg data, int slot)
+    public void SaveSpecPegCard(List<SpecPeg> listOfPegCards)
     {
-       var saveFilePath = Application.persistentDataPath + "/" + slot + "SlotData.json";
-        var saveData = new SpecPeg();
-        saveData = data;
-        string savePlayerData = JsonUtility.ToJson(saveData);
+       var saveFilePath = Application.persistentDataPath + "/PegCardsData.json";
+        var saveData = new List<SpecPeg>();
+        saveData = listOfPegCards;
+        string savePlayerData = JsonConvert.SerializeObject(saveData);
         File.WriteAllText(saveFilePath, savePlayerData);
     }
-    //public void LoadSpecPegs()
-    //{
-        
-    //    var saveFilePath0 = Application.persistentDataPath + "/" + 0 + "SlotData.json";
-    //    if (File.Exists(saveFilePath0))
-    //    {
-    //        for (int i = 0; i < 8; i++)
-    //        {
-    //            var saveFilePath = Application.persistentDataPath + "/" + i + "SlotData.json";
-    //            if (File.Exists(saveFilePath))
-    //            {
-    //                string loadCardData = File.ReadAllText(saveFilePath);
-    //                SpecPeg cardData = JsonUtility.FromJson<SpecPeg>(loadCardData);
-    //                cardsManager.ActivateLoadedPegCards(i, cardData);
-    //            }
-    //        }
-    //    }
-        
-    //}
+    public void LoadSpecPegCard()
+    {
+        var saveFilePath = Application.persistentDataPath + "/PegCardsData.json";
+        if (File.Exists(saveFilePath))
+        {
+            string loadPlayerData = File.ReadAllText(saveFilePath);
+            var loadData = JsonConvert.DeserializeObject<List<SpecPeg>>(loadPlayerData);
+            GameManager.instance.PegCardsList = loadData;
+        }
+    }
+    
 }

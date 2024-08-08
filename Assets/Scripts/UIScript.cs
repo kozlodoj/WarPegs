@@ -97,7 +97,7 @@ public class UIScript : MonoBehaviour
             else
                 daily.SetActive(false);
         }
-        SetColors();
+        //SetColors();
         if (!GameManager.instance.tutorial && !isEvent)
             ManageDaily(false);
         else
@@ -135,9 +135,9 @@ public class UIScript : MonoBehaviour
                 tutorial.SetActive(false);
                 GameManager.instance.joyStickActive = true;
                 joystick.transform.position = context.ReadValue<Vector2>();
-                joyImage.color = filledJoy;
-                joyOutline.transform.position = context.ReadValue<Vector2>();
-                joyOutline.SetActive(true);
+                //joyImage.color = filledJoy;
+                //joyOutline.transform.position = context.ReadValue<Vector2>();
+                //joyOutline.SetActive(true);
             }
 
     }
@@ -145,8 +145,8 @@ public class UIScript : MonoBehaviour
     {
         GameManager.instance.joyStickActive = false;
         joystick.transform.position = context.ReadValue<Vector2>();
-        joyImage.color = TransparentJoy;
-        joyOutline.SetActive(false);
+        //joyImage.color = TransparentJoy;
+        //joyOutline.SetActive(false);
     }
 
 

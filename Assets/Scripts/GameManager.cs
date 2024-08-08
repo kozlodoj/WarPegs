@@ -115,6 +115,7 @@ public class GameManager : MonoBehaviour
         save.CheckForSave();
         MakeNewGameData();
         LoadGame();
+        LoadSpecCards();
         SetReloadTime();
         Vibration.Init();
         DOTween.Init().SetCapacity(500, 50);
@@ -530,6 +531,11 @@ public class GameManager : MonoBehaviour
     public void DeleteSave()
     {
         save.DeleteSaveFiles();
+    }
+    public void LoadSpecCards()
+    {
+        if (PegCardsList.Count == 0)
+            save.LoadSpecPegCard();
     }
     public void NextTimeLine()
     {
