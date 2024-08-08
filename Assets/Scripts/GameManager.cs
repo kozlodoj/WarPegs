@@ -98,6 +98,8 @@ public class GameManager : MonoBehaviour
     public List<int> pegCards = new List<int>();
     [SerializeField]
     public List<SpecialPeg> specPegsList = new List<SpecialPeg>();
+    [SerializeField]
+    public List<SpecPeg> PegCardsList = new List<SpecPeg>();
 
     void Awake()
     {
@@ -113,7 +115,6 @@ public class GameManager : MonoBehaviour
         save.CheckForSave();
         MakeNewGameData();
         LoadGame();
-        LoadPegCards();
         SetReloadTime();
         Vibration.Init();
         DOTween.Init().SetCapacity(500, 50);
@@ -517,10 +518,6 @@ public class GameManager : MonoBehaviour
     public void SaveGame()
     {
         save.SaveGame();
-    }
-    public void LoadPegCards()
-    {
-        save.LoadSpecPegs();
     }
     public void MakeNewGameData()
     {

@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 1183272299255862401}
   m_Layer: 5
   m_Name: SpeedPeg
-  m_TagString: Untagged
+  m_TagString: Peg Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,10 +169,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlBar: {fileID: 4690418921393978474}
   lvlText: {fileID: 4512300416780456046}
-  data:
-    pegNumber: 7
-    lvl: 0
-    chance: 25
   pegNumber: 0
   lvl: 0
   chance: 0

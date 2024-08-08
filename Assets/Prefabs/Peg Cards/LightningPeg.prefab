@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 1461829969311415857}
   m_Layer: 5
   m_Name: LightningPeg
-  m_TagString: Untagged
+  m_TagString: Peg Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,10 +228,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlBar: {fileID: 6699187745699044310}
   lvlText: {fileID: 3618697292527579616}
-  data:
-    pegNumber: 6
-    lvl: 0
-    chance: 25
   pegNumber: 0
   lvl: 0
   chance: 0

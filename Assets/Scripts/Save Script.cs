@@ -12,7 +12,7 @@ public class SaveScript : MonoBehaviour
     private EventData eventData;
 
     [SerializeField]
-    private GameObject pegCard;
+    private CardsMenuScript cardsManager;
     public void SaveGame()
     {
        
@@ -360,23 +360,23 @@ public class SaveScript : MonoBehaviour
         string savePlayerData = JsonUtility.ToJson(saveData);
         File.WriteAllText(saveFilePath, savePlayerData);
     }
-    public void LoadSpecPegs()
-    {
+    //public void LoadSpecPegs()
+    //{
         
-        for (int i = 0; i < 8; i++)
-        {
-            var saveFilePath = Application.persistentDataPath + "/" + i + "SlotData.json";
-            if (File.Exists(saveFilePath))
-            {
-                var saveData = new SpecPeg();
-                string loadPlayerData = File.ReadAllText(saveFilePath);
-                saveData = JsonUtility.FromJson<SpecPeg>(loadPlayerData);
-                var newPegCard = Instantiate(pegCard).GetComponent<SpecialPeg>();
-                newPegCard.data = saveData;
-                newPegCard.LoadData();
-                GameManager.instance.specPegsList.Add(newPegCard);
-            }
-        }
+    //    var saveFilePath0 = Application.persistentDataPath + "/" + 0 + "SlotData.json";
+    //    if (File.Exists(saveFilePath0))
+    //    {
+    //        for (int i = 0; i < 8; i++)
+    //        {
+    //            var saveFilePath = Application.persistentDataPath + "/" + i + "SlotData.json";
+    //            if (File.Exists(saveFilePath))
+    //            {
+    //                string loadCardData = File.ReadAllText(saveFilePath);
+    //                SpecPeg cardData = JsonUtility.FromJson<SpecPeg>(loadCardData);
+    //                cardsManager.ActivateLoadedPegCards(i, cardData);
+    //            }
+    //        }
+    //    }
         
-    }
+    //}
 }

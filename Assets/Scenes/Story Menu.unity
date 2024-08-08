@@ -2369,6 +2369,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7447642384571782930, guid: fcaa23ce650594938978921e0edda6f1, type: 3}
+      propertyPath: pegCard
+      value: 
+      objectReference: {fileID: 2881763120075673779, guid: 9c88db91cdfa849a29a1423d62d134af, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3331,6 +3335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a74833e6ec24b5aa6c9d9ca362ebf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardsManager: {fileID: 0}
 --- !u!1 &345487436
 GameObject:
   m_ObjectHideFlags: 0
@@ -3835,6 +3840,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 431799681}
+  - component: {fileID: 431799682}
   m_Layer: 5
   m_Name: Slot02
   m_TagString: Untagged
@@ -3861,6 +3867,19 @@ RectTransform:
   m_AnchoredPosition: {x: 120, y: 1500}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &431799682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431799680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6e4bf49e8884dbcadc35651211adeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotNum: 2
 --- !u!1 &434574285
 GameObject:
   m_ObjectHideFlags: 0
@@ -4636,6 +4655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 482315074}
+  - component: {fileID: 482315075}
   m_Layer: 5
   m_Name: Slot00
   m_TagString: Untagged
@@ -4662,6 +4682,19 @@ RectTransform:
   m_AnchoredPosition: {x: -360, y: 1500}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &482315075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482315073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6e4bf49e8884dbcadc35651211adeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotNum: 0
 --- !u!1 &483309740
 GameObject:
   m_ObjectHideFlags: 0
@@ -5033,6 +5066,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 495659713}
+  - component: {fileID: 495659714}
   m_Layer: 5
   m_Name: Slot01
   m_TagString: Untagged
@@ -5059,6 +5093,19 @@ RectTransform:
   m_AnchoredPosition: {x: -120, y: 1500}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &495659714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495659712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6e4bf49e8884dbcadc35651211adeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotNum: 1
 --- !u!1 &516536591
 GameObject:
   m_ObjectHideFlags: 0
@@ -9777,6 +9824,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1038448051}
+  - component: {fileID: 1038448052}
   m_Layer: 5
   m_Name: Slot03
   m_TagString: Untagged
@@ -9803,6 +9851,19 @@ RectTransform:
   m_AnchoredPosition: {x: 360, y: 1500}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1038448052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038448050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6e4bf49e8884dbcadc35651211adeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotNum: 3
 --- !u!1 &1045122260
 GameObject:
   m_ObjectHideFlags: 0
@@ -10038,6 +10099,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1086865336}
+  - component: {fileID: 1086865337}
   m_Layer: 5
   m_Name: Slot04
   m_TagString: Untagged
@@ -10064,6 +10126,19 @@ RectTransform:
   m_AnchoredPosition: {x: -360, y: 1200}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1086865337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086865335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6e4bf49e8884dbcadc35651211adeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotNum: 4
 --- !u!1 &1091551942
 GameObject:
   m_ObjectHideFlags: 0
@@ -10704,6 +10779,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1114423853}
+  - component: {fileID: 1114423854}
   m_Layer: 5
   m_Name: Slot06
   m_TagString: Untagged
@@ -10730,6 +10806,19 @@ RectTransform:
   m_AnchoredPosition: {x: 120, y: 1200}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1114423854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114423852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6e4bf49e8884dbcadc35651211adeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotNum: 6
 --- !u!1 &1130578839
 GameObject:
   m_ObjectHideFlags: 0
@@ -13281,6 +13370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1395268927}
   - component: {fileID: 1395268928}
+  - component: {fileID: 1395268929}
   m_Layer: 5
   m_Name: Cards Menu
   m_TagString: Untagged
@@ -13345,6 +13435,20 @@ MonoBehaviour:
   slot05: {fileID: 1770895296}
   slot06: {fileID: 1114423852}
   slot07: {fileID: 1522852494}
+  initialDropChance: 25
+--- !u!114 &1395268929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395268926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a74833e6ec24b5aa6c9d9ca362ebf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardsManager: {fileID: 1395268928}
 --- !u!1 &1407630246
 GameObject:
   m_ObjectHideFlags: 0
@@ -14191,6 +14295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1522852495}
+  - component: {fileID: 1522852496}
   m_Layer: 5
   m_Name: Slot07
   m_TagString: Untagged
@@ -14217,6 +14322,19 @@ RectTransform:
   m_AnchoredPosition: {x: 360, y: 1200}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1522852496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522852494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6e4bf49e8884dbcadc35651211adeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotNum: 7
 --- !u!1 &1528325113
 GameObject:
   m_ObjectHideFlags: 0
@@ -15933,6 +16051,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1770895297}
+  - component: {fileID: 1770895298}
   m_Layer: 5
   m_Name: Slot05
   m_TagString: Untagged
@@ -15959,6 +16078,19 @@ RectTransform:
   m_AnchoredPosition: {x: -120, y: 1200}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1770895298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770895296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6e4bf49e8884dbcadc35651211adeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotNum: 5
 --- !u!1 &1808020084
 GameObject:
   m_ObjectHideFlags: 0

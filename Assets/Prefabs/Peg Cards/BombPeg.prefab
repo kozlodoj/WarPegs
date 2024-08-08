@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 8213866926714892523}
   m_Layer: 5
   m_Name: BombPeg
-  m_TagString: Untagged
+  m_TagString: Peg Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,10 +244,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlBar: {fileID: 1244979874877306842}
   lvlText: {fileID: 8064054239631646697}
-  data:
-    pegNumber: 0
-    lvl: 0
-    chance: 25
   pegNumber: 0
   lvl: 0
   chance: 0
@@ -321,7 +317,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.49
+  m_FillAmount: 0.25
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -391,7 +387,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: lvl 1
+  m_text: lvl 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 80352dbb652744124b86dd2dc91f7494, type: 2}
   m_sharedMaterial: {fileID: 9087593476580872954, guid: 80352dbb652744124b86dd2dc91f7494, type: 2}

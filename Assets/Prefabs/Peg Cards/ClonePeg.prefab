@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6287145836605939762}
   m_Layer: 5
   m_Name: ClonePeg
-  m_TagString: Untagged
+  m_TagString: Peg Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,10 +94,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlBar: {fileID: 1703546594636038497}
   lvlText: {fileID: 6111826300502075034}
-  data:
-    pegNumber: 3
-    lvl: 0
-    chance: 25
   pegNumber: 0
   lvl: 0
   chance: 0

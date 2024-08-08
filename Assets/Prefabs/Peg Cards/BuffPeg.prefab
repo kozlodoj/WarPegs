@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 5738314572904899937}
   m_Layer: 5
   m_Name: BuffPeg
-  m_TagString: Untagged
+  m_TagString: Peg Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -303,10 +303,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlBar: {fileID: 8470488117133594178}
   lvlText: {fileID: 2735610724907248506}
-  data:
-    pegNumber: 1
-    lvl: 0
-    chance: 25
   pegNumber: 0
   lvl: 0
   chance: 0
