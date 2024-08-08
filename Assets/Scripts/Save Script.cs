@@ -245,8 +245,14 @@ public class SaveScript : MonoBehaviour
         saveFilePath = Application.persistentDataPath + "/NewGame.json";
         if (File.Exists(saveFilePath))
         {
+            var saveFilePath2 = Application.persistentDataPath + "/PegCardsData.json";
+            if (File.Exists(saveFilePath2))
+            {
+                File.Delete(saveFilePath2);
+                GameManager.instance.PegCardsList.Clear();
+            }
 
-            string loadPlayerData = File.ReadAllText(saveFilePath);
+                string loadPlayerData = File.ReadAllText(saveFilePath);
             saveData = JsonUtility.FromJson<PlayerData>(loadPlayerData);
            
                 GameManager.instance.ballPower = saveData.ballPower;

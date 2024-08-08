@@ -78,3 +78,6 @@ TagManager:
   - name: Additional BG
     uniqueID: 2442442987
     locked: 0
+  - name: CameraSortingLayer
+    uniqueID: 4251974891
+    locked: 0

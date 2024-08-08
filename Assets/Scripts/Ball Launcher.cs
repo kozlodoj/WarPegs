@@ -30,6 +30,7 @@ public class BallLauncher : MonoBehaviour
     private Animator trajAnimation;
     private LineRenderer trajLine;
     private Vector2 fireSpeed;
+    private Animator animator;
 
     private GameObject noBall;
     private GameObject ready;
@@ -44,6 +45,7 @@ public class BallLauncher : MonoBehaviour
         trajScript = trajectory.GetComponent<Trajectory>();
         trajAnimation = trajectory.GetComponent<Animator>();
         trajLine = trajectory.GetComponent<LineRenderer>();
+        animator = gameObject.GetComponent<Animator>();
         noBall = transform.Find("noBall").gameObject;
         ready = transform.Find("Ready").gameObject;
         ghostBall = transform.Find("GhostBall").gameObject;
@@ -178,6 +180,7 @@ public class BallLauncher : MonoBehaviour
                     noBall.SetActive(false);
                     ready.SetActive(true);
                     isOcupied = true;
+                    animator.SetBool("isLoaded", true);
                 }
                 if (ballScript.isShot)
                     theBall = null;
@@ -221,5 +224,10 @@ public class BallLauncher : MonoBehaviour
         if (isOcupied)
             ballScript.FirePerk();
     }
+    public void StopAnimation()
+    {
+        animator.SetBool("isLoaded", false);
+    }
+
 
 }
