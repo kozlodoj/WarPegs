@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 855736060489315872}
   m_Layer: 0
   m_Name: UnitTrigger02
-  m_TagString: Unit02
+  m_TagString: Unit Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,6 +95,7 @@ MonoBehaviour:
   unitPrefab: {fileID: 9190209784107580706, guid: bb70d745b8f8a428db42c3260b1b3fb3, type: 3}
   unitNum: 2
   spawnPoint: {fileID: 0}
+  isEvent: 0
 --- !u!212 &2869160994904006821
 SpriteRenderer:
   m_ObjectHideFlags: 0

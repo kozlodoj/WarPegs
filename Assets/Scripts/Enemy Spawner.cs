@@ -35,12 +35,14 @@ public class EnemySpawner : MonoBehaviour
     private bool randomSpawn = false;
 
     public bool isEvent;
+    private Flash flash;
     // Start is called before the first frame update
     void Start()
     {
         randomSpawn = GameManager.instance.randomSpawn;
         towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
         GameManager.instance.allEnemiesKilled = false;
+        flash = gameObject.GetComponent<Flash>();
             if (randomSpawn)
                 StartCoroutine(SpawnNextEnemy(RandomTime()));
             else
@@ -61,41 +63,48 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnNextEnemy(float timeDelay)
     {
+        
         if (!isEvent)
         {
             if (GameManager.instance.enemyEra == 0)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(enemies[RandomEnemy()], gameObject.transform));
                 StartCoroutine(SpawnNextEnemy(RandomTime()));
             }
             else if (GameManager.instance.enemyEra == 1)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era2enemies[RandomEnemy()], gameObject.transform));
                 StartCoroutine(SpawnNextEnemy(RandomTime()));
             }
             else if (GameManager.instance.enemyEra == 2)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era3enemies[RandomEnemy()], gameObject.transform));
                 StartCoroutine(SpawnNextEnemy(RandomTime()));
             }
             else if (GameManager.instance.enemyEra == 3)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era4enemies[RandomEnemy()], gameObject.transform));
                 StartCoroutine(SpawnNextEnemy(RandomTime()));
             }
             else if (GameManager.instance.enemyEra == 4)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era5enemies[RandomEnemy()], gameObject.transform));
                 StartCoroutine(SpawnNextEnemy(RandomTime()));
             }
             else if (GameManager.instance.enemyEra == 5)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era6enemies[RandomEnemy()], gameObject.transform));
                 StartCoroutine(SpawnNextEnemy(RandomTime()));
             }
@@ -105,36 +114,42 @@ public class EnemySpawner : MonoBehaviour
             if (EventManager.instance.enemyEra == 0)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(enemies[RandomEnemy()], gameObject.transform));
                 StartCoroutine(SpawnNextEnemy(RandomTime()));
             }
             else if (EventManager.instance.enemyEra == 1)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era2enemies[RandomEnemy()], gameObject.transform));
                 StartCoroutine(SpawnNextEnemy(RandomTime()));
             }
             else if (EventManager.instance.enemyEra == 2)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era3enemies[RandomEnemy()], gameObject.transform));
                 StartCoroutine(SpawnNextEnemy(RandomTime()));
             }
             else if (EventManager.instance.enemyEra == 3)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era4enemies[RandomEnemy()], gameObject.transform));
                 StartCoroutine(SpawnNextEnemy(RandomTime()));
             }
             else if (EventManager.instance.enemyEra == 4)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era5enemies[RandomEnemy()], gameObject.transform));
                 StartCoroutine(SpawnNextEnemy(RandomTime()));
             }
             else if (EventManager.instance.enemyEra == 5)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era6enemies[RandomEnemy()], gameObject.transform));
                 StartCoroutine(SpawnNextEnemy(RandomTime()));
             }
@@ -188,31 +203,37 @@ public class EnemySpawner : MonoBehaviour
             if (GameManager.instance.enemyEra == 0)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(enemies[0], gameObject.transform));
             }
             else if (GameManager.instance.enemyEra == 1)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era2enemies[0], gameObject.transform));
             }
             else if (GameManager.instance.enemyEra == 2)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era3enemies[0], gameObject.transform));
             }
             else if (GameManager.instance.enemyEra == 3)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era4enemies[0], gameObject.transform));
             }
             else if (GameManager.instance.enemyEra == 4)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era5enemies[0], gameObject.transform));
             }
             else if (GameManager.instance.enemyEra == 5)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era6enemies[0], gameObject.transform));
             }
         }
@@ -221,31 +242,37 @@ public class EnemySpawner : MonoBehaviour
             if (EventManager.instance.enemyEra == 0)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(enemies[0], gameObject.transform));
             }
             else if (EventManager.instance.enemyEra == 1)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era2enemies[0], gameObject.transform));
             }
             else if (EventManager.instance.enemyEra == 2)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era3enemies[0], gameObject.transform));
             }
             else if (EventManager.instance.enemyEra == 3)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era4enemies[0], gameObject.transform));
             }
             else if (EventManager.instance.enemyEra == 4)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era5enemies[0], gameObject.transform));
             }
             else if (EventManager.instance.enemyEra == 5)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era6enemies[0], gameObject.transform));
             }
         }
@@ -258,31 +285,37 @@ public class EnemySpawner : MonoBehaviour
             if (GameManager.instance.enemyEra == 0)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(enemies[1], gameObject.transform));
             }
             else if (GameManager.instance.enemyEra == 1)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era2enemies[1], gameObject.transform));
             }
             else if (GameManager.instance.enemyEra == 2)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era3enemies[1], gameObject.transform));
             }
             else if (GameManager.instance.enemyEra == 3)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era4enemies[1], gameObject.transform));
             }
             else if (GameManager.instance.enemyEra == 4)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era5enemies[1], gameObject.transform));
             }
             else if (GameManager.instance.enemyEra == 5)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era6enemies[1], gameObject.transform));
             }
         }
@@ -291,31 +324,37 @@ public class EnemySpawner : MonoBehaviour
             if (EventManager.instance.enemyEra == 0)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(enemies[1], gameObject.transform));
             }
             else if (EventManager.instance.enemyEra == 1)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era2enemies[1], gameObject.transform));
             }
             else if (EventManager.instance.enemyEra == 2)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era3enemies[1], gameObject.transform));
             }
             else if (EventManager.instance.enemyEra == 3)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era4enemies[1], gameObject.transform));
             }
             else if (EventManager.instance.enemyEra == 4)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era5enemies[1], gameObject.transform));
             }
             else if (EventManager.instance.enemyEra == 5)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era6enemies[1], gameObject.transform));
             }
         }
@@ -327,31 +366,37 @@ public class EnemySpawner : MonoBehaviour
             if (GameManager.instance.enemyEra == 0)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(enemies[2], gameObject.transform));
             }
             else if (GameManager.instance.enemyEra == 1)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era2enemies[2], gameObject.transform));
             }
             else if (GameManager.instance.enemyEra == 2)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era3enemies[2], gameObject.transform));
             }
             else if (GameManager.instance.enemyEra == 3)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era4enemies[2], gameObject.transform));
             }
             else if (GameManager.instance.enemyEra == 4)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era5enemies[2], gameObject.transform));
             }
             else if (GameManager.instance.enemyEra == 5)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era6enemies[2], gameObject.transform));
             }
         }
@@ -360,31 +405,37 @@ public class EnemySpawner : MonoBehaviour
             if (EventManager.instance.enemyEra == 0)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(enemies[2], gameObject.transform));
             }
             else if (EventManager.instance.enemyEra == 1)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era2enemies[2], gameObject.transform));
             }
             else if (EventManager.instance.enemyEra == 2)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era3enemies[2], gameObject.transform));
             }
             else if (EventManager.instance.enemyEra == 3)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era4enemies[2], gameObject.transform));
             }
             else if (EventManager.instance.enemyEra == 4)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era5enemies[2], gameObject.transform));
             }
             else if (EventManager.instance.enemyEra == 5)
             {
                 yield return new WaitForSeconds(timeDelay);
+                Flash();
                 towManager.UpdateEnemiesList(Instantiate(era6enemies[2], gameObject.transform));
             }
         }
@@ -407,6 +458,7 @@ public class EnemySpawner : MonoBehaviour
                     if (i == 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -415,6 +467,7 @@ public class EnemySpawner : MonoBehaviour
                     else if (i != 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -432,6 +485,7 @@ public class EnemySpawner : MonoBehaviour
                     if (i == 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era2enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -440,6 +494,7 @@ public class EnemySpawner : MonoBehaviour
                     else if (i != 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era2enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -457,6 +512,7 @@ public class EnemySpawner : MonoBehaviour
                     if (i == 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era3enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -465,6 +521,7 @@ public class EnemySpawner : MonoBehaviour
                     else if (i != 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era3enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -482,6 +539,7 @@ public class EnemySpawner : MonoBehaviour
                     if (i == 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era4enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -490,6 +548,7 @@ public class EnemySpawner : MonoBehaviour
                     else if (i != 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era4enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -507,6 +566,7 @@ public class EnemySpawner : MonoBehaviour
                     if (i == 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era5enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -515,6 +575,7 @@ public class EnemySpawner : MonoBehaviour
                     else if (i != 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era5enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -532,6 +593,7 @@ public class EnemySpawner : MonoBehaviour
                     if (i == 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era6enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -540,6 +602,7 @@ public class EnemySpawner : MonoBehaviour
                     else if (i != 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era6enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -560,6 +623,7 @@ public class EnemySpawner : MonoBehaviour
                     if (i == 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -568,6 +632,7 @@ public class EnemySpawner : MonoBehaviour
                     else if (i != 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -585,6 +650,7 @@ public class EnemySpawner : MonoBehaviour
                     if (i == 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era2enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -593,6 +659,7 @@ public class EnemySpawner : MonoBehaviour
                     else if (i != 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era2enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -610,6 +677,7 @@ public class EnemySpawner : MonoBehaviour
                     if (i == 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era3enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -618,6 +686,7 @@ public class EnemySpawner : MonoBehaviour
                     else if (i != 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era3enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -635,6 +704,7 @@ public class EnemySpawner : MonoBehaviour
                     if (i == 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era4enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -643,6 +713,7 @@ public class EnemySpawner : MonoBehaviour
                     else if (i != 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era4enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -660,6 +731,7 @@ public class EnemySpawner : MonoBehaviour
                     if (i == 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era5enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -668,6 +740,7 @@ public class EnemySpawner : MonoBehaviour
                     else if (i != 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era5enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -685,6 +758,7 @@ public class EnemySpawner : MonoBehaviour
                     if (i == 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era6enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -693,6 +767,7 @@ public class EnemySpawner : MonoBehaviour
                     else if (i != 0)
                     {
                         yield return new WaitUntil(() => !GameManager.instance.freezeGame);
+                        Flash();
                         towManager.UpdateEnemiesList(Instantiate(era6enemies[spawnPattern[i].unitNum], gameObject.transform));
                         if (spawnPattern[i].stopSection && i + 1 != spawnPattern.Count)
                             yield return new WaitForSeconds(spawnPattern[i + 1].spawnTime);
@@ -704,5 +779,10 @@ public class EnemySpawner : MonoBehaviour
             }
         }
     }
+    private void Flash()
+    {
+        flash.FlashStart();
+    }
+   
 
 }

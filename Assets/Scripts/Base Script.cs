@@ -15,6 +15,7 @@ public class BaseScript : MonoBehaviour
     private UnitUI UI;
     private HitGlowScript hitGlowScript;
     private GameObject coin;
+    
 
     public bool isEvent;
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class BaseScript : MonoBehaviour
         hitGlowScript = gameObject.GetComponent<HitGlowScript>();
         UI = transform.Find("Canvas").GetComponent<UnitUI>();
         coin = GameObject.Find("UI").GetComponent<UIScript>().coin;
+        
         if (!isEnemy && !isEvent)
             HP = GameManager.instance.baseHP;
         else if (!isEnemy && isEvent)

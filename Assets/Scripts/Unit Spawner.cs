@@ -10,7 +10,7 @@ public class UnitSpawner : MonoBehaviour
     private int unitNum;
     [SerializeField]
     private Transform spawnPoint;
-
+    private Flash flash;
     private TowManager towManager;
 
     private bool reactivateOnSpawn;
@@ -46,7 +46,9 @@ public class UnitSpawner : MonoBehaviour
             }
         }
         animator = gameObject.GetComponent<Animator>();
-        spawnPoint = GameObject.FindWithTag("Unit Spawn Point").transform;
+        GameObject sPoint = GameObject.FindWithTag("Unit Spawn Point");
+        spawnPoint = sPoint.transform;
+        flash = sPoint.GetComponent<Flash>();
         towManager = GameObject.Find("TOW").transform.Find("TOW Manager").GetComponent<TowManager>();
         reactivateOnSpawn = GameManager.instance.reactivatePegsOnSpawn;
         pegs = GameObject.FindWithTag("Peg Layout").gameObject.GetComponent<PegManager>();
@@ -60,6 +62,8 @@ public class UnitSpawner : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             animator.SetBool("animate", true);
+            Vibration.VibratePeek();
+            flash.FlashStart();
             GameObject newUnit = Instantiate(unitPrefab, spawnPoint) as GameObject;
             newUnit.GetComponent<Unit>().Buff(collision.gameObject.GetComponent<Ball>().GetBuff());
             towManager.UpdateUnitList(newUnit);
@@ -72,7 +76,7 @@ public class UnitSpawner : MonoBehaviour
     public void VibrateandAnimationStop()
     {
         animator.SetBool("animate", false);
-        Vibration.VibratePeek();
+        
     }
     private void CheckDaily(GameObject collision)
     {

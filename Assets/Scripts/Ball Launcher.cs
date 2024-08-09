@@ -112,8 +112,8 @@ public class BallLauncher : MonoBehaviour
 
     private Gradient newGradient(float speed)
     {
-        float startAlpha = 1f;
-        float alpha = 1f;
+        float startAlpha = 0.3f;
+        float alpha = 0.3f;
         Color startColor = new Color(1, 1 - speed, 1 - speed);
         Color endColor = new Color(1, 1 - speed, 1 - speed);
         Gradient newGradient = new Gradient();
@@ -177,10 +177,12 @@ public class BallLauncher : MonoBehaviour
                     theBall.transform.rotation = theRotation;
                     if (isTrajActive)
                         trajLine.colorGradient = newGradientGreen(theMagnitude);
-                    noBall.SetActive(false);
-                    ready.SetActive(true);
+                    //noBall.SetActive(false);
+                    //ready.SetActive(true);
                     isOcupied = true;
                     animator.SetBool("isLoaded", true);
+                    animator.SetBool("isCharging", false);
+                    Vibration.Vibrate();
                 }
                 if (ballScript.isShot)
                     theBall = null;
@@ -210,9 +212,10 @@ public class BallLauncher : MonoBehaviour
         ballScript = null;
         ballRb = null;
         isOcupied = false;
-        noBall.SetActive(true);
-        ready.SetActive(false);
-        
+        animator.SetBool("isCharging", true);
+        //noBall.SetActive(true);
+        //ready.SetActive(false);
+
     }
 
     private void SetSpeed()

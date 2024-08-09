@@ -23,6 +23,8 @@ TagManager:
   - Fire
   - Unit Spawn Point
   - Peg Card
+  - Unit Trigger
+  - Flash
   layers:
   - Default
   - TransparentFX

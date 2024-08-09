@@ -361,24 +361,27 @@ public class PegScript : MonoBehaviour
 
     public void ResetPeg()
     {
-        medicPeg = false;
-        buffPeg = false;
-        speedPeg = false;
-        twinPeg = false;
-        bombPeg = false;
-        chargePeg = false;
-        feverPeg = false;
-        coinPeg = false;
-        freezePeg = false;
-        lightningPeg = false;
-        if (lightningRadius != null)
+        if (!isDome)
         {
-            lightningRadius.SetActive(false);
+            medicPeg = false;
+            buffPeg = false;
+            speedPeg = false;
+            twinPeg = false;
+            bombPeg = false;
+            chargePeg = false;
+            feverPeg = false;
+            coinPeg = false;
+            freezePeg = false;
+            lightningPeg = false;
+            if (lightningRadius != null)
+            {
+                lightningRadius.SetActive(false);
+            }
+            ResetAnimations();
+            SetBuffPoints();
+            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            gameObject.GetComponent<SpriteRenderer>().sprite = regularSprite;
         }
-        ResetAnimations();
-        SetBuffPoints();
-        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-        gameObject.GetComponent<SpriteRenderer>().sprite = regularSprite;
 
     }
     public void SetBuffPoints()

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3391890998035985347}
   m_Layer: 0
   m_Name: UnitTrigger01
-  m_TagString: Unit01
+  m_TagString: Unit Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

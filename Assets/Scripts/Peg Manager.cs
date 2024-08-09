@@ -50,7 +50,10 @@ public class PegManager : MonoBehaviour
     public void ReactivatePegs()
     {
         foreach (PegScript peg in allPegs)
+        {
+            if(!peg.isDome)
             peg.FadeIn();
+        }
     }
     public IEnumerator ReactivateDome()
     {
