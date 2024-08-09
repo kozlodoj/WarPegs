@@ -5137,23 +5137,23 @@ MonoBehaviour:
   wall01: {fileID: 512570256}
   wall02: {fileID: 413779412}
   era1FirstSpawner: {fileID: 5267610109306437553, guid: 3b60c4d31018f411e914e43c9cfa2d50, type: 3}
-  era1SecondSpawner: {fileID: 8254451508556525150, guid: 6977b58fc26ae4d37954127627968e90, type: 3}
-  era1ThirdSpawner: {fileID: 7343951221493229482, guid: 3b8d3b90bcf984de4b2f3802f6c63caf, type: 3}
-  era2FirstSpawner: {fileID: 8871525514912437245, guid: f8ef0f057e5584c99a601fd80c7c8e8d, type: 3}
-  era2SecondSpawner: {fileID: 4136177227898662911, guid: a3172d727ebeb47f899127b36e9f42ed, type: 3}
-  era2ThirdSpawner: {fileID: 962815712144322319, guid: 66dec3b4e2b074a14a79c5341711f901, type: 3}
-  era3FirstSpawner: {fileID: 8871525514912437245, guid: 092dcff11ac694ed7b00ea7c750403a8, type: 3}
-  era3SecondSpawner: {fileID: 4136177227898662911, guid: 991d59ff060bf4a3092964358a272358, type: 3}
-  era3ThirdSpawner: {fileID: 962815712144322319, guid: dd4b5434dfe14469c939d544f12b544e, type: 3}
-  era4FirstSpawner: {fileID: 8871525514912437245, guid: a3b31f450cc6b4dce8d1dc15255f26bc, type: 3}
-  era4SecondSpawner: {fileID: 4136177227898662911, guid: 6250163bf10214e23908fcd15cf4bc4d, type: 3}
-  era4ThirdSpawner: {fileID: 962815712144322319, guid: eca0974890d664dda92e4c69bd0613cc, type: 3}
-  era5FirstSpawner: {fileID: 8871525514912437245, guid: 8d91d405aab5a4560bffb1812684fea6, type: 3}
-  era5SecondSpawner: {fileID: 4136177227898662911, guid: 8458a7d06abd9499c95337f2c138f24e, type: 3}
-  era5ThirdSpawner: {fileID: 962815712144322319, guid: cacd280039ac84b268432b650f81dff2, type: 3}
-  era6FirstSpawner: {fileID: 8871525514912437245, guid: 68f7f23c157004c2490dd12619647de7, type: 3}
-  era6SecondSpawner: {fileID: 4136177227898662911, guid: a65d726cced03467196a4baa40fa5ca1, type: 3}
-  era6ThirdSpawner: {fileID: 962815712144322319, guid: 7f4b9cfe7dcbf4d6ab0b387a1f758832, type: 3}
+  era1SecondSpawner: {fileID: 5267610109306437553, guid: 928a3783cb59d4231a2e17fdf61947bd, type: 3}
+  era1ThirdSpawner: {fileID: 5267610109306437553, guid: 2ee0cc31ec1694b35b0382eb9ccbcfa0, type: 3}
+  era2FirstSpawner: {fileID: 5267610109306437553, guid: 858392fd8e1754016ad63c40f9edb9b0, type: 3}
+  era2SecondSpawner: {fileID: 5267610109306437553, guid: df5c38365017c4de08dcf72aa719ed4f, type: 3}
+  era2ThirdSpawner: {fileID: 5267610109306437553, guid: af131d4e6fcff43518c835c57e5950c8, type: 3}
+  era3FirstSpawner: {fileID: 5267610109306437553, guid: 2cb0b80ab3d5c4b4c830fe4d67ef4125, type: 3}
+  era3SecondSpawner: {fileID: 5267610109306437553, guid: 92ccb0839cf734054a3c8393de9f64ab, type: 3}
+  era3ThirdSpawner: {fileID: 5267610109306437553, guid: d547841b855fd4a868d5bd6bcea28deb, type: 3}
+  era4FirstSpawner: {fileID: 5267610109306437553, guid: df4745a7a4c6b493c88a4e6fb60d5e93, type: 3}
+  era4SecondSpawner: {fileID: 5267610109306437553, guid: 4a36d6f0f36bc464cb5e6233301c4d9c, type: 3}
+  era4ThirdSpawner: {fileID: 5267610109306437553, guid: c83a8fad466f449e99275f8448881c4c, type: 3}
+  era5FirstSpawner: {fileID: 5267610109306437553, guid: 8e4eb66b915ba4d738a9860e6ae227e4, type: 3}
+  era5SecondSpawner: {fileID: 5267610109306437553, guid: 68839a70ed5b040e6a08ba8c917bc97b, type: 3}
+  era5ThirdSpawner: {fileID: 5267610109306437553, guid: 8ee0a78f58a2748c9a502f84f7532d46, type: 3}
+  era6FirstSpawner: {fileID: 5267610109306437553, guid: aa8ed785d7b614f08adcd002f5d49a4c, type: 3}
+  era6SecondSpawner: {fileID: 5267610109306437553, guid: 072a9faee3d784f5d80ba03a628f82b9, type: 3}
+  era6ThirdSpawner: {fileID: 5267610109306437553, guid: f70916dd09023493c8ce8bd8e421df7c, type: 3}
   isEvent: 0
 --- !u!1 &1196288147
 GameObject:
@@ -6749,18 +6749,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 320099820185171039, guid: c067c4613154d49b1ba31d99550b5413, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 0396114b248b64dc580255ae752d299b, type: 3}
     - target: {fileID: 1355396499160820633, guid: c067c4613154d49b1ba31d99550b5413, type: 3}
       propertyPath: m_Name
       value: Launcher 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3082194073678503566, guid: c067c4613154d49b1ba31d99550b5413, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 0396114b248b64dc580255ae752d299b, type: 3}
     - target: {fileID: 8101960441248614987, guid: c067c4613154d49b1ba31d99550b5413, type: 3}
       propertyPath: trajectory
       value: 

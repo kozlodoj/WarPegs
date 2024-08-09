@@ -76,13 +76,13 @@ public class Ball : MonoBehaviour
             peg = collision.gameObject.GetComponent<PegScript>();
             buffPoints += peg.buffPoints;
         }
-        if (collision.gameObject.CompareTag("Unit Trigger"))
-        {
-            ballRb.velocity = Vector2.zero;
-            transform.DOMove(collision.gameObject.transform.position, 1);
-            animator.SetBool("disolve", true);
-            StartCoroutine(Die(1f));
-        }
+        //if (collision.gameObject.CompareTag("Unit Trigger"))
+        //{
+        //    ballRb.velocity = Vector2.zero;
+        //    transform.DOMove(collision.gameObject.transform.position, 1);
+        //    animator.SetBool("disolve", true);
+        //    StartCoroutine(Die(1f));
+        //}
     }
 
     public void ActivateCharging()
@@ -166,10 +166,10 @@ public class Ball : MonoBehaviour
         var newVelocity = ballRb.velocity + (Vector2.right * 2f);
         rb.velocity = newVelocity;
     }
-    private IEnumerator Die(float time)
-    {
-        yield return new WaitForSeconds(time);
-        Destroy(gameObject);
-    }
+    //private IEnumerator Die(float time)
+    //{
+    //    yield return new WaitForSeconds(time);
+    //    Destroy(gameObject);
+    //}
     
 }

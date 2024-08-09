@@ -47,11 +47,14 @@ public class BallLauncher : MonoBehaviour
         trajLine = trajectory.GetComponent<LineRenderer>();
         animator = gameObject.GetComponent<Animator>();
         noBall = transform.Find("noBall").gameObject;
-        ready = transform.Find("Ready").gameObject;
+        ready = transform.Find("ReadyText").gameObject;
         ghostBall = transform.Find("GhostBall").gameObject;
         backButton = GameObject.Find("UI").transform.Find("TopBG").gameObject.transform.Find("Back").gameObject;
         if (GameManager.instance.tutorial)
+        {
             backButton.SetActive(false);
+            animator.SetBool("isCharging", true);
+        }
 
     }
 
@@ -178,7 +181,7 @@ public class BallLauncher : MonoBehaviour
                     if (isTrajActive)
                         trajLine.colorGradient = newGradientGreen(theMagnitude);
                     //noBall.SetActive(false);
-                    //ready.SetActive(true);
+                    ready.SetActive(true);
                     isOcupied = true;
                     animator.SetBool("isLoaded", true);
                     animator.SetBool("isCharging", false);
@@ -214,7 +217,7 @@ public class BallLauncher : MonoBehaviour
         isOcupied = false;
         animator.SetBool("isCharging", true);
         //noBall.SetActive(true);
-        //ready.SetActive(false);
+        ready.SetActive(false);
 
     }
 
@@ -229,6 +232,7 @@ public class BallLauncher : MonoBehaviour
     }
     public void StopAnimation()
     {
+  
         animator.SetBool("isLoaded", false);
     }
 
